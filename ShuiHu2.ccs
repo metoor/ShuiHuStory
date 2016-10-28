@@ -1,0 +1,127 @@
+<Solution>
+  <PropertyGroup Name="ShuiHu2" Version="3.10.0.0" Type="CocosStudio" />
+  <SolutionFolder>
+    <Group ctype="ResourceGroup">
+      <RootFolder Name=".">
+        <Folder Name="backgrounds">
+          <Image Name="bg_pvpStart.png" />
+          <Image Name="cellbg.png" />
+          <Image Name="chatbg.png" />
+          <Image Name="fail.png" />
+          <Image Name="gameover.png" />
+          <Image Name="groupbg.png" />
+          <Image Name="herobg.png" />
+          <Image Name="herobg1.png" />
+          <Image Name="heroinfobg.png" />
+          <Image Name="herolistbg.png" />
+          <Image Name="homebg.png" />
+          <Image Name="loginbg.png" />
+          <Image Name="menubg.png" />
+          <Image Name="namebg.png" />
+          <Image Name="storebg.png" />
+          <Image Name="storybg.png" />
+          <Image Name="tipbg.png" />
+          <Image Name="worldbg.png" />
+          <Image Name="zhanyi.png" />
+        </Folder>
+        <Folder Name="btns">
+          <Folder Name="pvpbtn">
+            <Image Name="btn_battle_1.png" />
+            <Image Name="btn_battle_2.png" />
+            <Image Name="btn_pvp_1.png" />
+            <Image Name="btn_pvp_2.png" />
+            <Image Name="btn_pvpCancel_1.png" />
+            <Image Name="btn_pvpCancel_2.png" />
+            <Image Name="btn_pvpStart_1.png" />
+            <Image Name="btn_pvpStart_2.png" />
+            <Image Name="img_find.png" />
+            <Image Name="img_netError.png" />
+            <Image Name="img_tips.png" />
+          </Folder>
+          <Image Name="changhero1.png" />
+          <Image Name="changhero2.png" />
+          <Image Name="close1.png" />
+          <Image Name="close2.png" />
+          <Image Name="dibutton1.png" />
+          <Image Name="dibutton2.png" />
+          <Image Name="getmoney1.png" />
+          <Image Name="getmoney2.png" />
+          <Image Name="group1.png" />
+          <Image Name="group2.png" />
+          <Image Name="hero1.png" />
+          <Image Name="hero2.png" />
+          <Image Name="heroup1.png" />
+          <Image Name="heroup2.png" />
+          <Image Name="home1.png" />
+          <Image Name="home2.png" />
+          <Image Name="levelup1.png" />
+          <Image Name="levelup2.png" />
+          <Image Name="login1.png" />
+          <Image Name="login2.png" />
+          <Image Name="menu_sound_off_1.png" />
+          <Image Name="menu_sound_off_2.png" />
+          <Image Name="menu_sound_on_1.png" />
+          <Image Name="menu_sound_on_2.png" />
+          <Image Name="ok1.png" />
+          <Image Name="ok2.png" />
+          <Image Name="qianghua1.png" />
+          <Image Name="qianghua2.png" />
+          <Image Name="store1.png" />
+          <Image Name="store2.png" />
+          <Image Name="tianbutton1.png" />
+          <Image Name="tianbutton2.png" />
+          <Image Name="tujian1.png" />
+          <Image Name="tujian2.png" />
+          <Image Name="war1.png" />
+          <Image Name="war2.png" />
+          <Image Name="yinxiong1.png" />
+          <Image Name="yinxiong2.png" />
+          <Image Name="zhaomu1.png" />
+          <Image Name="zhaomu2.png" />
+          <Image Name="zhuangbei1.png" />
+          <Image Name="zhuangbei2.png" />
+        </Folder>
+        <Folder Name="fonts">
+          <TTF Name="MiniKaiTi.ttf" />
+        </Folder>
+        <Folder Name="layers">
+          <Folder Name="firstLogin">
+            <Project Name="firstScene.csd" Type="Layer" />
+          </Folder>
+          <Folder Name="Tools">
+            <Project Name="tipDialog.csd" Type="Layer" />
+          </Folder>
+        </Folder>
+        <Folder Name="ui">
+          <Image Name="add.png" />
+          <Image Name="addbutton.png" />
+          <Image Name="coin1.png" />
+          <Image Name="coins.png" />
+          <Image Name="coinsbg.png" />
+          <Image Name="fang.png" />
+          <Image Name="headbk4.png" />
+          <Image Name="heart.png" />
+          <Image Name="heroap.png" />
+          <Image Name="hourse1.png" />
+          <Image Name="hourse2.png" />
+          <Image Name="hourse3.png" />
+          <Image Name="hourse4.png" />
+          <Image Name="hourse5.png" />
+          <Image Name="hourse6.png" />
+          <Image Name="hourse7.png" />
+          <Image Name="level.png" />
+          <Image Name="mofang.png" />
+          <Image Name="money1.png" />
+          <Image Name="star.png" />
+          <Image Name="swordicon.png" />
+          <Image Name="swordicon1.png" />
+          <Image Name="tile.png" />
+          <Image Name="ui_coin.png" />
+          <Image Name="xp1.png" />
+          <Image Name="xp2.png" />
+          <Image Name="yuanbao.png" />
+        </Folder>
+      </RootFolder>
+    </Group>
+  </SolutionFolder>
+</Solution>

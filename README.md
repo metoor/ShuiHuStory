@@ -1,0 +1,1 @@
+this is a cocos2dx project.
