@@ -5,7 +5,7 @@
 #ifndef __GAMEDATA_H__
 #define __GAMEDATA_H__
 
-#include <map>
+#include <unordered_map>
 
 class Equipment;
 class HeroCard;
@@ -81,10 +81,10 @@ private:
 	int _exp;
 
 	//保存已获得的装备
-	std::map<int, Equipment*> _equipmentMap;
+	std::unordered_map<int, Equipment*> _equipmentMap;
 
 	//保存已获得的英雄卡牌
-	std::map<int, HeroCard*> _heroCardMap;
+	std::unordered_map<int, HeroCard*> _heroCardMap;
 
 	int _uniqueIdentifierNum;	//记录物品唯一的标识符
 

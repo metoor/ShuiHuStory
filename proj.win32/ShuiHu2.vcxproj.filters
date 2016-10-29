@@ -25,6 +25,12 @@
     <Filter Include="src\Datas">
       <UniqueIdentifier>{d6fa800a-145c-4bd4-bc97-b4664a38c974}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\I18N">
+      <UniqueIdentifier>{8560fbe7-00bd-4b36-8a72-b6f6261934d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Audios">
+      <UniqueIdentifier>{a3d6c63a-5df0-4498-8fdb-f7e196528e2d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -59,6 +65,12 @@
     </ClCompile>
     <ClCompile Include="..\Classes\DialogManager.cpp">
       <Filter>src\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\I18N.cpp">
+      <Filter>src\I18N</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AudioManager.cpp">
+      <Filter>src\Audios</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -97,6 +109,15 @@
     </ClInclude>
     <ClInclude Include="..\Classes\DialogManager.h">
       <Filter>src\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\I18N.h">
+      <Filter>src\I18N</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\BlockLayer.h">
+      <Filter>src\Layers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AudioManager.h">
+      <Filter>src\Audios</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -52,7 +52,7 @@ GameData * GameData::getInstance()
 {
 	if (!_gameData)
 	{
-		_gameData = new GameData();
+		_gameData = new (std::nothrow)GameData();
 
 		if (!_gameData)
 		{
@@ -334,13 +334,13 @@ void GameData::readHeroCard()
 void GameData::addEquipmentToMap(Equipment * equipment)
 {
 	int key = equipment->getProperty()->id;
-	_equipmentMap.insert(std::pair<int, Equipment*>(key, equipment));
+	_equipmentMap.insert({ key, equipment });
 }
 
 void GameData::addHeroCardToMap(HeroCard * heroCard)
 {
 	int key = heroCard->getProperty()->id;
-	_heroCardMap.insert(std::pair<int, HeroCard*>(key, heroCard));
+	_heroCardMap.insert({ key, heroCard });
 }
 
 Equipment* GameData::getEquipmentById(int id)

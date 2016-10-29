@@ -2,48 +2,18 @@
 #include "McLog.h"
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
+#include "BlockLayer.h"
 
 DialogManager* DialogManager::_instance = nullptr;
 
 USING_NS_CC;
 
 
-/************************************************************************/
-/*         触摸锁定层                                                     */
-/************************************************************************/
-class BlockLayer : public Layer
-{
-public:
-	CREATE_FUNC(BlockLayer);
-
-	bool init() override
-	{
-		if (!Layer::init())
-			return false;
-
-		auto listener = EventListenerTouchOneByOne::create();
-		listener->setSwallowTouches(true);
-		listener->onTouchBegan = CC_CALLBACK_2(BlockLayer::onTouchBegan, this);
-		_eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
-		return true;
-	}
-
-	virtual bool onTouchBegan(Touch* touch, Event* event) override
-	{
-		return true;
-	}
-};
-
-
-
-/************************************************************************/
-/*    对话框管理类                                                        */
-/************************************************************************/
 DialogManager::DialogManager()
 {
 }
 
-cocos2d::Node * DialogManager::createTip(std::string text, cocos2d::Color4B color, int size)
+cocos2d::Node * DialogManager::createTip(const std::string* text, cocos2d::Color4B color, int size)
 {
 	//获取cocos stuido编辑好的ui文件
 	auto tipLayer = (CSLoader::createNode(csbName_TipLayer));
@@ -53,11 +23,11 @@ cocos2d::Node * DialogManager::createTip(std::string text, cocos2d::Color4B colo
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	label->setString(text);
+	label->setString(*text);
 	label->setTextColor(color);
 	label->setFontSize(size);
 	tipLayer->setAnchorPoint(Point::ANCHOR_MIDDLE);
-	tipLayer->setPosition(visibleSize / 2);
+	tipLayer->setPosition(visibleSize.width / 2, visibleSize.height / 1.2f);
 	
 	return tipLayer;
 }
@@ -70,7 +40,7 @@ DialogManager * DialogManager::getInstance()
 {
 	if (_instance == nullptr)
 	{
-		_instance = new DialogManager();
+		_instance = new (std::nothrow)DialogManager();
 
 		if (!_instance)
 		{
@@ -83,14 +53,28 @@ DialogManager * DialogManager::getInstance()
 	return _instance;
 }
 
-void DialogManager::showTipDialog(std::string text, float second, cocos2d::Color4B color, int size)
+void DialogManager::showTip(const std::string* text, float second, cocos2d::Color4B color, int size)
 {
-	auto blockLayer = BlockLayer::create();
+	auto currentScene = Director::getInstance()->getRunningScene();
 	
-	//锁定屏幕触摸
-	Director::getInstance()->getRunningScene()->addChild(blockLayer, 9999);
+	//如果当前场景中已经添加了一个提示框则不再重复弹出
+	if (!currentScene->getChildByName("tip"))
+	{
+		auto tip = createTip(text, color, size);
+		tip->setName("tip");
+		tip->setOpacity(0);
+		currentScene->addChild(tip, 9999);
 
-	blockLayer->addChild(createTip(text, color, size));
+		auto animate = Sequence::create(FadeIn::create(1.0f), DelayTime::create(3.5f), FadeOut::create(1.0f), CallFunc::create([]() {
+			auto tip = Director::getInstance()->getRunningScene()->getChildByName("tip");
+			
+			//从当前场景移除提示框，并清理资源
+			tip->removeFromParentAndCleanup(true);
+		}), NULL);
+
+		tip->runAction(animate);
+	}
+	
 }
 
 void DialogManager::destoryInstance()

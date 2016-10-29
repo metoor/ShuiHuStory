@@ -156,7 +156,7 @@ Config * Config::getInstance()
 {
 	if (!_config)
 	{
-		_config = new Config();
+		_config = new (std::nothrow)Config();
 
 		if (!_config)
 		{
