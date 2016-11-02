@@ -11,7 +11,10 @@ public:
 	bool init() override;
 	CREATE_FUNC(ParticleLayer);
 
+	//将粒子属性改变成背景特效
 	void changeToBgParticle();
+
+	//将粒子属性改变成点击，移动轨迹特效
 	void changeToClickParticle();
 
 private:

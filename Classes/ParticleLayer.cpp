@@ -42,19 +42,20 @@ void ParticleLayer::changeToBgParticle()
 {
 	Size winSize = Director::getInstance()->getVisibleSize();
 	_particle->setPosVar(Vec2(250, 450));
-	_particle->setEmissionRate(8.0f);
+	_particle->setEmissionRate(5.0f);
 	_particle->setLife(5.0f);
 	_particle->setLifeVar(2.0f);
-	
+	_particle->setSpeed(20.0f);
 	_particle->setPosition(winSize / 2);
 }
 
 void ParticleLayer::changeToClickParticle()
 {
 	_particle->setPosVar(Vec2(0, 0));
-	_particle->setEmissionRate(30.0f);
-	_particle->setLife(1.0f);
-	_particle->setLifeVar(0.0f);
+	_particle->setEmissionRate(50.0f);
+	_particle->setLife(2.0f);
+	_particle->setLifeVar(1.0f);
+	_particle->setSpeed(35.0f);
 }
 
 bool ParticleLayer::onTouchBegan(cocos2d::Touch * touch, cocos2d::Event * event)

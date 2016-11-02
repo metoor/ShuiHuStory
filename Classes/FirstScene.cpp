@@ -1,5 +1,8 @@
 #include "FirstScene.h"
 #include "cocostudio/CocoStudio.h"
+#include "AudioManager.h"
+#include "ParticleLayer.h"
+
 #include "HelloWorldScene.h"
 
 USING_NS_CC;
@@ -23,7 +26,8 @@ bool FirstScene::init()
 	}
 
 	//背景音乐
-	//CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic("audio/wellcomeBg.mp3");
+	auto audio = AudioManager::getInstance();
+	audio->playBackgroundMusic(audio->bgFirstScene);
 
 	//注册触摸事件
 	auto listen = EventListenerTouchOneByOne::create();
@@ -50,6 +54,10 @@ bool FirstScene::init()
 	_chatContent = dynamic_cast<Text*>(root->getChildByTag(chatContentTextTag_firstScene));
 	_heroImage = dynamic_cast<ImageView*>(root->getChildByTag(heroImageTag_firstScene));
 
+
+	//创建粒子特效
+	auto particle = ParticleLayer::create();
+	addChild(particle, 9000);
 
 	//显示初始对白
 	nextMsg();

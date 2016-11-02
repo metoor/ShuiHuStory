@@ -3,7 +3,7 @@
 /************************************************************************/
 /*         ´¥ÃþËø¶¨²ã                                                     */
 /************************************************************************/
-class BlockLayer : public cocos2d::Layer
+class BlockLayer : public cocos2d::LayerColor
 {
 public:
 	CREATE_FUNC(BlockLayer);
@@ -12,6 +12,8 @@ public:
 	{
 		if (!cocos2d::Layer::init())
 			return false;
+
+		initWithColor(cocos2d::Color4B(168, 168, 168, 0));
 
 		auto listener = cocos2d::EventListenerTouchOneByOne::create();
 		listener->setSwallowTouches(true);
@@ -24,4 +26,5 @@ public:
 	{
 		return true;
 	}
+
 };

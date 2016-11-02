@@ -9,7 +9,10 @@
 #include "HeroCard.h"
 #include "McLog.h"
 #include "DialogManager.h"
-
+#include "I18N.h"
+#include "AudioManager.h"
+#include "BlockLayer.h"
+#include "ParticleLayer.h"
 
 USING_NS_CC;
 
@@ -26,6 +29,7 @@ HelloWorld::~HelloWorld()
 	GameData::getInstance()->saveUniqueIdentifierNumToFile();
 	GameData::getInstance()->saveEquipment();
 	GameData::getInstance()->saveHeroCard();
+	AudioManager::getInstance()->destoryInstance();
 }
 
 Scene* HelloWorld::createScene()
@@ -83,16 +87,8 @@ bool HelloWorld::init()
 	//加密测试
 	//string content = FileUtils::getInstance()->getStringFromFile("test.data");
 
-
-
-	auto la = Label::create("我能显示中文...", "fonts/MiniKaiTi.ttf", 50);
-	la->setPosition(visibleSize / 2);
-	addChild(la);
-	
-
-	McLog m;
-	m.addWaring("我是一个测试...", __FILE__, __LINE__);
-	m.addWaring("我是第二个测试...", __FILE__, __LINE__);
+	auto pl = ParticleLayer::create();
+	addChild(pl, 900);
 
     return true;
 }
@@ -107,5 +103,11 @@ void HelloWorld::menuCloseCallback(Ref * psender)
 	h->init(Tools::getRandomInt(0, 108));
 	GameData::getInstance()->addHeroCardToMap(h);*/
 
-	DialogManager::getInstance()->showTipDialog("我成功啦");
+	auto i18n = I18N::getInstance();
+	i18n->loadStringFile("string.plist");
+	auto hello = StringUtils::format(i18n->getStringByKey("two")->c_str(), 1000);
+
+
+	//DialogManager::getInstance()->showTip(&hello);
+
 }

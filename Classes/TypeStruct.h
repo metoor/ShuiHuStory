@@ -5,9 +5,10 @@
 #include "McLog.h"
 
 
-#define  HERO_MAX_EQUIPMENT_NUM 6		//角色可以佩戴的装备数量（6种类型）
-#define  NONE_EQUIPMENT	(-1)			//者英雄装备位置没有装备
-#define  NONE_USER		(-1)			//表示装备没有使用者
+//常量名称（是经常使用到的字符常量）
+const int none = -1;				//者英雄装备位置没有装备或者表示装备没有使用者
+const int max_equipment_num = 6;	//角色可以佩戴的装备数量（6种类型）
+
 
 using std::string;
 
@@ -112,7 +113,7 @@ struct SaveHeroCardData
 	int star;			//星级
 	
 	//装备情况
-	int equipmentId[HERO_MAX_EQUIPMENT_NUM];	//-1表示没有佩戴该类型的装备，大于1000表示装备Id
+	int equipmentId[max_equipment_num];	//-1表示没有佩戴该类型的装备，大于1000表示装备Id
 };
 
 struct HeroCardProperty
@@ -147,7 +148,7 @@ struct HeroCardProperty
 	bool isMagic;			//是否魔法攻击
 	
 
-	int equipmentId[HERO_MAX_EQUIPMENT_NUM];	//-1表示没有佩戴该类型的装备，大于1000表示装备Id
+	int equipmentId[max_equipment_num];	//-1表示没有佩戴该类型的装备，大于1000表示装备Id
 
 };
 

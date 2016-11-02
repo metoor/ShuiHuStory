@@ -29,7 +29,7 @@ private:
 private:
 	/*ui文件的常量名
 	命名方式：变量_场景（层）名称*/
-	const std::string csbName_firstScene = "layer/firstLogin/firstScene.csb";
+	const std::string csbName_firstScene = "layers/firstLogin/firstScene.csb";
 	const unsigned heroNameTextTag_firstScene = 33;
 	const unsigned heroImageTag_firstScene = 34;
 	const unsigned chatContentTextTag_firstScene = 35;

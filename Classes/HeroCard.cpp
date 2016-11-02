@@ -77,9 +77,9 @@ void HeroCard::init(const HeroCardType * heroCardType)
 	_property->des = &(heroCardType->des);
 
 	//初始化卡牌角色的装备
-	for (int pos = 0; pos < HERO_MAX_EQUIPMENT_NUM; ++pos)
+	for (int pos = 0; pos < max_equipment_num; ++pos)
 	{
-		wearEquipment(pos, NONE_EQUIPMENT);
+		wearEquipment(pos, none);
 	}
 
 	calculateHeroCardPropery(heroCardType);
@@ -100,7 +100,7 @@ void HeroCard::init(const SaveHeroCardData* saveHeroData)
 	_property->exLevel = saveHeroData->exLevel;
 
 	//获取英雄装备穿戴信息
-	for (int pos = 0; pos < HERO_MAX_EQUIPMENT_NUM; ++pos)
+	for (int pos = 0; pos < max_equipment_num; ++pos)
 	{
 		_property->equipmentId[pos] = saveHeroData->equipmentId[pos];
 	}
@@ -131,7 +131,7 @@ const SaveHeroCardData HeroCard::getSaveData()
 	shd.rate = Tools::percentToInt(_property->rate);
 	shd.type = _property->type;
 	
-	Tools::arrayAssignment(HERO_MAX_EQUIPMENT_NUM, shd.equipmentId, _property->equipmentId);
+	Tools::arrayAssignment(max_equipment_num, shd.equipmentId, _property->equipmentId);
 
 	return shd;
 }
@@ -144,7 +144,7 @@ const HeroCardProperty * HeroCard::getProperty()
 void HeroCard::wearEquipment(int pos, int equipmentId)
 {
 	//越界检查
-	if (Tools::betweenAnd(pos, 0, HERO_MAX_EQUIPMENT_NUM - 1))
+	if (Tools::betweenAnd(pos, 0, max_equipment_num - 1))
 	{
 		_property->equipmentId[pos] = equipmentId;
 	}
@@ -156,9 +156,9 @@ void HeroCard::wearEquipment(int pos, int equipmentId)
 
 int HeroCard::getEquipmentByPos(int pos)
 {
-	int result = NONE_EQUIPMENT;
+	int result = none;
 
-	if (Tools::betweenAnd(pos, 0, HERO_MAX_EQUIPMENT_NUM - 1))
+	if (Tools::betweenAnd(pos, 0, max_equipment_num - 1))
 	{
 		result = _property->equipmentId[pos];
 	}
@@ -205,7 +205,7 @@ void HeroCard::calculateEquipmentPropery()
 	EquipmentProperty ep{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, nullptr, nullptr, nullptr};
 
 	//遍历佩戴装备的属性并分别求出个种类属性之和
-	for (int pos = 0; pos < HERO_MAX_EQUIPMENT_NUM; ++pos)
+	for (int pos = 0; pos < max_equipment_num; ++pos)
 	{
 		int equipmentId = getEquipmentByPos(pos);
 		auto equipmentProperty = GameData::getInstance()->getEquipmentById(equipmentId)->getProperty();

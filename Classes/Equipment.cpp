@@ -64,7 +64,7 @@ void Equipment::init(const EquipmentType* equipmentType)
 
 	_property->level = 1;
 	_property->exLevel = 1;
-	_property->user = NONE_USER;			//NONE_USER 表示该装备没有被角色使用
+	_property->user = none;			//none 表示该装备没有被角色使用
 	
 	_property->textureName = &(equipmentType->textureName);
 	_property->name = &(equipmentType->name);
