@@ -2,8 +2,7 @@
 #include "cocostudio/CocoStudio.h"
 #include "AudioManager.h"
 #include "ParticleLayer.h"
-
-#include "HelloWorldScene.h"
+#include "GameScene.h"
 
 USING_NS_CC;
 using namespace ui;
@@ -16,6 +15,7 @@ FirstScene::FirstScene()
 
 FirstScene::~FirstScene()
 {
+	UserDefault::getInstance()->setBoolForKey("isFirst", false);
 }
 
 bool FirstScene::init()
@@ -46,14 +46,7 @@ bool FirstScene::init()
 
 	_eventDispatcher->addEventListenerWithSceneGraphPriority(listen, this);
 
-	//创建层
-	auto root = CSLoader::createNode(csbName_firstScene);
-	addChild(root);
-
-	_heroName = dynamic_cast<Text*>(root->getChildByTag(heroNameTextTag_firstScene));
-	_chatContent = dynamic_cast<Text*>(root->getChildByTag(chatContentTextTag_firstScene));
-	_heroImage = dynamic_cast<ImageView*>(root->getChildByTag(heroImageTag_firstScene));
-
+	loadUI();
 
 	//创建粒子特效
 	auto particle = ParticleLayer::create();
@@ -75,6 +68,17 @@ cocos2d::Scene * FirstScene::createScene()
 	return scene;
 }
 
+void FirstScene::loadUI()
+{
+	//创建层
+	auto root = CSLoader::createNode(csbName);
+	addChild(root);
+
+	_heroName = root->getChildByTag<Text*>(heroNameTextTag);
+	_chatContent = root->getChildByTag<Text*>(chatContentTextTag);
+	_heroImage = root->getChildByTag<ImageView*>(heroImageTag);
+}
+
 void FirstScene::setContent(std::string heroName, std::string chatContent, std::string heroImage)
 {
 	_heroName->setString(heroName);
@@ -84,7 +88,7 @@ void FirstScene::setContent(std::string heroName, std::string chatContent, std::
 
 void FirstScene::readChatData()
 {
-	std::string jsonpath = FileUtils::getInstance()->fullPathForFilename(storyFileName_firstScene);
+	std::string jsonpath = FileUtils::getInstance()->fullPathForFilename(storyFileName);
 	std::string contentStr = FileUtils::getInstance()->getStringFromFile(jsonpath);
 	_doc.Parse<0>(contentStr.c_str());
 
@@ -103,8 +107,7 @@ void FirstScene::nextMsg()
 	}
 	else
 	{
-		UserDefault::getInstance()->setBoolForKey("isFirst", false);
 		//对白完成跳转到游戏主页
-		Director::getInstance()->replaceScene(TransitionPageTurn::create(1.0f, HelloWorld::createScene(), false));
+		Director::getInstance()->replaceScene(TransitionPageTurn::create(1.0f, GameScene::createScene(), false));
 	}
 }

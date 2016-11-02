@@ -1,0 +1,48 @@
+#ifndef __GAMESCENE_H__
+#define __GAMESCENE_H__
+
+#include "cocos2d.h"
+#include "ui/CocosGUI.h"
+
+
+//六个功能菜单对应的6个场景的数组大小
+#define ARRAY_SIZE 6
+
+class GameScene : public cocos2d::Layer{
+public:
+	GameScene();
+	~GameScene();
+	static cocos2d::Scene* createScene();
+	virtual bool init() override;
+	CREATE_FUNC(GameScene);
+
+
+private:
+	//手机返回键处理回调
+	void onKeyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event * pEvent);
+
+	void loadUI();
+
+	void menuCallBack(cocos2d::Ref * pSender, cocos2d::ui::Widget::TouchEventType type);
+
+private:
+	//常量名称
+	const std::string csbName = "layers/homeLayer/GameSceneBgLayer.csb";
+	const std::string csbMenuName = "layers/homeLayer/menuLayer.csb";
+	const std::string menuHomeName = "menuHero";
+	const std::string menuTeamName = "menuTeam";
+	const std::string menuHeroName = "menuHero";
+	const std::string menuWarName = "menuWar";
+	const std::string menuPictureName = "menuPicture";
+	const std::string menuStoreName = "menuStore";
+
+private:
+	//鼠标上次点击的菜单索引
+	int _preTag;
+
+	//用来存储6个功能层的指针
+	cocos2d::Layer* _layerPointer[ARRAY_SIZE];
+
+};
+
+#endif // GAMESCENE_H_

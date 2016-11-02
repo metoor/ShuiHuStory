@@ -34,6 +34,9 @@
     <Filter Include="src\Particles">
       <UniqueIdentifier>{c3ee1dd8-94f2-4558-a040-cf1e7b699169}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Layers\Home">
+      <UniqueIdentifier>{df2a3b10-36c6-4c7b-9fa4-919babbb1385}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -77,6 +80,12 @@
     </ClCompile>
     <ClCompile Include="..\Classes\ParticleLayer.cpp">
       <Filter>src\Particles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameScene.cpp">
+      <Filter>src\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\HomeLayer.cpp">
+      <Filter>src\Layers\Home</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -127,6 +136,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\ParticleLayer.h">
       <Filter>src\Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameScene.h">
+      <Filter>src\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\HomeLayer.h">
+      <Filter>src\Layers\Home</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

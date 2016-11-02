@@ -3,6 +3,7 @@
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
 #include "BlockLayer.h"
+#include "TypeStruct.h"
 
 DialogManager* DialogManager::_instance = nullptr;
 
@@ -63,7 +64,7 @@ void DialogManager::showTip(const std::string* text, float second, cocos2d::Colo
 		auto tip = createTip(text, color, size);
 		tip->setName("tip");
 		tip->setOpacity(0);
-		currentScene->addChild(tip, 9999);
+		currentScene->addChild(tip, tip_z_order);
 
 		auto animate = Sequence::create(FadeIn::create(1.0f), DelayTime::create(3.5f), FadeOut::create(1.0f), CallFunc::create([]() {
 			auto tip = Director::getInstance()->getRunningScene()->getChildByName("tip");

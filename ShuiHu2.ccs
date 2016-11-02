@@ -38,6 +38,7 @@
             <Image Name="img_netError.png" />
             <Image Name="img_tips.png" />
           </Folder>
+          <Image Name="Cancel.png" />
           <Image Name="changhero1.png" />
           <Image Name="changhero2.png" />
           <Image Name="close1.png" />
@@ -46,8 +47,6 @@
           <Image Name="dibutton2.png" />
           <Image Name="getmoney1.png" />
           <Image Name="getmoney2.png" />
-          <Image Name="group1.png" />
-          <Image Name="group2.png" />
           <Image Name="hero1.png" />
           <Image Name="hero2.png" />
           <Image Name="heroup1.png" />
@@ -58,6 +57,7 @@
           <Image Name="levelup2.png" />
           <Image Name="login1.png" />
           <Image Name="login2.png" />
+          <Image Name="btnInfo.png" />
           <Image Name="menu_sound_off_1.png" />
           <Image Name="menu_sound_off_2.png" />
           <Image Name="menu_sound_on_1.png" />
@@ -68,6 +68,8 @@
           <Image Name="qianghua2.png" />
           <Image Name="store1.png" />
           <Image Name="store2.png" />
+          <Image Name="team1.png" />
+          <Image Name="team2.png" />
           <Image Name="tianbutton1.png" />
           <Image Name="tianbutton2.png" />
           <Image Name="tujian1.png" />
@@ -88,6 +90,11 @@
           <Folder Name="firstLogin">
             <Project Name="firstScene.csd" Type="Layer" />
           </Folder>
+          <Folder Name="homeLayer">
+            <Project Name="homeLayer.csd" Type="Layer" />
+            <Project Name="menuLayer.csd" Type="Layer" />
+            <Project Name="GameSceneBgLayer.csd" Type="Layer" />
+          </Folder>
           <Folder Name="Tools">
             <Project Name="tipDialog.csd" Type="Layer" />
           </Folder>
@@ -98,6 +105,7 @@
           <Image Name="coin1.png" />
           <Image Name="coins.png" />
           <Image Name="coinsbg.png" />
+          <Image Name="diamond.png" />
           <Image Name="fang.png" />
           <Image Name="headbk4.png" />
           <Image Name="heart.png" />

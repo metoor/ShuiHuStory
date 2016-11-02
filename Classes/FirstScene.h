@@ -18,6 +18,8 @@ public:
 	static cocos2d::Scene* createScene();
 
 private:
+	void loadUI();
+
 	void setContent(std::string name, std::string text, std::string imgName);
 	
 	//读取json中的剧情对话
@@ -27,13 +29,12 @@ private:
 	void nextMsg();
 
 private:
-	/*ui文件的常量名
-	命名方式：变量_场景（层）名称*/
-	const std::string csbName_firstScene = "layers/firstLogin/firstScene.csb";
-	const unsigned heroNameTextTag_firstScene = 33;
-	const unsigned heroImageTag_firstScene = 34;
-	const unsigned chatContentTextTag_firstScene = 35;
-	const std::string storyFileName_firstScene = "data/story.json";
+	//ui文件的常量名
+	const std::string csbName = "layers/firstLogin/firstScene.csb";
+	const unsigned heroNameTextTag = 33;
+	const unsigned heroImageTag = 34;
+	const unsigned chatContentTextTag = 35;
+	const std::string storyFileName = "data/story.json";
 
 private:
 	unsigned _currentIndex;

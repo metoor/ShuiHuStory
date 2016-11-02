@@ -4,13 +4,19 @@
 #include "string"
 #include "McLog.h"
 
+using std::string;
 
 //常量名称（是经常使用到的字符常量）
 const int none = -1;				//者英雄装备位置没有装备或者表示装备没有使用者
 const int max_equipment_num = 6;	//角色可以佩戴的装备数量（6种类型）
 
+//游戏Layer的Zorder，决定了游戏显示的先后顺序，值越大则显示在越上层
+const int max_z_order = 9999;
+const int particle_z_order = 9990;
+const int dialog_z_order = 9980;
+const int menu_z_order = 9970;
+const int tip_z_order = 9960;
 
-using std::string;
 
 //用来保存装备信息到文件的结构，为了方便保存，所有浮点型都会转换为整型保存
 struct SaveEquipmentData

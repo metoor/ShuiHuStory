@@ -1,9 +1,7 @@
 #include "AppDelegate.h"
 #include "SimpleAudioEngine.h"
 #include "FirstScene.h"
-
-
-#include "HelloWorldScene.h"
+#include "GameScene.h"
 
 USING_NS_CC;
 
@@ -56,7 +54,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	}
 	else
 	{
-		scene = HelloWorld::createScene();
+		scene = GameScene::createScene();
 	}
 
 	//Æô¶¯³¡¾°
