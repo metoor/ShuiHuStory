@@ -38,6 +38,7 @@
             <Image Name="img_netError.png" />
             <Image Name="img_tips.png" />
           </Folder>
+          <Image Name="btnInfo.png" />
           <Image Name="Cancel.png" />
           <Image Name="changhero1.png" />
           <Image Name="changhero2.png" />
@@ -57,7 +58,6 @@
           <Image Name="levelup2.png" />
           <Image Name="login1.png" />
           <Image Name="login2.png" />
-          <Image Name="btnInfo.png" />
           <Image Name="menu_sound_off_1.png" />
           <Image Name="menu_sound_off_2.png" />
           <Image Name="menu_sound_on_1.png" />
@@ -82,6 +82,8 @@
           <Image Name="zhaomu2.png" />
           <Image Name="zhuangbei1.png" />
           <Image Name="zhuangbei2.png" />
+          <Image Name="about_1.png" />
+          <Image Name="about_2.png" />
         </Folder>
         <Folder Name="fonts">
           <TTF Name="MiniKaiTi.ttf" />
@@ -91,9 +93,9 @@
             <Project Name="firstScene.csd" Type="Layer" />
           </Folder>
           <Folder Name="homeLayer">
+            <Project Name="GameSceneBgLayer.csd" Type="Layer" />
             <Project Name="homeLayer.csd" Type="Layer" />
             <Project Name="menuLayer.csd" Type="Layer" />
-            <Project Name="GameSceneBgLayer.csd" Type="Layer" />
           </Folder>
           <Folder Name="Tools">
             <Project Name="tipDialog.csd" Type="Layer" />

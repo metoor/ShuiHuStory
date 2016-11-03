@@ -77,3 +77,18 @@ void AudioManager::setIsMute(bool isMute)
 {
 	_isMute = isMute;
 }
+
+void AudioManager::preLoadGlobalAudio()
+{
+	//Ô¤¼ÓÔØ±³¾°ÒôÀÖ
+	_simpleAudioEngine->preloadBackgroundMusic(bgFirstScene.c_str());
+
+	//Ô¤¼ÓÔØÒôÐ§
+	_simpleAudioEngine->preloadEffect(clickEffect.c_str());
+}
+
+void AudioManager::unLoadGlobalEffect()
+{
+	//Ð¶ÔØÒôÐ§
+	_simpleAudioEngine->unloadEffect(clickEffect.c_str());
+}

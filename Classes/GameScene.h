@@ -21,6 +21,8 @@ private:
 	//手机返回键处理回调
 	void onKeyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event * pEvent);
 
+	void initArrayToNullptr();
+
 	void loadUI();
 
 	void menuCallBack(cocos2d::Ref * pSender, cocos2d::ui::Widget::TouchEventType type);
@@ -37,8 +39,8 @@ private:
 	const std::string menuStoreName = "menuStore";
 
 private:
-	//鼠标上次点击的菜单索引
-	int _preTag;
+	//保存上一次点击的菜单按钮
+	cocos2d::ui::Button* _preMenu;
 
 	//用来存储6个功能层的指针
 	cocos2d::Layer* _layerPointer[ARRAY_SIZE];

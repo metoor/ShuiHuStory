@@ -10,6 +10,8 @@ using namespace ui;
 FirstScene::FirstScene()
 	:_currentIndex(0)
 {
+	AudioManager::getInstance()->preLoadGlobalAudio();
+
 	readChatData();
 }
 
@@ -41,6 +43,10 @@ bool FirstScene::init()
 	};
 
 	listen->onTouchEnded = [&](Touch* touch, Event* event) {
+		//µã»÷ÒôÐ§
+		auto audio = AudioManager::getInstance();
+		audio->playEffect(audio->clickEffect);
+
 		nextMsg();
 	};
 

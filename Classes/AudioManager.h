@@ -25,8 +25,14 @@ public:
 
 public:
 	//音乐/音效的名字
-	const std::string bgFirstScene = "audio/wellcomeBg.mp3";
+	const std::string bgFirstScene = "audios/wellcomeBg.mp3";
+	const std::string clickEffect = "audios/click.mp3";
 
+	//预加载全局音效和背景音乐
+	void preLoadGlobalAudio();
+
+	//卸载全局音效和背景音乐
+	void unLoadGlobalEffect();
 
 	//音乐播放引擎实例
 	CocosDenshion::SimpleAudioEngine* _simpleAudioEngine;

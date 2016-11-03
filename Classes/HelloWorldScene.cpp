@@ -2,34 +2,18 @@
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
 
-#include "Tools.h"
-#include "Config.h"
-#include "Equipment.h"
-#include "GameData.h"
-#include "HeroCard.h"
-#include "McLog.h"
-#include "DialogManager.h"
-#include "I18N.h"
-#include "AudioManager.h"
-#include "BlockLayer.h"
-#include "ParticleLayer.h"
-
 USING_NS_CC;
 
 using namespace cocostudio::timeline;
 
 HelloWorld::HelloWorld()
 {
-	GameData::getInstance()->readHeroCard();
-	GameData::getInstance()->readEquipment();
+	
 }
 
 HelloWorld::~HelloWorld()
 {
-	GameData::getInstance()->saveUniqueIdentifierNumToFile();
-	GameData::getInstance()->saveEquipment();
-	GameData::getInstance()->saveHeroCard();
-	AudioManager::getInstance()->destoryInstance();
+
 }
 
 Scene* HelloWorld::createScene()
@@ -87,27 +71,11 @@ bool HelloWorld::init()
 	//¼ÓÃÜ²âÊÔ
 	//string content = FileUtils::getInstance()->getStringFromFile("test.data");
 
-	auto pl = ParticleLayer::create();
-	addChild(pl, 900);
 
     return true;
 }
 
 void HelloWorld::menuCloseCallback(Ref * psender)
 {
-	/*Equipment* e = new Equipment();
-	e->init(Tools::getRandomInt(1, 6) * 100 + Tools::getRandomInt(0, 5));
-	GameData::getInstance()->addEquipmentToMap(e);
-
-	HeroCard* h = new HeroCard();
-	h->init(Tools::getRandomInt(0, 108));
-	GameData::getInstance()->addHeroCardToMap(h);*/
-
-	auto i18n = I18N::getInstance();
-	i18n->loadStringFile("string.plist");
-	auto hello = StringUtils::format(i18n->getStringByKey("two")->c_str(), 1000);
-
-
-	//DialogManager::getInstance()->showTip(&hello);
 
 }

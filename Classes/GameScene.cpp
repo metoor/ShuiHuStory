@@ -3,7 +3,7 @@
 #include "cocostudio/CocoStudio.h"
 #include "GameData.h"
 #include "HomeLayer.h"
-
+#include "AudioManager.h"
 
 #include "TypeStruct.h"
 
@@ -13,17 +13,30 @@ using namespace std;
 
 
 GameScene::GameScene()
-	:_preTag(0)
+	:_preMenu(nullptr)
 {
-	GameData::getInstance()->readHeroCard();
-	GameData::getInstance()->readEquipment();
+	auto gameData = GameData::getInstance();
+	gameData->readHeroCard();
+	gameData->readEquipment();
+
+	AudioManager::getInstance()->preLoadGlobalAudio();
 }
 
 GameScene::~GameScene()
 {
-	GameData::getInstance()->saveUniqueIdentifierNumToFile();
-	GameData::getInstance()->saveEquipment();
-	GameData::getInstance()->saveHeroCard();
+	auto gameData = GameData::getInstance();
+	gameData->saveUniqueIdentifierNumToFile();
+	gameData->saveEquipment();
+	gameData->saveHeroCard();
+
+	auto audio = AudioManager::getInstance();
+	audio->unLoadGlobalEffect();
+
+	gameData->destoryInstance();
+	audio->destoryInstance();
+	
+	//因为Button是引用计数，所以讲引用全部置空
+	initArrayToNullptr();
 }
 
 Scene * GameScene::createScene()
@@ -45,11 +58,7 @@ bool GameScene::init()
 
 	loadUI();
 
-	//初始化数组为nullptr
-	for (int index = 0; index < ARRAY_SIZE; ++index)
-	{
-		_layerPointer[index] = nullptr;
-	}
+	initArrayToNullptr();
 
 	//处理手机返回键的点击事件
 	auto listener = EventListenerKeyboard::create();
@@ -63,6 +72,7 @@ bool GameScene::init()
 	//启动默认转到Home场景
 	_layerPointer[0] = HomeLayer::create();
 	addChild(_layerPointer[0]);
+	_preMenu->setEnabled(false);
 
 	return true;
 }
@@ -73,6 +83,15 @@ void GameScene::onKeyReleased(EventKeyboard::KeyCode keyCode, Event * pEvent)
 	if (keyCode == EventKeyboard::KeyCode::KEY_ESCAPE)
 	{
 		Director::getInstance()->end();
+	}
+}
+
+void GameScene::initArrayToNullptr()
+{
+	//初始化数组为nullptr
+	for (int index = 0; index < ARRAY_SIZE; ++index)
+	{
+		_layerPointer[index] = nullptr;
 	}
 }
 
@@ -91,22 +110,43 @@ void GameScene::loadUI()
 	{
 		auto menu = menuLayer->getChildByTag<Button*>(index);
 		menu->addTouchEventListener(CC_CALLBACK_2(GameScene::menuCallBack, this));
+		
+		//因为开始默认选中第一个按钮
+		if(index == 0)
+		{
+			_preMenu = menu;
+		}
 	}
 }
 
 void GameScene::menuCallBack(Ref * pSender, Widget::TouchEventType type)
 {
+	
+	if (type == Widget::TouchEventType::BEGAN)
+	{
+		//播放点击音效
+		auto audio = AudioManager::getInstance();
+		audio->playEffect(audio->clickEffect);
+	}
+
 	if (type == Widget::TouchEventType::ENDED)
 	{
-		int currentTag = dynamic_cast<Button*>(pSender)->getTag();
+		auto currentMenu = dynamic_cast<Button*>(pSender);
+		int currentTag = currentMenu->getTag();
+		int preTag = _preMenu->getTag();
 
-		if(_preTag != currentTag && _preTag != none)
+		if(preTag != currentTag && preTag != none)
 		{
 			//如果上次的索引和这次的不一样，且不等于none，则需要创建当前索引层，然后释放上次的索引层
-			log("--current:%d--pre:%d", currentTag, _preTag);
+			log("--current:%d--pre:%d", currentTag, preTag);
 		}
 
-		_preTag = currentTag;
+		//不能连续点击相同的菜单，禁用当前的菜单，解禁上一次的菜单
+		_preMenu->setEnabled(true);
+		currentMenu->setEnabled(false);
+
+		//保存这次点击的菜单引用
+		_preMenu = currentMenu;
 
 	}
 }
