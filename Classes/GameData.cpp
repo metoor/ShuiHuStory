@@ -5,6 +5,7 @@
 #include "json/document.h"
 #include "Equipment.h"
 #include "HeroCard.h"
+#include "Tools.h"
 
 USING_NS_CC;
 
@@ -63,6 +64,91 @@ GameData * GameData::getInstance()
 	}
 
 	return _gameData;
+}
+
+bool GameData::setGold(const int gold)
+{
+	bool result = true;
+
+	if ((_gold + gold) < 0)
+	{
+		result = false;
+	}
+	else
+	{
+		_gold = Tools::minInt(_gold + gold, max_gold);
+	}
+
+	return result;
+}
+
+bool GameData::setDiamond(const int diamond)
+{
+	bool result = true;
+
+	if ((diamond + diamond) < 0)
+	{
+		result = false;
+	}
+	else
+	{
+		_diamond = Tools::minInt(_diamond + diamond, max_diamond);
+	}
+
+	return result;
+}
+
+bool GameData::setExp(const int exp)
+{
+	bool result = true;
+	int totalxp = getExpLimit(start_exp_rate, _level);
+
+	while (_exp >= totalxp && _level < max_level)
+	{
+		_exp -= totalxp;
+		++_level;
+	}
+
+	if (_level >= 100)
+	{
+		_exp = totalxp;
+
+		result = false;
+	}
+
+	return result;
+}
+
+int GameData::getExpLimit(float x, int level)
+{
+	if (level == 0)
+	{
+		return start_exp;
+	}
+
+	return x * getExpLimit(x, level - 1);
+}
+
+void GameData::saveUserData()
+{
+	auto db = UserDefault::getInstance();
+
+	db->setIntegerForKey(goldName.c_str(), _gold);
+	db->setIntegerForKey(diamondName.c_str(), _diamond);
+	db->setIntegerForKey(levelName.c_str(), _level);
+	db->setIntegerForKey(expName.c_str(), _exp);
+
+	db->flush();
+}
+
+void GameData::readUserData()
+{
+	auto db = UserDefault::getInstance();
+
+	_gold = Tools::maxInt(0, Tools::minInt(db->getIntegerForKey(goldName.c_str(), 5000), max_gold));
+	_diamond = Tools::maxInt(0, Tools::minInt(db->getIntegerForKey(diamondName.c_str(), 1000), max_diamond));
+	_level = Tools::maxInt(0, Tools::minInt(db->getIntegerForKey(levelName.c_str(), 1), max_level));
+	_exp = Tools::maxInt(0, db->getIntegerForKey(expName.c_str(), 0));
 }
 
 void GameData::destoryInstance()
@@ -294,7 +380,7 @@ void GameData::readEquipment()
 	if (!FileUtils::getInstance()->isFileExist(jsonpath))
 	{
 		//第一次登陆创建默认装备
-		for (int i = 1; i < 7; ++i)
+		for (int i = 1; i < 6; ++i)
 		{
 			Equipment* eq = new Equipment();
 			eq->init(i * 100);
@@ -317,7 +403,7 @@ void GameData::readHeroCard()
 	if (!FileUtils::getInstance()->isFileExist(jsonpath))
 	{
 		//第一次登陆创建默英雄卡牌
-		for (int i = 0; i < 3; ++i)
+		for (int i = 0; i < 2; ++i)
 		{
 			HeroCard* hc = new HeroCard();
 			hc->init(i);
@@ -369,4 +455,14 @@ HeroCard * GameData::getHeroCardById(int id)
 	}
 
 	return result;
+}
+
+const std::unordered_map<int, Equipment*>* GameData::getEquipmentMap()
+{
+	return &_equipmentMap;
+}
+
+const std::unordered_map<int, HeroCard*>* GameData::getHeroCardMap()
+{
+	return &_heroCardMap;
 }

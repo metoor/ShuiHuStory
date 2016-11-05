@@ -39,10 +39,10 @@ private:
 	const std::string menuStoreName = "menuStore";
 
 private:
-	//保存上一次点击的菜单按钮
+	//保存上一次点击的菜单按钮的指针引用
 	cocos2d::ui::Button* _preMenu;
 
-	//用来存储6个功能层的指针
+	//用来存储6个功能层的指针引用
 	cocos2d::Layer* _layerPointer[ARRAY_SIZE];
 
 };

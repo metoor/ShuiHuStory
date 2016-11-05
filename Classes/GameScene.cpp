@@ -34,7 +34,7 @@ GameScene::~GameScene()
 
 	gameData->destoryInstance();
 	audio->destoryInstance();
-	
+
 	//因为Button是引用计数，所以讲引用全部置空
 	initArrayToNullptr();
 }
@@ -51,7 +51,7 @@ Scene * GameScene::createScene()
 
 bool GameScene::init()
 {
-	if(!Layer::init())
+	if (!Layer::init())
 	{
 		return false;
 	}
@@ -110,9 +110,9 @@ void GameScene::loadUI()
 	{
 		auto menu = menuLayer->getChildByTag<Button*>(index);
 		menu->addTouchEventListener(CC_CALLBACK_2(GameScene::menuCallBack, this));
-		
+
 		//因为开始默认选中第一个按钮
-		if(index == 0)
+		if (index == 0)
 		{
 			_preMenu = menu;
 		}
@@ -121,7 +121,7 @@ void GameScene::loadUI()
 
 void GameScene::menuCallBack(Ref * pSender, Widget::TouchEventType type)
 {
-	
+
 	if (type == Widget::TouchEventType::BEGAN)
 	{
 		//播放点击音效
@@ -131,11 +131,12 @@ void GameScene::menuCallBack(Ref * pSender, Widget::TouchEventType type)
 
 	if (type == Widget::TouchEventType::ENDED)
 	{
+		//获取当前的点击菜单的tag和上次点击的Tag
 		auto currentMenu = dynamic_cast<Button*>(pSender);
 		int currentTag = currentMenu->getTag();
 		int preTag = _preMenu->getTag();
 
-		if(preTag != currentTag && preTag != none)
+		if (preTag != currentTag && preTag != none)
 		{
 			//如果上次的索引和这次的不一样，且不等于none，则需要创建当前索引层，然后释放上次的索引层
 			log("--current:%d--pre:%d", currentTag, preTag);
@@ -145,7 +146,7 @@ void GameScene::menuCallBack(Ref * pSender, Widget::TouchEventType type)
 		_preMenu->setEnabled(true);
 		currentMenu->setEnabled(false);
 
-		//保存这次点击的菜单引用
+		//保存这次点击的菜单指针引用
 		_preMenu = currentMenu;
 
 	}

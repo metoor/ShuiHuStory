@@ -38,6 +38,8 @@
             <Image Name="img_netError.png" />
             <Image Name="img_tips.png" />
           </Folder>
+          <Image Name="about_1.png" />
+          <Image Name="about_2.png" />
           <Image Name="btnInfo.png" />
           <Image Name="Cancel.png" />
           <Image Name="changhero1.png" />
@@ -82,8 +84,6 @@
           <Image Name="zhaomu2.png" />
           <Image Name="zhuangbei1.png" />
           <Image Name="zhuangbei2.png" />
-          <Image Name="about_1.png" />
-          <Image Name="about_2.png" />
         </Folder>
         <Folder Name="fonts">
           <TTF Name="MiniKaiTi.ttf" />
@@ -95,11 +95,18 @@
           <Folder Name="homeLayer">
             <Project Name="GameSceneBgLayer.csd" Type="Layer" />
             <Project Name="homeLayer.csd" Type="Layer" />
+            <Project Name="listItem.csd" Type="Layer" />
             <Project Name="menuLayer.csd" Type="Layer" />
+            <Project Name="EquipmentDisplayLayer.csd" Type="Layer" />
+            <Project Name="HeroDisplayLayer.csd" Type="Layer" />
           </Folder>
           <Folder Name="Tools">
             <Project Name="tipDialog.csd" Type="Layer" />
           </Folder>
+        </Folder>
+        <Folder Name="test">
+          <Image Name="head47.png" />
+          <Image Name="sword1.png" />
         </Folder>
         <Folder Name="ui">
           <Image Name="add.png" />

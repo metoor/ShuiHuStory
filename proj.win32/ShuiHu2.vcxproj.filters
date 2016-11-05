@@ -87,6 +87,15 @@
     <ClCompile Include="..\Classes\HomeLayer.cpp">
       <Filter>src\Layers\Home</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\ListItem.cpp">
+      <Filter>src\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\EquipmentDisplayLayer.cpp">
+      <Filter>src\Layers\Home</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\HeroDisPlayLayer.cpp">
+      <Filter>src\Layers\Home</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -141,6 +150,15 @@
       <Filter>src\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\HomeLayer.h">
+      <Filter>src\Layers\Home</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ListItem.h">
+      <Filter>src\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\EquipmentDisplayLayer.h">
+      <Filter>src\Layers\Home</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\HeroDisplayLayer.h">
       <Filter>src\Layers\Home</Filter>
     </ClInclude>
   </ItemGroup>
