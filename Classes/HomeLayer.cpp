@@ -1,12 +1,15 @@
 #include "HomeLayer.h"
 #include "cocostudio/CocoStudio.h"
+#include "AudioManager.h"
+#include "EquipmentDisplayLayer.h"
+#include "HeroDisplayLayer.h"
 
 USING_NS_CC;
 using namespace ui;
 using namespace std;
 
 HomeLayer::HomeLayer()
-	:_preTag(start)
+	:_preMenu(nullptr)
 {
 }
 
@@ -46,24 +49,46 @@ void HomeLayer::loadUI()
 	}
 }
 
+Layer* HomeLayer::createMenuLayer(HomeMenuType type)
+{
+	Layer* layer = nullptr;
+
+	switch (type)
+	{
+	case EQUIPMENT:
+		layer = EquipmentDisplayLayer::create();
+		break;
+	case HERO:
+		layer = HeroDisplayLayer::create();
+		break;
+	case LOGIN:
+		break;
+	case LEVEL_UP:
+		break;
+	case ABOUT:
+		break;
+	case AUDIO:
+		break;
+	default:
+		break;
+	}
+
+	return layer;
+}
+
 void HomeLayer::menuCallBack(Ref* pSender, Widget::TouchEventType type)
 {
+	if (type == Widget::TouchEventType::BEGAN)
+	{
+		//播放点击音效
+		auto audio = AudioManager::getInstance();
+		audio->playEffect(audio->clickEffect);
+	}
+
 	if (type == Widget::TouchEventType::ENDED)
 	{
 		int currentTag = dynamic_cast<Button*>(pSender)->getTag();
-		
-		if (start == _preTag)
-		{
-			//第一启动，只需要创建对应的层
-			log("----%d", currentTag);
-		}
-		else if (_preTag != currentTag)
-		{
-			//不是第一次启动，要销毁上次点击的对应Tag的层
-			log("--current:%d--pre:%d", currentTag, _preTag);
-		}
-
-		
-		_preTag = currentTag;
+		auto layer = createMenuLayer(static_cast<HomeMenuType>(currentTag));
+		addChild(layer);
 	}
 }
