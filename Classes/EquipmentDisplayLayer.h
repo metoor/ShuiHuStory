@@ -3,7 +3,7 @@
 
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
-
+#include <vector>
 
 //前置声明
 class ListItem;
@@ -23,6 +23,9 @@ private:
 	//设置Item的属性
 	void setItemAttribute(const EquipmentProperty* property, ListItem* item);
 
+	//更新指定id的item的属性
+	void updateItemAttribute(const int equipmentId, const int itenId);
+
 	//初始化5个Item
 	void loadItem(int n = 5);
 
@@ -32,12 +35,6 @@ private:
 
 	//按钮回调方法
 	void btnCloseCallBack(cocos2d::Ref* pSender, cocos2d::ui::Widget::TouchEventType type);
-
-	//listView选择事件
-	void selectedItemEvent(cocos2d::Ref* pSender, cocos2d::ui::ListView::EventType type);
-
-	//滚动事件
-	void selectedItemEventScrollView(cocos2d::Ref* pSender, cocos2d::ui::ScrollView::EventType type);
 
 	//进场动画
 	void startAnimation();
@@ -53,8 +50,8 @@ private:
 	const int defaultLoadNum = 5;
 
 private:
-	//记录是否正在加载item
-	//bool _isLoading;
+	//记录上一次详情按钮点击的索引
+	int _preClicked;
 
 	cocos2d::ui::ListView* _listView;
 	cocos2d::ui::Button*	_btnClose;

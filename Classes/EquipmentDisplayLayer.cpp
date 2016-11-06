@@ -12,6 +12,7 @@ using namespace ui;
 using namespace std;
 
 EquipmentDisplayLayer::EquipmentDisplayLayer()
+	:_preClicked(none)
 {
 }
 
@@ -57,9 +58,6 @@ void EquipmentDisplayLayer::loadUI()
 
 	//绑定事件回调
 	_btnClose->addTouchEventListener(CC_CALLBACK_2(EquipmentDisplayLayer::btnCloseCallBack, this));
-
-	//_listView->addEventListener((ListView::ccListViewCallback)CC_CALLBACK_2(EquipmentDisplayLayer::selectedItemEvent, this));
-	//_listView->addEventListener((ListView::ccScrollViewCallback)CC_CALLBACK_2(EquipmentDisplayLayer::selectedItemEventScrollView, this));
 }
 
 void EquipmentDisplayLayer::setItemAttribute(const EquipmentProperty * property, ListItem* item)
@@ -77,7 +75,7 @@ void EquipmentDisplayLayer::setItemAttribute(const EquipmentProperty * property,
 	if (Tools::betweenAnd(type, 100, 108))
 	{
 		//帽子
-		//item->setIco(*(property->textureName), "", "");
+		item->setIco(*(property->textureName), defineIco, mDefineIco);
 
 		item->setLabelText(TEXT1, StringUtils::format("%d", property->defend));
 		item->setLabelText(TEXT2, StringUtils::format("%d", property->magicDefend));
@@ -85,7 +83,7 @@ void EquipmentDisplayLayer::setItemAttribute(const EquipmentProperty * property,
 	else if (Tools::betweenAnd(type, 200, 207))
 	{
 		//衣服
-		//item->setIco(*(property->textureName), "", "");
+		item->setIco(*(property->textureName), defineIco, mDefineIco);
 
 		item->setLabelText(TEXT1, StringUtils::format("%d", property->defend));
 		item->setLabelText(TEXT2, StringUtils::format("%d", property->magicDefend));
@@ -93,7 +91,7 @@ void EquipmentDisplayLayer::setItemAttribute(const EquipmentProperty * property,
 	else if (Tools::betweenAnd(type, 300, 324))
 	{
 		//武器
-		//item->setIco(*(property->textureName), "", "");
+		item->setIco(*(property->textureName), apIco, mpIco);
 
 		item->setLabelText(TEXT1, StringUtils::format("%d", property->ap));
 		item->setLabelText(TEXT2, StringUtils::format("%d", property->mp));
@@ -101,7 +99,7 @@ void EquipmentDisplayLayer::setItemAttribute(const EquipmentProperty * property,
 	else if (Tools::betweenAnd(type, 400, 405))
 	{
 		//佩戴
-		//item->setIco(*(property->textureName), "", "");
+		item->setIco(*(property->textureName), hpIco, critIco);
 
 		item->setLabelText(TEXT1, StringUtils::format("%d", property->hp));
 		item->setLabelText(TEXT2, StringUtils::format("%d%%", Tools::percentToInt(property->critDamage)));
@@ -109,7 +107,7 @@ void EquipmentDisplayLayer::setItemAttribute(const EquipmentProperty * property,
 	else if (Tools::betweenAnd(type, 500, 504))
 	{
 		//鞋子
-		//item->setIco(*(property->textureName), "", "");
+		item->setIco(*(property->textureName), speedIco, blockIco);
 
 		item->setLabelText(TEXT1, StringUtils::format("%d", property->speed));
 		item->setLabelText(TEXT2, StringUtils::format("%d%%", Tools::percentToInt(property->blockRate)));
@@ -117,11 +115,19 @@ void EquipmentDisplayLayer::setItemAttribute(const EquipmentProperty * property,
 	else if (Tools::betweenAnd(type, 600, 604))
 	{
 		//坐骑
-		//item->setIco(*(property->textureName), "", "");
+		item->setIco(*(property->textureName), hpIco, speedIco);
 
 		item->setLabelText(TEXT1, StringUtils::format("%d", property->hp));
 		item->setLabelText(TEXT2, StringUtils::format("%d", property->speed));
 	}
+}
+
+void EquipmentDisplayLayer::updateItemAttribute(const int equipmentId, const int itenId)
+{
+	auto equipment = GameData::getInstance()->getEquipmentById(equipmentId);
+	
+	//更新单个item的数据
+	setItemAttribute(equipment->getProperty(), _itemVector.at(itenId));
 }
 
 void EquipmentDisplayLayer::loadItem(int n)
@@ -140,12 +146,21 @@ void EquipmentDisplayLayer::loadItem(int n)
 		if (Tools::betweenAnd(index, startIndex, endIndex - 1) && static_cast<unsigned>(startIndex) < equipmentMap->size())
 		{
 			auto item = ListItem::create();
-
-			//设置相关的属性
+			
+			//设置item显示的属性
 			auto property = (iter->second)->getProperty();
 			setItemAttribute(property, item);
-			item->setBtnCallBack([](Ref* pSender, Widget::TouchEventType type) { log("btn click......"); });
+			item->setBtnTexture(btnDetails1, btnDetails2);
+			item->setBtnTag(index);
+			item->setBtnCallBack([&](Ref* pSender, Widget::TouchEventType type) { 
+				if(type == Widget::TouchEventType::ENDED)
+				{
+					int tag = dynamic_cast<Button*>(pSender)->getTag();
 
+					log("----%d", tag);
+				}
+			});
+			
 			//添加到listView和itemVector
 			_listView->pushBackCustomItem(item);
 			_itemVector.pushBack(item);
@@ -202,34 +217,6 @@ void EquipmentDisplayLayer::btnCloseCallBack(cocos2d::Ref * pSender, cocos2d::ui
 		audio->playEffect(audio->clickEffect);
 
 		endAnimation();
-	}
-}
-
-void EquipmentDisplayLayer::selectedItemEvent(Ref * pSender, ListView::EventType type)
-{
-	switch (type)
-	{
-	case cocos2d::ui::ListView::EventType::ON_SELECTED_ITEM_START:
-		log("select start...");
-		break;
-	case cocos2d::ui::ListView::EventType::ON_SELECTED_ITEM_END:
-		log("select end...");
-		break;
-	default:
-		break;
-	}
-}
-
-void EquipmentDisplayLayer::selectedItemEventScrollView(Ref * pSender, ScrollView::EventType type)
-{
-	switch (type)
-	{
-	case cocos2d::ui::ScrollView::EventType::SCROLL_TO_BOTTOM:
-		break;
-	case cocos2d::ui::ScrollView::EventType::BOUNCE_BOTTOM:
-		break;
-	default:
-		break;
 	}
 }
 

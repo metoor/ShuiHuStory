@@ -23,7 +23,10 @@ private:
 
 	//设置Item的属性
 	void setItemAttribute(const HeroCardProperty* property, ListItem* item);
-
+	
+	//更新指定id的item的属性
+	void updateItemAttribute(const int heroId, const int itenId);
+	
 	void setItemColor(ListItem* item, int star);
 
 	//按钮回调方法
@@ -45,6 +48,9 @@ private:
 	const int defaultLoadNum = 5;
 
 private:
+	//记录上一次详情按钮点击的索引
+	int _preClicked;
+
 	cocos2d::ui::ListView* _listView;
 	cocos2d::ui::Button*	_btnClose;
 	cocos2d::Vector<ListItem*> _itemVector;

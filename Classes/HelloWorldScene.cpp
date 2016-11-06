@@ -3,7 +3,7 @@
 #include "ui/CocosGUI.h"
 
 USING_NS_CC;
-
+using namespace ui;
 using namespace cocostudio::timeline;
 
 HelloWorld::HelloWorld()
@@ -70,7 +70,6 @@ bool HelloWorld::init()
 
 	//¼ÓÃÜ²âÊÔ
 	//string content = FileUtils::getInstance()->getStringFromFile("test.data");
-
 
     return true;
 }

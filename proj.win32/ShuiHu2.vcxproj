@@ -185,6 +185,7 @@ xcopy /Y /Q "$(COCOS_X_ROOT)\cocos2d-x-3.10\prebuilt\win32\*.*" "$(OutDir)"
     <ClInclude Include="..\Classes\ListItem.h" />
     <ClInclude Include="..\Classes\McLog.h" />
     <ClInclude Include="..\Classes\ParticleLayer.h" />
+    <ClInclude Include="..\Classes\ConstantDefine.h" />
     <ClInclude Include="..\Classes\Tools.h" />
     <ClInclude Include="..\Classes\TypeStruct.h" />
     <ClInclude Include="main.h" />

@@ -161,6 +161,9 @@
     <ClInclude Include="..\Classes\HeroDisplayLayer.h">
       <Filter>src\Layers\Home</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\ConstantDefine.h">
+      <Filter>src\Datas</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">

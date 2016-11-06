@@ -23,6 +23,12 @@ public:
 	//设置按钮回调
 	void setBtnCallBack(std::function<void(cocos2d::Ref * pSender, cocos2d::ui::Widget::TouchEventType type)> func);
 
+	//设置按钮的标签
+	void setBtnTag(const int tag);
+
+	//设置按钮图片
+	void setBtnTexture(const std::string normal, const std::string pressed);
+
 	//设置对应类型的标签内容
 	void setLabelText(ItemLabelType type, const std::string content);
 	

@@ -24,6 +24,33 @@
           <Image Name="worldbg.png" />
           <Image Name="zhanyi.png" />
         </Folder>
+        <Folder Name="fonts">
+          <TTF Name="MiniKaiTi.ttf" />
+        </Folder>
+        <Folder Name="layers">
+          <Folder Name="firstLogin">
+            <Project Name="firstScene.csd" Type="Layer" />
+          </Folder>
+          <Folder Name="homeLayer">
+            <Project Name="EquipmentDisplayLayer.csd" Type="Layer" />
+            <Project Name="GameSceneBgLayer.csd" Type="Layer" />
+            <Project Name="HeroDisplayLayer.csd" Type="Layer" />
+            <Project Name="homeLayer.csd" Type="Layer" />
+            <Project Name="listItem.csd" Type="Layer" />
+            <Project Name="menuLayer.csd" Type="Layer" />
+          </Folder>
+          <Folder Name="Tools">
+            <Project Name="tipDialog.csd" Type="Layer" />
+          </Folder>
+        </Folder>
+        <Folder Name="test">
+          <Image Name="head112.png" />
+          <Image Name="sword1.png" />
+        </Folder>
+        <Folder Name="ui">
+          <PlistInfo Name="ui_1.csi" Type="Plist" />
+          <PlistInfo Name="ui_2.csi" Type="Plist" />
+        </Folder>
         <Folder Name="btns">
           <Folder Name="pvpbtn">
             <Image Name="btn_battle_1.png" />
@@ -41,7 +68,6 @@
           <Image Name="about_1.png" />
           <Image Name="about_2.png" />
           <Image Name="btnInfo.png" />
-          <Image Name="Cancel.png" />
           <Image Name="changhero1.png" />
           <Image Name="changhero2.png" />
           <Image Name="close1.png" />
@@ -84,40 +110,19 @@
           <Image Name="zhaomu2.png" />
           <Image Name="zhuangbei1.png" />
           <Image Name="zhuangbei2.png" />
+          <Image Name="details1.png" />
+          <Image Name="details2.png" />
         </Folder>
-        <Folder Name="fonts">
-          <TTF Name="MiniKaiTi.ttf" />
-        </Folder>
-        <Folder Name="layers">
-          <Folder Name="firstLogin">
-            <Project Name="firstScene.csd" Type="Layer" />
-          </Folder>
-          <Folder Name="homeLayer">
-            <Project Name="GameSceneBgLayer.csd" Type="Layer" />
-            <Project Name="homeLayer.csd" Type="Layer" />
-            <Project Name="listItem.csd" Type="Layer" />
-            <Project Name="menuLayer.csd" Type="Layer" />
-            <Project Name="EquipmentDisplayLayer.csd" Type="Layer" />
-            <Project Name="HeroDisplayLayer.csd" Type="Layer" />
-          </Folder>
-          <Folder Name="Tools">
-            <Project Name="tipDialog.csd" Type="Layer" />
-          </Folder>
-        </Folder>
-        <Folder Name="test">
-          <Image Name="head47.png" />
-          <Image Name="sword1.png" />
-        </Folder>
-        <Folder Name="ui">
+        <Folder Name="icos">
           <Image Name="add.png" />
           <Image Name="addbutton.png" />
-          <Image Name="coin1.png" />
-          <Image Name="coins.png" />
+          <Image Name="ap.png" />
+          <Image Name="block.png" />
           <Image Name="coinsbg.png" />
+          <Image Name="crit.png" />
+          <Image Name="define.png" />
           <Image Name="diamond.png" />
-          <Image Name="fang.png" />
           <Image Name="headbk4.png" />
-          <Image Name="heart.png" />
           <Image Name="heroap.png" />
           <Image Name="hourse1.png" />
           <Image Name="hourse2.png" />
@@ -126,17 +131,18 @@
           <Image Name="hourse5.png" />
           <Image Name="hourse6.png" />
           <Image Name="hourse7.png" />
+          <Image Name="hp.png" />
+          <Image Name="IF.png" />
           <Image Name="level.png" />
-          <Image Name="mofang.png" />
-          <Image Name="money1.png" />
+          <Image Name="mdefine.png" />
+          <Image Name="mp.png" />
+          <Image Name="speed.png" />
           <Image Name="star.png" />
-          <Image Name="swordicon.png" />
           <Image Name="swordicon1.png" />
           <Image Name="tile.png" />
           <Image Name="ui_coin.png" />
           <Image Name="xp1.png" />
           <Image Name="xp2.png" />
-          <Image Name="yuanbao.png" />
         </Folder>
       </RootFolder>
     </Group>

@@ -73,10 +73,21 @@ void HeroDisplayLayer::loadItem(int n)
 		{
 			auto item = ListItem::create();
 
-			//设置相关属性
+			//设置item显示的属性
 			auto property = iter->second->getProperty();
 			setItemAttribute(property, item);
-			
+			item->setBtnTexture(btnDetails1, btnDetails2);
+			item->setBtnTag(index);
+			item->setBtnCallBack([&](Ref* pSender, Widget::TouchEventType type) {
+				if (type == Widget::TouchEventType::ENDED)
+				{
+					int tag = dynamic_cast<Button*>(pSender)->getTag();
+
+					log("----%d", tag);
+				}
+			});
+
+
 			//添加到listView和itemVector
 			_listView->pushBackCustomItem(item);
 			_itemVector.pushBack(item);
@@ -97,12 +108,22 @@ void HeroDisplayLayer::setItemAttribute(const HeroCardProperty * property, ListI
 	item->setLabelText(LEVEL, StringUtils::format("Lv:%d", property->level));
 	item->setLabelText(NAME, *(property->name));
 	item->setStarNum(property->star);
-
-	//item->setIco(*(property->textureName), "", "");
 	item->setLabelText(TEXT1, StringUtils::format("%d", property->hp));
 	item->setLabelText(TEXT2, StringUtils::format("%d", property->ap));
 
+	//设置图标
+	item->setIco(StringUtils::format("head%d.png", property->type), hpIco, apIco);
+	
+
 	setItemColor(item, property->star);
+}
+
+void HeroDisplayLayer::updateItemAttribute(const int heroId, const int itenId)
+{
+	auto hero = GameData::getInstance()->getHeroCardById(heroId);
+
+	//更新单个item的数据
+	setItemAttribute(hero->getProperty(), _itemVector.at(itenId));
 }
 
 void HeroDisplayLayer::setItemColor(ListItem * item, int star)
