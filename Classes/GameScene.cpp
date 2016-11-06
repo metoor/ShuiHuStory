@@ -4,8 +4,7 @@
 #include "GameData.h"
 #include "HomeLayer.h"
 #include "AudioManager.h"
-
-#include "TypeStruct.h"
+#include "ConstantDefine.h"
 
 USING_NS_CC;
 using namespace ui;
@@ -20,6 +19,9 @@ GameScene::GameScene()
 	gameData->readEquipment();
 
 	AudioManager::getInstance()->preLoadGlobalAudio();
+
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("head.plist", "head.png");
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("equipment.plist", "equipment.png");
 }
 
 GameScene::~GameScene()

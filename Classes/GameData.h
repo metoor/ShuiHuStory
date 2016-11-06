@@ -31,7 +31,7 @@ public:
 	
 	//读取用户数据 金币，钻石，经验 ,等级
 	void readUserData();
-
+ 
 
 	//销毁实例
 	void destoryInstance();
@@ -95,23 +95,6 @@ private:
 	
 	//销毁_heroCardMap里面的元数
 	void destoryHeroMapElement();
-
-private:
-	const int equipment_map_max_size = 50;
-	const int hero_card_map_max_size = 50;
-	const int max_gold = 1000000;
-	const int max_diamond = 10000;
-	const int max_level = 100;
-	const int start_exp = 300;
-	
-	//作为getExpLimit(start_exp_rate, _level);的参数
-	const float start_exp_rate = 1.1f;
-
-	const std::string goldName = "gold";
-	const std::string diamondName = "diamond";
-	const std::string levelName = "level";
-	const std::string expName = "exp";
-
 
 private:
 	int _gold;

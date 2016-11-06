@@ -6,16 +6,14 @@
 #include "Equipment.h"
 #include "HeroCard.h"
 #include "Tools.h"
+#include "ConstantDefine.h"
+#include "McLog.h"
 
 USING_NS_CC;
 
 GameData* GameData::_gameData = nullptr;
 
-//保存已获得英雄卡牌数据的文件名字
-#define SAVE_HERO_CARD_FILE_NAME "myHeroCard.json"	
-
-//保存已获得装备数据的文件名字
-#define SAVE_EQUIPMENT_FILE_NAME "myEquipment.json"		
+	
 
 GameData::~GameData()
 {
@@ -358,7 +356,7 @@ void GameData::saveHeroCardToFile(std::string fileName)
 void GameData::saveEquipment()
 {
 	std::string jsonpath = FileUtils::getInstance()->getWritablePath();
-	jsonpath.append(SAVE_EQUIPMENT_FILE_NAME);
+	jsonpath.append(save_equipment_file_name);
 
 	saveEquipmentToFile(jsonpath);
 }
@@ -366,7 +364,7 @@ void GameData::saveEquipment()
 void GameData::saveHeroCard()
 {
 	std::string jsonpath = FileUtils::getInstance()->getWritablePath();
-	jsonpath.append(SAVE_HERO_CARD_FILE_NAME);
+	jsonpath.append(save_hero_file_name);
 
 	saveHeroCardToFile(jsonpath);
 }
@@ -374,7 +372,7 @@ void GameData::saveHeroCard()
 void GameData::readEquipment()
 {
 	std::string jsonpath = FileUtils::getInstance()->getWritablePath();
-	jsonpath.append(SAVE_EQUIPMENT_FILE_NAME);
+	jsonpath.append(save_equipment_file_name);
 
 	//判断是否是第一次登陆
 	if (!FileUtils::getInstance()->isFileExist(jsonpath))
@@ -397,7 +395,7 @@ void GameData::readEquipment()
 void GameData::readHeroCard()
 {
 	std::string jsonpath = FileUtils::getInstance()->getWritablePath();
-	jsonpath.append(SAVE_HERO_CARD_FILE_NAME);
+	jsonpath.append(save_hero_file_name);
 
 	//判断是否是第一次登陆
 	if (!FileUtils::getInstance()->isFileExist(jsonpath))

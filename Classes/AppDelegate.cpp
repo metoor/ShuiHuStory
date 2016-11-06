@@ -3,6 +3,8 @@
 #include "FirstScene.h"
 #include "GameScene.h"
 
+#include "HelloWorldScene.h"
+
 USING_NS_CC;
 
 AppDelegate::AppDelegate() {
@@ -54,6 +56,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	}
 	else
 	{
+		//scene = HelloWorld::createScene();
 		scene = GameScene::createScene();
 	}
 

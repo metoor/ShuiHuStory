@@ -4,11 +4,8 @@
 #include "json/document.h"
 #include "cocos2d.h"
 #include "Tools.h"
+#include "McLog.h"
 
-
-//装备和英雄模板的文件名
-#define EQUIPMENT_FILE_NAME		"data/equipment.data"
-#define HERO_FILE_NAME		"data/hero.data"
 
 Config* Config::_config = nullptr;
 
@@ -16,8 +13,8 @@ USING_NS_CC;
 
 Config::Config()
 {
-	readEquipmentJson(EQUIPMENT_FILE_NAME);
-	readHeroJson(HERO_FILE_NAME);
+	readEquipmentJson(equipment_file_name);
+	readHeroJson(hero_file_name);
 }
 
 Config::~Config()

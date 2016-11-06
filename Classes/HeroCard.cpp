@@ -4,12 +4,8 @@
 #include "Config.h"
 #include "Equipment.h"
 #include "cmath"
+#include "ConstantDefine.h"
 
-#define NUMBER_100 100
-#define NUMBER_100F 100.0f
-
-#define NUMBER_10 10
-#define NUMBER_10F 10.0f
 
 HeroCard::HeroCard()
 	:_property(nullptr)
@@ -180,7 +176,7 @@ void HeroCard::updatetePropery()
 void HeroCard::calculateHeroCardPropery(const HeroCardType * heroCardType)
 {
 	//计算总体的比率，例如：卡牌等级和卡牌强化等级的加成比率
-	float strengthRate = (((_property->level - 1) + (_property->exLevel - 1) * 2) / NUMBER_10F) + 1.0f;
+	float strengthRate = (((_property->level - 1) + (_property->exLevel - 1) * 2) / 10.0f) + 1.0f;
 
 	//总的加成比率
 	float rate = Tools::keepTwoEffectNum(_property->rate * strengthRate);

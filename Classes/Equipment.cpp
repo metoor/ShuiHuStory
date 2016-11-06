@@ -3,12 +3,8 @@
 #include "Tools.h"
 #include "Config.h"
 #include "cmath"
+#include "ConstantDefine.h"
 
-#define NUMBER_100 100
-#define NUMBER_100F 100.0f
-
-#define NUMBER_10 10
-#define NUMBER_10F 10.0f
 
 Equipment::Equipment()
 	:_property(nullptr)
@@ -120,7 +116,7 @@ const EquipmentProperty * Equipment::getProperty()
 void Equipment::calculatePropery(const EquipmentType* equipmentType)
 {
 	//计算总体的比率，例如：装备等级和装备强化等级的加成比率
-	float strengthRate = (((_property->level - 1) + (_property->exLevel - 1) * 2) / NUMBER_10F) + 1.0f;
+	float strengthRate = (((_property->level - 1) + (_property->exLevel - 1) * 2) / 10.0f) + 1.0f;
 	
 	//总的加成比率
 	float rate = Tools::keepTwoEffectNum(_property->rate * strengthRate);
