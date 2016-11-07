@@ -1,3 +1,13 @@
+/*************************************************
+// Copyright (C), 2016-2020, CS&S. Co., Ltd.
+// File name: 	GameScene.h
+// Author:		 Metoor
+// Version: 	1.0 
+// Date: 		2016/11/07
+// Contact: 	caiufen@qq.com
+// Description: 	create by vs2015pro
+*************************************************/
+
 #ifndef __GAMESCENE_H__
 #define __GAMESCENE_H__
 

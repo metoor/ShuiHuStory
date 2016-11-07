@@ -1,3 +1,13 @@
+/*************************************************
+// Copyright (C), 2016-2020, CS&S. Co., Ltd.
+// File name: 	HomeLayer.cpp
+// Author:		 Metoor
+// Version: 	1.0 
+// Date: 		2016/11/07
+// Contact: 	caiufen@qq.com
+// Description: 	create by vs2015pro
+*************************************************/
+
 #include "HomeLayer.h"
 #include "cocostudio/CocoStudio.h"
 #include "AudioManager.h"
@@ -81,8 +91,7 @@ void HomeLayer::menuCallBack(Ref* pSender, Widget::TouchEventType type)
 	if (type == Widget::TouchEventType::BEGAN)
 	{
 		//²¥·Åµã»÷ÒôÐ§
-		auto audio = AudioManager::getInstance();
-		audio->playEffect(audio->clickEffect);
+		AudioManager::getInstance()->playClickEffect();
 	}
 
 	if (type == Widget::TouchEventType::ENDED)

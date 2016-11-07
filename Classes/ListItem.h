@@ -1,3 +1,13 @@
+/*************************************************
+// Copyright (C), 2016-2020, CS&S. Co., Ltd.
+// File name: 	ListItem.h
+// Author:		 Metoor
+// Version: 	1.0 
+// Date: 		2016/11/07
+// Contact: 	caiufen@qq.com
+// Description: 	create by vs2015pro
+*************************************************/
+
 #ifndef __LISTITEM_H__
 #define __LISTITEM_H__
 

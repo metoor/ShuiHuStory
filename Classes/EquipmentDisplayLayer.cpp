@@ -1,3 +1,13 @@
+/*************************************************
+// Copyright (C), 2016-2020, CS&S. Co., Ltd.
+// File name: 	EquipmentDisplayLayer.cpp
+// Author:		 Metoor
+// Version: 	1.0 
+// Date: 		2016/11/07
+// Contact: 	caiufen@qq.com
+// Description: 	create by vs2015pro
+*************************************************/
+
 #include "EquipmentDisplayLayer.h"
 #include "cocostudio/CocoStudio.h"
 #include "GameData.h"
@@ -54,10 +64,15 @@ void EquipmentDisplayLayer::loadUI()
 	//查找控件
 	_listView = node->getChildByName<ListView*>(listViewName);
 	_btnClose = node->getChildByName<Button*>(btnCloseName);
-
+	_tipLabel = node->getChildByName<Text*>(tipLabelName);
 
 	//绑定事件回调
 	_btnClose->addTouchEventListener(CC_CALLBACK_2(EquipmentDisplayLayer::btnCloseCallBack, this));
+}
+
+void EquipmentDisplayLayer::setTipLabel()
+{
+	_tipLabel->setString(StringUtils::format("%d/%d", _itemVector.size(), equipment_map_max_size));
 }
 
 void EquipmentDisplayLayer::setItemAttribute(const EquipmentProperty * property, ListItem* item)
@@ -174,6 +189,9 @@ void EquipmentDisplayLayer::loadItem(int n)
 
 		++index;
 	}
+
+	//设置列表上边容量使用信息
+	setTipLabel();
 }
 
 void EquipmentDisplayLayer::setItemColor(ListItem * item, int star)
@@ -213,8 +231,7 @@ void EquipmentDisplayLayer::btnCloseCallBack(cocos2d::Ref * pSender, cocos2d::ui
 	if (type == Widget::TouchEventType::ENDED)
 	{
 		//点击音效
-		auto audio = AudioManager::getInstance();
-		audio->playEffect(audio->clickEffect);
+		AudioManager::getInstance()->playClickEffect();
 
 		endAnimation();
 	}

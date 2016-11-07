@@ -23,33 +23,7 @@
           <Image Name="tipbg.png" />
           <Image Name="worldbg.png" />
           <Image Name="zhanyi.png" />
-        </Folder>
-        <Folder Name="fonts">
-          <TTF Name="MiniKaiTi.ttf" />
-        </Folder>
-        <Folder Name="layers">
-          <Folder Name="firstLogin">
-            <Project Name="firstScene.csd" Type="Layer" />
-          </Folder>
-          <Folder Name="homeLayer">
-            <Project Name="EquipmentDisplayLayer.csd" Type="Layer" />
-            <Project Name="GameSceneBgLayer.csd" Type="Layer" />
-            <Project Name="HeroDisplayLayer.csd" Type="Layer" />
-            <Project Name="homeLayer.csd" Type="Layer" />
-            <Project Name="listItem.csd" Type="Layer" />
-            <Project Name="menuLayer.csd" Type="Layer" />
-          </Folder>
-          <Folder Name="Tools">
-            <Project Name="tipDialog.csd" Type="Layer" />
-          </Folder>
-        </Folder>
-        <Folder Name="test">
-          <Image Name="head112.png" />
-          <Image Name="sword1.png" />
-        </Folder>
-        <Folder Name="ui">
-          <PlistInfo Name="ui_1.csi" Type="Plist" />
-          <PlistInfo Name="ui_2.csi" Type="Plist" />
+          <Image Name="tile.png" />
         </Folder>
         <Folder Name="btns">
           <Folder Name="pvpbtn">
@@ -72,6 +46,8 @@
           <Image Name="changhero2.png" />
           <Image Name="close1.png" />
           <Image Name="close2.png" />
+          <Image Name="details1.png" />
+          <Image Name="details2.png" />
           <Image Name="dibutton1.png" />
           <Image Name="dibutton2.png" />
           <Image Name="getmoney1.png" />
@@ -110,8 +86,9 @@
           <Image Name="zhaomu2.png" />
           <Image Name="zhuangbei1.png" />
           <Image Name="zhuangbei2.png" />
-          <Image Name="details1.png" />
-          <Image Name="details2.png" />
+        </Folder>
+        <Folder Name="fonts">
+          <TTF Name="MiniKaiTi.ttf" />
         </Folder>
         <Folder Name="icos">
           <Image Name="add.png" />
@@ -139,10 +116,34 @@
           <Image Name="speed.png" />
           <Image Name="star.png" />
           <Image Name="swordicon1.png" />
-          <Image Name="tile.png" />
           <Image Name="ui_coin.png" />
           <Image Name="xp1.png" />
           <Image Name="xp2.png" />
+        </Folder>
+        <Folder Name="layers">
+          <Folder Name="firstLogin">
+            <Project Name="firstScene.csd" Type="Layer" />
+          </Folder>
+          <Folder Name="homeLayer">
+            <Project Name="EquipmentDisplayLayer.csd" Type="Layer" />
+            <Project Name="GameSceneBgLayer.csd" Type="Layer" />
+            <Project Name="HeroDisplayLayer.csd" Type="Layer" />
+            <Project Name="homeLayer.csd" Type="Layer" />
+            <Project Name="listItem.csd" Type="Layer" />
+            <Project Name="menuLayer.csd" Type="Layer" />
+            <Project Name="equipmentDetialsLayer.csd" Type="Layer" />
+          </Folder>
+          <Folder Name="Tools">
+            <Project Name="tipDialog.csd" Type="Layer" />
+          </Folder>
+        </Folder>
+        <Folder Name="test">
+          <Image Name="head112.png" />
+          <Image Name="sword1.png" />
+        </Folder>
+        <Folder Name="ui">
+          <PlistInfo Name="ui_1.csi" Type="Plist" />
+          <PlistInfo Name="ui_2.csi" Type="Plist" />
         </Folder>
       </RootFolder>
     </Group>

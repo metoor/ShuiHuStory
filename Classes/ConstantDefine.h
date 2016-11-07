@@ -1,3 +1,13 @@
+/*************************************************
+// Copyright (C), 2016-2020, CS&S. Co., Ltd.
+// File name: 	ConstantDefine.h
+// Author:		 Metoor
+// Version: 	1.0 
+// Date: 		2016/10/20
+// Contact: 	caiufen@qq.com
+// Description: 	create by vs2015pro
+*************************************************/
+
 #ifndef __CONSTANTDEFINE_H_
 #define __CONSTANTDEFINE_H_
 

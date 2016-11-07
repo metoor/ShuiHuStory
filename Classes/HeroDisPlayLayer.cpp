@@ -1,3 +1,13 @@
+/*************************************************
+// Copyright (C), 2016-2020, CS&S. Co., Ltd.
+// File name: 	HeroDisPlayLayer.cpp
+// Author:		 Metoor
+// Version: 	1.0 
+// Date: 		2016/11/07
+// Contact: 	caiufen@qq.com
+// Description: 	create by vs2015pro
+*************************************************/
+
 #include "HeroDisplayLayer.h"
 #include "cocostudio/CocoStudio.h"
 #include "BlockLayer.h"
@@ -49,11 +59,16 @@ void HeroDisplayLayer::loadUI()
 	//查找控件
 	_listView = node->getChildByName<ListView*>(listViewName);
 	_btnClose = node->getChildByName<Button*>(btnCloseName);
-
+	_tipLabel = node->getChildByName<Text*>(tipLabelName);
 
 	//绑定事件回调
 	_btnClose->addTouchEventListener(CC_CALLBACK_2(HeroDisplayLayer::btnCloseCallBack, this));
 
+}
+
+void HeroDisplayLayer::setTipLabel()
+{
+	_tipLabel->setString(StringUtils::format("%d/%d", _itemVector.size(), equipment_map_max_size));
 }
 
 void HeroDisplayLayer::loadItem(int n)
@@ -100,6 +115,9 @@ void HeroDisplayLayer::loadItem(int n)
 
 		++index;
 	}
+
+	//设置列表上边容量使用信息
+	setTipLabel();
 }
 
 void HeroDisplayLayer::setItemAttribute(const HeroCardProperty * property, ListItem * item)
@@ -163,8 +181,7 @@ void HeroDisplayLayer::btnCloseCallBack(cocos2d::Ref * pSender, cocos2d::ui::Wid
 	if (type == Widget::TouchEventType::ENDED)
 	{
 		//点击音效
-		auto audio = AudioManager::getInstance();
-		audio->playEffect(audio->clickEffect);
+		AudioManager::getInstance()->playClickEffect();
 
 		endAnimation();
 	}

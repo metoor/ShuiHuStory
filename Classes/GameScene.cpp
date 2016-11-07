@@ -1,3 +1,13 @@
+/*************************************************
+// Copyright (C), 2016-2020, CS&S. Co., Ltd.
+// File name: 	GameScene.cpp
+// Author:		 Metoor
+// Version: 	1.0 
+// Date: 		2016/11/07
+// Contact: 	caiufen@qq.com
+// Description: 	create by vs2015pro
+*************************************************/
+
 #include "GameScene.h"
 #include "ParticleLayer.h"
 #include "cocostudio/CocoStudio.h"
@@ -20,8 +30,8 @@ GameScene::GameScene()
 
 	AudioManager::getInstance()->preLoadGlobalAudio();
 
-	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("head.plist", "head.png");
-	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("equipment.plist", "equipment.png");
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("head.plist", "head.pvr.ccz");
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("equipment.plist", "equipment.pvr.ccz");
 }
 
 GameScene::~GameScene()
@@ -127,8 +137,7 @@ void GameScene::menuCallBack(Ref * pSender, Widget::TouchEventType type)
 	if (type == Widget::TouchEventType::BEGAN)
 	{
 		//²¥·Åµã»÷ÒôÐ§
-		auto audio = AudioManager::getInstance();
-		audio->playEffect(audio->clickEffect);
+		AudioManager::getInstance()->playClickEffect();
 	}
 
 	if (type == Widget::TouchEventType::ENDED)

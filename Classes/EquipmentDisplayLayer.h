@@ -1,3 +1,13 @@
+/*************************************************
+// Copyright (C), 2016-2020, CS&S. Co., Ltd.
+// File name: 	EquipmentDisplayLayer.h
+// Author:		 Metoor
+// Version: 	1.0 
+// Date: 		2016/11/07
+// Contact: 	caiufen@qq.com
+// Description: 	create by vs2015pro
+*************************************************/
+
 #ifndef __EQUIPMENTDISPLAYLAYER_H__
 #define __EQUIPMENTDISPLAYLAYER_H__
 
@@ -20,6 +30,9 @@ public:
 private:
 	void loadUI();
 	
+	//设置列表显示的当前已用数量和总得容量，如:30/50
+	void setTipLabel();
+
 	//设置Item的属性
 	void setItemAttribute(const EquipmentProperty* property, ListItem* item);
 
@@ -45,6 +58,7 @@ private:
 private:
 	const std::string csbName = "layers/homeLayer/equipmentDisplayLayer.csb";
 	const std::string listViewName = "listView";
+	const std::string tipLabelName = "tip";
 	const std::string btnCloseName = "btnClose";
 	const std::string blockName = "blockName";
 	const int defaultLoadNum = 5;
@@ -53,8 +67,9 @@ private:
 	//记录上一次详情按钮点击的索引
 	int _preClicked;
 
-	cocos2d::ui::ListView* _listView;
+	cocos2d::ui::ListView*	_listView;
 	cocos2d::ui::Button*	_btnClose;
+	cocos2d::ui::Text*		_tipLabel;
 	cocos2d::Vector<ListItem*> _itemVector;
 };
 

@@ -1,7 +1,16 @@
+/*************************************************
+// Copyright (C), 2016-2020, CS&S. Co., Ltd.
+// File name: 	ParticleLayer.cpp
+// Author:		 Metoor
+// Version: 	1.0 
+// Date: 		2016/11/07
+// Contact: 	caiufen@qq.com
+// Description: 	create by vs2015pro
+*************************************************/
+
 #include "ParticleLayer.h"
 
 USING_NS_CC;
-
 
 ParticleLayer::ParticleLayer()
 	:_particle(nullptr)

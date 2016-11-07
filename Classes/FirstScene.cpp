@@ -1,3 +1,13 @@
+/*************************************************
+// Copyright (C), 2016-2020, CS&S. Co., Ltd.
+// File name: 	FirstScene.cpp
+// Author:		 Metoor
+// Version: 	1.0 
+// Date: 		2016/11/07
+// Contact: 	caiufen@qq.com
+// Description: 	create by vs2015pro
+*************************************************/
+
 #include "FirstScene.h"
 #include "cocostudio/CocoStudio.h"
 #include "AudioManager.h"
@@ -28,8 +38,7 @@ bool FirstScene::init()
 	}
 
 	//±³¾°ÒôÀÖ
-	auto audio = AudioManager::getInstance();
-	audio->playBackgroundMusic(audio->bgFirstScene);
+	AudioManager::getInstance()->playFirstSceneBgMusic();
 
 	//×¢²á´¥ÃþÊÂ¼þ
 	auto listen = EventListenerTouchOneByOne::create();
@@ -44,8 +53,8 @@ bool FirstScene::init()
 
 	listen->onTouchEnded = [&](Touch* touch, Event* event) {
 		//µã»÷ÒôÐ§
-		auto audio = AudioManager::getInstance();
-		audio->playEffect(audio->clickEffect);
+		AudioManager::getInstance()->playClickEffect();
+
 
 		nextMsg();
 	};

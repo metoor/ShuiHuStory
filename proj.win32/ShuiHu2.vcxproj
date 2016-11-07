@@ -151,6 +151,7 @@ xcopy /Y /Q "$(COCOS_X_ROOT)\cocos2d-x-3.10\prebuilt\win32\*.*" "$(OutDir)"
     <ClCompile Include="..\Classes\Config.cpp" />
     <ClCompile Include="..\Classes\DialogManager.cpp" />
     <ClCompile Include="..\Classes\Equipment.cpp" />
+    <ClCompile Include="..\Classes\EquipmentDetialsLayer.cpp" />
     <ClCompile Include="..\Classes\EquipmentDisplayLayer.cpp" />
     <ClCompile Include="..\Classes\FirstScene.cpp" />
     <ClCompile Include="..\Classes\GameData.cpp" />
@@ -173,6 +174,7 @@ xcopy /Y /Q "$(COCOS_X_ROOT)\cocos2d-x-3.10\prebuilt\win32\*.*" "$(OutDir)"
     <ClInclude Include="..\Classes\Config.h" />
     <ClInclude Include="..\Classes\DialogManager.h" />
     <ClInclude Include="..\Classes\Equipment.h" />
+    <ClInclude Include="..\Classes\EquipmentDetialsLayer.h" />
     <ClInclude Include="..\Classes\EquipmentDisplayLayer.h" />
     <ClInclude Include="..\Classes\FirstScene.h" />
     <ClInclude Include="..\Classes\GameData.h" />

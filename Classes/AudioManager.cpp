@@ -1,3 +1,13 @@
+/*************************************************
+// Copyright (C), 2016-2020, CS&S. Co., Ltd.
+// File name: 	AudioManager.cpp
+// Author:		 Metoor
+// Version: 	1.0 
+// Date: 		2016/11/07
+// Contact: 	caiufen@qq.com
+// Description: 	create by vs2015pro
+*************************************************/
+
 #include "AudioManager.h"
 #include "cocos2d.h"
 #include "McLog.h"
@@ -52,20 +62,38 @@ void AudioManager::destoryInstance()
 	_simpleAudioEngine->end();
 }
 
-void AudioManager::playEffect(std::string name)
+unsigned int AudioManager::playFirstSceneBgMusic()
 {
-	if (!_isMute)
-	{
-		_simpleAudioEngine->playEffect(name.c_str());
-	}
+	return playBackgroundMusic(bgFirstSceneBgMusicName);
 }
 
-void AudioManager::playBackgroundMusic(std::string name, bool isLoop)
+unsigned int AudioManager::playClickEffect()
 {
+	return playEffect(clickEffectName);
+}
+
+unsigned int AudioManager::playEffect(std::string name)
+{
+	unsigned int result = 0;
+
+	if (!_isMute)
+	{
+		result = _simpleAudioEngine->playEffect(name.c_str());
+	}
+
+	return result;
+}
+
+unsigned int AudioManager::playBackgroundMusic(std::string name, bool isLoop)
+{
+	unsigned int result = 0;
+
 	if (!_isMute)
 	{
 		_simpleAudioEngine->playBackgroundMusic(name.c_str(), isLoop);
 	}
+
+	return result;
 }
 
 bool AudioManager::getIsMute()
@@ -80,15 +108,12 @@ void AudioManager::setIsMute(bool isMute)
 
 void AudioManager::preLoadGlobalAudio()
 {
-	//Ô¤¼ÓÔØ±³¾°ÒôÀÖ
-	_simpleAudioEngine->preloadBackgroundMusic(bgFirstScene.c_str());
-
 	//Ô¤¼ÓÔØÒôÐ§
-	_simpleAudioEngine->preloadEffect(clickEffect.c_str());
+	_simpleAudioEngine->preloadEffect(clickEffectName.c_str());
 }
 
 void AudioManager::unLoadGlobalEffect()
 {
 	//Ð¶ÔØÒôÐ§
-	_simpleAudioEngine->unloadEffect(clickEffect.c_str());
+	_simpleAudioEngine->unloadEffect(clickEffectName.c_str());
 }

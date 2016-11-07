@@ -1,6 +1,13 @@
-/*
-*单例类，主要保存玩家游戏相关的数据，例如，金币、元宝等等
-*/
+/*************************************************
+// Copyright (C), 2016-2020, CS&S. Co., Ltd.
+// File name: 	GameData.h
+// Author:		 Metoor
+// Version: 	1.0 
+// Date: 		2016/10/20
+// Contact: 	caiufen@qq.com
+// Description:		create by vs2015pro
+*************************************************/
+
 
 #ifndef __GAMEDATA_H__
 #define __GAMEDATA_H__
