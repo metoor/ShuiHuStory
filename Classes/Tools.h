@@ -17,7 +17,7 @@
 class Tools
 {
 public:
-	//获得范围[min, max]内的整型随机数 --注意：该函数在循环里面调用不能超过10次
+	//获得范围[min, max]内的整型随机数
 	static int getRandomInt(int min, int max);
 
 	//获取当前系统时间-秒级别

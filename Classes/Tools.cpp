@@ -11,23 +11,20 @@
 #include "Tools.h"
 
 
-#define LIST_MAX_LENGTH 10
-
 int Tools::getRandomInt(int min, int max)
 {
 	/************************************************************************/
 	/*  因为现在电脑的运算能力很强，在循环里面连续获取时间时，会获取到相同的时间。因为随  */
 	/*	机数种子（时间）相同，那么产生的随机数也会相同。为了避免在循环里获取时间后人为加	*/
-	/*	上一个时间差。_randomCurrentIndex：记录当前已经使用到那数组中的那个数据		*/
+	/*	上获取的总次数，这样既可避免产生相同的时间种子。	*/
 	/************************************************************************/
-	static int _randomCurrentIndex = 0;
-	static int _randomSeed[LIST_MAX_LENGTH] = { 100, 300, 500, 700, 900, 1100, 1300, 1500, 1700, 1900 };
+	static unsigned randomCount = 0;
 
 	time_t currentTimer = getCurrentTimeSecond();
 
-	//人为加上时间差，避免产生相同的时间
-	currentTimer += _randomSeed[_randomCurrentIndex];
-	_randomCurrentIndex = (_randomCurrentIndex + 1) % LIST_MAX_LENGTH;
+	//人为加上获取的次数，避免产生相同的时间
+	currentTimer += randomCount;
+	++randomCount;
 
 	std::default_random_engine e(currentTimer);
 
