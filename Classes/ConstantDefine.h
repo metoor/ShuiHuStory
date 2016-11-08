@@ -70,4 +70,9 @@ const std::string speedIco = "icos/speed.png";
 const std::string critIco = "icos/crit.png";
 const std::string blockIco = "icos/block.png";
 
+
+//---------------给控件设置的标签名字（node->setName()）-----------------------------------
+const std::string blockTagName = "blockName";		//BlockLayer的标签名字，用来通过标签名字获取实例对象
+
+
 #endif // __CONSTANTDEFINE_H_

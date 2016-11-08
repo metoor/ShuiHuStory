@@ -20,10 +20,10 @@
           <Image Name="namebg.png" />
           <Image Name="storebg.png" />
           <Image Name="storybg.png" />
+          <Image Name="tile.png" />
           <Image Name="tipbg.png" />
           <Image Name="worldbg.png" />
           <Image Name="zhanyi.png" />
-          <Image Name="tile.png" />
         </Folder>
         <Folder Name="btns">
           <Folder Name="pvpbtn">
@@ -125,13 +125,13 @@
             <Project Name="firstScene.csd" Type="Layer" />
           </Folder>
           <Folder Name="homeLayer">
-            <Project Name="EquipmentDisplayLayer.csd" Type="Layer" />
-            <Project Name="GameSceneBgLayer.csd" Type="Layer" />
-            <Project Name="HeroDisplayLayer.csd" Type="Layer" />
+            <Project Name="detialsLayer.csd" Type="Layer" />
+            <Project Name="displayLayer.csd" Type="Layer" />
+            <Project Name="gameSceneBgLayer.csd" Type="Layer" />
+            <Project Name="heroDisplayLayer.csd" Type="Layer" />
             <Project Name="homeLayer.csd" Type="Layer" />
-            <Project Name="listItem.csd" Type="Layer" />
+            <Project Name="displayListItem.csd" Type="Layer" />
             <Project Name="menuLayer.csd" Type="Layer" />
-            <Project Name="equipmentDetialsLayer.csd" Type="Layer" />
           </Folder>
           <Folder Name="Tools">
             <Project Name="tipDialog.csd" Type="Layer" />

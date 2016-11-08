@@ -87,17 +87,14 @@
     <ClCompile Include="..\Classes\HomeLayer.cpp">
       <Filter>src\Layers\Home</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\ListItem.cpp">
+    <ClCompile Include="..\Classes\DetialsLayer.cpp">
+      <Filter>src\Layers\Home</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\DisplayLayer.cpp">
+      <Filter>src\Layers\Home</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\DisplayListItem.cpp">
       <Filter>src\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\EquipmentDisplayLayer.cpp">
-      <Filter>src\Layers\Home</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\HeroDisPlayLayer.cpp">
-      <Filter>src\Layers\Home</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\EquipmentDetialsLayer.cpp">
-      <Filter>src\Layers\Home</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -155,20 +152,17 @@
     <ClInclude Include="..\Classes\HomeLayer.h">
       <Filter>src\Layers\Home</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\ListItem.h">
-      <Filter>src\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\EquipmentDisplayLayer.h">
-      <Filter>src\Layers\Home</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\HeroDisplayLayer.h">
-      <Filter>src\Layers\Home</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\ConstantDefine.h">
       <Filter>src\Datas</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\EquipmentDetialsLayer.h">
+    <ClInclude Include="..\Classes\DetialsLayer.h">
       <Filter>src\Layers\Home</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\DisplayLayer.h">
+      <Filter>src\Layers\Home</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\DisplayListItem.h">
+      <Filter>src\Objects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

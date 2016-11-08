@@ -39,7 +39,7 @@ private:
 
 private:
 	//³£Á¿Ãû³Æ
-	const std::string csbName = "layers/homeLayer/GameSceneBgLayer.csb";
+	const std::string csbName = "layers/homeLayer/gameSceneBgLayer.csb";
 	const std::string csbMenuName = "layers/homeLayer/menuLayer.csb";
 	const std::string menuHomeName = "menuHero";
 	const std::string menuTeamName = "menuTeam";

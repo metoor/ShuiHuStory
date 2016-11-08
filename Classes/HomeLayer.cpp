@@ -11,8 +11,8 @@
 #include "HomeLayer.h"
 #include "cocostudio/CocoStudio.h"
 #include "AudioManager.h"
-#include "EquipmentDisplayLayer.h"
-#include "HeroDisplayLayer.h"
+#include "DisplayLayer.h"
+#include "ConstantDefine.h"
 
 USING_NS_CC;
 using namespace ui;
@@ -65,19 +65,52 @@ Layer* HomeLayer::createMenuLayer(HomeMenuType type)
 
 	switch (type)
 	{
-	case EQUIPMENT:
-		layer = EquipmentDisplayLayer::create();
+	case MENU_EQUIPMENT:
+	{
+		auto displayLayer = DisplayLayer::create();
+		displayLayer->setBtnTxture(btnDetails1, btnDetails2);
+		
+		//列表里item里的按钮回调
+		displayLayer->setBtnCallBack([](Ref* pSender, Widget::TouchEventType type) {
+			if (type == Widget::TouchEventType::ENDED)
+			{
+				auto btn = static_cast<Button*>(pSender);
+				int id = (int)btn->getUserData();
+
+				log("----%d", id);
+			}
+		});
+		displayLayer->setItemType(EQUIPMENT);
+		layer = displayLayer;
 		break;
-	case HERO:
-		layer = HeroDisplayLayer::create();
+	}
+	case MENU_HERO:
+	{
+		auto displayLayer = DisplayLayer::create();
+		displayLayer->setBtnTxture(btnDetails1, btnDetails2);
+
+		//列表里item里的按钮回调
+		displayLayer->setBtnCallBack([](Ref* pSender, Widget::TouchEventType type) {
+			if (type == Widget::TouchEventType::ENDED)
+			{
+				auto btn = static_cast<Button*>(pSender);
+				int id = (int)btn->getUserData();
+
+				log("----%d", id);
+			}
+		});
+
+		displayLayer->setItemType(HERO);
+		layer = displayLayer;
 		break;
-	case LOGIN:
+	}
+	case MENU_LOGIN:
 		break;
-	case LEVEL_UP:
+	case MENU_LEVEL_UP:
 		break;
-	case ABOUT:
+	case MENU_ABOUT:
 		break;
-	case AUDIO:
+	case MENU_AUDIO:
 		break;
 	default:
 		break;

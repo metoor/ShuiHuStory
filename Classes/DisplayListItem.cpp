@@ -1,6 +1,6 @@
 /*************************************************
 // Copyright (C), 2016-2020, CS&S. Co., Ltd.
-// File name: 	ListItem.cpp
+// File name: 	DisplayListItem.cpp
 // Author:		 Metoor
 // Version: 	1.0 
 // Date: 		2016/11/07
@@ -8,7 +8,7 @@
 // Description: 	create by vs2015pro
 *************************************************/
 
-#include "ListItem.h"
+#include "DisplayListItem.h"
 #include "cocostudio/CocoStudio.h"
 #include "AudioManager.h"
 
@@ -16,15 +16,15 @@ USING_NS_CC;
 using namespace ui;
 using namespace std;
 
-ListItem::ListItem()
+DisplayListItem::DisplayListItem()
 {
 }
 
-ListItem::~ListItem()
+DisplayListItem::~DisplayListItem()
 {
 }
 
-bool ListItem::init()
+bool DisplayListItem::init()
 {
 	if (!Layout::init())
 	{
@@ -36,7 +36,7 @@ bool ListItem::init()
 	return true;
 }
 
-void ListItem::setBtnCallBack(function<void(Ref*pSender, Widget::TouchEventType type)> func)
+void DisplayListItem::setBtnCallBack(function<void(Ref*pSender, Widget::TouchEventType type)> func)
 {
 	_btn->addTouchEventListener([func](Ref*pSender, Widget::TouchEventType type) {
 		if (type == Widget::TouchEventType::BEGAN)
@@ -46,23 +46,26 @@ void ListItem::setBtnCallBack(function<void(Ref*pSender, Widget::TouchEventType 
 		}
 
 		//执行用户自定义事件
-		func(pSender, type);
+		if (func)
+		{
+			func(pSender, type);
+		}
 	});
 }
 
-void ListItem::setBtnTag(const int tag)
+void DisplayListItem::setBtnTag(const int tag)
 {
 	_btn->setTag(tag);
 }
 
-void ListItem::setBtnTexture(const std::string nor, const std::string pressed)
+void DisplayListItem::setBtnTexture(const std::string nor, const std::string pressed)
 {
 	_btn->loadTextureNormal(nor, Widget::TextureResType::PLIST);
 	_btn->loadTexturePressed(pressed, Widget::TextureResType::PLIST);
 	_btn->loadTextureDisabled(pressed, Widget::TextureResType::PLIST);
 }
 
-void ListItem::setLabelText(ItemLabelType type, const std::string content)
+void DisplayListItem::setLabelText(ItemLabelType type, const std::string content)
 {
 	switch (type)
 	{
@@ -83,7 +86,7 @@ void ListItem::setLabelText(ItemLabelType type, const std::string content)
 	}
 }
 
-void ListItem::setLabelColor(ItemLabelType type, cocos2d::Color4B color)
+void DisplayListItem::setLabelColor(ItemLabelType type, cocos2d::Color4B color)
 {
 	switch (type)
 	{
@@ -104,14 +107,14 @@ void ListItem::setLabelColor(ItemLabelType type, cocos2d::Color4B color)
 	}
 }
 
-void ListItem::setIco(const std::string icoName, const std::string img1Name, const std::string img2Name)
+void DisplayListItem::setIco(const std::string icoName, const std::string img1Name, const std::string img2Name)
 {
 	_ico->loadTexture(icoName, Widget::TextureResType::PLIST);
 	_img1->loadTexture(img1Name, Widget::TextureResType::PLIST);
 	_img2->loadTexture(img2Name, Widget::TextureResType::PLIST);
 }
 
-void ListItem::setStarNum(const int n)
+void DisplayListItem::setStarNum(const int n)
 {
 	for (int i = 0; i < n - 1; ++i)
 	{
@@ -121,7 +124,7 @@ void ListItem::setStarNum(const int n)
 	}
 }
 
-void ListItem::loadUI()
+void DisplayListItem::loadUI()
 {
 	auto node = CSLoader::createNode(csbName);
 	addChild(node);

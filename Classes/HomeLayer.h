@@ -19,12 +19,12 @@
 
 enum HomeMenuType
 {
-	EQUIPMENT,
-	HERO,
-	LOGIN,
-	LEVEL_UP,
-	ABOUT,
-	AUDIO
+	MENU_EQUIPMENT,
+	MENU_HERO,
+	MENU_LOGIN,
+	MENU_LEVEL_UP,
+	MENU_ABOUT,
+	MENU_AUDIO
 };
 
 class HomeLayer : public cocos2d::Layer{
@@ -36,7 +36,10 @@ public:
 
 private:
 	void loadUI();
+
+	//创建菜单对应的菜单层
 	cocos2d::Layer* createMenuLayer(HomeMenuType type);
+	
 	void menuCallBack(cocos2d::Ref * pSender, cocos2d::ui::Widget::TouchEventType type);
 
 private:
