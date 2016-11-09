@@ -70,7 +70,7 @@ void HeroCard::init(const HeroCardType * heroCardType)
 	_property->type = heroCardType->type;
 
 	_property->level = 1;
-	_property->exLevel = 1;
+	_property->exLevel = 0;
 	_property->isMagic = heroCardType->isMagic;
 	_property->attackId = heroCardType->attackId;
 	_property->skillId = heroCardType->skillId;
@@ -178,15 +178,27 @@ int HeroCard::getEquipmentByPos(int pos)
 
 void HeroCard::updatetePropery()
 {
-	//从新计算英雄本身的属性加成和装备加成
+	//重新计算英雄本身的属性加成和装备加成
 	calculateHeroCardPropery(Config::getInstance()->getHeroCardByIndex(_property->type));
 	calculateEquipmentPropery();
+}
+
+void HeroCard::levelup()
+{
+	++(_property->level);
+	updatetePropery();
+}
+
+void HeroCard::intensify()
+{
+	++(_property->exLevel);
+	updatetePropery();
 }
 
 void HeroCard::calculateHeroCardPropery(const HeroCardType * heroCardType)
 {
 	//计算总体的比率，例如：卡牌等级和卡牌强化等级的加成比率
-	float strengthRate = (((_property->level - 1) + (_property->exLevel - 1) * 2) / 10.0f) + 1.0f;
+	float strengthRate = (((_property->level - 1) + (_property->exLevel) * 2) / 10.0f) + 1.0f;
 
 	//总的加成比率
 	float rate = Tools::keepTwoEffectNum(_property->rate * strengthRate);
@@ -214,17 +226,21 @@ void HeroCard::calculateEquipmentPropery()
 	for (int pos = 0; pos < max_equipment_num; ++pos)
 	{
 		int equipmentId = getEquipmentByPos(pos);
-		auto equipmentProperty = GameData::getInstance()->getEquipmentById(equipmentId)->getProperty();
-		
-		ep.ap += equipmentProperty->ap;
-		ep.blockRate += equipmentProperty->blockRate;
-		ep.magicDefend += equipmentProperty->magicDefend;
-		ep.critDamage += equipmentProperty->critDamage;
-		ep.critRate += equipmentProperty->critRate;
-		ep.defend += equipmentProperty->defend;
-		ep.mp += equipmentProperty->mp;
-		ep.hp += equipmentProperty->hp;
-		ep.speed += equipmentProperty->speed;
+
+		if (equipmentId != none)
+		{
+			auto equipmentProperty = GameData::getInstance()->getEquipmentById(equipmentId)->getProperty();
+
+			ep.ap += equipmentProperty->ap;
+			ep.blockRate += equipmentProperty->blockRate;
+			ep.magicDefend += equipmentProperty->magicDefend;
+			ep.critDamage += equipmentProperty->critDamage;
+			ep.critRate += equipmentProperty->critRate;
+			ep.defend += equipmentProperty->defend;
+			ep.mp += equipmentProperty->mp;
+			ep.hp += equipmentProperty->hp;
+			ep.speed += equipmentProperty->speed;
+		}
 	}
 
 	//将装备附加的属性更新到英雄卡牌属性上

@@ -69,7 +69,7 @@ void Equipment::init(const EquipmentType* equipmentType)
 	_property->type = equipmentType->type;
 
 	_property->level = 1;
-	_property->exLevel = 1;
+	_property->exLevel = 0;
 	_property->user = none;			//none 表示该装备没有被角色使用
 	
 	_property->textureName = &(equipmentType->textureName);
@@ -93,7 +93,7 @@ void Equipment::init(const SaveEquipmentData * saveEquipmentData)
 	_property->rate = Tools::intToPercent(saveEquipmentData->rate);
 	_property->level = saveEquipmentData->level;
 	_property->exLevel = saveEquipmentData->exLevel;
-	_property->user = saveEquipmentData->user;			//NONE_USER表示该装备没有被角色使用
+	_property->user = saveEquipmentData->user;			//none表示该装备没有被角色使用
 
 	auto equipment = Config::getInstance()->getEquipmentByIndex(_property->type);
 
@@ -123,10 +123,24 @@ const EquipmentProperty * Equipment::getProperty()
 	return _property;
 }
 
+void Equipment::levelup()
+{
+	auto equipmentType = Config::getInstance()->getEquipmentByIndex(_property->type);
+	++_property->level;
+	calculatePropery(equipmentType);
+}
+
+void Equipment::intensify()
+{
+	auto equipmentType = Config::getInstance()->getEquipmentByIndex(_property->type);
+	++(_property->exLevel);
+	calculatePropery(equipmentType);
+}
+
 void Equipment::calculatePropery(const EquipmentType* equipmentType)
 {
 	//计算总体的比率，例如：装备等级和装备强化等级的加成比率
-	float strengthRate = (((_property->level - 1) + (_property->exLevel - 1) * 2) / 10.0f) + 1.0f;
+	float strengthRate = (((_property->level - 1) + (_property->exLevel) * 2) / 10.0f) + 1.0f;
 	
 	//总的加成比率
 	float rate = Tools::keepTwoEffectNum(_property->rate * strengthRate);

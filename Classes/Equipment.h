@@ -35,6 +35,10 @@ public:
 	//获得装备属性
 	const EquipmentProperty* getProperty();
 
+	//升级和强化装备
+	void levelup();
+	void intensify();
+
 	//计算装备所有加成之后的属性，参数为初始装备的模板
 	void calculatePropery(const EquipmentType* equipmentType);
 

@@ -71,8 +71,24 @@ const std::string critIco = "icos/crit.png";
 const std::string blockIco = "icos/block.png";
 
 
+//--------string.plist文件种的中文字符资源名称-------------------------------------------------------------------
+const std::string level_d = "level_d";
+const std::string intensify_d = "intensify_d";
+const std::string star_d = "star_d";
+const std::string speed_d = "speed_d";
+const std::string block_d = "block_d";
+const std::string hp_d = "hp_d";
+const std::string critDmg_d = "critDmg_d";
+const std::string crit_d = "crit_d";
+const std::string ap_d = "ap_d";
+const std::string mp_d = "mp_d";
+const std::string define_d = "define_d";
+const std::string mDefine_d = "mDefine_d";
+
+
 //---------------给控件设置的标签名字（node->setName()）-----------------------------------
 const std::string blockTagName = "blockName";		//BlockLayer的标签名字，用来通过标签名字获取实例对象
-
+const std::string tipsTagName = "tips";				//提示框的标签名字
+const std::string dialogTagName = "dialog";			//模态对话框的标签名字
 
 #endif // __CONSTANTDEFINE_H_

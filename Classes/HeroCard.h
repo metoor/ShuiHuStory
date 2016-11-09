@@ -40,10 +40,14 @@ public:
 	//通过位置序号【0~5】获得该位置装备的装备的Id
 	int getEquipmentByPos(int pos);
 
+	//升级和强化卡牌
+	void levelup();
+	void intensify();
+
+private:
 	//更新卡牌的属性，用于在升级过/强化过卡牌或装备时调用
 	void updatetePropery();
 
-private:
 	//计算卡牌英雄强化和升级的加成属性并更新属性
 	void calculateHeroCardPropery(const HeroCardType * heroCardType);
 
