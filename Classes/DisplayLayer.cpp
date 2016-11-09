@@ -2,7 +2,7 @@
 // Copyright (C), 2016-2020, CS&S. Co., Ltd.
 // File name: 	DisplayLayer.cpp
 // Author:		 Metoor
-// Version: 	1.0 
+// Version: 	1.0
 // Date: 		2016/11/07
 // Contact: 	caiufen@qq.com
 // Description: 	create by vs2015pro
@@ -24,7 +24,8 @@ using namespace std;
 
 DisplayLayer::DisplayLayer()
 	:_clickedIndex(none),
-	_func(nullptr)
+	_func(nullptr),
+	_type(OT_NONE)
 {
 }
 
@@ -51,6 +52,9 @@ bool DisplayLayer::init()
 
 void DisplayLayer::onEnterTransitionDidFinish()
 {
+	//初始化列表
+	load();
+
 	startAnimation();
 }
 
@@ -68,33 +72,60 @@ void DisplayLayer::loadUI()
 	_btnClose->addTouchEventListener(CC_CALLBACK_2(DisplayLayer::btnCloseCallBack, this));
 }
 
+void DisplayLayer::load()
+{
+	CCAssert(_type != OT_NONE, "please call setDisplayType(),before call this...");
+
+	auto data = GameData::getInstance();
+
+	switch (_type)
+	{
+	case OT_EQUIPMENT:
+		loadItem(data->getEquipmentMap());
+		break;
+	case OT_HERO:
+		loadItem(data->getHeroCardMap());
+		break;
+	default:
+		break;
+	}
+}
+
 void DisplayLayer::setTipLabel(ObjectType type)
 {
 	switch (type)
 	{
-	case EQUIPMENT:
+	case OT_EQUIPMENT:
 		_tipLabel->setString(StringUtils::format("%d/%d", _objectIdVector.size(), equipment_map_max_size));
 		break;
-	case HERO:
+	case OT_HERO:
 		_tipLabel->setString(StringUtils::format("%d/%d", _objectIdVector.size(), hero_card_map_max_size));
 		break;
 	default:
 		break;
 	}
-	
+
 }
 
 void DisplayLayer::setItemAttribute(const HeroCardProperty * property, DisplayListItem * item)
 {
 	//设置文本标签
-	item->setLabelText(LEVEL, StringUtils::format("Lv:%d", property->level));
-	item->setLabelText(NAME, *(property->name));
+	item->setLabelText(ILT_LEVEL, StringUtils::format("Lv:%d", property->level));
+	item->setLabelText(ILT_NAME, *(property->name));
 	item->setStarNum(property->star);
-	item->setLabelText(TEXT1, StringUtils::format("%d", property->hp));
-	item->setLabelText(TEXT2, StringUtils::format("%d", property->ap));
+	item->setLabelText(ILT_ATTRIBUTE1, StringUtils::format("%d", property->hp));
 
-	//设置图标
-	item->setIco(StringUtils::format("head%d.png", property->type), hpIco, apIco);
+	//英雄是魔法攻击型的则显示魔法攻击，否则显示物理攻击
+	if (property->isMagic)
+	{
+		item->setLabelText(ILT_ATTRIBUTE2, StringUtils::format("%d", property->mp));
+		item->setIco(StringUtils::format("head%d.png", property->type), hpIco, mpIco);
+	}
+	else
+	{
+		item->setLabelText(ILT_ATTRIBUTE2, StringUtils::format("%d", property->ap));
+		item->setIco(StringUtils::format("head%d.png", property->type), hpIco, apIco);
+	}
 
 	setItemColor(item, property->star);
 }
@@ -102,8 +133,8 @@ void DisplayLayer::setItemAttribute(const HeroCardProperty * property, DisplayLi
 void DisplayLayer::setItemAttribute(const EquipmentProperty * property, DisplayListItem* item)
 {
 	//设置文本标签
-	item->setLabelText(LEVEL, StringUtils::format("Lv:%d", property->level));
-	item->setLabelText(NAME, *(property->name));
+	item->setLabelText(ILT_LEVEL, StringUtils::format("Lv:%d", property->level));
+	item->setLabelText(ILT_NAME, *(property->name));
 	item->setStarNum(property->star);
 
 	//设置颜色
@@ -115,43 +146,43 @@ void DisplayLayer::setItemAttribute(const EquipmentProperty * property, DisplayL
 	{
 		//帽子
 		item->setIco(*(property->textureName), defineIco, mDefineIco);
-		item->setLabelText(TEXT1, StringUtils::format("%d", property->defend));
-		item->setLabelText(TEXT2, StringUtils::format("%d", property->magicDefend));
+		item->setLabelText(ILT_ATTRIBUTE1, StringUtils::format("%d", property->defend));
+		item->setLabelText(ILT_ATTRIBUTE2, StringUtils::format("%d", property->magicDefend));
 	}
 	else if (Tools::betweenAnd(type, 200, 207))
 	{
 		//衣服
 		item->setIco(*(property->textureName), defineIco, mDefineIco);
-		item->setLabelText(TEXT1, StringUtils::format("%d", property->defend));
-		item->setLabelText(TEXT2, StringUtils::format("%d", property->magicDefend));
+		item->setLabelText(ILT_ATTRIBUTE1, StringUtils::format("%d", property->defend));
+		item->setLabelText(ILT_ATTRIBUTE2, StringUtils::format("%d", property->magicDefend));
 	}
 	else if (Tools::betweenAnd(type, 300, 324))
 	{
 		//武器
 		item->setIco(*(property->textureName), apIco, mpIco);
-		item->setLabelText(TEXT1, StringUtils::format("%d", property->ap));
-		item->setLabelText(TEXT2, StringUtils::format("%d", property->mp));
+		item->setLabelText(ILT_ATTRIBUTE1, StringUtils::format("%d", property->ap));
+		item->setLabelText(ILT_ATTRIBUTE2, StringUtils::format("%d", property->mp));
 	}
 	else if (Tools::betweenAnd(type, 400, 405))
 	{
 		//佩戴
 		item->setIco(*(property->textureName), hpIco, critIco);
-		item->setLabelText(TEXT1, StringUtils::format("%d", property->hp));
-		item->setLabelText(TEXT2, StringUtils::format("%d%%", Tools::percentToInt(property->critDamage)));
+		item->setLabelText(ILT_ATTRIBUTE1, StringUtils::format("%d", property->hp));
+		item->setLabelText(ILT_ATTRIBUTE2, StringUtils::format("%d%%", Tools::percentToInt(property->critDamage)));
 	}
 	else if (Tools::betweenAnd(type, 500, 504))
 	{
 		//鞋子
 		item->setIco(*(property->textureName), speedIco, blockIco);
-		item->setLabelText(TEXT1, StringUtils::format("%d", property->speed));
-		item->setLabelText(TEXT2, StringUtils::format("%d%%", Tools::percentToInt(property->blockRate)));
+		item->setLabelText(ILT_ATTRIBUTE1, StringUtils::format("%d", property->speed));
+		item->setLabelText(ILT_ATTRIBUTE2, StringUtils::format("%d%%", Tools::percentToInt(property->blockRate)));
 	}
 	else if (Tools::betweenAnd(type, 600, 604))
 	{
 		//坐骑
 		item->setIco(*(property->textureName), hpIco, speedIco);
-		item->setLabelText(TEXT1, StringUtils::format("%d", property->hp));
-		item->setLabelText(TEXT2, StringUtils::format("%d", property->speed));
+		item->setLabelText(ILT_ATTRIBUTE1, StringUtils::format("%d", property->hp));
+		item->setLabelText(ILT_ATTRIBUTE2, StringUtils::format("%d", property->speed));
 	}
 }
 
@@ -159,19 +190,19 @@ void DisplayLayer::updateItemAttribute(ObjectType type, int objectId, const int 
 {
 	//通过索引获得listview中对应的item
 	auto item = dynamic_cast<DisplayListItem*>(_listView->getItem(itemId));
-	
+
 	switch (type)
 	{
-	case EQUIPMENT:
+	case OT_EQUIPMENT:
 	{
 		auto equipment = GameData::getInstance()->getEquipmentById(objectId);
 
 		//更新单个item的数据
 		setItemAttribute(equipment->getProperty(), item);
-	
+
 		break;
 	}
-	case HERO:
+	case OT_HERO:
 	{
 		auto hero = GameData::getInstance()->getEquipmentById(objectId);
 
@@ -199,28 +230,25 @@ void DisplayLayer::loadItem(const unordered_map<int, Equipment*>* equipmentMap)
 		if (Tools::betweenAnd(index, startIndex, endIndex - 1) && static_cast<unsigned>(startIndex) < equipmentMap->size())
 		{
 			auto item = DisplayListItem::create();
-			
+
 			//设置item显示的属性
 			auto property = (iter->second)->getProperty();
 			setItemAttribute(property, item);
 			item->setBtnTexture(_normalTexture, _pressedTexture);
 			item->setBtnTag(index);
-			item->setBtnCallBack([&](Ref* pSender, Widget::TouchEventType type) { 
-				if(type == Widget::TouchEventType::ENDED)
-				{
-					auto btn = dynamic_cast<Button*>(pSender);
-					int tag = btn->getTag();
+			item->setBtnCallBack([&](Ref* pSender) {
+				auto btn = dynamic_cast<Button*>(pSender);
+				int tag = btn->getTag();
 
-					//调用用户设置的回调
-					if (_func)
-					{
-						//设置选中的物品id
-						btn->setUserData((void*)_objectIdVector.at(tag));
-						_func(pSender, type);
-					}
+				//调用用户设置的回调
+				if (_func)
+				{
+					//设置选中的物品id
+					btn->setUserData((void*)_objectIdVector.at(tag));
+					_func(pSender);
 				}
 			});
-			
+
 			//将item添加到listView，并保存item装备对应的Id
 			_listView->pushBackCustomItem(item);
 			_objectIdVector.push_back(iter->first);
@@ -236,7 +264,7 @@ void DisplayLayer::loadItem(const unordered_map<int, Equipment*>* equipmentMap)
 	}
 
 	//设置列表上边容量使用信息
-	setTipLabel(EQUIPMENT);
+	setTipLabel(OT_EQUIPMENT);
 }
 
 void DisplayLayer::loadItem(const unordered_map<int, HeroCard*>* heroMap)
@@ -259,19 +287,17 @@ void DisplayLayer::loadItem(const unordered_map<int, HeroCard*>* heroMap)
 			setItemAttribute(property, item);
 			item->setBtnTexture(_normalTexture, _pressedTexture);
 			item->setBtnTag(index);
-			item->setBtnCallBack([&](Ref* pSender, Widget::TouchEventType type) {
-				if (type == Widget::TouchEventType::ENDED)
-				{
-					auto btn = dynamic_cast<Button*>(pSender);
-					int tag = btn->getTag();
+			item->setBtnCallBack([&](Ref* pSender) {
 
-					//调用用户设置的回调
-					if (_func)
-					{
-						//设置选中的物品id
-						btn->setUserData((void*)_objectIdVector.at(tag));
-						_func(pSender, type);
-					}
+				auto btn = dynamic_cast<Button*>(pSender);
+				int tag = btn->getTag();
+
+				//调用用户设置的回调
+				if (_func)
+				{
+					//设置选中的物品id
+					btn->setUserData((void*)_objectIdVector.at(tag));
+					_func(pSender);
 				}
 			});
 
@@ -290,38 +316,23 @@ void DisplayLayer::loadItem(const unordered_map<int, HeroCard*>* heroMap)
 	}
 
 	//设置列表上边容量使用信息
-	setTipLabel(HERO);
+	setTipLabel(OT_HERO);
 }
 
-void DisplayLayer::setItemType(ObjectType type)
+void DisplayLayer::setDisplayType(ObjectType type)
 {
-	CCAssert(!_normalTexture.empty() && !_pressedTexture.empty(), "please call 'setBtnTexture()',before call this...");
-
-	auto data = GameData::getInstance();
-
-	switch (type)
-	{
-	case EQUIPMENT:
-		loadItem(data->getEquipmentMap());
-		break;
-	case HERO:
-		loadItem(data->getHeroCardMap());
-		break;
-	default:
-		break;
-	}
-	
+	_type = type;
 }
 
-void DisplayLayer::setBtnCallBack(std::function<void(cocos2d::Ref*pSender, cocos2d::ui::Widget::TouchEventType type)> func)
+void DisplayLayer::setBtnCallBack(std::function<void(cocos2d::Ref*pSender)> func)
 {
 	_func = func;
 }
 
-void DisplayLayer::setBtnTxture(const std::string normal, const std::string pressed)
+void DisplayLayer::setBtnTxture(const std::string& normal, const std::string& pressed)
 {
 	_normalTexture = normal;
-	_pressedTexture = pressed; 
+	_pressedTexture = pressed;
 }
 
 void DisplayLayer::setItemColor(DisplayListItem * item, int star)
@@ -341,10 +352,10 @@ void DisplayLayer::setItemColor(DisplayListItem * item, int star)
 		color = Color4B::GREEN;
 		break;
 	case 4:
-		color = Color4B(255, 0, 255, 255);
+		color = Color4B::MAGENTA;
 		break;
 	case 5:
-		color = Color4B(255, 102, 0, 255);
+		color = Color4B::ORANGE;
 		break;
 	default:
 		break;

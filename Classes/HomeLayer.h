@@ -19,12 +19,12 @@
 
 enum HomeMenuType
 {
-	MENU_EQUIPMENT,
-	MENU_HERO,
-	MENU_LOGIN,
-	MENU_LEVEL_UP,
-	MENU_ABOUT,
-	MENU_AUDIO
+	HMT_EQUIPMENT,
+	HMT_HERO,
+	HMT_LOGIN,
+	HMT_LEVEL_UP,
+	HMT_ABOUT,
+	HMT_AUDIO
 };
 
 class HomeLayer : public cocos2d::Layer{

@@ -2,7 +2,7 @@
 // Copyright (C), 2016-2020, CS&S. Co., Ltd.
 // File name: 	DisplayLayer.h
 // Author:		 Metoor
-// Version: 	1.0 
+// Version: 	1.0
 // Date: 		2016/11/07
 // Contact: 	caiufen@qq.com
 // Description: 	create by vs2015pro
@@ -19,8 +19,9 @@
 
 enum ObjectType
 {
-	EQUIPMENT,
-	HERO,
+	OT_NONE,
+	OT_EQUIPMENT,
+	OT_HERO,
 };
 
 //前置声明
@@ -31,7 +32,7 @@ struct EquipmentProperty;
 struct HeroCardProperty;
 
 
-class DisplayLayer : public cocos2d::Layer{
+class DisplayLayer : public cocos2d::Layer {
 public:
 	DisplayLayer();
 	~DisplayLayer();
@@ -39,21 +40,23 @@ public:
 	virtual bool init() override;
 
 	//设置要显示的类型，显示装备或英雄卡牌
-	void setItemType(ObjectType type);
+	void setDisplayType(ObjectType type);
 
 	//设置item里面的按钮点击事件回调
-	void setBtnCallBack(std::function<void(cocos2d::Ref * pSender, cocos2d::ui::Widget::TouchEventType type)> func);
+	void setBtnCallBack(std::function<void(cocos2d::Ref * pSender)> func);
 
 	//设置item里面按钮的图片
-	void setBtnTxture(std::string normal, const std::string pressed);
+	void setBtnTxture(const std::string& normal, const std::string& pressed);
 
 private:
 	void loadUI();
-	
+
+	void load();
+
 	//通过map来生成item
 	void loadItem(const std::unordered_map<int, Equipment*>* equipmentMap);
 	void loadItem(const std::unordered_map<int, HeroCard*>* heroMap);
-	
+
 	//设置列表显示的当前已用数量和总得容量，如:30/50
 	void setTipLabel(ObjectType type);
 
@@ -64,7 +67,7 @@ private:
 	void setItemAttribute(const EquipmentProperty* property, DisplayListItem* item);
 
 	//更新指定物品(装备或英雄)id的item的属性
-	void updateItemAttribute(ObjectType type,  int objectId, const int itemId);
+	void updateItemAttribute(ObjectType type, int objectId, const int itemId);
 
 	void setItemColor(DisplayListItem* item, int star);
 
@@ -89,6 +92,9 @@ private:
 	//记录点击按钮点击的索引
 	int _clickedIndex;
 
+	//保存要显示的物品类型
+	ObjectType _type;
+
 	//保存item里面的按钮纹理图片
 	std::string _normalTexture;
 	std::string _pressedTexture;
@@ -101,7 +107,7 @@ private:
 	std::vector<int> _objectIdVector;
 
 	//保存item按钮的点击事件回调
-	std::function<void(cocos2d::Ref * pSender, cocos2d::ui::Widget::TouchEventType type)> _func;
+	std::function<void(cocos2d::Ref * pSender)> _func;
 };
 
 #endif // DISPLAYLAYER_H_

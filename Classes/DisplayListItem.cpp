@@ -2,7 +2,7 @@
 // Copyright (C), 2016-2020, CS&S. Co., Ltd.
 // File name: 	DisplayListItem.cpp
 // Author:		 Metoor
-// Version: 	1.0 
+// Version: 	1.0
 // Date: 		2016/11/07
 // Contact: 	caiufen@qq.com
 // Description: 	create by vs2015pro
@@ -36,7 +36,7 @@ bool DisplayListItem::init()
 	return true;
 }
 
-void DisplayListItem::setBtnCallBack(function<void(Ref*pSender, Widget::TouchEventType type)> func)
+void DisplayListItem::setBtnCallBack(function<void(Ref*pSender)> func)
 {
 	_btn->addTouchEventListener([func](Ref*pSender, Widget::TouchEventType type) {
 		if (type == Widget::TouchEventType::BEGAN)
@@ -45,11 +45,11 @@ void DisplayListItem::setBtnCallBack(function<void(Ref*pSender, Widget::TouchEve
 			AudioManager::getInstance()->playClickEffect();
 		}
 
-		//执行用户自定义事件
-		if (func)
+		if (type == Widget::TouchEventType::ENDED)
 		{
-			func(pSender, type);
+			func(pSender);
 		}
+		
 	});
 }
 
@@ -58,28 +58,28 @@ void DisplayListItem::setBtnTag(const int tag)
 	_btn->setTag(tag);
 }
 
-void DisplayListItem::setBtnTexture(const std::string nor, const std::string pressed)
+void DisplayListItem::setBtnTexture(const std::string& nor, const std::string& pressed)
 {
 	_btn->loadTextureNormal(nor, Widget::TextureResType::PLIST);
 	_btn->loadTexturePressed(pressed, Widget::TextureResType::PLIST);
 	_btn->loadTextureDisabled(pressed, Widget::TextureResType::PLIST);
 }
 
-void DisplayListItem::setLabelText(ItemLabelType type, const std::string content)
+void DisplayListItem::setLabelText(ItemLabelType type, const std::string& content)
 {
 	switch (type)
 	{
-	case LEVEL:
+	case ILT_LEVEL:
 		_level->setString(content);
 		break;
-	case NAME:
+	case ILT_NAME:
 		_name->setString(content);
 		break;
-	case TEXT1:
-		_text1->setString(content);
+	case ILT_ATTRIBUTE1:
+		_attribute1->setString(content);
 		break;
-	case TEXT2:
-		_text2->setString(content);
+	case ILT_ATTRIBUTE2:
+		_attribute2->setString(content);
 		break;
 	default:
 		break;
@@ -90,24 +90,24 @@ void DisplayListItem::setLabelColor(ItemLabelType type, cocos2d::Color4B color)
 {
 	switch (type)
 	{
-	case LEVEL:
+	case ILT_LEVEL:
 		_level->setTextColor(color);
 		break;
-	case NAME:
+	case ILT_NAME:
 		_name->setTextColor(color);
 		break;
-	case TEXT1:
-		_text1->setTextColor(color);
+	case ILT_ATTRIBUTE1:
+		_attribute1->setTextColor(color);
 		break;
-	case TEXT2:
-		_text2->setTextColor(color);
+	case ILT_ATTRIBUTE2:
+		_attribute2->setTextColor(color);
 		break;
 	default:
 		break;
 	}
 }
 
-void DisplayListItem::setIco(const std::string icoName, const std::string img1Name, const std::string img2Name)
+void DisplayListItem::setIco(const std::string& icoName, const std::string& img1Name, const std::string& img2Name)
 {
 	_ico->loadTexture(icoName, Widget::TextureResType::PLIST);
 	_img1->loadTexture(img1Name, Widget::TextureResType::PLIST);
@@ -128,7 +128,7 @@ void DisplayListItem::loadUI()
 {
 	auto node = CSLoader::createNode(csbName);
 	addChild(node);
-	
+
 	//设置大小
 	setContentSize(node->getContentSize());
 
@@ -139,9 +139,7 @@ void DisplayListItem::loadUI()
 	_star = node->getChildByName<ImageView*>(starName);
 	_img1 = node->getChildByName<ImageView*>(img1Name);
 	_img2 = node->getChildByName<ImageView*>(img2Name);
-	_text1 = node->getChildByName<Text*>(text1Name);
-	_text2 = node->getChildByName<Text*>(text2Name);
+	_attribute1 = node->getChildByName<Text*>(text1Name);
+	_attribute2 = node->getChildByName<Text*>(text2Name);
 	_btn = node->getChildByName<Button*>(btnName);
-
-	
 }

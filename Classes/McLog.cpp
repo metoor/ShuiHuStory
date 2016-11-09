@@ -2,7 +2,7 @@
 // Copyright (C), 2016-2020, CS&S. Co., Ltd.
 // File name: 	McLog.cpp
 // Author:		 Metoor
-// Version: 	1.0 
+// Version: 	1.0
 // Date: 		2016/11/07
 // Contact: 	caiufen@qq.com
 // Description: 	create by vs2015pro
@@ -25,12 +25,12 @@ McLog::~McLog()
 	saveLog();
 }
 
-void McLog::addWaring(std::string msg, std::string fileName, int line)
+void McLog::addWaring(const ::string& msg, const std::string& fileName, int line)
 {
 	addLog(msg, true, fileName, line);
 }
 
-void McLog::addError(std::string msg, std::string fileName, int line)
+void McLog::addError(const std::string& msg, const std::string& fileName, int line)
 {
 	//记录是否发生错误
 	_isError = true;
@@ -39,7 +39,7 @@ void McLog::addError(std::string msg, std::string fileName, int line)
 
 }
 
-void McLog::addLog(std::string msg, bool isWaring, std::string fileName, int line)
+void McLog::addLog(const std::string& msg, bool isWaring, const std::string& fileName, int line)
 {
 	string flag = "---Error---";
 	if (isWaring)
@@ -60,7 +60,7 @@ void McLog::saveLog()
 		path.append(_fileName);
 
 		ofstream out(path, ios::app);
-		
+
 		if (out.is_open())
 		{
 			out << _log;

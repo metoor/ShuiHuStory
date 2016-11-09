@@ -13,6 +13,7 @@
 #include "AudioManager.h"
 #include "DisplayLayer.h"
 #include "ConstantDefine.h"
+#include "DetialsLayer.h"
 
 USING_NS_CC;
 using namespace ui;
@@ -65,52 +66,66 @@ Layer* HomeLayer::createMenuLayer(HomeMenuType type)
 
 	switch (type)
 	{
-	case MENU_EQUIPMENT:
+	case HMT_EQUIPMENT:
 	{
 		auto displayLayer = DisplayLayer::create();
 		displayLayer->setBtnTxture(btnDetails1, btnDetails2);
-		
-		//列表里item里的按钮回调
-		displayLayer->setBtnCallBack([](Ref* pSender, Widget::TouchEventType type) {
-			if (type == Widget::TouchEventType::ENDED)
-			{
-				auto btn = static_cast<Button*>(pSender);
-				int id = (int)btn->getUserData();
+		displayLayer->setDisplayType(OT_EQUIPMENT);
 
-				log("----%d", id);
-			}
+		//列表里item里的按钮回调
+		displayLayer->setBtnCallBack([&](Ref* pSender) {
+			auto btn = static_cast<Button*>(pSender);
+			int id = (int)btn->getUserData();
+
+			//创建装备详情层并显示
+			auto detailsLayer = DetialsLayer::create();
+			detailsLayer->initUiWithId(id, DT_EQUIPMENT);
+			detailsLayer->setBtnIntensifyCallBack([](Ref* pSender, Widget::TouchEventType type) {
+				log("intensify clicked...");
+			});
+
+			detailsLayer->setBtnLevelupCallBack([](Ref* pSender, Widget::TouchEventType type) {
+				log("levelup clicked...");
+			});
+			addChild(detailsLayer);
 		});
-		displayLayer->setItemType(EQUIPMENT);
+
 		layer = displayLayer;
 		break;
 	}
-	case MENU_HERO:
+	case HMT_HERO:
 	{
 		auto displayLayer = DisplayLayer::create();
 		displayLayer->setBtnTxture(btnDetails1, btnDetails2);
+		displayLayer->setDisplayType(OT_HERO);
 
 		//列表里item里的按钮回调
-		displayLayer->setBtnCallBack([](Ref* pSender, Widget::TouchEventType type) {
-			if (type == Widget::TouchEventType::ENDED)
-			{
-				auto btn = static_cast<Button*>(pSender);
-				int id = (int)btn->getUserData();
+		displayLayer->setBtnCallBack([&](Ref* pSender) {
+			auto btn = static_cast<Button*>(pSender);
+			int id = (int)btn->getUserData();
 
-				log("----%d", id);
-			}
+			//创建英雄卡牌详情层并显示
+			auto detailsLayer = DetialsLayer::create();
+			detailsLayer->initUiWithId(id, DT_HERO);
+			detailsLayer->setBtnIntensifyCallBack([](Ref* pSender, Widget::TouchEventType type) {
+				log("intensify clicked...");
+			});
+			detailsLayer->setBtnLevelupCallBack([](Ref* pSender, Widget::TouchEventType type) {
+				log("levelup clicked...");
+			});
+			addChild(detailsLayer);
 		});
 
-		displayLayer->setItemType(HERO);
 		layer = displayLayer;
 		break;
 	}
-	case MENU_LOGIN:
+	case HMT_LOGIN:
 		break;
-	case MENU_LEVEL_UP:
+	case HMT_LEVEL_UP:
 		break;
-	case MENU_ABOUT:
+	case HMT_ABOUT:
 		break;
-	case MENU_AUDIO:
+	case HMT_AUDIO:
 		break;
 	default:
 		break;

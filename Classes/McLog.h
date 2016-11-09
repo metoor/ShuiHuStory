@@ -2,7 +2,7 @@
 // Copyright (C), 2016-2020, CS&S. Co., Ltd.
 // File name: 	McLog.h
 // Author:		 Metoor
-// Version: 	1.0 
+// Version: 	1.0
 // Date: 		2016/11/07
 // Contact: 	caiufen@qq.com
 // Description: 	create by vs2015pro
@@ -14,17 +14,17 @@
 #include <string>
 #include <cstdio>
 
-class McLog{
+class McLog {
 public:
 	McLog(std::string fileName = "log.me");
 	~McLog();
 
 	//msg:错误描述，fileName:出错的文件名，line:出错的行数
-	void addWaring(std::string msg, std::string fileName, int line);
-	void addError(std::string msg, std::string fileName, int line);
-	
+	void addWaring(const std::string& msg, const std::string& fileName, int line);
+	void addError(const std::string& msg, const std::string& fileName, int line);
+
 private:
-	void addLog(std::string msg, bool isWaring, std::string fileName, int line);
+	void addLog(const std::string& msg, bool isWaring, const std::string& fileName, int line);
 	void saveLog();
 
 private:
