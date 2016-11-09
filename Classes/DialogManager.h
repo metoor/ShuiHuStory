@@ -12,6 +12,8 @@
 #define __DIALOGMANAGER_H__
 
 #include "cocos2d.h"
+#include <functional>
+
 
 class DialogManager{
 public:
@@ -20,8 +22,12 @@ public:
 	//获得实例
 	static DialogManager* getInstance();
 
-	//显示一个提示框
-	void showTip(const std::string* text, float second = 3.0f, cocos2d::Color4B color = cocos2d::Color4B(255, 0, 0, 255), int size = 35);
+	//显示一个非模态提示框
+	void showTips(const std::string& content, cocos2d::Color4B color = cocos2d::Color4B::RED, int size = 35);
+
+	//显示模态对话框
+	void showDialog(std::string title, std::string content, std::function<void(cocos2d::Ref * pSender)> func);
+	void showDialog(std::string title, std::string content, cocos2d::Color4B color, int contentSize , std::function<void(cocos2d::Ref * pSender)> func);
 
 	//销毁实例
 	void destoryInstance();
@@ -29,14 +35,8 @@ public:
 private:
 	DialogManager();
 
-	//创建一个提示对话框
-	cocos2d::Node* createTip(const std::string* text, cocos2d::Color4B color, int size);
-
 private:
-	//常量名称
-	const std::string csbName_TipLayer = "layers/Tools/tipDialog.csb";
-
-private:
+	//实例
 	static DialogManager* _instance;
 };
 
