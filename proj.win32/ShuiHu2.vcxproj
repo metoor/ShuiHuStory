@@ -149,9 +149,10 @@ xcopy /Y /Q "$(COCOS_X_ROOT)\cocos2d-x-3.10\prebuilt\win32\*.*" "$(OutDir)"
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\AudioManager.cpp" />
     <ClCompile Include="..\Classes\Config.cpp" />
+    <ClCompile Include="..\Classes\DetialsLayer.cpp" />
+    <ClCompile Include="..\Classes\Dialog.cpp" />
     <ClCompile Include="..\Classes\DialogManager.cpp" />
     <ClCompile Include="..\Classes\Equipment.cpp" />
-    <ClCompile Include="..\Classes\DetialsLayer.cpp" />
     <ClCompile Include="..\Classes\DisplayLayer.cpp" />
     <ClCompile Include="..\Classes\FirstScene.cpp" />
     <ClCompile Include="..\Classes\GameData.cpp" />
@@ -163,6 +164,7 @@ xcopy /Y /Q "$(COCOS_X_ROOT)\cocos2d-x-3.10\prebuilt\win32\*.*" "$(OutDir)"
     <ClCompile Include="..\Classes\DisplayListItem.cpp" />
     <ClCompile Include="..\Classes\McLog.cpp" />
     <ClCompile Include="..\Classes\ParticleLayer.cpp" />
+    <ClCompile Include="..\Classes\Tips.cpp" />
     <ClCompile Include="..\Classes\Tools.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -171,9 +173,10 @@ xcopy /Y /Q "$(COCOS_X_ROOT)\cocos2d-x-3.10\prebuilt\win32\*.*" "$(OutDir)"
     <ClInclude Include="..\Classes\AudioManager.h" />
     <ClInclude Include="..\Classes\BlockLayer.h" />
     <ClInclude Include="..\Classes\Config.h" />
+    <ClInclude Include="..\Classes\DetialsLayer.h" />
+    <ClInclude Include="..\Classes\Dialog.h" />
     <ClInclude Include="..\Classes\DialogManager.h" />
     <ClInclude Include="..\Classes\Equipment.h" />
-    <ClInclude Include="..\Classes\DetialsLayer.h" />
     <ClInclude Include="..\Classes\DisplayLayer.h" />
     <ClInclude Include="..\Classes\FirstScene.h" />
     <ClInclude Include="..\Classes\GameData.h" />
@@ -186,6 +189,7 @@ xcopy /Y /Q "$(COCOS_X_ROOT)\cocos2d-x-3.10\prebuilt\win32\*.*" "$(OutDir)"
     <ClInclude Include="..\Classes\McLog.h" />
     <ClInclude Include="..\Classes\ParticleLayer.h" />
     <ClInclude Include="..\Classes\ConstantDefine.h" />
+    <ClInclude Include="..\Classes\Tips.h" />
     <ClInclude Include="..\Classes\Tools.h" />
     <ClInclude Include="..\Classes\TypeStruct.h" />
     <ClInclude Include="main.h" />

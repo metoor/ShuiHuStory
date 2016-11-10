@@ -1,16 +1,5 @@
 <UserData Version="3.10.0.0">
   <Properties>
-    <Item Key="TabsParamsKey">
-      <Value ctype="TabsInfo">
-        <OpenedDocuments>
-          <FilePathData Path="layers/homeLayer/detialsLayer.csd" />
-          <FilePathData Path="layers/homeLayer/displayLayer.csd" />
-          <FilePathData Path="layers/homeLayer/heroDisplayLayer.csd" />
-          <FilePathData Path="layers/homeLayer/displayListItem.csd" />
-        </OpenedDocuments>
-        <ActiveDocument Path="layers/homeLayer/displayListItem.csd" />
-      </Value>
-    </Item>
     <Item Key="CocosRecentOperation">
       <Value ctype="CocosRecentOperation">
         <LastPublishType Value="Resource" />

@@ -2,6 +2,14 @@
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
 
+
+#include "Tools.h"
+#include "McLog.h"
+#include "Dialog.h"
+#include "Tips.h"
+#include "DialogManager.h"
+#include "I18N.h"
+
 USING_NS_CC;
 using namespace ui;
 using namespace cocostudio::timeline;
@@ -71,10 +79,16 @@ bool HelloWorld::init()
 	//¼ÓÃÜ²âÊÔ
 	//string content = FileUtils::getInstance()->getStringFromFile("test.data");
 
+	
+
+
     return true;
 }
 
 void HelloWorld::menuCloseCallback(Ref * psender)
 {
+	I18N::getInstance()->loadStringFile("string.plist");
 
+	McLog mc;
+	mc.addError("this is a Test...", __FILE__, __LINE__);
 }

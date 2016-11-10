@@ -65,7 +65,7 @@ void DialogManager::showTips(const std::string& content, cocos2d::Color4B color,
 	}
 }
 
-void DialogManager::showDialog(std::string title, std::string content, std::function<void(cocos2d::Ref*pSender)> func)
+void DialogManager::showDialog(const std::string& title, const std::string& content, std::function<void(cocos2d::Ref * pSender)> func, bool isDisplayCancelBtn, cocos2d::Color4B color, int contentSize)
 {
 	auto currentScene = Director::getInstance()->getRunningScene();
 	auto dialog = dynamic_cast<Dialog*>(currentScene->getChildByName(dialogTagName));
@@ -74,30 +74,11 @@ void DialogManager::showDialog(std::string title, std::string content, std::func
 	{
 		//当前场景没有正在显示的会话框，创建对话框
 		auto dialog = Dialog::create();
-		dialog->initDialog(title, content, func);
-		currentScene->addChild(dialog, dialog_z_order, dialogTagName);
-	}
-	else
-	{
-		CCASSERT(false, "scene has a tips displaying...");
-
-		McLog mc;
-		mc.addWaring("scene has a tips displaying", __FILE__, __LINE__);
-	}
-	
-}
-
-void DialogManager::showDialog(std::string title, std::string content, cocos2d::Color4B color, int contentSize, std::function<void(cocos2d::Ref*pSender)> func)
-{
-	auto currentScene = Director::getInstance()->getRunningScene();
-	auto dialog = dynamic_cast<Dialog*>(currentScene->getChildByName(dialogTagName));
-
-	if (!dialog)
-	{
-		//当前场景没有正在显示的会话框，创建对话框
-		auto dialog = Dialog::create();
-		dialog->initDialog(title, content, func);
+		dialog->setTitle(title);
+		dialog->setContent(content);
+		dialog->setBtnOkCallBack(func);
 		dialog->setContentColor(color);
+		dialog->setCanceBtnlDisplay(isDisplayCancelBtn);
 		dialog->setFontSize(contentSize);
 		currentScene->addChild(dialog, dialog_z_order, dialogTagName);
 	}
@@ -108,6 +89,7 @@ void DialogManager::showDialog(std::string title, std::string content, cocos2d::
 		McLog mc;
 		mc.addWaring("scene has a tips displaying", __FILE__, __LINE__);
 	}
+	
 }
 
 void DialogManager::destoryInstance()

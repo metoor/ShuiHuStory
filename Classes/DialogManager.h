@@ -26,8 +26,7 @@ public:
 	void showTips(const std::string& content, cocos2d::Color4B color = cocos2d::Color4B::RED, int size = 35);
 
 	//显示模态对话框
-	void showDialog(std::string title, std::string content, std::function<void(cocos2d::Ref * pSender)> func);
-	void showDialog(std::string title, std::string content, cocos2d::Color4B color, int contentSize , std::function<void(cocos2d::Ref * pSender)> func);
+	void showDialog(const std::string& title, const std::string& content, std::function<void(cocos2d::Ref * pSender)> func, bool isDisplayCancelBtn = true, cocos2d::Color4B color = cocos2d::Color4B::RED, int contentSize = 35);
 
 	//销毁实例
 	void destoryInstance();

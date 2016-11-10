@@ -74,6 +74,11 @@ void Dialog::setContentColor(cocos2d::Color4B color)
 	_content->setTextColor(color);
 }
 
+void Dialog::setCanceBtnlDisplay(bool isDisplay)
+{
+	_btnClose->setVisible(isDisplay);
+}
+
 void Dialog::setContent(const std::string & content)
 {
 	_content->setString(content);

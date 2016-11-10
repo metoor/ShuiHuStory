@@ -26,6 +26,11 @@ enum DisplayType
 	DT_HERO
 };
 
+enum BtnType{
+	BT_LEVEL_UP,
+	BT_INTENSIFY
+};
+
 //显示装备和英雄的详细信息
 class DetialsLayer : public cocos2d::Layer
 {
@@ -44,6 +49,30 @@ public:
 
 private:
 	void loadUI();
+
+	//计算物品需要的花费（升级 BT_LEVEL_UP）者钻石（钻石 BT_INTENSIFY）
+	int calculateCost(BtnType type);
+
+	//计算升级需要的金币
+	int calculateGold();
+
+	//计算强化需要的钻石
+	int calculateDiamond();
+
+	//查询是否有多余的同类型的物品
+	int findSameTypeObject();
+
+	//升级装备
+	void levelupEquiupment();
+
+	//升级英雄
+	void levelupHero();
+
+	//强化装备
+	void intensifyEquipment();
+
+	//强化英雄
+	void intensifyHero();
 
 	//根据物品的属性创建描述字符
 	std::string propertyToString(const EquipmentProperty* property);

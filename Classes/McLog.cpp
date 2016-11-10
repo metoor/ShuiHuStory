@@ -11,6 +11,9 @@
 #include "McLog.h"
 #include "cocos2d.h"
 #include <fstream>
+#include "DialogManager.h"
+#include "I18N.h"
+#include "ConstantDefine.h"
 
 using namespace std;
 
@@ -73,6 +76,10 @@ void McLog::saveLog()
 	//如果发生错误结束游戏
 	if (_isError)
 	{
-		cocos2d::Director::getInstance()->end();
+		auto i18n = I18N::getInstance();
+
+		DialogManager::getInstance()->showDialog(i18n->getStringByKey(error), i18n->getStringByKey(errorContent), [](cocos2d::Ref* pSender) {
+			cocos2d::Director::getInstance()->end();
+		}, false);
 	}
 }

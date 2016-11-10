@@ -2,7 +2,7 @@
 // Copyright (C), 2016-2020, CS&S. Co., Ltd.
 // File name: 	ConstantDefine.h
 // Author:		 Metoor
-// Version: 	1.0 
+// Version: 	1.0
 // Date: 		2016/10/20
 // Contact: 	caiufen@qq.com
 // Description: 	create by vs2015pro
@@ -42,16 +42,29 @@ const int max_diamond = 10000;				//玩家能同时拥有的最大专事数
 const int max_level = 100;					//玩家最大等级
 const int start_exp = 300;					//玩家最开始获得的经验值
 const float start_exp_rate = 1.1f;			//计算当前等级升级所需经验时的比率
+const int init_unique_num = 1000;			//唯一数的起始大小
 
 const int none = -1;						//表示没有或者英雄装备位置没有装备或者表示装备没有使用者
 const int max_equipment_num = 6;			//角色可以佩戴的装备数量（6种类型）
 const int max_battle_hero_num = 6;			//最多能有6个英雄上阵
+
+const int init_glod = 5000;					//玩家初始获得的金币
+const int init_level = 1;					//玩家初始的等级
+const int init_diamond = 1200;				//玩家初始获得的钻石
+
+const int intensify_base_diamond = 25;		//强化装备和卡牌的时候需要的基础钻石
+const int levelup_base_gold = 300;		//升级装备和强化的时候需要的基础金币
 
 
 const std::string goldName = "gold";		//用来保存金币数是的key
 const std::string diamondName = "diamond";	//用来保存钻石数的key
 const std::string levelName = "level";		//保存等级的key
 const std::string expName = "exp";			//保存经验的key
+const std::string uniqueNumName = "uniqueIdentifierNum"; //用来生成Id的唯一数
+
+//出战英雄保存时的key
+const std::string battleSaveKey[max_battle_hero_num] = { "0", "1", "2", "3", "4", "5" };
+
 
 
 //-------------------------------------------------------------
@@ -85,6 +98,19 @@ const std::string mp_d = "mp_d";
 const std::string define_d = "define_d";
 const std::string mDefine_d = "mDefine_d";
 
+//错误对话框标题和提示内容资源名称
+const std::string error = "error";
+const std::string errorContent = "errorContent";
+
+const std::string levelupTitle = "levelupTitle";		//中文字符'升级'资源名称
+const std::string intensifyTitle = "intensifyTitle";	//中文字符'强化'资源名称
+const std::string levelTips = "levelTips";				//升级提示费用
+const std::string intensifyTips = "intensifyTips";	//强化提示费用
+const std::string notEnoughGold = "notEnoughGold";		//金币不够
+const std::string notEnougMaterial = "notEnougMaterial";//材料不够
+const std::string notEnougDiamond = "notEnoughDiamond";	//钻石不够
+const std::string succed = "succed";					//成功
+const std::string failed = "failed";					//失败
 
 //---------------给控件设置的标签名字（node->setName()）-----------------------------------
 const std::string blockTagName = "blockName";		//BlockLayer的标签名字，用来通过标签名字获取实例对象

@@ -23,7 +23,7 @@ public:
 	void loadStringFile(std::string fileName);
 
 	//通过键值获取中文字符串---注意：调用本方法前，请确保已经调用过loadStringFile
-	const std::string* getStringByKey(std::string key);
+	const std::string& getStringByKey(const std::string& key);
 
 	void dstoryInstance();
 

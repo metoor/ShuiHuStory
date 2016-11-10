@@ -37,6 +37,9 @@ public:
 private:
 	void loadUI();
 
+	//更新用户数据
+	void updateUserData();
+
 	//创建菜单对应的菜单层
 	cocos2d::Layer* createMenuLayer(HomeMenuType type);
 	
@@ -45,11 +48,20 @@ private:
 private:
 	//常量名称
 	const std::string csbName = "layers/homeLayer/homeLayer.csb";
+	const std::string levelNumName = "levelNum";
+	const std::string expNumName = "expNum";
+	const std::string goldNumName = "goldNum";
+	const std::string diamodNumName = "diamondNum";
+	const std::string expBarName = "expBar";
+
 	const int start = -1;
 
 private:
 	//记录下上次点击的菜单指针
 	cocos2d::ui::Button* _preMenu;
+
+	cocos2d::ui::Text *_goldLabel, *_dianmodLabel, *_levelLabel, *_expLabel;
+	cocos2d::ui::LoadingBar* _expBar;
 
 	//存储每个菜单对应的层指针
 	cocos2d::Layer* _layerPointer[ARRAY_SIZE];

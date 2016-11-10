@@ -23,12 +23,12 @@ public:
 	virtual bool init() override;
 	CREATE_FUNC(Dialog);
 
-	
-	//移除动画并清理资源
-	void endAnimation();
 
 	//设置显示文本的颜色
 	void setContentColor(cocos2d::Color4B color);
+
+	//设置是否显示取消按钮
+	void setCanceBtnlDisplay(bool isDisplay);
 
 	//设置显示文本
 	void setContent(const std::string & content);
@@ -51,6 +51,9 @@ private:
 	void startAnimation();
 
 	void onEnterTransitionDidFinish() override;
+
+	//移除动画并清理资源
+	void endAnimation();
 
 private:
 	const std::string csbName = "layers/Tools/dialogLayer.csb";

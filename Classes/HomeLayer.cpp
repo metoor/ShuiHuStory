@@ -12,8 +12,8 @@
 #include "cocostudio/CocoStudio.h"
 #include "AudioManager.h"
 #include "DisplayLayer.h"
-#include "ConstantDefine.h"
 #include "DetialsLayer.h"
+#include "GameData.h"
 
 USING_NS_CC;
 using namespace ui;
@@ -43,6 +43,8 @@ bool HomeLayer::init()
 		_layerPointer[index] = nullptr;
 	}
 
+	updateUserData();
+
 	return true;
 }
 
@@ -52,12 +54,34 @@ void HomeLayer::loadUI()
 	auto homeLayer = CSLoader::createNode(csbName);
 	addChild(homeLayer);
 
+	_dianmodLabel = homeLayer->getChildByName<Text*>(diamodNumName);
+	_goldLabel = homeLayer->getChildByName<Text*>(goldNumName);
+	_levelLabel = homeLayer->getChildByName<Text*>(levelNumName);
+	_expLabel = homeLayer->getChildByName<Text*>(expNumName);
+	_expBar = homeLayer->getChildByName<LoadingBar*>(expBarName);
+
 	//绑定菜单的回调方法
 	for (int index = 0; index < ARRAY_SIZE; ++index)
 	{
 		auto menu = homeLayer->getChildByTag<Button*>(index);
 		menu->addTouchEventListener(CC_CALLBACK_2(HomeLayer::menuCallBack, this));
 	}
+}
+
+void HomeLayer::updateUserData()
+{
+	auto data = GameData::getInstance();
+
+	_levelLabel->setString(StringUtils::format("%d", data->getLevel()));
+	_goldLabel->setString(StringUtils::format("%d", data->getGold()));
+	_dianmodLabel->setString(StringUtils::format("%d", data->getDiamond()));
+	
+	//设置经验条的当前经验和总得经验
+	int maxExp = data->getExpLimit(start_exp_rate, data->getLevel());
+	int currentExp = data->getExp();
+
+	_expLabel->setString(StringUtils::format("%d/%d", currentExp, maxExp));
+	_expBar->setPercent(currentExp * 1.0f / maxExp);
 }
 
 Layer* HomeLayer::createMenuLayer(HomeMenuType type)

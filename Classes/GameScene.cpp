@@ -15,6 +15,7 @@
 #include "HomeLayer.h"
 #include "AudioManager.h"
 #include "ConstantDefine.h"
+#include "I18N.h"
 
 USING_NS_CC;
 using namespace ui;
@@ -24,14 +25,15 @@ using namespace std;
 GameScene::GameScene()
 	:_preMenu(nullptr)
 {
-	auto gameData = GameData::getInstance();
-	gameData->readHeroCard();
-	gameData->readEquipment();
+	//初始化游戏数据
+	GameData::getInstance();
 
 	AudioManager::getInstance()->preLoadGlobalAudio();
 
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("head.plist", "head.pvr.ccz");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("equipment.plist", "equipment.pvr.ccz");
+	
+	I18N::getInstance()->loadStringFile("string.plist");
 }
 
 GameScene::~GameScene()
@@ -40,6 +42,7 @@ GameScene::~GameScene()
 	gameData->saveUniqueIdentifierNumToFile();
 	gameData->saveEquipment();
 	gameData->saveHeroCard();
+	gameData->saveBattleHero();
 
 	auto audio = AudioManager::getInstance();
 	audio->unLoadGlobalEffect();
@@ -47,7 +50,7 @@ GameScene::~GameScene()
 	gameData->destoryInstance();
 	audio->destoryInstance();
 
-	//因为Button是引用计数，所以讲引用全部置空
+	//因为Button是引用计数，所以将引用全部置空
 	initArrayToNullptr();
 }
 

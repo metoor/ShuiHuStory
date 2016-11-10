@@ -2,7 +2,7 @@
 // Copyright (C), 2016-2020, CS&S. Co., Ltd.
 // File name: 	GameData.cpp
 // Author:		 Metoor
-// Version: 	1.0 
+// Version: 	1.0
 // Date: 		2016/11/07
 // Contact: 	caiufen@qq.com
 // Description: 	create by vs2015pro
@@ -16,18 +16,22 @@
 #include "Equipment.h"
 #include "HeroCard.h"
 #include "Tools.h"
-#include "ConstantDefine.h"
 #include "McLog.h"
 
 USING_NS_CC;
 
 GameData* GameData::_gameData = nullptr;
 
-	
+
 
 GameData::~GameData()
 {
+	saveUserData();
+	saveBattleHero();
+	saveEquipment();
+	saveHeroCard();
 	saveUniqueIdentifierNumToFile();
+
 	destoryEquipmentMapElement();
 	destoryHeroMapElement();
 }
@@ -35,6 +39,10 @@ GameData::~GameData()
 GameData::GameData()
 {
 	readUniqueIdentifierNumFromFile();
+	readBattleHero();
+	readUserData();
+	readEquipment();
+	readHeroCard();
 }
 
 void GameData::destoryEquipmentMapElement()
@@ -127,6 +135,26 @@ bool GameData::setExp(const int exp)
 	return result;
 }
 
+int GameData::getGold()
+{
+	return _gold;
+}
+
+int GameData::getDiamond()
+{
+	return _diamond;
+}
+
+int GameData::getExp()
+{
+	return _exp;
+}
+
+int GameData::getLevel()
+{
+	return _level;
+}
+
 int GameData::getExpLimit(float x, int level)
 {
 	if (level == 0)
@@ -153,9 +181,9 @@ void GameData::readUserData()
 {
 	auto db = UserDefault::getInstance();
 
-	_gold = Tools::maxInt(0, Tools::minInt(db->getIntegerForKey(goldName.c_str(), 5000), max_gold));
-	_diamond = Tools::maxInt(0, Tools::minInt(db->getIntegerForKey(diamondName.c_str(), 1000), max_diamond));
-	_level = Tools::maxInt(0, Tools::minInt(db->getIntegerForKey(levelName.c_str(), 1), max_level));
+	_gold = Tools::maxInt(0, Tools::minInt(db->getIntegerForKey(goldName.c_str(), init_glod), max_gold));
+	_diamond = Tools::maxInt(0, Tools::minInt(db->getIntegerForKey(diamondName.c_str(), init_diamond), max_diamond));
+	_level = Tools::maxInt(0, Tools::minInt(db->getIntegerForKey(levelName.c_str(), init_level), max_level));
 	_exp = Tools::maxInt(0, db->getIntegerForKey(expName.c_str(), 0));
 }
 
@@ -171,12 +199,30 @@ int GameData::getUniqueIdentifierNum()
 
 void GameData::saveUniqueIdentifierNumToFile()
 {
-	UserDefault::getInstance()->setIntegerForKey("uniqueIdentifierNum", _uniqueIdentifierNum);
+	UserDefault::getInstance()->setIntegerForKey(uniqueNumName.c_str(), _uniqueIdentifierNum);
 }
 
 void GameData::readUniqueIdentifierNumFromFile()
 {
-	_uniqueIdentifierNum = UserDefault::getInstance()->getIntegerForKey("uniqueIdentifierNum", 1000);
+	_uniqueIdentifierNum = UserDefault::getInstance()->getIntegerForKey(uniqueNumName.c_str(), init_unique_num);
+}
+
+void GameData::readBattleHero()
+{
+	//从文件中依次读取出出战英雄的id
+	for (int pos = 0; pos < max_battle_hero_num; ++pos)
+	{
+		_battleHero[pos] = UserDefault::getInstance()->getIntegerForKey(battleSaveKey[pos].c_str(), none);
+	}
+}
+
+void GameData::saveBattleHero()
+{
+	//从文件中依次读取出出战英雄的id
+	for (int pos = 0; pos < max_battle_hero_num; ++pos)
+	{
+		UserDefault::getInstance()->setIntegerForKey(battleSaveKey[pos].c_str(), _battleHero[pos]);
+	}
 }
 
 void GameData::readEquipmentFromJson(string fileName)
@@ -186,7 +232,7 @@ void GameData::readEquipmentFromJson(string fileName)
 	std::string contentStr = FileUtils::getInstance()->getStringFromFile(fileName);
 	doc.Parse<0>(contentStr.c_str());
 
-	if (doc.HasParseError()) 
+	if (doc.HasParseError())
 	{
 		//error
 		CCAssert(false, "Json::cloth.json Reader Parse error!");
@@ -208,7 +254,7 @@ void GameData::readEquipmentFromJson(string fileName)
 		sed.rate = json["rate"].GetInt();
 		sed.star = json["star"].GetInt();
 		sed.user = json["user"].GetInt();
-		
+
 		Equipment* equipment = new Equipment();
 
 		equipment->init(&sed);
@@ -245,7 +291,7 @@ void GameData::readHeroCardFromJson(std::string fileName)
 		shcd.type = json["type"].GetInt();
 		shcd.rate = json["rate"].GetInt();
 		shcd.star = json["star"].GetInt();
-		
+
 		//装备信息
 		shcd.equipmentId[0] = json["e0"].GetInt();
 		shcd.equipmentId[1] = json["e1"].GetInt();
@@ -335,7 +381,7 @@ void GameData::saveHeroCardToFile(std::string fileName)
 		object.AddMember("e3", shd.equipmentId[3], allocator);
 		object.AddMember("e4", shd.equipmentId[4], allocator);
 		object.AddMember("e5", shd.equipmentId[5], allocator);
-		
+
 		array.PushBack(object, allocator);
 	}
 
@@ -437,6 +483,16 @@ void GameData::addHeroCardToMap(HeroCard * heroCard)
 	_heroCardMap.insert({ key, heroCard });
 }
 
+void GameData::deleteHeroCardById(int id)
+{
+	_heroCardMap.erase(id);
+}
+
+void GameData::deleteEquipmentById(int id)
+{
+	_equipmentMap.erase(id);
+}
+
 Equipment* GameData::getEquipmentById(int id)
 {
 	auto iter = _equipmentMap.find(id);
@@ -460,6 +516,32 @@ HeroCard * GameData::getHeroCardById(int id)
 	{
 		//成功找到
 		result = iter->second;
+	}
+
+	return result;
+}
+
+int GameData::getBattleHeroId(int pos)
+{
+	if (Tools::betweenAnd(pos, 0, max_battle_hero_num - 1))
+	{
+		return _battleHero[pos];
+	}
+
+	return 100;
+}
+
+bool GameData::isBattleHero(int id)
+{
+	bool result = false;
+
+	for (int pos = 0; pos < max_battle_hero_num; ++pos)
+	{
+		if (id == _battleHero[pos])
+		{
+			result = true;
+			break;
+		}
 	}
 
 	return result;

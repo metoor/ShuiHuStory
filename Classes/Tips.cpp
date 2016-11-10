@@ -78,7 +78,7 @@ void Tips::onEnterTransitionDidFinish()
 	//淡入淡出动画，完成动画后然或自己销毁
 	this->setOpacity(0.0f);
 
-	auto ani = Sequence::create(FadeIn::create(1.0f), DelayTime::create(3.5f), FadeOut::create(1.0f), CallFunc::create([&]() {
+	auto ani = Sequence::create(FadeIn::create(1.0f), DelayTime::create(3.0f), FadeOut::create(1.0f), CallFunc::create([&]() {
 		this->removeFromParentAndCleanup(true);
 	}), NULL);
 

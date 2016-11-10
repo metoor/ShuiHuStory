@@ -72,18 +72,23 @@ void I18N::loadStringFile(string fileName)
 	}
 }
 
-const string * I18N::getStringByKey(string key)
+const string & I18N::getStringByKey(const std::string& key)
 {
 
 	auto iter = _map->find(key);
 	
 	if (iter != _map->end())
 	{
-		return &(iter->second);
+		return iter->second;
 	}
 	else
 	{
 		//没有匹配到相同的键值
+
+		//错误日志记录
+		McLog mLog;
+		mLog.addWaring("'key' can not find...", __FILE__, __LINE__);
+
 		return nullptr;
 	}
 }

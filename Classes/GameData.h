@@ -13,6 +13,7 @@
 #define __GAMEDATA_H__
 
 #include <unordered_map>
+#include "ConstantDefine.h"
 
 class Equipment;
 class HeroCard;
@@ -30,6 +31,12 @@ public:
 	//如果角色达到最大等级则返回false
 	bool setExp(const int exp);
 	
+	//获得用户数据方法
+	int getGold();
+	int getDiamond();
+	int getExp();
+	int getLevel();
+
 	//获得级别level升级所需要的经验值，X是比例系数
 	int getExpLimit(float x, int level);
 
@@ -51,6 +58,12 @@ public:
 
 	//读取文件中的标识号
 	void readUniqueIdentifierNumFromFile();
+
+	//读取出战英雄
+	void readBattleHero();
+
+	//保存出战英雄
+	void saveBattleHero();
 
 	//从指定文件中获得已获得的装备数据
 	void readEquipmentFromJson(std::string fileName);
@@ -82,11 +95,23 @@ public:
 	//添加一个元数到_heroCardMap
 	void addHeroCardToMap(HeroCard* heroCard);
 
+	//通过id删除玩家已有列表中英雄卡牌
+	void deleteHeroCardById(int id);
+
+	//通过id玩家已有列表中的删除装备
+	void deleteEquipmentById(int id);
+
 	//通过Id获取已经获得的装备
 	Equipment* getEquipmentById(int id);
 
 	//通过Id获取已经获得的英雄卡牌
 	HeroCard* getHeroCardById(int id);
+
+	//获取对应位置的出战英雄id
+	int getBattleHeroId(int pos);
+
+	//判断id是否出战
+	bool isBattleHero(int id);
 
 	//获得装备容器
 	const std::unordered_map<int, Equipment*>* getEquipmentMap();
@@ -104,10 +129,14 @@ private:
 	void destoryHeroMapElement();
 
 private:
+	//用户数据
 	int _gold;
 	int _diamond;
 	int _level;
 	int _exp;
+
+	//保存出战英雄
+	int _battleHero[max_battle_hero_num];
 
 	//保存已获得的装备
 	std::unordered_map<int, Equipment*> _equipmentMap;

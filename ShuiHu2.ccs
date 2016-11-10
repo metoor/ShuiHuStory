@@ -24,6 +24,7 @@
           <Image Name="tipbg.png" />
           <Image Name="worldbg.png" />
           <Image Name="zhanyi.png" />
+          <Image Name="dialogBg.png" />
         </Folder>
         <Folder Name="btns">
           <Folder Name="pvpbtn">
@@ -127,14 +128,14 @@
           <Folder Name="homeLayer">
             <Project Name="detialsLayer.csd" Type="Layer" />
             <Project Name="displayLayer.csd" Type="Layer" />
-            <Project Name="gameSceneBgLayer.csd" Type="Layer" />
-            <Project Name="heroDisplayLayer.csd" Type="Layer" />
-            <Project Name="homeLayer.csd" Type="Layer" />
             <Project Name="displayListItem.csd" Type="Layer" />
+            <Project Name="gameSceneBgLayer.csd" Type="Layer" />
+            <Project Name="homeLayer.csd" Type="Layer" />
             <Project Name="menuLayer.csd" Type="Layer" />
           </Folder>
           <Folder Name="Tools">
-            <Project Name="tipDialog.csd" Type="Layer" />
+            <Project Name="tipLayer.csd" Type="Layer" />
+            <Project Name="dialogLayer.csd" Type="Layer" />
           </Folder>
         </Folder>
         <Folder Name="test">
