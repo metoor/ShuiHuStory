@@ -43,10 +43,6 @@ public:
 	//通过装id初始化Ui数据
 	void initUiWithId(int id, DisplayType type);
 
-	//设置升级/强化按钮的回调
-	void setBtnIntensifyCallBack(std::function<void(cocos2d::Ref * pSender, cocos2d::ui::Widget::TouchEventType type)> func);
-	void setBtnLevelupCallBack(std::function<void(cocos2d::Ref * pSender, cocos2d::ui::Widget::TouchEventType type)> func);
-
 private:
 	void loadUI();
 
@@ -82,7 +78,7 @@ private:
 	void updateAttribute();
 
 	//设置要显示的英雄或装备的名称
-	void setName(const std::string& name);
+	void setName(const std::string name);
 
 	//根据星级设置名字的颜色
 	void setNameColor(int star);

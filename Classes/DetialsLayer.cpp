@@ -76,6 +76,7 @@ void DetialsLayer::loadUI()
 
 	//关闭按钮回调
 	_btnClose->addTouchEventListener(CC_CALLBACK_2(DetialsLayer::btnCloseCallBack, this));
+	
 	_btnIntensify->addTouchEventListener([&](Ref* pSender, Widget::TouchEventType type) {
 		if (type == Widget::TouchEventType::ENDED)
 		{
@@ -99,8 +100,6 @@ void DetialsLayer::loadUI()
 		}
 	});
 }
-
-
 
 int DetialsLayer::calculateCost(BtnType type)
 {
@@ -240,7 +239,10 @@ void DetialsLayer::levelupEquiupment()
 		//判断是否有足够的金币， 因为是要消耗金币所以是负数
 		if (data->setGold(-cost))
 		{
+			//升级条件都满足，升级成功
 			equipment->levelup();
+			//更新属性
+			updateAttribute();
 			dm->showTips(StringUtils::format(I18N::getInstance()->getStringByKey(succed).c_str(), equipment->getProperty()->name->c_str()), Color4B::GREEN);
 		}
 		else
@@ -270,7 +272,10 @@ void DetialsLayer::levelupHero()
 		//判断是否有足够的金币， 因为是要消耗金币所以是负数
 		if (data->setGold(-cost))
 		{
+			//升级条件都满足，升级成功
 			hero->levelup();
+			//更新升级后的属性
+			updateAttribute();
 			dm->showTips(StringUtils::format(I18N::getInstance()->getStringByKey(succed).c_str(), hero->getProperty()->name->c_str()), Color4B::GREEN);
 		}
 		else
@@ -307,8 +312,10 @@ void DetialsLayer::intensifyEquipment()
 			{
 				//删除作为强化材料的装备
 				data->deleteEquipmentById(id);
-
+				//强化成功
 				equipment->intensify();
+				//更新强化后的属性
+				updateAttribute();
 				dm->showTips(StringUtils::format(I18N::getInstance()->getStringByKey(succed).c_str(), equipment->getProperty()->name->c_str()), Color4B::GREEN);
 			}
 			else
@@ -351,8 +358,10 @@ void DetialsLayer::intensifyHero()
 			{
 				//删除作为强化材料的卡牌
 				data->deleteHeroCardById(id);
-
+				//强化成功
 				hero->intensify();
+				//更新强化后的属性
+				updateAttribute();
 				dm->showTips(StringUtils::format(I18N::getInstance()->getStringByKey(succed).c_str(), hero->getProperty()->name->c_str()), Color4B::GREEN);
 			}
 			else
@@ -498,7 +507,7 @@ void DetialsLayer::updateAttribute()
 	}
 }
 
-void DetialsLayer::setName(const std::string& name)
+void DetialsLayer::setName(const std::string name)
 {
 	_nameLabel->setString(name);
 }
@@ -555,8 +564,6 @@ void DetialsLayer::intensify()
 	default:
 		break;
 	}
-
-	updateAttribute();
 }
 
 void DetialsLayer::levelup()
@@ -572,8 +579,6 @@ void DetialsLayer::levelup()
 	default:
 		break;
 	}
-
-	updateAttribute();
 }
 
 void DetialsLayer::startAnimation()
@@ -605,16 +610,9 @@ void DetialsLayer::btnCloseCallBack(cocos2d::Ref * pSender, cocos2d::ui::Widget:
 		//点击音效
 		AudioManager::getInstance()->playClickEffect();
 
+		//发送更新DisplayLayer  item的消息
+		_eventDispatcher->dispatchCustomEvent(msg_update_display_item);
+		
 		endAnimation();
 	}
-}
-
-void DetialsLayer::setBtnIntensifyCallBack(std::function<void(cocos2d::Ref*pSender, cocos2d::ui::Widget::TouchEventType type)> func)
-{
-	_intensifyFun = func;
-}
-
-void DetialsLayer::setBtnLevelupCallBack(std::function<void(cocos2d::Ref*pSender, cocos2d::ui::Widget::TouchEventType type)> func)
-{
-	_levelupFunc = func;
 }

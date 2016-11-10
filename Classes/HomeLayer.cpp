@@ -45,6 +45,8 @@ bool HomeLayer::init()
 
 	updateUserData();
 
+	addUpdateUserDataEventListener();
+
 	return true;
 }
 
@@ -66,6 +68,16 @@ void HomeLayer::loadUI()
 		auto menu = homeLayer->getChildByTag<Button*>(index);
 		menu->addTouchEventListener(CC_CALLBACK_2(HomeLayer::menuCallBack, this));
 	}
+}
+
+void HomeLayer::addUpdateUserDataEventListener()
+{
+	//注册更新数据事件
+	auto listen = EventListenerCustom::create(msg_update_user_data, [&](EventCustom* event) {
+		updateUserData();
+	});
+
+	_eventDispatcher->addEventListenerWithSceneGraphPriority(listen, this);
 }
 
 void HomeLayer::updateUserData()
@@ -104,13 +116,7 @@ Layer* HomeLayer::createMenuLayer(HomeMenuType type)
 			//创建装备详情层并显示
 			auto detailsLayer = DetialsLayer::create();
 			detailsLayer->initUiWithId(id, DT_EQUIPMENT);
-			detailsLayer->setBtnIntensifyCallBack([](Ref* pSender, Widget::TouchEventType type) {
-				log("intensify clicked...");
-			});
-
-			detailsLayer->setBtnLevelupCallBack([](Ref* pSender, Widget::TouchEventType type) {
-				log("levelup clicked...");
-			});
+			
 			addChild(detailsLayer);
 		});
 
@@ -131,12 +137,6 @@ Layer* HomeLayer::createMenuLayer(HomeMenuType type)
 			//创建英雄卡牌详情层并显示
 			auto detailsLayer = DetialsLayer::create();
 			detailsLayer->initUiWithId(id, DT_HERO);
-			detailsLayer->setBtnIntensifyCallBack([](Ref* pSender, Widget::TouchEventType type) {
-				log("intensify clicked...");
-			});
-			detailsLayer->setBtnLevelupCallBack([](Ref* pSender, Widget::TouchEventType type) {
-				log("levelup clicked...");
-			});
 			addChild(detailsLayer);
 		});
 

@@ -25,7 +25,8 @@ using namespace std;
 DisplayLayer::DisplayLayer()
 	:_clickedIndex(none),
 	_func(nullptr),
-	_type(OT_NONE)
+	_type(OT_NONE),
+	_isNeedUpadateUserData(false)
 {
 }
 
@@ -47,7 +48,20 @@ bool DisplayLayer::init()
 
 	loadUI();
 
+	addUpdateDisplayItemEventListener();
+
 	return true;
+}
+
+void DisplayLayer::addUpdateDisplayItemEventListener()
+{
+	//注册更新数据事件
+	auto listen = EventListenerCustom::create(msg_update_display_item, [&](EventCustom* event) {
+		_isNeedUpadateUserData = true;
+		updateItemAttribute();
+	});
+
+	_eventDispatcher->addEventListenerWithSceneGraphPriority(listen, this);
 }
 
 void DisplayLayer::onEnterTransitionDidFinish()
@@ -91,9 +105,9 @@ void DisplayLayer::load()
 	}
 }
 
-void DisplayLayer::setTipLabel(ObjectType type)
+void DisplayLayer::setTipLabel()
 {
-	switch (type)
+	switch (_type)
 	{
 	case OT_EQUIPMENT:
 		_tipLabel->setString(StringUtils::format("%d/%d", _objectIdVector.size(), equipment_map_max_size));
@@ -186,16 +200,16 @@ void DisplayLayer::setItemAttribute(const EquipmentProperty * property, DisplayL
 	}
 }
 
-void DisplayLayer::updateItemAttribute(ObjectType type, int objectId, const int itemId)
+void DisplayLayer::updateItemAttribute()
 {
 	//通过索引获得listview中对应的item
-	auto item = dynamic_cast<DisplayListItem*>(_listView->getItem(itemId));
+	auto item = dynamic_cast<DisplayListItem*>(_listView->getItem(_clickedIndex));
 
-	switch (type)
+	switch (_type)
 	{
 	case OT_EQUIPMENT:
 	{
-		auto equipment = GameData::getInstance()->getEquipmentById(objectId);
+		auto equipment = GameData::getInstance()->getEquipmentById(_objectIdVector.at(_clickedIndex));
 
 		//更新单个item的数据
 		setItemAttribute(equipment->getProperty(), item);
@@ -204,7 +218,7 @@ void DisplayLayer::updateItemAttribute(ObjectType type, int objectId, const int 
 	}
 	case OT_HERO:
 	{
-		auto hero = GameData::getInstance()->getEquipmentById(objectId);
+		auto hero = GameData::getInstance()->getHeroCardById(_objectIdVector.at(_clickedIndex));
 
 		//更新单个item的数据
 		setItemAttribute(hero->getProperty(), item);
@@ -238,13 +252,13 @@ void DisplayLayer::loadItem(const unordered_map<int, Equipment*>* equipmentMap)
 			item->setBtnTag(index);
 			item->setBtnCallBack([&](Ref* pSender) {
 				auto btn = dynamic_cast<Button*>(pSender);
-				int tag = btn->getTag();
+				_clickedIndex = btn->getTag();
 
 				//调用用户设置的回调
 				if (_func)
 				{
 					//设置选中的物品id
-					btn->setUserData((void*)_objectIdVector.at(tag));
+					btn->setUserData((void*)_objectIdVector.at(_clickedIndex));
 					_func(pSender);
 				}
 			});
@@ -264,7 +278,7 @@ void DisplayLayer::loadItem(const unordered_map<int, Equipment*>* equipmentMap)
 	}
 
 	//设置列表上边容量使用信息
-	setTipLabel(OT_EQUIPMENT);
+	setTipLabel();
 }
 
 void DisplayLayer::loadItem(const unordered_map<int, HeroCard*>* heroMap)
@@ -290,13 +304,13 @@ void DisplayLayer::loadItem(const unordered_map<int, HeroCard*>* heroMap)
 			item->setBtnCallBack([&](Ref* pSender) {
 
 				auto btn = dynamic_cast<Button*>(pSender);
-				int tag = btn->getTag();
+				_clickedIndex = btn->getTag();
 
 				//调用用户设置的回调
 				if (_func)
 				{
 					//设置选中的物品id
-					btn->setUserData((void*)_objectIdVector.at(tag));
+					btn->setUserData((void*)_objectIdVector.at(_clickedIndex));
 					_func(pSender);
 				}
 			});
@@ -316,7 +330,7 @@ void DisplayLayer::loadItem(const unordered_map<int, HeroCard*>* heroMap)
 	}
 
 	//设置列表上边容量使用信息
-	setTipLabel(OT_HERO);
+	setTipLabel();
 }
 
 void DisplayLayer::setDisplayType(ObjectType type)
@@ -374,6 +388,12 @@ void DisplayLayer::btnCloseCallBack(cocos2d::Ref * pSender, cocos2d::ui::Widget:
 		//点击音效
 		AudioManager::getInstance()->playClickEffect();
 
+		if (_isNeedUpadateUserData)
+		{
+			//发送更新用户数据的消息
+			_eventDispatcher->dispatchCustomEvent(msg_update_user_data);
+		}
+		
 		endAnimation();
 	}
 }

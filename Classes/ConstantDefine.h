@@ -62,10 +62,13 @@ const std::string levelName = "level";		//保存等级的key
 const std::string expName = "exp";			//保存经验的key
 const std::string uniqueNumName = "uniqueIdentifierNum"; //用来生成Id的唯一数
 
+//自定义消息
+const string msg_update_user_data = "MSG_UPDATE_USER_DATA";	//更新用户数据的消息名
+const string msg_update_display_item = "MSG_UPDATE_DISPLAY_ITEM";	//用于强化或升级后更新DisplayLayer列表的item属性显示
+
+
 //出战英雄保存时的key
 const std::string battleSaveKey[max_battle_hero_num] = { "0", "1", "2", "3", "4", "5" };
-
-
 
 //-------------------------------------------------------------
 

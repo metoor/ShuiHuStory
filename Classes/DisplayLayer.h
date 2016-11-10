@@ -58,7 +58,10 @@ private:
 	void loadItem(const std::unordered_map<int, HeroCard*>* heroMap);
 
 	//设置列表显示的当前已用数量和总得容量，如:30/50
-	void setTipLabel(ObjectType type);
+	void setTipLabel();
+
+	//注册更新列表某一项的数据
+	void addUpdateDisplayItemEventListener();
 
 	//设置Item的属性
 	void setItemAttribute(const HeroCardProperty* property, DisplayListItem* item);
@@ -67,7 +70,7 @@ private:
 	void setItemAttribute(const EquipmentProperty* property, DisplayListItem* item);
 
 	//更新指定物品(装备或英雄)id的item的属性
-	void updateItemAttribute(ObjectType type, int objectId, const int itemId);
+	void updateItemAttribute();
 
 	void setItemColor(DisplayListItem* item, int star);
 
@@ -89,6 +92,9 @@ private:
 	const std::string btnCloseName = "btnClose";
 
 private:
+	//是否需要更新用户数据
+	bool _isNeedUpadateUserData;
+
 	//记录点击按钮点击的索引
 	int _clickedIndex;
 

@@ -37,6 +37,9 @@ public:
 private:
 	void loadUI();
 
+	//注册更新用户数据事件
+	void addUpdateUserDataEventListener();
+
 	//更新用户数据
 	void updateUserData();
 
