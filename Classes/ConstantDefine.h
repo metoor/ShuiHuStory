@@ -55,6 +55,8 @@ const int init_diamond = 1200;				//玩家初始获得的钻石
 const int intensify_base_diamond = 25;		//强化装备和卡牌的时候需要的基础钻石
 const int levelup_base_gold = 300;		//升级装备和强化的时候需要的基础金币
 
+const int login_gold_base = 1000;		//每日奖励的基础奖励金币
+const int login_diamond_base = 10;		//每日奖励的基础奖励钻石
 
 const std::string goldName = "gold";		//用来保存金币数是的key
 const std::string diamondName = "diamond";	//用来保存钻石数的key
@@ -74,6 +76,9 @@ const int msg_update_display_item_parameter_sell = 2; //丢弃
 
 //出战英雄保存时的key
 const std::string battleSaveKey[max_battle_hero_num] = { "0", "1", "2", "3", "4", "5" };
+
+//每日登陆奖励
+const std::string preGetTime = "pgt"; //上次领取奖励的时间
 
 //-------------------------------------------------------------
 
@@ -128,6 +133,13 @@ const std::string sellTips = "sell";					//出售对话框提示内容
 const std::string abandonTips = "abandon";			//丢弃对框提示内容
 const std::string sellSucced = "sellSucced";			//出售成功提示
 const std::string abandonSucced = "abandonSucced";		//丢弃成功提示
+
+//每日登陆奖励
+const std::string loginRewardTips = "loginRewardTips"; //登陆奖励领取提示
+const std::string loginRewardTimeTips1 = "loginRewardTimeTips1"; //还没到领取时间提示
+const std::string loginRewardTimeTips2 = "loginRewardTimeTips2"; //到达领取时间提示
+const std::string rewardGold = "rewardGold"; //奖励的金币字符串
+const std::string rewardDiamond = "rewardDiamond"; //奖励的钻石数字符串
 
 
 //---------------给控件设置的标签名字（node->setName()）-----------------------------------

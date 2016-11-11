@@ -2,7 +2,7 @@
 // Copyright (C), 2016-2020, CS&S. Co., Ltd.
 // File name: 	Dialog.cpp
 // Author:		 Metoor
-// Version: 	1.0 
+// Version: 	1.0
 // Date: 		2016/11/09
 // Contact: 	caiufen@qq.com
 // Description: 	create by vs2015pro
@@ -60,7 +60,7 @@ void Dialog::endAnimation()
 {
 	//先隐藏触摸锁层
 	dynamic_cast<BlockLayer*>(this->getChildByName(blockTagName))->setOpacity(0.0f);
-	
+
 	//y轴从1缩小到0
 	auto ani = Sequence::createWithTwoActions(ScaleTo::create(0.4f, 1.0f, 0.0f), CallFunc::create([&]() {
 		this->removeFromParentAndCleanup(true);
@@ -122,7 +122,7 @@ void Dialog::initDialog(const std::string & title, const std::string & content, 
 void Dialog::loadUI()
 {
 	auto node = CSLoader::createNode(csbName);
-	
+
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	//设置对话框的位置在屏幕中央

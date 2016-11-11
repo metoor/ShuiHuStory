@@ -137,6 +137,7 @@
             <Project Name="gameSceneBgLayer.csd" Type="Layer" />
             <Project Name="homeLayer.csd" Type="Layer" />
             <Project Name="menuLayer.csd" Type="Layer" />
+            <Project Name="loginLayer.csd" Type="Layer" />
           </Folder>
           <Folder Name="Tools">
             <Project Name="dialogLayer.csd" Type="Layer" />

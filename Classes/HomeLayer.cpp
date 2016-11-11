@@ -14,6 +14,7 @@
 #include "DisplayLayer.h"
 #include "DetialsLayer.h"
 #include "GameData.h"
+#include "LoginRewardLayer.h"
 
 USING_NS_CC;
 using namespace ui;
@@ -72,7 +73,7 @@ void HomeLayer::loadUI()
 
 void HomeLayer::addUpdateUserDataEventListener()
 {
-	//注册更新数据事件
+	//注册用户数据更新据事件
 	auto listen = EventListenerCustom::create(msg_update_user_data, [&](EventCustom* event) {
 		updateUserData();
 	});
@@ -144,7 +145,11 @@ Layer* HomeLayer::createMenuLayer(HomeMenuType type)
 		break;
 	}
 	case HMT_LOGIN:
+	{
+		layer = LoginRewardLayer::create();
+		
 		break;
+	}
 	case HMT_LEVEL_UP:
 		break;
 	case HMT_ABOUT:
