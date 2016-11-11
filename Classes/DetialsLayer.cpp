@@ -459,7 +459,7 @@ string DetialsLayer::propertyToString(const EquipmentProperty * property)
 		res += "\n";
 		res += StringUtils::format(_i18n->getStringByKey(hp_d).c_str(), "+", property->hp);
 		res += "\n";
-		res = StringUtils::format(_i18n->getStringByKey(define_d).c_str(), "+", property->defend);
+		res += StringUtils::format(_i18n->getStringByKey(define_d).c_str(), "+", property->defend);
 		res += "\n";
 		res += StringUtils::format(_i18n->getStringByKey(mDefine_d).c_str(), "+", property->magicDefend);
 		break;
