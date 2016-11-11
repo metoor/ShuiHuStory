@@ -7,6 +7,7 @@
           <Image Name="bg_pvpStart.png" />
           <Image Name="cellbg.png" />
           <Image Name="chatbg.png" />
+          <Image Name="dialogBg.png" />
           <Image Name="fail.png" />
           <Image Name="gameover.png" />
           <Image Name="groupbg.png" />
@@ -24,7 +25,6 @@
           <Image Name="tipbg.png" />
           <Image Name="worldbg.png" />
           <Image Name="zhanyi.png" />
-          <Image Name="dialogBg.png" />
         </Folder>
         <Folder Name="btns">
           <Folder Name="pvpbtn">
@@ -87,6 +87,10 @@
           <Image Name="zhaomu2.png" />
           <Image Name="zhuangbei1.png" />
           <Image Name="zhuangbei2.png" />
+          <Image Name="abandon1.png" />
+          <Image Name="abandon2.png" />
+          <Image Name="sell1.png" />
+          <Image Name="sell2.png" />
         </Folder>
         <Folder Name="fonts">
           <TTF Name="MiniKaiTi.ttf" />
@@ -120,6 +124,7 @@
           <Image Name="ui_coin.png" />
           <Image Name="xp1.png" />
           <Image Name="xp2.png" />
+          <Image Name="critDmg.png" />
         </Folder>
         <Folder Name="layers">
           <Folder Name="firstLogin">
@@ -134,8 +139,8 @@
             <Project Name="menuLayer.csd" Type="Layer" />
           </Folder>
           <Folder Name="Tools">
-            <Project Name="tipLayer.csd" Type="Layer" />
             <Project Name="dialogLayer.csd" Type="Layer" />
+            <Project Name="tipLayer.csd" Type="Layer" />
           </Folder>
         </Folder>
         <Folder Name="test">

@@ -18,7 +18,8 @@
 //前置声明
 struct EquipmentProperty;
 struct HeroCardProperty;
-
+class I18N;
+class GameData;
 
 enum DisplayType
 {
@@ -30,7 +31,7 @@ enum BtnType{
 	BT_LEVEL_UP,
 	BT_INTENSIFY
 };
-
+ 
 //显示装备和英雄的详细信息
 class DetialsLayer : public cocos2d::Layer
 {
@@ -88,7 +89,8 @@ private:
 
 	//设置英雄或装备图片
 	void setIco(const std::string& icoName);
-
+	
+	//强化和升级的回调
 	void intensify();
 	void levelup();
 
@@ -99,6 +101,24 @@ private:
 	void endAnimation();
 
 	void onEnterTransitionDidFinish() override;
+
+	//出售处理方法
+	void sell();
+
+	//出售装备
+	void sellOEquipment();
+
+	//出售英雄卡牌
+	void sellOHero();
+	
+	//丢弃
+	void abandon();
+
+	//丢弃装备
+	void abandonEquipment();
+	
+	//丢弃装备
+	void abandonHero();
 
 	//按钮回调方法
 	void btnCloseCallBack(cocos2d::Ref* pSender, cocos2d::ui::Widget::TouchEventType type);
@@ -111,6 +131,8 @@ private:
 	const std::string btnIntensifyName = "btnIntensify";
 	const std::string btnLevelupName = "btnLevelup";
 	const std::string btnCloseName = "btnClose";
+	const std::string btnSellName = "btnSell";
+	const std::string btnAbandonName = "btnAbandon";
 
 private:
 	//九路显示的物品Id
@@ -119,12 +141,18 @@ private:
 	//记录显示的物品类型
 	DisplayType _type;
 
+	GameData* _data;
+	I18N* _i18n;
+	
+
 	cocos2d::ui::ImageView* _ico;
 	cocos2d::ui::Text* _nameLabel;
 	cocos2d::ui::Text* _attributeLabel;
 	cocos2d::ui::Button* _btnIntensify;
 	cocos2d::ui::Button* _btnLevelup;
 	cocos2d::ui::Button* _btnClose;
+	cocos2d::ui::Button* _btnSell;
+	cocos2d::ui::Button* _btnAbandon;
 
 	std::function<void(cocos2d::Ref * pSender, cocos2d::ui::Widget::TouchEventType type)> _intensifyFun, _levelupFunc;
 };

@@ -66,7 +66,7 @@ void Tips::loadUI()
 	
 	//设置提示框的位置在屏幕中心上一点
 	node->setAnchorPoint(Point::ANCHOR_MIDDLE);
-	node->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 1.3f));
+	node->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 1.2f));
 	addChild(node);
 
 	//获取显示文本内容的Text控件
@@ -78,7 +78,7 @@ void Tips::onEnterTransitionDidFinish()
 	//淡入淡出动画，完成动画后然或自己销毁
 	this->setOpacity(0.0f);
 
-	auto ani = Sequence::create(FadeIn::create(1.0f), DelayTime::create(3.0f), FadeOut::create(1.0f), CallFunc::create([&]() {
+	auto ani = Sequence::create(FadeIn::create(1.0f), DelayTime::create(2.5f), FadeOut::create(1.0f), CallFunc::create([&]() {
 		this->removeFromParentAndCleanup(true);
 	}), NULL);
 

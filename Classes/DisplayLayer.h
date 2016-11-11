@@ -63,6 +63,9 @@ private:
 	//注册更新列表某一项的数据
 	void addUpdateDisplayItemEventListener();
 
+	//删除item
+	void deleteItem();
+
 	//设置Item的属性
 	void setItemAttribute(const HeroCardProperty* property, DisplayListItem* item);
 

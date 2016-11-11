@@ -57,11 +57,43 @@ void DisplayLayer::addUpdateDisplayItemEventListener()
 {
 	//注册更新数据事件
 	auto listen = EventListenerCustom::create(msg_update_display_item, [&](EventCustom* event) {
-		_isNeedUpadateUserData = true;
-		updateItemAttribute();
+		auto mst_type = (int)(event->getUserData());
+		
+		if (mst_type == msg_update_display_item_parameter_update)
+		{
+			//更新item属性
+			_isNeedUpadateUserData = true;
+			updateItemAttribute();
+		}
+		else if(mst_type == msg_update_display_item_parameter_sell)
+		{
+			//物品被出售，删除对应item，并更新首页用户数据
+			_isNeedUpadateUserData = true;
+			deleteItem();
+		}
+		else
+		{
+			//物品被丢弃，删除对应的item
+			deleteItem();
+		}
 	});
 
 	_eventDispatcher->addEventListenerWithSceneGraphPriority(listen, this);
+}
+
+void DisplayLayer::deleteItem()
+{
+	auto data = GameData::getInstance();
+
+	//将要被删除的物品id
+	int id = _objectIdVector.at(_clickedIndex);
+	//从显示的listview中移除
+	_listView->removeItem(_clickedIndex);
+	//从保存id的容器中移除
+	_objectIdVector.erase(_objectIdVector.begin() + _clickedIndex);
+
+	//更新列表容量提示
+	setTipLabel();
 }
 
 void DisplayLayer::onEnterTransitionDidFinish()

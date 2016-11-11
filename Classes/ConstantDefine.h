@@ -67,6 +67,11 @@ const string msg_update_user_data = "MSG_UPDATE_USER_DATA";	//更新用户数据的消息
 const string msg_update_display_item = "MSG_UPDATE_DISPLAY_ITEM";	//用于强化或升级后更新DisplayLayer列表的item属性显示
 
 
+//发送自定义消息时的参数
+const int msg_update_display_item_parameter_update = 0; //升级或强化
+const int msg_update_display_item_parameter_abandon = 1; //丢弃
+const int msg_update_display_item_parameter_sell = 2; //丢弃
+
 //出战英雄保存时的key
 const std::string battleSaveKey[max_battle_hero_num] = { "0", "1", "2", "3", "4", "5" };
 
@@ -84,6 +89,7 @@ const std::string defineIco = "icos/define.png";
 const std::string mDefineIco = "icos/mdefine.png";
 const std::string speedIco = "icos/speed.png";
 const std::string critIco = "icos/crit.png";
+const std::string critDmg = "icos/critDmg.png";
 const std::string blockIco = "icos/block.png";
 
 
@@ -114,6 +120,15 @@ const std::string notEnougMaterial = "notEnougMaterial";//材料不够
 const std::string notEnougDiamond = "notEnoughDiamond";	//钻石不够
 const std::string succed = "succed";					//成功
 const std::string failed = "failed";					//失败
+
+
+const std::string sellTitle = "sellTitle";					//出售对话框标题
+const std::string abandonTitle = "abandonTitle";			//丢弃对话框标题
+const std::string sellTips = "sell";					//出售对话框提示内容
+const std::string abandonTips = "abandon";			//丢弃对框提示内容
+const std::string sellSucced = "sellSucced";			//出售成功提示
+const std::string abandonSucced = "abandonSucced";		//丢弃成功提示
+
 
 //---------------给控件设置的标签名字（node->setName()）-----------------------------------
 const std::string blockTagName = "blockName";		//BlockLayer的标签名字，用来通过标签名字获取实例对象
