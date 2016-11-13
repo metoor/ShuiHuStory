@@ -15,6 +15,7 @@
 #include "DetialsLayer.h"
 #include "GameData.h"
 #include "LoginRewardLayer.h"
+#include "LevelupRewardLayer.h"
 
 USING_NS_CC;
 using namespace ui;
@@ -151,6 +152,7 @@ Layer* HomeLayer::createMenuLayer(HomeMenuType type)
 		break;
 	}
 	case HMT_LEVEL_UP:
+		layer = LevelupRewardLayer::create();
 		break;
 	case HMT_ABOUT:
 		break;

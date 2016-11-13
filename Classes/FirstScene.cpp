@@ -27,7 +27,7 @@ FirstScene::FirstScene()
 
 FirstScene::~FirstScene()
 {
-	UserDefault::getInstance()->setBoolForKey("isFirst", false);
+	UserDefault::getInstance()->setBoolForKey("if", false);
 }
 
 bool FirstScene::init()

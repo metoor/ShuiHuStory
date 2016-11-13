@@ -36,7 +36,7 @@ private:
 	void updateTime(float dt);
 
 private:
-	const std::string csbName = "layers/homeLayer/loginLayer.csb";
+	const std::string csbName = "layers/homeLayer/loginRewardLayer.csb";
 	const std::string timeLabelName = "timeLabel";
 	const std::string contentLabelName = "contentLabel";
 	const std::string btnCloseName = "btnClose";

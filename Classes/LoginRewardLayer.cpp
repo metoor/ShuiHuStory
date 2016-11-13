@@ -105,10 +105,10 @@ void LoginRewardLayer::initData()
 	auto i18n = I18N::getInstance();
 	auto data = GameData::getInstance();
 
-	unsigned currentTime = Tools::getCurrentTimeSecond();
-	unsigned preTime = UserDefault::getInstance()->getIntegerForKey(preGetTime.c_str(), 0);
+	unsigned int currentTime = Tools::getCurrentTimeSecond();
+	unsigned int preTime = UserDefault::getInstance()->getIntegerForKey(preGetTime.c_str(), 0);
 
-	unsigned diffTime = currentTime - preTime;
+	unsigned diffTime = Tools::maxInt(0, currentTime - preTime);
 
 	//获得要显示的内容
 	string s = StringUtils::format(i18n->getStringByKey(rewardGold).c_str(), data->getLevel() * login_gold_base);

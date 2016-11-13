@@ -44,7 +44,7 @@ private:
 	const unsigned heroNameTextTag = 33;
 	const unsigned heroImageTag = 34;
 	const unsigned chatContentTextTag = 35;
-	const std::string storyFileName = "data/story.json";
+	const std::string storyFileName = "datas/story.data";
 
 private:
 	unsigned _currentIndex;

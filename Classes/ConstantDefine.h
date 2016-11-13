@@ -28,15 +28,15 @@ const int tip_z_order = 9960;
 
 //-----------------------------------------------------
 
-const std::string save_hero_file_name = "myHeroCard.json";			//用来保存玩家获得英雄卡牌数据的文件名称
-const std::string save_equipment_file_name = "myEquipment.json";	//用来保存玩家获得装备数据的文件名称
+const std::string save_hero_file_name = "myHeroCard.me";			//用来保存玩家获得英雄卡牌数据的文件名称
+const std::string save_equipment_file_name = "myEquipment.me";	//用来保存玩家获得装备数据的文件名称
 const std::string equipment_file_name = "datas/equipment.data";		//用来生成装备的基础数据的文件名称
 const std::string hero_file_name = "datas/hero.data";				//用来生成英雄卡牌基础数据的文件名称
 
 const int equipment_map_max_size = 50;		//玩家拥有的最大装备数
 const int hero_card_map_max_size = 50;		//玩家拥有英雄卡牌最大张数
 
-const int max_gold = 1000000;				//玩家能同时拥有的最大金币数
+const int max_gold = 100000;				//玩家能同时拥有的最大金币数
 const int max_diamond = 10000;				//玩家能同时拥有的最大专事数
 
 const int max_level = 100;					//玩家最大等级
@@ -58,11 +58,14 @@ const int levelup_base_gold = 300;		//升级装备和强化的时候需要的基础金币
 const int login_gold_base = 1000;		//每日奖励的基础奖励金币
 const int login_diamond_base = 10;		//每日奖励的基础奖励钻石
 
-const std::string goldName = "gold";		//用来保存金币数是的key
-const std::string diamondName = "diamond";	//用来保存钻石数的key
-const std::string levelName = "level";		//保存等级的key
-const std::string expName = "exp";			//保存经验的key
-const std::string uniqueNumName = "uniqueIdentifierNum"; //用来生成Id的唯一数
+const std::string goldName = "gd";		//用来保存金币数是的key
+const std::string diamondName = "dd";	//用来保存钻石数的key
+const std::string levelName = "ll";		//保存等级的key
+const std::string expName = "ep";			//保存经验的key
+const std::string uniqueNumName = "uqm"; //用来生成Id的唯一数
+
+const std::string is_effect_mute_name = "et"; //保存是否启用音效的key
+const std::string is_bg_mute_name = "et"; //保存是否启用背景音乐的key
 
 //自定义消息
 const string msg_update_user_data = "MSG_UPDATE_USER_DATA";	//更新用户数据的消息名
@@ -96,6 +99,16 @@ const std::string speedIco = "icos/speed.png";
 const std::string critIco = "icos/crit.png";
 const std::string critDmg = "icos/critDmg.png";
 const std::string blockIco = "icos/block.png";
+
+//升级奖励
+const int itemCount = 18;	//总共有多少个item
+const int item_level_base = 5;	//等级递增的数量
+const int item_level_increaseNum = 5;	//等级递增的数量
+const int item_gold_increaseNum = 5000;	//金币数量
+const int item_diamond_increaseNum = 50;//钻石递增的数量
+const int gift_base_gold = 10000;	//礼包的基础金币数
+const int gift_base_diamond = 100;	//礼包的基础钻石数
+const std::string is_get_gift_key = "iggk%d"; //保存用户是否领取礼包的key
 
 
 //--------string.plist文件种的中文字符资源名称-------------------------------------------------------------------
@@ -133,6 +146,9 @@ const std::string sellTips = "sell";					//出售对话框提示内容
 const std::string abandonTips = "abandon";			//丢弃对框提示内容
 const std::string sellSucced = "sellSucced";			//出售成功提示
 const std::string abandonSucced = "abandonSucced";		//丢弃成功提示
+
+const std::string levelup_gift = "levelupGift";		//等级礼包(10级礼包)
+
 
 //每日登陆奖励
 const std::string loginRewardTips = "loginRewardTips"; //登陆奖励领取提示
