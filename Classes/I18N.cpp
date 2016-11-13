@@ -2,7 +2,7 @@
 // Copyright (C), 2016-2020, CS&S. Co., Ltd.
 // File name: 	I18N.cpp
 // Author:		 Metoor
-// Version: 	1.0 
+// Version: 	1.0
 // Date: 		2016/11/07
 // Contact: 	caiufen@qq.com
 // Description: 	create by vs2015pro
@@ -25,10 +25,7 @@ I18N::I18N()
 
 I18N::~I18N()
 {
-	if (_map)
-	{
-		CC_SAFE_DELETE(_map);
-	}
+	CC_SAFE_DELETE(_map);
 }
 
 I18N * I18N::getInstance()
@@ -46,6 +43,23 @@ I18N * I18N::getInstance()
 	}
 
 	return _instance;
+}
+
+bool I18N::isNullptr()
+{
+	bool result = false;
+
+	if (_instance == nullptr)
+	{
+		result = true;
+	}
+
+	return result;
+}
+
+void I18N::loadData()
+{
+	loadStringFile("datas/string.plist");
 }
 
 void I18N::loadStringFile(string fileName)
@@ -68,7 +82,7 @@ void I18N::loadStringFile(string fileName)
 	//将value转换成string
 	for (auto iter = valueMap.begin(); iter != valueMap.end(); ++iter)
 	{
-		_map->insert({iter->first, iter->second.asString()});
+		_map->insert({ iter->first, iter->second.asString() });
 	}
 }
 
@@ -76,7 +90,7 @@ const string & I18N::getStringByKey(const std::string& key)
 {
 
 	auto iter = _map->find(key);
-	
+
 	if (iter != _map->end())
 	{
 		return iter->second;
@@ -84,11 +98,11 @@ const string & I18N::getStringByKey(const std::string& key)
 	else
 	{
 		//没有匹配到相同的键值
-
-		//错误日志记录
-		McLog mLog;
-		mLog.addWaring("'key' can not find...", __FILE__, __LINE__);
-
+		{
+			//错误日志记录
+			McLog mLog;
+			mLog.addWaring("'key' can not find...", __FILE__, __LINE__);
+		}
 		return nullptr;
 	}
 }

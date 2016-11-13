@@ -11,6 +11,7 @@
 #include "AudioManager.h"
 #include "cocos2d.h"
 #include "McLog.h"
+#include "ConstantDefine.h"
 
 AudioManager* AudioManager::_instance = nullptr;
 
@@ -24,7 +25,8 @@ AudioManager::AudioManager()
 AudioManager::~AudioManager()
 {
 	//保存是否静音的标志
-	UserDefault::getInstance()->setBoolForKey("isMute", _isMute);
+	UserDefault::getInstance()->setBoolForKey(is_effect_mute_name.c_str(), _isEffectMute);
+	UserDefault::getInstance()->setBoolForKey(is_bg_mute_name.c_str(), _isbgMusicMute);
 }
 
 AudioManager * AudioManager::getInstance()
@@ -41,8 +43,11 @@ AudioManager * AudioManager::getInstance()
 		else
 		{
 			//获取是否静音标志
-			bool mute = UserDefault::getInstance()->getBoolForKey("isMute", false);
-			_instance->setIsMute(mute);
+			bool effectMute = UserDefault::getInstance()->getBoolForKey(is_effect_mute_name.c_str(), false);
+			bool bgMute = UserDefault::getInstance()->getBoolForKey(is_bg_mute_name.c_str(), false);
+			
+			_instance->setEffectMute(effectMute);
+			_instance->setBgMute(bgMute);
 
 			//保存SimpleAudioEngine实例的引用
 			_instance->_simpleAudioEngine = CocosDenshion::SimpleAudioEngine::getInstance();
@@ -50,6 +55,18 @@ AudioManager * AudioManager::getInstance()
 	}
 
 	return _instance;
+}
+
+bool AudioManager::isNullptr()
+{
+	bool result = false;
+
+	if (_instance == nullptr)
+	{
+		result = true;
+	}
+
+	return result;
 }
 
 void AudioManager::destoryInstance()
@@ -76,7 +93,7 @@ unsigned int AudioManager::playEffect(std::string name)
 {
 	unsigned int result = 0;
 
-	if (!_isMute)
+	if (!_isEffectMute)
 	{
 		result = _simpleAudioEngine->playEffect(name.c_str());
 	}
@@ -88,7 +105,7 @@ unsigned int AudioManager::playBackgroundMusic(std::string name, bool isLoop)
 {
 	unsigned int result = 0;
 
-	if (!_isMute)
+	if (!_isbgMusicMute)
 	{
 		_simpleAudioEngine->playBackgroundMusic(name.c_str(), isLoop);
 	}
@@ -96,14 +113,14 @@ unsigned int AudioManager::playBackgroundMusic(std::string name, bool isLoop)
 	return result;
 }
 
-bool AudioManager::getIsMute()
+void AudioManager::setEffectMute(bool isEffectMute)
 {
-	return _isMute;
+	_isEffectMute = isEffectMute;
 }
 
-void AudioManager::setIsMute(bool isMute)
+void AudioManager::setBgMute(bool isBgMute)
 {
-	_isMute = isMute;
+	_isbgMusicMute = isBgMute;
 }
 
 void AudioManager::preLoadGlobalAudio()
@@ -116,4 +133,14 @@ void AudioManager::unLoadGlobalEffect()
 {
 	//卸载音效
 	_simpleAudioEngine->unloadEffect(clickEffectName.c_str());
+}
+
+bool AudioManager::getIsEffectMute()
+{
+	return _isEffectMute;
+}
+
+bool AudioManager::getIsBgMute()
+{
+	return _isbgMusicMute;
 }

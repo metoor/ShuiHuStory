@@ -19,6 +19,10 @@ public:
 	~AudioManager();
 
 	static AudioManager* getInstance();
+	
+	//判断是否已经生成该单例类
+	static bool isNullptr();
+	
 	void destoryInstance();
 
 	//播放第一次登陆时的背景音乐
@@ -34,10 +38,12 @@ public:
 	void unLoadGlobalEffect();
 
 	//获得是否静音标志
-	bool getIsMute();
+	bool getIsEffectMute();
+	bool getIsBgMute();
 	
 	//设置是否静音
-	void setIsMute(bool isMute);
+	void setEffectMute(bool isEffectMute);
+	void setBgMute(bool isBgMute);
 
 public:
 	//音乐/音效的名字
@@ -58,7 +64,11 @@ private:
 	unsigned int playBackgroundMusic(std::string name, bool isLoop = true);
 
 private:
-	bool _isMute;
+	//是否启用音效
+	bool _isEffectMute;
+	//是否启用背景音乐
+	bool _isbgMusicMute;
+
 	static AudioManager* _instance;
 };
 

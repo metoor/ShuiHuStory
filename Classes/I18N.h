@@ -18,7 +18,11 @@ public:
 	~I18N();
 
 	static I18N* getInstance();
-	
+	static bool isNullptr();
+
+	//加载字符集文件
+	void loadData();
+
 	//加载字符文件
 	void loadStringFile(std::string fileName);
 

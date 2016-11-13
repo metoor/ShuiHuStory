@@ -22,7 +22,19 @@ Config* Config::_config = nullptr;
 USING_NS_CC;
 
 Config::Config()
+	:_equipmentVector(nullptr),
+	_heroCardVector(nullptr)
 {
+	if (!_equipmentVector)
+	{
+		_equipmentVector = new std::vector<EquipmentType*>();
+	}
+	
+	if (!_heroCardVector)
+	{
+		_heroCardVector = new std::vector<HeroCardType*>();
+	}
+
 	readEquipmentJson(equipment_file_name);
 	readHeroJson(hero_file_name);
 }
@@ -31,26 +43,29 @@ Config::~Config()
 {
 	destoryHeroVectorElement();
 	destoryEquipmentVectorElement();
+
+	CC_SAFE_DELETE(_equipmentVector);
+	CC_SAFE_DELETE(_heroCardVector);
 }
 
 void Config::destoryHeroVectorElement()
 {
-	for (int index = _heroCardVector.size() - 1; index >= 0; ++index)
+	for (int index = _heroCardVector->size() - 1; index >= 0; --index)
 	{
-		delete _heroCardVector.at(index);
+		delete _heroCardVector->at(index);
 	}
 
-	_heroCardVector.clear();
+	_heroCardVector->clear();
 }
 
 void Config::destoryEquipmentVectorElement()
 {
-	for (int index = _equipmentVector.size() - 1; index >= 0; ++index)
+	for (int index = _equipmentVector->size() - 1; index >= 0; --index)
 	{
-		delete _equipmentVector.at(index);
+		delete _equipmentVector->at(index);
 	}
 
-	_equipmentVector.clear();
+	_equipmentVector->clear();
 }
 
 void Config::readHeroJson(string fileName)
@@ -103,7 +118,7 @@ void Config::readHeroJson(string fileName)
 			heroCardType->skillName = json["skillName"].GetString();
 			heroCardType->des = json["des"].GetString();
 
-			_heroCardVector.push_back(heroCardType);
+			_heroCardVector->push_back(heroCardType);
 		}
 	}
 }
@@ -152,7 +167,7 @@ void Config::readEquipmentJson(string fileName)
 			equipmentType->buyMoney = json["buyMoney"].GetInt();
 			equipmentType->des = json["des"].GetString();
 
-			_equipmentVector.push_back(equipmentType);
+			_equipmentVector->push_back(equipmentType);
 
 		}
 	}
@@ -176,13 +191,30 @@ Config * Config::getInstance()
 	return _config;
 }
 
+bool Config::isNullptr()
+{
+	bool result = false;
+
+	if (_config == nullptr)
+	{
+		result = true;
+	}
+
+	return result;
+}
+
+void Config::destoryInstance()
+{
+	CC_SAFE_DELETE(_config);
+}
+
 const HeroCardType* Config::getHeroCardByIndex(int type)
 {
 	HeroCardType* result = nullptr;
 
-	if (Tools::betweenAnd(type, 0, _heroCardVector.size()))
+	if (Tools::betweenAnd(type, 0, _heroCardVector->size()))
 	{
-		result = _heroCardVector.at(type);
+		result = _heroCardVector->at(type);
 	}
 	else
 	{
@@ -216,9 +248,9 @@ const EquipmentType* Config::getEquipmentByIndex(int type)
 
 		int index = equipmentNum[first - 1] + pos;
 
-		if (Tools::betweenAnd(index, 0, _equipmentVector.size() - 1))
+		if (Tools::betweenAnd(index, 0, _equipmentVector->size() - 1))
 		{
-			equiment = _equipmentVector.at(index);
+			equiment = _equipmentVector->at(index);
 		}
 		else
 		{

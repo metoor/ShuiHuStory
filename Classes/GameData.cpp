@@ -22,27 +22,16 @@ USING_NS_CC;
 
 GameData* GameData::_gameData = nullptr;
 
-
+GameData::GameData()
+{
+}
 
 GameData::~GameData()
 {
-	saveUserData();
-	saveBattleHero();
-	saveEquipment();
-	saveHeroCard();
-	saveUniqueIdentifierNumToFile();
+	saveData();
 
 	destoryEquipmentMapElement();
 	destoryHeroMapElement();
-}
-
-GameData::GameData()
-{
-	readUniqueIdentifierNumFromFile();
-	readBattleHero();
-	readUserData();
-	readEquipment();
-	readHeroCard();
 }
 
 void GameData::destoryEquipmentMapElement()
@@ -80,6 +69,36 @@ GameData * GameData::getInstance()
 	}
 
 	return _gameData;
+}
+
+bool GameData::isNullptr()
+{
+	bool result = false;
+
+	if (_gameData == nullptr)
+	{
+		result = true;
+	}
+
+	return result;
+}
+
+void GameData::readData()
+{
+	readUniqueIdentifierNumFromFile();
+	readBattleHero();
+	readUserData();
+	readEquipment();
+	readHeroCard();
+}
+
+void GameData::saveData()
+{
+	saveUserData();
+	saveBattleHero();
+	saveEquipment();
+	saveHeroCard();
+	saveUniqueIdentifierNumToFile();
 }
 
 bool GameData::setGold(const int gold)
@@ -457,10 +476,11 @@ void GameData::readHeroCard()
 	if (!FileUtils::getInstance()->isFileExist(jsonpath))
 	{
 		//第一次登陆创建默英雄卡牌
-		for (int i = 0; i < 2; ++i)
+		for (int i = 0; i < 2; i++)
 		{
-			HeroCard* hc = new HeroCard();
-			hc->init(i);
+			HeroCard* hc = new (std::nothrow) HeroCard();
+			//创建默认的英雄：公孙胜和水浒迷
+			hc->init(3 + i * 105);
 			addHeroCardToMap(hc);
 		}
 	}

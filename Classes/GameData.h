@@ -25,6 +25,14 @@ public:
 	//获得实例
 	static GameData* getInstance();
 	
+	static bool isNullptr();
+
+	//加载数据
+	void readData();
+
+	//释放加载的数据
+	void saveData();
+
 	//设置用户数据，金币，钻石，经验 ,等级，如果设置成功返回true，失败则返回false，
 	bool setGold(const int gold);
 	bool setDiamond(const int diamond);
@@ -46,7 +54,6 @@ public:
 	//读取用户数据 金币，钻石，经验 ,等级
 	void readUserData();
  
-
 	//销毁实例
 	void destoryInstance();
 

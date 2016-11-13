@@ -20,6 +20,9 @@ public:
 
 	static Config* getInstance();
 
+	static bool isNullptr();
+
+	void destoryInstance();
 
 	//通过type获取HeroType
 	const HeroCardType* getHeroCardByIndex(int type);
@@ -42,10 +45,10 @@ private:
 
 private:
 	//保存英雄模板[0~108]
-	std::vector<HeroCardType*> _heroCardVector;
+	std::vector<HeroCardType*> *_heroCardVector;
 
 	//保存装备模板
-	std::vector<EquipmentType*> _equipmentVector;
+	std::vector<EquipmentType*> *_equipmentVector;
 
 	//单例
 	static Config* _config;
