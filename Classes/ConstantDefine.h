@@ -88,6 +88,11 @@ const std::string preGetTime = "pgt"; //上次领取奖励的时间
 //详细按钮的纹理图片名称
 const std::string btnDetails1 = "btns/details1.png";
 const std::string btnDetails2 = "btns/details2.png";
+const std::string sound_off_1 = "btns/menu_sound_off_1.png";
+const std::string sound_off_2 = "btns/menu_sound_off_2.png";
+const std::string sound_on_1 = "btns/menu_sound_on_1.png";
+const std::string sound_on_2 = "btns/menu_sound_on_2.png";
+
 
 //属性图标，如：防御，魔防，生命等....
 const std::string hpIco = "icos/hp.png";
@@ -162,5 +167,13 @@ const std::string rewardDiamond = "rewardDiamond"; //奖励的钻石数字符串
 const std::string blockTagName = "blockName";		//BlockLayer的标签名字，用来通过标签名字获取实例对象
 const std::string tipsTagName = "tips";				//提示框的标签名字
 const std::string dialogTagName = "dialog";			//模态对话框的标签名字
+
+
+//音乐与音效的名字
+const std::string firstSceneMusicName = "audios/wellcomeBg.mp3";
+const std::string clickEffectName = "audios/click.mp3";
+const std::string rewardGoldEffectName = "audios/reward.mp3";
+const std::string dropEffectName = "audios/drop.mp3";
+
 
 #endif // __CONSTANTDEFINE_H_

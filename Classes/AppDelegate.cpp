@@ -2,6 +2,10 @@
 #include "SimpleAudioEngine.h"
 #include "FirstScene.h"
 #include "GameScene.h"
+#include "GameData.h"
+#include "I18N.h"
+#include "AudioManager.h"
+#include "Config.h"
 
 #include "HelloWorldScene.h"
 
@@ -9,7 +13,7 @@
 USING_NS_CC;
 
 AppDelegate::AppDelegate() {
-
+	
 }
 
 AppDelegate::~AppDelegate()
@@ -46,14 +50,14 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
 	FileUtils::getInstance()->addSearchPath("res");
 	FileUtils::getInstance()->addSearchPath("res/imgs");
-	FileUtils::getInstance()->addSearchPath("res/datas");
 
 	// create a scene. it's an autorelease object
 	Scene* scene;
 
-	if (UserDefault::getInstance()->getBoolForKey("isFirst", true))
+	if (UserDefault::getInstance()->getBoolForKey("if", true))
 	{
 		scene = FirstScene::createScene();
+		//scene = HelloWorld::createScene();
 	}
 	else
 	{

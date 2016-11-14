@@ -89,9 +89,14 @@ void LevelupRewardLayer::loadItem()
 		int gold = gift_base_diamond + index * item_gold_increaseNum;
 		int diamond = gift_base_diamond + index * item_diamond_increaseNum;
 
+		//如果当前等级小于领取要求，则禁用领取按钮
+		if (GameData::getInstance()->getLevel() < level)
+		{
+			item->setBtnEnable(false);
+		}
+
 		//设置item显示属性
 		item->setRewardString(level, diamond, gold);
-		item->setBtnEnable(!_isGetGift[pos]);
 		item->setBtnCallback([&, pos, level, gold, diamond](Ref* pSender) {
 			int tag = dynamic_cast<Button*>(pSender)->getTag();
 

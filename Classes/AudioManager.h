@@ -23,6 +23,12 @@ public:
 	//判断是否已经生成该单例类
 	static bool isNullptr();
 	
+	//通过名字播放音效
+	unsigned int playEffect(std::string name);
+
+	//通过名字播放背景音乐
+	unsigned int playBackgroundMusic(std::string name, bool isLoop = true);
+
 	void destoryInstance();
 
 	//播放第一次登陆时的背景音乐
@@ -46,22 +52,12 @@ public:
 	void setBgMute(bool isBgMute);
 
 public:
-	//音乐/音效的名字
-	const std::string bgFirstSceneBgMusicName = "audios/wellcomeBg.mp3";
-	const std::string clickEffectName = "audios/click.mp3";
 
-	
 	//音乐播放引擎实例
 	CocosDenshion::SimpleAudioEngine* _simpleAudioEngine;
 
 private:
 	AudioManager();
-
-	//通过名字播放音效
-	unsigned int playEffect(std::string name);
-
-	//通过名字播放背景音乐
-	unsigned int playBackgroundMusic(std::string name, bool isLoop = true);
 
 private:
 	//是否启用音效

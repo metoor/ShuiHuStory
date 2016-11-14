@@ -16,6 +16,7 @@
 #include "GameData.h"
 #include "LoginRewardLayer.h"
 #include "LevelupRewardLayer.h"
+#include "AudioLayer.h"
 
 USING_NS_CC;
 using namespace ui;
@@ -157,6 +158,7 @@ Layer* HomeLayer::createMenuLayer(HomeMenuType type)
 	case HMT_ABOUT:
 		break;
 	case HMT_AUDIO:
+		layer = AudioLayer::create();
 		break;
 	default:
 		break;

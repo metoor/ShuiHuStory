@@ -87,8 +87,10 @@ bool HelloWorld::init()
 
 void HelloWorld::menuCloseCallback(Ref * psender)
 {
-	I18N::getInstance()->loadStringFile("string.plist");
+	for (int i = 0; i < 10000; ++i)
+	{
+		int r = Tools::getRandomInt(i,10000);
 
-	McLog mc;
-	mc.addError("this is a Test...", __FILE__, __LINE__);
+		log("----%d", r);
+	}
 }

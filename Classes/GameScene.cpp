@@ -16,6 +16,7 @@
 #include "AudioManager.h"
 #include "ConstantDefine.h"
 #include "I18N.h"
+#include "Config.h"
 
 USING_NS_CC;
 using namespace ui;
@@ -25,30 +26,27 @@ using namespace std;
 GameScene::GameScene()
 	:_preMenu(nullptr)
 {
-	//初始化游戏数据
-	GameData::getInstance();
+	//初始化游戏数据管理类
 
-	AudioManager::getInstance()->preLoadGlobalAudio();
+	if (GameData::isNullptr())
+	{
+		Config::getInstance();
+		GameData::getInstance()->readData();
+		I18N::getInstance()->loadData();
+		AudioManager::getInstance()->preLoadGlobalAudio();
+	}
 
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("head.plist", "head.pvr.ccz");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("equipment.plist", "equipment.pvr.ccz");
-	
-	I18N::getInstance()->loadStringFile("string.plist");
 }
 
 GameScene::~GameScene()
 {
-	auto gameData = GameData::getInstance();
-	gameData->saveUniqueIdentifierNumToFile();
-	gameData->saveEquipment();
-	gameData->saveHeroCard();
-	gameData->saveBattleHero();
-
-	auto audio = AudioManager::getInstance();
-	audio->unLoadGlobalEffect();
-
-	gameData->destoryInstance();
-	audio->destoryInstance();
+	//释放游戏数据
+	I18N::getInstance()->loadStringFile("string.plist");
+	AudioManager::getInstance()->destoryInstance();
+	GameData::getInstance()->destoryInstance();
+	Config::getInstance()->destoryInstance();
 
 	//因为Button是引用计数，所以将引用全部置空
 	initArrayToNullptr();

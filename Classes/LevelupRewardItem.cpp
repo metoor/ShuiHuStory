@@ -77,7 +77,8 @@ void LevelupRewardItem::loadUI()
 	_btnGet->addTouchEventListener([&](Ref* pSender, Widget::TouchEventType type) {
 		if (type == Widget::TouchEventType::BEGAN)
 		{
-			AudioManager::getInstance()->playClickEffect();
+			//播放获得金币音效
+			AudioManager::getInstance()->playEffect(rewardGoldEffectName);
 		}
 
 		if (type == Widget::TouchEventType::ENDED)

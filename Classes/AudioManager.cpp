@@ -81,7 +81,7 @@ void AudioManager::destoryInstance()
 
 unsigned int AudioManager::playFirstSceneBgMusic()
 {
-	return playBackgroundMusic(bgFirstSceneBgMusicName);
+	return playBackgroundMusic(firstSceneMusicName);
 }
 
 unsigned int AudioManager::playClickEffect()
@@ -127,6 +127,7 @@ void AudioManager::preLoadGlobalAudio()
 {
 	//Ô¤¼ÓÔØÒôÐ§
 	_simpleAudioEngine->preloadEffect(clickEffectName.c_str());
+	_simpleAudioEngine->preloadEffect(rewardGoldEffectName.c_str());
 }
 
 void AudioManager::unLoadGlobalEffect()
