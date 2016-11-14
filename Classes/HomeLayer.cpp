@@ -17,6 +17,7 @@
 #include "LoginRewardLayer.h"
 #include "LevelupRewardLayer.h"
 #include "AudioLayer.h"
+#include "AboutLayer.h"
 
 USING_NS_CC;
 using namespace ui;
@@ -156,6 +157,7 @@ Layer* HomeLayer::createMenuLayer(HomeMenuType type)
 		layer = LevelupRewardLayer::create();
 		break;
 	case HMT_ABOUT:
+		layer = AboutLayer::create();
 		break;
 	case HMT_AUDIO:
 		layer = AudioLayer::create();

@@ -105,6 +105,18 @@
     <ClCompile Include="..\Classes\LoginRewardLayer.cpp">
       <Filter>src\Layers\Home</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\LevelupRewardLayer.cpp">
+      <Filter>src\Layers\Home</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\LevelupRewardItem.cpp">
+      <Filter>src\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AudioLayer.cpp">
+      <Filter>src\Layers\Home</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AboutLayer.cpp">
+      <Filter>src\Layers\Home</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -180,6 +192,18 @@
       <Filter>src\Objects</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\LoginRewardLayer.h">
+      <Filter>src\Layers\Home</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\LevelupRewardLayer.h">
+      <Filter>src\Layers\Home</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\LevelupRewardItem.h">
+      <Filter>src\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AudioLayer.h">
+      <Filter>src\Layers\Home</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AboutLayer.h">
       <Filter>src\Layers\Home</Filter>
     </ClInclude>
   </ItemGroup>
