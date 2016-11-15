@@ -1,6 +1,6 @@
 /*************************************************
 // Copyright (C), 2016-2020, CS&S. Co., Ltd.
-// File name: 	DetialsLayer.cpp
+// File name: 	DetailsLayer.cpp
 // Author:		 Metoor
 // Version: 	1.0
 // Date: 		2016/11/07
@@ -8,7 +8,7 @@
 // Description: 	create by vs2015pro
 *************************************************/
 
-#include "DetialsLayer.h"
+#include "DetailsLayer.h"
 #include "cocostudio/CocoStudio.h"
 #include "BlockLayer.h"
 #include "GameData.h"
@@ -25,7 +25,7 @@ USING_NS_CC;
 using namespace ui;
 using namespace std;
 
-DetialsLayer::DetialsLayer()
+DetailsLayer::DetailsLayer()
 	:_objectId(0),
 	_intensifyFun(nullptr),
 	_levelupFunc(nullptr)
@@ -35,11 +35,11 @@ DetialsLayer::DetialsLayer()
 	_i18n = I18N::getInstance();
 }
 
-DetialsLayer::~DetialsLayer()
+DetailsLayer::~DetailsLayer()
 {
 }
 
-bool DetialsLayer::init()
+bool DetailsLayer::init()
 {
 	if (!Layer::init())
 	{
@@ -56,7 +56,7 @@ bool DetialsLayer::init()
 	return true;
 }
 
-void DetialsLayer::initUiWithId(int id, DisplayType type)
+void DetailsLayer::initUiWithId(int id, DisplayType type)
 {
 	_objectId = id;
 	_type = type;
@@ -64,7 +64,7 @@ void DetialsLayer::initUiWithId(int id, DisplayType type)
 	updateAttribute();
 }
 
-void DetialsLayer::loadUI()
+void DetailsLayer::loadUI()
 {
 	auto node = CSLoader::createNode(csbName);
 	addChild(node);
@@ -80,7 +80,7 @@ void DetialsLayer::loadUI()
 	_btnAbandon = node->getChildByName<Button*>(btnAbandonName);
 
 	//关闭按钮回调
-	_btnClose->addTouchEventListener(CC_CALLBACK_2(DetialsLayer::btnCloseCallBack, this));
+	_btnClose->addTouchEventListener(CC_CALLBACK_2(DetailsLayer::btnCloseCallBack, this));
 	
 	//强化按钮回调
 	_btnIntensify->addTouchEventListener([&](Ref* pSender, Widget::TouchEventType type) {
@@ -143,7 +143,7 @@ void DetialsLayer::loadUI()
 	});
 }
 
-int DetialsLayer::calculateCost(BtnType type)
+int DetailsLayer::calculateCost(BtnType type)
 {
 	if (BT_LEVEL_UP == type)
 	{
@@ -155,7 +155,7 @@ int DetialsLayer::calculateCost(BtnType type)
 	}
 }
 
-int DetialsLayer::calculateGold()
+int DetailsLayer::calculateGold()
 {
 	int cost = 0;
 
@@ -181,7 +181,7 @@ int DetialsLayer::calculateGold()
 	return cost;
 }
 
-int DetialsLayer::calculateDiamond()
+int DetailsLayer::calculateDiamond()
 {
 	int cost = 0;
 
@@ -207,7 +207,7 @@ int DetialsLayer::calculateDiamond()
 	return cost;
 }
 
-int DetialsLayer::findSameTypeObject()
+int DetailsLayer::findSameTypeObject()
 {
 	int result = none;
 
@@ -258,7 +258,7 @@ int DetialsLayer::findSameTypeObject()
 	return result;
 }
 
-void DetialsLayer::levelupEquiupment()
+void DetailsLayer::levelupEquiupment()
 {
 	auto dm = DialogManager::getInstance();
 	auto property = _data->getEquipmentById(_objectId)->getProperty();
@@ -289,7 +289,7 @@ void DetialsLayer::levelupEquiupment()
 	});
 }
 
-void DetialsLayer::levelupHero()
+void DetailsLayer::levelupHero()
 {
 	auto dm = DialogManager::getInstance();
 	auto property = _data->getHeroCardById(_objectId)->getProperty();
@@ -319,7 +319,7 @@ void DetialsLayer::levelupHero()
 	});
 }
 
-void DetialsLayer::intensifyEquipment()
+void DetailsLayer::intensifyEquipment()
 {
 	auto dm = DialogManager::getInstance();
 	auto property = _data->getEquipmentById(_objectId)->getProperty();
@@ -362,7 +362,7 @@ void DetialsLayer::intensifyEquipment()
 	});
 }
 
-void DetialsLayer::intensifyHero()
+void DetailsLayer::intensifyHero()
 {
 	auto dm = DialogManager::getInstance();
 	auto property = _data->getHeroCardById(_objectId)->getProperty();
@@ -405,7 +405,7 @@ void DetialsLayer::intensifyHero()
 	});
 }
 
-string DetialsLayer::propertyToString(const EquipmentProperty * property)
+string DetailsLayer::propertyToString(const EquipmentProperty * property)
 {
 	string res = StringUtils::format(_i18n->getStringByKey(level_d).c_str(), property->level);
 	res += "\t";
@@ -471,7 +471,7 @@ string DetialsLayer::propertyToString(const EquipmentProperty * property)
 	return res;
 }
 
-string DetialsLayer::propertyToString(const HeroCardProperty* property)
+string DetailsLayer::propertyToString(const HeroCardProperty* property)
 {
 	//将属性格式化到要显示的中文字符串中去
 	string res = StringUtils::format(_i18n->getStringByKey(level_d).c_str(), property->level);
@@ -501,7 +501,7 @@ string DetialsLayer::propertyToString(const HeroCardProperty* property)
 	return res;
 }
 
-void DetialsLayer::updateAttribute()
+void DetailsLayer::updateAttribute()
 {
 	switch (_type)
 	{
@@ -528,12 +528,12 @@ void DetialsLayer::updateAttribute()
 	}
 }
 
-void DetialsLayer::setName(const std::string name)
+void DetailsLayer::setName(const std::string name)
 {
 	_nameLabel->setString(name);
 }
 
-void DetialsLayer::setNameColor(int star)
+void DetailsLayer::setNameColor(int star)
 {
 	Color4B color;
 
@@ -562,17 +562,17 @@ void DetialsLayer::setNameColor(int star)
 	_nameLabel->setTextColor(color);
 }
 
-void DetialsLayer::setAttributeString(const std::string& content)
+void DetailsLayer::setAttributeString(const std::string& content)
 {
 	_attributeLabel->setString(content);
 }
 
-void DetialsLayer::setIco(const std::string& icoName)
+void DetailsLayer::setIco(const std::string& icoName)
 {
 	_ico->loadTexture(icoName, TextureResType::PLIST);
 }
 
-void DetialsLayer::intensify()
+void DetailsLayer::intensify()
 {
 	switch (_type)
 	{
@@ -587,7 +587,7 @@ void DetialsLayer::intensify()
 	}
 }
 
-void DetialsLayer::levelup()
+void DetailsLayer::levelup()
 {
 	switch (_type)
 	{
@@ -602,7 +602,7 @@ void DetialsLayer::levelup()
 	}
 }
 
-void DetialsLayer::startAnimation()
+void DetailsLayer::startAnimation()
 {
 	this->setScale(0.0f);
 
@@ -610,7 +610,7 @@ void DetialsLayer::startAnimation()
 	this->runAction(ani);
 }
 
-void DetialsLayer::endAnimation()
+void DetailsLayer::endAnimation()
 {
 	auto ani = Sequence::createWithTwoActions(Spawn::createWithTwoActions(ScaleTo::create(0.5f, 0.0f), RotateTo::create(0.5f, 720)), CallFunc::create([&]() {
 		this->removeFromParentAndCleanup(true);
@@ -619,12 +619,12 @@ void DetialsLayer::endAnimation()
 	this->runAction(ani);
 }
 
-void DetialsLayer::onEnterTransitionDidFinish()
+void DetailsLayer::onEnterTransitionDidFinish()
 {
 	startAnimation();
 }
 
-void DetialsLayer::sell()
+void DetailsLayer::sell()
 {
 	switch (_type)
 	{
@@ -639,7 +639,7 @@ void DetialsLayer::sell()
 	}
 }
 
-void DetialsLayer::sellOEquipment()
+void DetailsLayer::sellOEquipment()
 {
 	auto dm = DialogManager::getInstance();
 	auto property = _data->getEquipmentById(_objectId)->getProperty();
@@ -661,7 +661,7 @@ void DetialsLayer::sellOEquipment()
 	});
 }
 
-void DetialsLayer::sellOHero()
+void DetailsLayer::sellOHero()
 {
 	auto dm = DialogManager::getInstance();
 	auto property = _data->getHeroCardById(_objectId)->getProperty();
@@ -680,7 +680,7 @@ void DetialsLayer::sellOHero()
 	});
 }
 
-void DetialsLayer::abandon()
+void DetailsLayer::abandon()
 {
 	switch (_type)
 	{
@@ -695,7 +695,7 @@ void DetialsLayer::abandon()
 	}
 }
 
-void DetialsLayer::abandonEquipment()
+void DetailsLayer::abandonEquipment()
 {
 	auto dm = DialogManager::getInstance();
 	auto property = _data->getEquipmentById(_objectId)->getProperty();
@@ -712,7 +712,7 @@ void DetialsLayer::abandonEquipment()
 	});
 }
 
-void DetialsLayer::abandonHero()
+void DetailsLayer::abandonHero()
 {
 	auto dm = DialogManager::getInstance();
 	auto property = _data->getHeroCardById(_objectId)->getProperty();
@@ -729,7 +729,7 @@ void DetialsLayer::abandonHero()
 	});
 }
 
-void DetialsLayer::btnCloseCallBack(cocos2d::Ref * pSender, cocos2d::ui::Widget::TouchEventType type)
+void DetailsLayer::btnCloseCallBack(cocos2d::Ref * pSender, cocos2d::ui::Widget::TouchEventType type)
 {
 	if (type == Widget::TouchEventType::ENDED)
 	{

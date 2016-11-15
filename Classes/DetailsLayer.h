@@ -1,6 +1,6 @@
 /*************************************************
 // Copyright (C), 2016-2020, CS&S. Co., Ltd.
-// File name: 	DetialsLayer.h
+// File name: 	DetailsLayer.h
 // Author:		 Metoor
 // Version: 	1.0
 // Date: 		2016/11/07
@@ -8,8 +8,8 @@
 // Description: 	create by vs2015pro
 *************************************************/
 
-#ifndef __DETIALSLAYER_H__
-#define __DETIALSLAYER_H__
+#ifndef __DETAILSLAYER_H__
+#define __DETAILSLAYER_H__
 
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
@@ -33,13 +33,13 @@ enum BtnType{
 };
  
 //显示装备和英雄的详细信息
-class DetialsLayer : public cocos2d::Layer
+class DetailsLayer : public cocos2d::Layer
 {
 public:
-	DetialsLayer();
-	~DetialsLayer();
+	DetailsLayer();
+	~DetailsLayer();
 	virtual bool init() override;
-	CREATE_FUNC(DetialsLayer);
+	CREATE_FUNC(DetailsLayer);
 
 	//通过装id初始化Ui数据
 	void initUiWithId(int id, DisplayType type);
@@ -157,5 +157,5 @@ private:
 	std::function<void(cocos2d::Ref * pSender, cocos2d::ui::Widget::TouchEventType type)> _intensifyFun, _levelupFunc;
 };
 
-#endif // DETIALSLAYER_H_
+#endif // __DETAILSLAYER_H__
 

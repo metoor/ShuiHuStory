@@ -12,7 +12,7 @@
 #include "cocostudio/CocoStudio.h"
 #include "AudioManager.h"
 #include "DisplayLayer.h"
-#include "DetialsLayer.h"
+#include "DetailsLayer.h"
 #include "GameData.h"
 #include "LoginRewardLayer.h"
 #include "LevelupRewardLayer.h"
@@ -118,7 +118,7 @@ Layer* HomeLayer::createMenuLayer(HomeMenuType type)
 			int id = (int)btn->getUserData();
 
 			//创建装备详情层并显示
-			auto detailsLayer = DetialsLayer::create();
+			auto detailsLayer = DetailsLayer::create();
 			detailsLayer->initUiWithId(id, DT_EQUIPMENT);
 			
 			addChild(detailsLayer);
@@ -139,7 +139,7 @@ Layer* HomeLayer::createMenuLayer(HomeMenuType type)
 			int id = (int)btn->getUserData();
 
 			//创建英雄卡牌详情层并显示
-			auto detailsLayer = DetialsLayer::create();
+			auto detailsLayer = DetailsLayer::create();
 			detailsLayer->initUiWithId(id, DT_HERO);
 			addChild(detailsLayer);
 		});
