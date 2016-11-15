@@ -25,8 +25,11 @@ AudioManager::AudioManager()
 AudioManager::~AudioManager()
 {
 	//保存是否静音的标志
-	UserDefault::getInstance()->setBoolForKey(is_effect_mute_name.c_str(), _isEffectMute);
 	UserDefault::getInstance()->setBoolForKey(is_bg_mute_name.c_str(), _isbgMusicMute);
+	UserDefault::getInstance()->setBoolForKey(is_effect_mute_name.c_str(), _isEffectMute);
+
+	//不能在保存数据前释放，会造成数据我法保存，只有音效设置会保存，音乐设置不会保存
+	_simpleAudioEngine->end();
 }
 
 AudioManager * AudioManager::getInstance()
@@ -71,12 +74,7 @@ bool AudioManager::isNullptr()
 
 void AudioManager::destoryInstance()
 {
-	if (_instance)
-	{
-		CC_SAFE_DELETE(_instance);
-	}
-
-	_simpleAudioEngine->end();
+	CC_SAFE_DELETE(_instance);
 }
 
 unsigned int AudioManager::playFirstSceneBgMusic()
