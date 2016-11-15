@@ -37,6 +37,9 @@
     <Filter Include="src\Layers\Home">
       <UniqueIdentifier>{df2a3b10-36c6-4c7b-9fa4-919babbb1385}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Layers\Team">
+      <UniqueIdentifier>{6c798aa9-320a-41de-8d8a-adb149fe38f7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -116,6 +119,9 @@
     </ClCompile>
     <ClCompile Include="..\Classes\AboutLayer.cpp">
       <Filter>src\Layers\Home</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\TeamLayer.cpp">
+      <Filter>src\Layers\Team</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -205,6 +211,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\AboutLayer.h">
       <Filter>src\Layers\Home</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\TeamLayer.h">
+      <Filter>src\Layers\Team</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

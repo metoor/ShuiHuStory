@@ -117,8 +117,19 @@ public:
 	//获取对应位置的出战英雄id
 	int getBattleHeroId(int pos);
 
+	//获得出战英雄数组
+	int* getBattleHeroArray();
+
+	//如果英雄已经上阵，则下阵，返回true，否则返回false
+	bool unbattleHero(int id);
+
 	//判断id是否出战
 	bool isBattleHero(int id);
+
+	//返回上阵英雄的个数
+	int getBattleHeroNum();
+
+	void setBattleHero(int pos, int id);
 
 	//获得装备容器
 	const std::unordered_map<int, Equipment*>* getEquipmentMap();

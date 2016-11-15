@@ -44,6 +44,8 @@
           <Image Name="abandon2.png" />
           <Image Name="about_1.png" />
           <Image Name="about_2.png" />
+          <Image Name="btn_save_1.png" />
+          <Image Name="btn_save_2.png" />
           <Image Name="btnInfo.png" />
           <Image Name="changhero1.png" />
           <Image Name="changhero2.png" />
@@ -91,6 +93,10 @@
           <Image Name="zhaomu2.png" />
           <Image Name="zhuangbei1.png" />
           <Image Name="zhuangbei2.png" />
+          <Image Name="battleed1.png" />
+          <Image Name="battleed2.png" />
+          <Image Name="unBattleed1.png" />
+          <Image Name="unBattleed2.png" />
         </Folder>
         <Folder Name="fonts">
           <TTF Name="MiniKaiTi.ttf" />
@@ -131,6 +137,7 @@
             <Project Name="firstScene.csd" Type="Layer" />
           </Folder>
           <Folder Name="homeLayer">
+            <Project Name="aboutLayer.csd" Type="Layer" />
             <Project Name="audioLayer.csd" Type="Layer" />
             <Project Name="detialsLayer.csd" Type="Layer" />
             <Project Name="displayLayer.csd" Type="Layer" />
@@ -141,7 +148,9 @@
             <Project Name="levelupRewardLayer.csd" Type="Layer" />
             <Project Name="loginRewardLayer.csd" Type="Layer" />
             <Project Name="menuLayer.csd" Type="Layer" />
-            <Project Name="aboutLayer.csd" Type="Layer" />
+          </Folder>
+          <Folder Name="teamLayer">
+            <Project Name="teamLayer.csd" Type="Layer" />
           </Folder>
           <Folder Name="Tools">
             <Project Name="dialogLayer.csd" Type="Layer" />

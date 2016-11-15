@@ -52,7 +52,7 @@ void Config::destoryHeroVectorElement()
 {
 	for (int index = _heroCardVector->size() - 1; index >= 0; --index)
 	{
-		delete _heroCardVector->at(index);
+		delete (_heroCardVector->at(index));
 	}
 
 	_heroCardVector->clear();
@@ -62,7 +62,7 @@ void Config::destoryEquipmentVectorElement()
 {
 	for (int index = _equipmentVector->size() - 1; index >= 0; --index)
 	{
-		delete _equipmentVector->at(index);
+		delete (_equipmentVector->at(index));
 	}
 
 	_equipmentVector->clear();

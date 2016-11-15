@@ -28,8 +28,8 @@ const int tip_z_order = 9960;
 
 //-----------------------------------------------------
 
-const std::string save_hero_file_name = "myHeroCard.me";			//ÓÃÀ´±£´æÍæ¼Ò»ñµÃÓ¢ĞÛ¿¨ÅÆÊı¾İµÄÎÄ¼şÃû³Æ
-const std::string save_equipment_file_name = "myEquipment.me";	//ÓÃÀ´±£´æÍæ¼Ò»ñµÃ×°±¸Êı¾İµÄÎÄ¼şÃû³Æ
+const std::string save_hero_file_name = "myHeroCard.mc";			//ÓÃÀ´±£´æÍæ¼Ò»ñµÃÓ¢ĞÛ¿¨ÅÆÊı¾İµÄÎÄ¼şÃû³Æ
+const std::string save_equipment_file_name = "myEquipment.mc";	//ÓÃÀ´±£´æÍæ¼Ò»ñµÃ×°±¸Êı¾İµÄÎÄ¼şÃû³Æ
 const std::string equipment_file_name = "datas/equipment.data";		//ÓÃÀ´Éú³É×°±¸µÄ»ù´¡Êı¾İµÄÎÄ¼şÃû³Æ
 const std::string hero_file_name = "datas/hero.data";				//ÓÃÀ´Éú³ÉÓ¢ĞÛ¿¨ÅÆ»ù´¡Êı¾İµÄÎÄ¼şÃû³Æ
 
@@ -65,7 +65,7 @@ const std::string expName = "ep";			//±£´æ¾­ÑéµÄkey
 const std::string uniqueNumName = "uqm"; //ÓÃÀ´Éú³ÉIdµÄÎ¨Ò»Êı
 
 const std::string is_effect_mute_name = "et"; //±£´æÊÇ·ñÆôÓÃÒôĞ§µÄkey
-const std::string is_bg_mute_name = "et"; //±£´æÊÇ·ñÆôÓÃ±³¾°ÒôÀÖµÄkey
+const std::string is_bg_mute_name = "bg"; //±£´æÊÇ·ñÆôÓÃ±³¾°ÒôÀÖµÄkey
 
 //×Ô¶¨ÒåÏûÏ¢
 const string msg_update_user_data = "MSG_UPDATE_USER_DATA";	//¸üĞÂÓÃ»§Êı¾İµÄÏûÏ¢Ãû
@@ -92,7 +92,15 @@ const std::string sound_off_1 = "btns/menu_sound_off_1.png";
 const std::string sound_off_2 = "btns/menu_sound_off_2.png";
 const std::string sound_on_1 = "btns/menu_sound_on_1.png";
 const std::string sound_on_2 = "btns/menu_sound_on_2.png";
+//ÉÏÕó°´Å¥×ÊÔ´Ãû³Æ
+const std::string btnBattleHero1 = "btns/battleed1.png";
+const std::string btnBattlehero2 = "btns/battleed2.png";
+//ÏÂÕó°´Å¥×ÊÔ´Ãû³Æ
+const std::string btnUnbattleHero1 = "btns/unBattleed1.png";
+const std::string btnUnbattleHero2 = "btns/unBattleed2.png";
 
+//Ìí¼ÓÍ¼Æ¬
+const std::string addIco = "icos/add.png";
 
 //ÊôĞÔÍ¼±ê£¬Èç£º·ÀÓù£¬Ä§·À£¬ÉúÃüµÈ....
 const std::string hpIco = "icos/hp.png";
@@ -162,6 +170,11 @@ const std::string loginRewardTimeTips2 = "loginRewardTimeTips2"; //µ½´ïÁìÈ¡Ê±¼äÌ
 const std::string rewardGold = "rewardGold"; //½±ÀøµÄ½ğ±Ò×Ö·û´®
 const std::string rewardDiamond = "rewardDiamond"; //½±ÀøµÄ×êÊ¯Êı×Ö·û´®
 
+
+//»»½«ÌáÊ¾
+const std::string battleSuc = "battleSuc"; //ÉÏÕó³É¹¦ÌáÊ¾
+const std::string unbattleSuc = "unbattleSuc"; //ÏÂÕó³É¹¦ÌáÊ¾
+const std::string atleastOneHero = "atleastOneHero"; //ÏÂÕóÊ§°Ü£¬ÖÁÉÙÒªÓĞÒ»¸öÉÏÕó
 
 //---------------¸ø¿Ø¼şÉèÖÃµÄ±êÇ©Ãû×Ö£¨node->setName()£©-----------------------------------
 const std::string blockTagName = "blockName";		//BlockLayerµÄ±êÇ©Ãû×Ö£¬ÓÃÀ´Í¨¹ı±êÇ©Ãû×Ö»ñÈ¡ÊµÀı¶ÔÏó

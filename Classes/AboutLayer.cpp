@@ -16,7 +16,6 @@
 
 USING_NS_CC;
 using namespace ui;
-using namespace cocostudio::timeline;
 
 AboutLayer::AboutLayer()
 {

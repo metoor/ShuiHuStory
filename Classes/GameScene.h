@@ -14,9 +14,15 @@
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
 
+enum GameMenuType{
+	GMT_HOME,
+	GMT_TEAM,
+	GMT_HERO,
+	GMT_WAR,
+	GMT_PHOTO,
+	GMT_STORE
+};
 
-//六个功能菜单对应的6个场景的数组大小
-#define ARRAY_SIZE 6
 
 class GameScene : public cocos2d::Layer{
 public:
@@ -28,10 +34,11 @@ public:
 
 
 private:
+	//
+	cocos2d::Layer* createLayer(GameMenuType type);
+
 	//手机返回键处理回调
 	void onKeyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event * pEvent);
-
-	void initArrayToNullptr();
 
 	void loadUI();
 
@@ -53,7 +60,7 @@ private:
 	cocos2d::ui::Button* _preMenu;
 
 	//用来存储6个功能层的指针引用
-	cocos2d::Layer* _layerPointer[ARRAY_SIZE];
+	cocos2d::Layer *_preLayer, *_currentLayer;
 
 };
 

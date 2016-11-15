@@ -124,6 +124,11 @@ void DisplayListItem::setStarNum(const int n)
 	}
 }
 
+void DisplayListItem::setBtnEnable(bool isEnable)
+{
+	_btn->setEnabled(false);
+}
+
 void DisplayListItem::loadUI()
 {
 	auto node = CSLoader::createNode(csbName);

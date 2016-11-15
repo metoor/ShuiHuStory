@@ -39,6 +39,12 @@ public:
 	CREATE_FUNC(DisplayLayer);
 	virtual bool init() override;
 
+	int getObjectIdByIndex(int index);
+
+	std::vector<int>* getObjectIdVector();
+
+	DisplayListItem* getObjectItemByIndex(int index);
+
 	//设置要显示的类型，显示装备或英雄卡牌
 	void setDisplayType(ObjectType type);
 
@@ -46,7 +52,10 @@ public:
 	void setBtnCallBack(std::function<void(cocos2d::Ref * pSender)> func);
 
 	//设置item里面按钮的图片
-	void setBtnTxture(const std::string& normal, const std::string& pressed);
+	void setBtnTexture(const std::string& normal, const std::string& pressed);
+
+	//结束动画，并清理资源
+	void endAnimation();
 
 private:
 	void loadUI();
@@ -84,9 +93,6 @@ private:
 
 	//进场动画
 	void startAnimation();
-
-	//结束动画，并清理资源
-	void endAnimation();
 
 private:
 	const std::string csbName = "layers/homeLayer/displayLayer.csb";

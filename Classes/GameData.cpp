@@ -228,16 +228,31 @@ void GameData::readUniqueIdentifierNumFromFile()
 
 void GameData::readBattleHero()
 {
+	bool isFirst = true;
+
 	//从文件中依次读取出出战英雄的id
 	for (int pos = 0; pos < max_battle_hero_num; ++pos)
 	{
 		_battleHero[pos] = UserDefault::getInstance()->getIntegerForKey(battleSaveKey[pos].c_str(), none);
+		
+		if (isFirst && _battleHero[pos] > 1000)
+		{
+			//如果有出战英雄则不是第一次登陆
+			isFirst = false;
+		}
+	}
+
+	if (isFirst)
+	{
+		//设置默认出战的两个英雄
+		_battleHero[0] = 1005;
+		_battleHero[1] = 1006;
 	}
 }
 
 void GameData::saveBattleHero()
 {
-	//从文件中依次读取出出战英雄的id
+	//从文件中依次保存出出战英雄的id
 	for (int pos = 0; pos < max_battle_hero_num; ++pos)
 	{
 		UserDefault::getInstance()->setIntegerForKey(battleSaveKey[pos].c_str(), _battleHero[pos]);
@@ -476,11 +491,12 @@ void GameData::readHeroCard()
 	if (!FileUtils::getInstance()->isFileExist(jsonpath))
 	{
 		//第一次登陆创建默英雄卡牌
-		for (int i = 0; i < 2; i++)
+		for (int i = 0; i < 10; i++)
 		{
 			HeroCard* hc = new (std::nothrow) HeroCard();
 			//创建默认的英雄：公孙胜和水浒迷
-			hc->init(3 + i * 105);
+			//hc->init(3 + i * 105);
+			hc->init(i);
 			addHeroCardToMap(hc);
 		}
 	}
@@ -551,6 +567,29 @@ int GameData::getBattleHeroId(int pos)
 	return 100;
 }
 
+int * GameData::getBattleHeroArray()
+{
+	return _battleHero;
+}
+
+bool GameData::unbattleHero(int id)
+{
+	bool result = false;
+
+	for (int pos = 0; pos < max_battle_hero_num; ++pos)
+	{
+		if (_battleHero[pos] == id)
+		{
+			//查找到英雄
+			_battleHero[pos] = none;
+			result = true;
+			break;
+		}
+	}
+
+	return result;
+}
+
 bool GameData::isBattleHero(int id)
 {
 	bool result = false;
@@ -565,6 +604,34 @@ bool GameData::isBattleHero(int id)
 	}
 
 	return result;
+}
+
+int GameData::getBattleHeroNum()
+{
+	int num = 0;
+
+	for (int pos = 0; pos < max_battle_hero_num; ++pos)
+	{
+		if (_battleHero[pos] > 1000)
+		{
+			++num;
+		}
+	}
+
+	return num;
+}
+
+void GameData::setBattleHero(int pos, int id)
+{
+	if (pos < 0 || pos >= max_battle_hero_num)
+	{
+		McLog mc;
+		mc.addWaring("'pos' out of range...", __FILE__, __LINE__);
+	}
+	else
+	{
+		_battleHero[pos] = id;
+	}
 }
 
 const std::unordered_map<int, Equipment*>* GameData::getEquipmentMap()

@@ -16,7 +16,7 @@
 
 class McLog {
 public:
-	McLog(std::string fileName = "log.me");
+	McLog(std::string fileName = "log.mc");
 	~McLog();
 
 	//msg:错误描述，fileName:出错的文件名，line:出错的行数

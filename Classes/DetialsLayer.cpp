@@ -433,7 +433,7 @@ string DetialsLayer::propertyToString(const EquipmentProperty * property)
 		res += "\n";
 		res += StringUtils::format(_i18n->getStringByKey(mp_d).c_str(), "+", property->mp);
 		res += "\n";
-		res = StringUtils::format(_i18n->getStringByKey(crit_d).c_str(), "+", Tools::percentToInt(property->critRate));
+		res += StringUtils::format(_i18n->getStringByKey(crit_d).c_str(), "+", Tools::percentToInt(property->critRate));
 		break;
 	}
 	case 4:

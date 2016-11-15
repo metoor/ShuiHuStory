@@ -12,11 +12,12 @@
 #include "ParticleLayer.h"
 #include "cocostudio/CocoStudio.h"
 #include "GameData.h"
-#include "HomeLayer.h"
 #include "AudioManager.h"
 #include "ConstantDefine.h"
 #include "I18N.h"
 #include "Config.h"
+#include "HomeLayer.h"
+#include "TeamLayer.h"
 
 USING_NS_CC;
 using namespace ui;
@@ -24,7 +25,9 @@ using namespace std;
 
 
 GameScene::GameScene()
-	:_preMenu(nullptr)
+	:_preMenu(nullptr),
+	_preLayer(nullptr),
+	_currentLayer(nullptr)
 {
 	//初始化游戏数据管理类
 
@@ -44,12 +47,9 @@ GameScene::~GameScene()
 {
 	//释放游戏数据
 	I18N::getInstance()->loadStringFile("string.plist");
-	AudioManager::getInstance()->destoryInstance();
 	GameData::getInstance()->destoryInstance();
 	Config::getInstance()->destoryInstance();
-
-	//因为Button是引用计数，所以将引用全部置空
-	initArrayToNullptr();
+	AudioManager::getInstance()->destoryInstance();
 }
 
 Scene * GameScene::createScene()
@@ -71,8 +71,6 @@ bool GameScene::init()
 
 	loadUI();
 
-	initArrayToNullptr();
-
 	//处理手机返回键的点击事件
 	auto listener = EventListenerKeyboard::create();
 	listener->onKeyReleased = CC_CALLBACK_2(GameScene::onKeyReleased, this);
@@ -83,11 +81,38 @@ bool GameScene::init()
 	addChild(paricle, particle_z_order);
 
 	//启动默认转到Home场景
-	_layerPointer[0] = HomeLayer::create();
-	addChild(_layerPointer[0]);
+	_preLayer = HomeLayer::create();
+	addChild(_preLayer);
 	_preMenu->setEnabled(false);
 
 	return true;
+}
+
+cocos2d::Layer * GameScene::createLayer(GameMenuType type)
+{
+	Layer* layer = nullptr;
+
+	switch (type)
+	{
+	case GMT_HOME:
+		layer = HomeLayer::create();
+		break;
+	case GMT_TEAM:
+		layer = TeamLayer::create();
+		break;
+	case GMT_HERO:
+		break;
+	case GMT_WAR:
+		break;
+	case GMT_PHOTO:
+		break;
+	case GMT_STORE:
+		break;
+	default:
+		break;
+	}
+
+	return layer;
 }
 
 //手机返回键处理回调
@@ -96,15 +121,6 @@ void GameScene::onKeyReleased(EventKeyboard::KeyCode keyCode, Event * pEvent)
 	if (keyCode == EventKeyboard::KeyCode::KEY_ESCAPE)
 	{
 		Director::getInstance()->end();
-	}
-}
-
-void GameScene::initArrayToNullptr()
-{
-	//初始化数组为nullptr
-	for (int index = 0; index < ARRAY_SIZE; ++index)
-	{
-		_layerPointer[index] = nullptr;
 	}
 }
 
@@ -150,16 +166,25 @@ void GameScene::menuCallBack(Ref * pSender, Widget::TouchEventType type)
 
 		if (preTag != currentTag && preTag != none)
 		{
-			//如果上次的索引和这次的不一样，且不等于none，则需要创建当前索引层，然后释放上次的索引层
-			log("--current:%d--pre:%d", currentTag, preTag);
+			//释放上一菜单层
+			_preLayer->removeFromParentAndCleanup(true);
+
+			//创建当前点击菜单对应的场景
+			_currentLayer = createLayer(static_cast<GameMenuType>(currentTag));
+			addChild(_currentLayer);
+
 		}
 
 		//不能连续点击相同的菜单，禁用当前的菜单，解禁上一次的菜单
 		_preMenu->setEnabled(true);
 		currentMenu->setEnabled(false);
 
-		//保存这次点击的菜单指针引用
+		//保存这次点击的菜单和场景指针引用
 		_preMenu = currentMenu;
+		_preLayer = _currentLayer;
+
+		//将当前场景指正置空
+		_currentLayer = nullptr;
 
 	}
 }

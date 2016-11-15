@@ -51,6 +51,9 @@ public:
 	//设置品质星级
 	void setStarNum(const int n);
 
+	//禁用item里面的按钮
+	void setBtnEnable(bool isEnable);
+
 private:
 	const std::string csbName = "layers/homeLayer/displayListItem.csb";
 	const std::string icoName = "ico";

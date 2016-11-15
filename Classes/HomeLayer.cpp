@@ -109,7 +109,7 @@ Layer* HomeLayer::createMenuLayer(HomeMenuType type)
 	case HMT_EQUIPMENT:
 	{
 		auto displayLayer = DisplayLayer::create();
-		displayLayer->setBtnTxture(btnDetails1, btnDetails2);
+		displayLayer->setBtnTexture(btnDetails1, btnDetails2);
 		displayLayer->setDisplayType(OT_EQUIPMENT);
 
 		//列表里item里的按钮回调
@@ -130,7 +130,7 @@ Layer* HomeLayer::createMenuLayer(HomeMenuType type)
 	case HMT_HERO:
 	{
 		auto displayLayer = DisplayLayer::create();
-		displayLayer->setBtnTxture(btnDetails1, btnDetails2);
+		displayLayer->setBtnTexture(btnDetails1, btnDetails2);
 		displayLayer->setDisplayType(OT_HERO);
 
 		//列表里item里的按钮回调

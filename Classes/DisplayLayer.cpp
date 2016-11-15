@@ -53,6 +53,21 @@ bool DisplayLayer::init()
 	return true;
 }
 
+int DisplayLayer::getObjectIdByIndex(int index)
+{
+	return _objectIdVector.at(index);
+}
+
+std::vector<int>* DisplayLayer::getObjectIdVector()
+{
+	return &_objectIdVector;
+}
+
+DisplayListItem* DisplayLayer::getObjectItemByIndex(int index)
+{
+	return dynamic_cast<DisplayListItem*>(_listView->getItem(index));
+}
+
 void DisplayLayer::addUpdateDisplayItemEventListener()
 {
 	//注册更新数据事件
@@ -375,7 +390,7 @@ void DisplayLayer::setBtnCallBack(std::function<void(cocos2d::Ref*pSender)> func
 	_func = func;
 }
 
-void DisplayLayer::setBtnTxture(const std::string& normal, const std::string& pressed)
+void DisplayLayer::setBtnTexture(const std::string& normal, const std::string& pressed)
 {
 	_normalTexture = normal;
 	_pressedTexture = pressed;
