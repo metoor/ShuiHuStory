@@ -86,7 +86,7 @@ private:
 
 	void setItemColor(DisplayListItem* item, int star);
 
-	virtual void onEnterTransitionDidFinish() override;
+	virtual void onEnter() override;
 
 	//按钮回调方法
 	void btnCloseCallBack(cocos2d::Ref* pSender, cocos2d::ui::Widget::TouchEventType type);

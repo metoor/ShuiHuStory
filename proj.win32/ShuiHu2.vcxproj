@@ -151,9 +151,10 @@ xcopy /Y /Q "$(COCOS_X_ROOT)\cocos2d-x-3.10\prebuilt\win32\*.*" "$(OutDir)"
     <ClCompile Include="..\Classes\AudioLayer.cpp" />
     <ClCompile Include="..\Classes\AudioManager.cpp" />
     <ClCompile Include="..\Classes\Config.cpp" />
-    <ClCompile Include="..\Classes\DetialsLayer.cpp" />
+    <ClCompile Include="..\Classes\DetailsLayer.cpp" />
     <ClCompile Include="..\Classes\Dialog.cpp" />
     <ClCompile Include="..\Classes\DialogManager.cpp" />
+    <ClCompile Include="..\Classes\DisplayEquipmentByType.cpp" />
     <ClCompile Include="..\Classes\Equipment.cpp" />
     <ClCompile Include="..\Classes\DisplayLayer.cpp" />
     <ClCompile Include="..\Classes\FirstScene.cpp" />
@@ -161,6 +162,7 @@ xcopy /Y /Q "$(COCOS_X_ROOT)\cocos2d-x-3.10\prebuilt\win32\*.*" "$(OutDir)"
     <ClCompile Include="..\Classes\GameScene.cpp" />
     <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
     <ClCompile Include="..\Classes\HeroCard.cpp" />
+    <ClCompile Include="..\Classes\HeroLayer.cpp" />
     <ClCompile Include="..\Classes\HomeLayer.cpp" />
     <ClCompile Include="..\Classes\I18N.cpp" />
     <ClCompile Include="..\Classes\DisplayListItem.cpp" />
@@ -168,6 +170,7 @@ xcopy /Y /Q "$(COCOS_X_ROOT)\cocos2d-x-3.10\prebuilt\win32\*.*" "$(OutDir)"
     <ClCompile Include="..\Classes\LevelupRewardLayer.cpp" />
     <ClCompile Include="..\Classes\LoginRewardLayer.cpp" />
     <ClCompile Include="..\Classes\McLog.cpp" />
+    <ClCompile Include="..\Classes\PageViewItem.cpp" />
     <ClCompile Include="..\Classes\ParticleLayer.cpp" />
     <ClCompile Include="..\Classes\TeamLayer.cpp" />
     <ClCompile Include="..\Classes\Tips.cpp" />
@@ -181,9 +184,10 @@ xcopy /Y /Q "$(COCOS_X_ROOT)\cocos2d-x-3.10\prebuilt\win32\*.*" "$(OutDir)"
     <ClInclude Include="..\Classes\AudioManager.h" />
     <ClInclude Include="..\Classes\BlockLayer.h" />
     <ClInclude Include="..\Classes\Config.h" />
-    <ClInclude Include="..\Classes\DetialsLayer.h" />
+    <ClInclude Include="..\Classes\DetailsLayer.h" />
     <ClInclude Include="..\Classes\Dialog.h" />
     <ClInclude Include="..\Classes\DialogManager.h" />
+    <ClInclude Include="..\Classes\DisplayEquipmentByType.h" />
     <ClInclude Include="..\Classes\Equipment.h" />
     <ClInclude Include="..\Classes\DisplayLayer.h" />
     <ClInclude Include="..\Classes\FirstScene.h" />
@@ -191,6 +195,7 @@ xcopy /Y /Q "$(COCOS_X_ROOT)\cocos2d-x-3.10\prebuilt\win32\*.*" "$(OutDir)"
     <ClInclude Include="..\Classes\GameScene.h" />
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
     <ClInclude Include="..\Classes\HeroCard.h" />
+    <ClInclude Include="..\Classes\HeroLayer.h" />
     <ClInclude Include="..\Classes\HomeLayer.h" />
     <ClInclude Include="..\Classes\I18N.h" />
     <ClInclude Include="..\Classes\DisplayListItem.h" />
@@ -198,6 +203,7 @@ xcopy /Y /Q "$(COCOS_X_ROOT)\cocos2d-x-3.10\prebuilt\win32\*.*" "$(OutDir)"
     <ClInclude Include="..\Classes\LevelupRewardItem.h" />
     <ClInclude Include="..\Classes\LoginRewardLayer.h" />
     <ClInclude Include="..\Classes\McLog.h" />
+    <ClInclude Include="..\Classes\PageViewItem.h" />
     <ClInclude Include="..\Classes\ParticleLayer.h" />
     <ClInclude Include="..\Classes\ConstantDefine.h" />
     <ClInclude Include="..\Classes\TeamLayer.h" />

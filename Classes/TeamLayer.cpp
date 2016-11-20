@@ -106,6 +106,12 @@ void TeamLayer::setUnBattleBtn()
 			//如果英雄已经上阵了，则换成下阵按钮图片
 			auto item = _displayLayer->getObjectItemByIndex(index);
 			item->setBtnTexture(btnUnbattleHero1, btnUnbattleHero2);
+
+			//如果英雄已经上阵，但是位置不是当前选中的位置，则不能下阵
+			if (id != GameData::getInstance()->getBattleHeroId(_selectTag))
+			{
+				item->setBtnEnable(false);
+			}
 		}
 	}
 }
@@ -236,9 +242,7 @@ void TeamLayer::onTouchEnded(cocos2d::Touch * touch, cocos2d::Event * event)
 			int id = battleArray[_selectTag];
 			battleArray[_selectTag] = battleArray[endTag];
 			battleArray[endTag] = id;
-
 		}
-
 	}
 	else
 	{
@@ -257,7 +261,7 @@ void TeamLayer::onTouchEnded(cocos2d::Touch * touch, cocos2d::Event * event)
 		_displayLayer = DisplayLayer::create();
 		_displayLayer->setDisplayType(OT_HERO);
 
-		_displayLayer->setBtnTexture(btnBattleHero1, btnBattlehero2);
+		_displayLayer->setBtnTexture(btnBattleHero1, btnBattleHero2);
 
 		int selectTag = _selectTag;
 
@@ -285,7 +289,7 @@ void TeamLayer::onTouchEnded(cocos2d::Touch * touch, cocos2d::Event * event)
 					data->unbattleHero(id);
 
 					//将下阵的按钮换换成上阵按钮
-					item->setBtnTexture(btnBattleHero1, btnBattlehero2);
+					item->setBtnTexture(btnBattleHero1, btnBattleHero2);
 					
 					//提示下阵
 					DialogManager::getInstance()->showTips(I18N::getInstance()->getStringByKey(battleSuc), Color4B::GREEN);
@@ -300,6 +304,14 @@ void TeamLayer::onTouchEnded(cocos2d::Touch * touch, cocos2d::Event * event)
 			else
 			{
 				//英雄没有上阵，所以现在是上阵
+				int preId = data->getBattleHeroId(selectTag);
+				
+				if (preId != none)
+				{
+					//当前位置有英雄先下阵
+					data->unbattleHero(preId);
+				}
+				
 				data->setBattleHero(selectTag, id);
 
 				//将上阵的按钮换换成下阵按钮

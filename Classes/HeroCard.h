@@ -44,15 +44,15 @@ public:
 	void levelup();
 	void intensify();
 
-private:
 	//更新卡牌的属性，用于在升级过/强化过卡牌或装备时调用
 	void updatetePropery();
 
-	//计算卡牌英雄强化和升级的加成属性并更新属性
-	void calculateHeroCardPropery(const HeroCardType * heroCardType);
-
+private:
 	//计算英雄卡牌佩戴的装备加成属性并更新英雄卡牌属性
 	void calculateEquipmentPropery();
+
+	//计算卡牌英雄强化和升级的加成属性并更新属性
+	void calculateHeroCardPropery(const HeroCardType * heroCardType);
 
 private:
 	//英雄卡牌的所有属性信息

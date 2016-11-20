@@ -24,6 +24,7 @@ const int particle_z_order = 9990;
 const int dialog_z_order = 9980;
 const int menu_z_order = 9970;
 const int tip_z_order = 9960;
+const int else_z_order = 9000;
 
 
 //-----------------------------------------------------
@@ -70,7 +71,7 @@ const std::string is_bg_mute_name = "bg"; //保存是否启用背景音乐的key
 //自定义消息
 const string msg_update_user_data = "MSG_UPDATE_USER_DATA";	//更新用户数据的消息名
 const string msg_update_display_item = "MSG_UPDATE_DISPLAY_ITEM";	//用于强化或升级后更新DisplayLayer列表的item属性显示
-
+const string msg_update_hero_pageview_item = "MSG_UPDATE_HERO_PAGEVIEW_ITEM";	//用于强化或升级后更新DisplayLayer列表的item属性显示
 
 //发送自定义消息时的参数
 const int msg_update_display_item_parameter_update = 0; //升级或强化
@@ -94,10 +95,18 @@ const std::string sound_on_1 = "btns/menu_sound_on_1.png";
 const std::string sound_on_2 = "btns/menu_sound_on_2.png";
 //上阵按钮资源名称
 const std::string btnBattleHero1 = "btns/battleed1.png";
-const std::string btnBattlehero2 = "btns/battleed2.png";
+const std::string btnBattleHero2 = "btns/battleed2.png";
 //下阵按钮资源名称
 const std::string btnUnbattleHero1 = "btns/unBattleed1.png";
 const std::string btnUnbattleHero2 = "btns/unBattleed2.png";
+
+//装备按钮资源名称
+const std::string btnEquipment1 = "btns/battleed1.png";
+const std::string btnEquipment2 = "btns/battleed2.png";
+
+//装备卸下资源名称
+const std::string btnUnEquipment1 = "btns/unBattleed1.png";
+const std::string btnUnEquipment2 = "btns/unBattleed2.png";
 
 //添加图片
 const std::string addIco = "icos/add.png";
@@ -175,6 +184,10 @@ const std::string rewardDiamond = "rewardDiamond"; //奖励的钻石数字符串
 const std::string battleSuc = "battleSuc"; //上阵成功提示
 const std::string unbattleSuc = "unbattleSuc"; //下阵成功提示
 const std::string atleastOneHero = "atleastOneHero"; //下阵失败，至少要有一个上阵
+
+//更换装备提示
+const std::string unEquipmentSuc = "unEquipmentSuc"; //卸下装备成功提示
+const std::string equipmentSuc = "equipmentSuc"; //装备成功提示
 
 //---------------给控件设置的标签名字（node->setName()）-----------------------------------
 const std::string blockTagName = "blockName";		//BlockLayer的标签名字，用来通过标签名字获取实例对象

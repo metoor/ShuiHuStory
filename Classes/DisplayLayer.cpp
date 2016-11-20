@@ -111,8 +111,10 @@ void DisplayLayer::deleteItem()
 	setTipLabel();
 }
 
-void DisplayLayer::onEnterTransitionDidFinish()
+void DisplayLayer::onEnter()
 {
+	Layer::onEnter();
+
 	//初始化列表
 	load();
 
@@ -430,11 +432,14 @@ void DisplayLayer::setItemColor(DisplayListItem * item, int star)
 
 void DisplayLayer::btnCloseCallBack(cocos2d::Ref * pSender, cocos2d::ui::Widget::TouchEventType type)
 {
-	if (type == Widget::TouchEventType::ENDED)
+	if (type == Widget::TouchEventType::BEGAN)
 	{
 		//点击音效
 		AudioManager::getInstance()->playClickEffect();
+	}
 
+	if (type == Widget::TouchEventType::ENDED)
+	{
 		if (_isNeedUpadateUserData)
 		{
 			//发送更新用户数据的消息

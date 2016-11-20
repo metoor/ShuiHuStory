@@ -40,6 +40,9 @@
     <Filter Include="src\Layers\Team">
       <UniqueIdentifier>{6c798aa9-320a-41de-8d8a-adb149fe38f7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Layers\Hero">
+      <UniqueIdentifier>{20bd325b-d9c4-4d6d-8baf-c238388b7cbc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -96,9 +99,6 @@
     <ClCompile Include="..\Classes\DisplayListItem.cpp">
       <Filter>src\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\DetialsLayer.cpp">
-      <Filter>src\Layers\Home</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\Tips.cpp">
       <Filter>src\Objects</Filter>
     </ClCompile>
@@ -122,6 +122,18 @@
     </ClCompile>
     <ClCompile Include="..\Classes\TeamLayer.cpp">
       <Filter>src\Layers\Team</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\DetailsLayer.cpp">
+      <Filter>src\Layers\Home</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\PageViewItem.cpp">
+      <Filter>src\Layers\Hero</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\HeroLayer.cpp">
+      <Filter>src\Layers\Hero</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\DisplayEquipmentByType.cpp">
+      <Filter>src\Layers\Hero</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -188,9 +200,6 @@
     <ClInclude Include="..\Classes\DisplayListItem.h">
       <Filter>src\Objects</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\DetialsLayer.h">
-      <Filter>src\Layers\Home</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\Tips.h">
       <Filter>src\Objects</Filter>
     </ClInclude>
@@ -214,6 +223,18 @@
     </ClInclude>
     <ClInclude Include="..\Classes\TeamLayer.h">
       <Filter>src\Layers\Team</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\DetailsLayer.h">
+      <Filter>src\Layers\Home</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\PageViewItem.h">
+      <Filter>src\Layers\Hero</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\HeroLayer.h">
+      <Filter>src\Layers\Hero</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\DisplayEquipmentByType.h">
+      <Filter>src\Layers\Hero</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

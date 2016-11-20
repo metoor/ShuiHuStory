@@ -27,6 +27,11 @@ Equipment::~Equipment()
 	_property = nullptr;
 }
 
+void Equipment::setUserId(int id)
+{
+	_property->user = id;
+}
+
 void Equipment::init(const int index)
 {
 	auto equipment = Config::getInstance()->getEquipmentByIndex(index);

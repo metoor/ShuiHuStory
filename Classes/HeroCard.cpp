@@ -125,6 +125,9 @@ void HeroCard::init(const SaveHeroCardData* saveHeroData)
 	_property->des = &(heroCardType->des);
 
 	calculateHeroCardPropery(heroCardType);
+	
+	//将装备的属性附加到英雄属性上
+	calculateEquipmentPropery();
 }
 
 const SaveHeroCardData HeroCard::getSaveData()

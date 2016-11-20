@@ -44,6 +44,8 @@
           <Image Name="abandon2.png" />
           <Image Name="about_1.png" />
           <Image Name="about_2.png" />
+          <Image Name="battleed1.png" />
+          <Image Name="battleed2.png" />
           <Image Name="btn_save_1.png" />
           <Image Name="btn_save_2.png" />
           <Image Name="btnInfo.png" />
@@ -85,6 +87,8 @@
           <Image Name="tianbutton2.png" />
           <Image Name="tujian1.png" />
           <Image Name="tujian2.png" />
+          <Image Name="unBattleed1.png" />
+          <Image Name="unBattleed2.png" />
           <Image Name="war1.png" />
           <Image Name="war2.png" />
           <Image Name="yinxiong1.png" />
@@ -93,10 +97,6 @@
           <Image Name="zhaomu2.png" />
           <Image Name="zhuangbei1.png" />
           <Image Name="zhuangbei2.png" />
-          <Image Name="battleed1.png" />
-          <Image Name="battleed2.png" />
-          <Image Name="unBattleed1.png" />
-          <Image Name="unBattleed2.png" />
         </Folder>
         <Folder Name="fonts">
           <TTF Name="MiniKaiTi.ttf" />
@@ -136,6 +136,10 @@
           <Folder Name="firstLogin">
             <Project Name="firstScene.csd" Type="Layer" />
           </Folder>
+          <Folder Name="heroLayer">
+            <Project Name="heroLayer.csd" Type="Layer" />
+            <Project Name="pageViewItemLayer.csd" Type="Layer" />
+          </Folder>
           <Folder Name="homeLayer">
             <Project Name="aboutLayer.csd" Type="Layer" />
             <Project Name="audioLayer.csd" Type="Layer" />
@@ -158,6 +162,7 @@
           </Folder>
         </Folder>
         <Folder Name="test">
+          <Image Name="car3.png" />
           <Image Name="head112.png" />
           <Image Name="sword1.png" />
         </Folder>

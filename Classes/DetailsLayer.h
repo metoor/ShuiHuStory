@@ -99,8 +99,9 @@ private:
 
 	//结束动画，并清理资源
 	void endAnimation();
-
-	void onEnterTransitionDidFinish() override;
+	
+	//因为在某些情况下不执行onEnterTransitionDidFinish而会执行onEnter
+	void onEnter() override;
 
 	//出售处理方法
 	void sell();

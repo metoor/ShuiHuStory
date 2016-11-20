@@ -20,6 +20,8 @@ public:
 
 	~Equipment();
 	
+	void setUserId(int id);
+
 	//根据config中的EquipmentVector的索引创建装备
 	void init(const int index);
 

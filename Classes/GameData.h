@@ -129,6 +129,9 @@ public:
 	//返回上阵英雄的个数
 	int getBattleHeroNum();
 
+	//通过英雄id获得上阵位置
+	int getPosById(int id);
+
 	void setBattleHero(int pos, int id);
 
 	//获得装备容器

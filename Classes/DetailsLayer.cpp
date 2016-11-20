@@ -619,8 +619,9 @@ void DetailsLayer::endAnimation()
 	this->runAction(ani);
 }
 
-void DetailsLayer::onEnterTransitionDidFinish()
+void DetailsLayer::onEnter()
 {
+	Layer::onEnter();
 	startAnimation();
 }
 

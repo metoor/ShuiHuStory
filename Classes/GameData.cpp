@@ -581,6 +581,23 @@ bool GameData::unbattleHero(int id)
 		if (_battleHero[pos] == id)
 		{
 			//查找到英雄
+			auto hero = getHeroCardById(id);
+			auto equipmentList = hero->getProperty()->equipmentId;
+
+			for (int pos = 0; pos < max_equipment_num; ++pos)
+			{
+				int equipmentId = equipmentList[pos];
+
+				//如果将英雄有装备则将装备卸下
+				if (equipmentId != none)
+				{
+					auto equipment = getEquipmentById(equipmentId);
+					equipment->setUserId(none);
+					hero->wearEquipment(pos, none);
+				}
+			}
+
+
 			_battleHero[pos] = none;
 			result = true;
 			break;
@@ -619,6 +636,21 @@ int GameData::getBattleHeroNum()
 	}
 
 	return num;
+}
+
+int GameData::getPosById(int id)
+{
+	int result = none;
+
+	for (int pos = 0; pos < max_battle_hero_num; ++pos)
+	{
+		if (_battleHero[pos] == id)
+		{
+			result = pos;
+		}
+	}
+
+	return result;
 }
 
 void GameData::setBattleHero(int pos, int id)
