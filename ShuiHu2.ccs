@@ -57,6 +57,8 @@
           <Image Name="details2.png" />
           <Image Name="dibutton1.png" />
           <Image Name="dibutton2.png" />
+          <Image Name="equipmented1.png" />
+          <Image Name="equipmented2.png" />
           <Image Name="getmoney1.png" />
           <Image Name="getmoney2.png" />
           <Image Name="hero1.png" />
@@ -89,6 +91,8 @@
           <Image Name="tujian2.png" />
           <Image Name="unBattleed1.png" />
           <Image Name="unBattleed2.png" />
+          <Image Name="unEquipmented1.png" />
+          <Image Name="unEquipmented2.png" />
           <Image Name="war1.png" />
           <Image Name="war2.png" />
           <Image Name="yinxiong1.png" />
@@ -152,6 +156,11 @@
             <Project Name="levelupRewardLayer.csd" Type="Layer" />
             <Project Name="loginRewardLayer.csd" Type="Layer" />
             <Project Name="menuLayer.csd" Type="Layer" />
+          </Folder>
+          <Folder Name="pictureLayer">
+            <Project Name="heroInfoLayer.csd" Type="Layer" />
+            <Project Name="pictureItemLayer.csd" Type="Layer" />
+            <Project Name="pictureLayer.csd" Type="Layer" />
           </Folder>
           <Folder Name="teamLayer">
             <Project Name="teamLayer.csd" Type="Layer" />

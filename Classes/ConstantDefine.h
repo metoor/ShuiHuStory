@@ -100,13 +100,13 @@ const std::string btnBattleHero2 = "btns/battleed2.png";
 const std::string btnUnbattleHero1 = "btns/unBattleed1.png";
 const std::string btnUnbattleHero2 = "btns/unBattleed2.png";
 
-//装备按钮资源名称
-const std::string btnEquipment1 = "btns/battleed1.png";
-const std::string btnEquipment2 = "btns/battleed2.png";
+//装备 装备资源名称
+const std::string btnEquipment1 = "btns/equipmented1.png";
+const std::string btnEquipment2 = "btns/equipmented2.png";
 
 //装备卸下资源名称
-const std::string btnUnEquipment1 = "btns/unBattleed1.png";
-const std::string btnUnEquipment2 = "btns/unBattleed2.png";
+const std::string btnUnEquipment1 = "btns/unEquipmented1.png";
+const std::string btnUnEquipment2 = "btns/unEquipmented2.png";
 
 //添加图片
 const std::string addIco = "icos/add.png";

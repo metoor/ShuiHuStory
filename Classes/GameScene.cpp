@@ -19,6 +19,7 @@
 #include "HomeLayer.h"
 #include "TeamLayer.h"
 #include "HeroLayer.h"
+#include "PictureLayer.h"
 
 USING_NS_CC;
 using namespace ui;
@@ -107,6 +108,7 @@ cocos2d::Layer * GameScene::createLayer(GameMenuType type)
 	case GMT_WAR:
 		break;
 	case GMT_PHOTO:
+		layer = PictureLayer::create();
 		break;
 	case GMT_STORE:
 		break;

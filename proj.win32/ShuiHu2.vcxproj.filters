@@ -43,6 +43,9 @@
     <Filter Include="src\Layers\Hero">
       <UniqueIdentifier>{20bd325b-d9c4-4d6d-8baf-c238388b7cbc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Layers\Picture">
+      <UniqueIdentifier>{71794795-a33a-4d98-bbde-062290198682}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -134,6 +137,12 @@
     </ClCompile>
     <ClCompile Include="..\Classes\DisplayEquipmentByType.cpp">
       <Filter>src\Layers\Hero</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\PictureLayer.cpp">
+      <Filter>src\Layers\Picture</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\HeroInfoLayer.cpp">
+      <Filter>src\Layers\Picture</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -235,6 +244,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\DisplayEquipmentByType.h">
       <Filter>src\Layers\Hero</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\PictureLayer.h">
+      <Filter>src\Layers\Picture</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\HeroInfoLayer.h">
+      <Filter>src\Layers\Picture</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -193,8 +193,8 @@ void TeamLayer::onTouchEnded(cocos2d::Touch * touch, cocos2d::Event * event)
 	Point pos = touch->getLocation();
 	float distance = pos.distance(touch->getStartLocation());
 
-	//如果移动的距离小于5.0f则忽略移动,认为是点击事件
-	if (distance > 5.0f)
+	//如果移动的距离小于3.0f则忽略移动,认为是点击事件
+	if (distance > 3.0f)
 	{
 		//更换英雄位置
 		int endTag = getHeroIcoisContainPoint(pos);

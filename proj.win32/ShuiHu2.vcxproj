@@ -162,6 +162,7 @@ xcopy /Y /Q "$(COCOS_X_ROOT)\cocos2d-x-3.10\prebuilt\win32\*.*" "$(OutDir)"
     <ClCompile Include="..\Classes\GameScene.cpp" />
     <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
     <ClCompile Include="..\Classes\HeroCard.cpp" />
+    <ClCompile Include="..\Classes\HeroInfoLayer.cpp" />
     <ClCompile Include="..\Classes\HeroLayer.cpp" />
     <ClCompile Include="..\Classes\HomeLayer.cpp" />
     <ClCompile Include="..\Classes\I18N.cpp" />
@@ -172,6 +173,7 @@ xcopy /Y /Q "$(COCOS_X_ROOT)\cocos2d-x-3.10\prebuilt\win32\*.*" "$(OutDir)"
     <ClCompile Include="..\Classes\McLog.cpp" />
     <ClCompile Include="..\Classes\PageViewItem.cpp" />
     <ClCompile Include="..\Classes\ParticleLayer.cpp" />
+    <ClCompile Include="..\Classes\PictureLayer.cpp" />
     <ClCompile Include="..\Classes\TeamLayer.cpp" />
     <ClCompile Include="..\Classes\Tips.cpp" />
     <ClCompile Include="..\Classes\Tools.cpp" />
@@ -195,6 +197,7 @@ xcopy /Y /Q "$(COCOS_X_ROOT)\cocos2d-x-3.10\prebuilt\win32\*.*" "$(OutDir)"
     <ClInclude Include="..\Classes\GameScene.h" />
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
     <ClInclude Include="..\Classes\HeroCard.h" />
+    <ClInclude Include="..\Classes\HeroInfoLayer.h" />
     <ClInclude Include="..\Classes\HeroLayer.h" />
     <ClInclude Include="..\Classes\HomeLayer.h" />
     <ClInclude Include="..\Classes\I18N.h" />
@@ -206,6 +209,7 @@ xcopy /Y /Q "$(COCOS_X_ROOT)\cocos2d-x-3.10\prebuilt\win32\*.*" "$(OutDir)"
     <ClInclude Include="..\Classes\PageViewItem.h" />
     <ClInclude Include="..\Classes\ParticleLayer.h" />
     <ClInclude Include="..\Classes\ConstantDefine.h" />
+    <ClInclude Include="..\Classes\PictureLayer.h" />
     <ClInclude Include="..\Classes\TeamLayer.h" />
     <ClInclude Include="..\Classes\Tips.h" />
     <ClInclude Include="..\Classes\Tools.h" />
