@@ -13,6 +13,7 @@
 #include "AudioManager.h"
 #include "Config.h"
 #include "BlockLayer.h"
+#include "Tools.h"
 
 USING_NS_CC;
 using namespace ui;

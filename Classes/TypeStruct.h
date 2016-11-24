@@ -46,8 +46,8 @@ struct EquipmentProperty
 	int mp;				//魔法攻击
 	int hp;				//生命值
 	int speed;			//攻击时的优先级，值越大优先级越高
-	float critRate;		//暴击
-	float blockRate;		//格挡
+	int critRate;		//暴击
+	int blockRate;		//格挡
 	float critDamage;	//暴击伤害加成
 	
 	int buyMoney;		//购买的金币
@@ -145,8 +145,8 @@ struct HeroCardProperty
 	int attackId;			//普通攻击方式
 	int skillId;			//技能攻击方式
 	int speed;				//速度
-	float critRate;			//暴击
-	float blockRate;			//格挡
+	int critRate;			//暴击
+	int blockRate;			//格挡
 	float critDamage;		//暴击伤害加成
 	int buyMoney;		//购买的金币
 	int sellMoney;		//卖出的金币

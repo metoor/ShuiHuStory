@@ -208,9 +208,9 @@ void HeroCard::calculateHeroCardPropery(const HeroCardType * heroCardType)
 
 	_property->ap = heroCardType->ap * rate;
 	_property->mp = heroCardType->mp * rate;
-	_property->blockRate = Tools::intToPercent(heroCardType->blockRate) * rate;
+	_property->blockRate = heroCardType->blockRate * rate;
 	_property->critDamage = Tools::intToPercent(heroCardType->critDamage) * rate;
-	_property->critRate = Tools::intToPercent(heroCardType->critRate) * rate;
+	_property->critRate = heroCardType->critRate * rate;
 	_property->defend = heroCardType->defend * rate;
 	_property->magicDefend = heroCardType->magicDefend * rate;
 	_property->hp = heroCardType->hp * rate;

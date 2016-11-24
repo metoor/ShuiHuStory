@@ -491,12 +491,11 @@ void GameData::readHeroCard()
 	if (!FileUtils::getInstance()->isFileExist(jsonpath))
 	{
 		//第一次登陆创建默英雄卡牌
-		for (int i = 0; i < 10; i++)
+		for (int i = 0; i < 2; i++)
 		{
 			HeroCard* hc = new (std::nothrow) HeroCard();
 			//创建默认的英雄：公孙胜和水浒迷
-			//hc->init(3 + i * 105);
-			hc->init(i);
+			hc->init(3 + i * 105);
 			addHeroCardToMap(hc);
 		}
 	}

@@ -123,6 +123,6 @@ void FirstScene::nextMsg()
 	else
 	{
 		//对白完成跳转到游戏主页
-		Director::getInstance()->replaceScene(TransitionPageTurn::create(1.0f, GameScene::createScene(), false));
+		Director::getInstance()->replaceScene(TransitionShrinkGrow::create(1.0f, GameScene::createScene()));
 	}
 }

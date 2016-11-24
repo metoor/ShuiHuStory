@@ -152,9 +152,9 @@ void Equipment::calculatePropery(const EquipmentType* equipmentType)
 
 	_property->ap = equipmentType->ap * rate;
 	_property->mp = equipmentType->mp * rate;
-	_property->blockRate = Tools::intToPercent(equipmentType->blockRate) * rate;
+	_property->blockRate = equipmentType->blockRate * rate;
 	_property->critDamage = Tools::intToPercent(equipmentType->critDamage) * rate;
-	_property->critRate = Tools::intToPercent(equipmentType->critRate) * rate;
+	_property->critRate = equipmentType->critRate * rate;
 	_property->buyMoney = equipmentType->buyMoney * rate;
 	_property->sellMoney = equipmentType->sellMoney * rate;
 	_property->defend = equipmentType->defend * rate;

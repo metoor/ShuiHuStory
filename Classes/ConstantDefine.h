@@ -68,6 +68,8 @@ const std::string uniqueNumName = "uqm"; //用来生成Id的唯一数
 const std::string is_effect_mute_name = "et"; //保存是否启用音效的key
 const std::string is_bg_mute_name = "bg"; //保存是否启用背景音乐的key
 
+const int percent_full = 100;  //百分比的最大值，如暴击率，格挡率等等
+
 //自定义消息
 const string msg_update_user_data = "MSG_UPDATE_USER_DATA";	//更新用户数据的消息名
 const string msg_update_display_item = "MSG_UPDATE_DISPLAY_ITEM";	//用于强化或升级后更新DisplayLayer列表的item属性显示

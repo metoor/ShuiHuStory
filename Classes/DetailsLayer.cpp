@@ -433,7 +433,7 @@ string DetailsLayer::propertyToString(const EquipmentProperty * property)
 		res += "\n";
 		res += StringUtils::format(_i18n->getStringByKey(mp_d).c_str(), "+", property->mp);
 		res += "\n";
-		res += StringUtils::format(_i18n->getStringByKey(crit_d).c_str(), "+", Tools::percentToInt(property->critRate));
+		res += StringUtils::format(_i18n->getStringByKey(crit_d).c_str(), "+", property->critRate);
 		break;
 	}
 	case 4:
@@ -449,7 +449,7 @@ string DetailsLayer::propertyToString(const EquipmentProperty * property)
 		//аЌзг
 		res += StringUtils::format(_i18n->getStringByKey(speed_d).c_str(), "+", property->speed);
 		res += "\n";
-		res += StringUtils::format(_i18n->getStringByKey(block_d).c_str(), "+", Tools::percentToInt(property->blockRate));
+		res += StringUtils::format(_i18n->getStringByKey(block_d).c_str(), "+", property->blockRate);
 		break;
 	}
 	case 6:
@@ -480,7 +480,7 @@ string DetailsLayer::propertyToString(const HeroCardProperty* property)
 	res += "\n";
 	res += StringUtils::format(_i18n->getStringByKey(star_d).c_str(), property->star);
 	res += "\t";
-	res += StringUtils::format(_i18n->getStringByKey(crit_d).c_str(), "", Tools::percentToInt(property->critRate));
+	res += StringUtils::format(_i18n->getStringByKey(crit_d).c_str(), "", property->critRate);
 	res += "\n";
 	res += StringUtils::format(_i18n->getStringByKey(ap_d).c_str(), "", property->ap);
 	res += "\t";
@@ -492,7 +492,7 @@ string DetailsLayer::propertyToString(const HeroCardProperty* property)
 	res += "\n";
 	res += StringUtils::format(_i18n->getStringByKey(speed_d).c_str(), "", property->speed);
 	res += "\t";
-	res += StringUtils::format(_i18n->getStringByKey(block_d).c_str(), "", Tools::percentToInt(property->blockRate));
+	res += StringUtils::format(_i18n->getStringByKey(block_d).c_str(), "", property->blockRate);
 	res += "\n";
 	res += StringUtils::format(_i18n->getStringByKey(hp_d).c_str(), "", property->hp);
 	res += "\n";
