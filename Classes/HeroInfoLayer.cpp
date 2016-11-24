@@ -12,8 +12,10 @@
 #include "cocostudio/CocoStudio.h"
 #include "AudioManager.h"
 #include "Config.h"
+#include "GameData.h"
 #include "BlockLayer.h"
 #include "Tools.h"
+#include "HeroCard.h"
 
 USING_NS_CC;
 using namespace ui;
@@ -47,27 +49,20 @@ bool HeroInfoLayer::init()
 	return true;
 }
 
-void HeroInfoLayer::initWithHerotype(const int type)
+void HeroInfoLayer::initWithHerotype(const int type, HeroType heroType)
 {
-	auto data = Config::getInstance();
-	auto hero = data->getHeroCardByIndex(type);
-
-	//设置显示的属性
-	string name = hero->exName + "|" + hero->name;
-	_heroImg->loadTexture(hero->textureName);
-	setString(TT_NAME, name);
-	setString(TT_STARNAME, hero->starName);
-	setString(TT_HP, hero->hp);
-	setString(TT_AP, hero->ap);
-	setString(TT_MP, hero->mp);
-	setString(TT_CRIT, StringUtils::format("%d%%", hero->critRate));
-	setString(TT_BLOCK, StringUtils::format("%d%%", hero->blockRate));
-	setString(TT_SPEED, hero->speed);
-	setString(TT_DEFIME, hero->defend);
-	setString(TT_MDEFIME, hero->magicDefend);
-	setString(TT_CRITDMG, StringUtils::format("%d%%", hero->critDamage));
-	setString(TT_SKILL, hero->skillName);
-	setString(TT_CONTENT, hero->des);
+	if (heroType == HT_GAMEDATA)
+	{
+		//显示Config的模板英雄数据
+		auto hero = GameData::getInstance()->getHeroCardById(type)->getProperty();
+		setAttribute(hero);
+	}
+	else
+	{
+		//显示GameData的玩家获得的英雄数据
+		auto hero = Config::getInstance()->getHeroCardByIndex(type);
+		setAttribute(hero);
+	}
 }
 
 void HeroInfoLayer::loadUI()
@@ -96,6 +91,46 @@ void HeroInfoLayer::loadUI()
 			endAnimation();
 		}
 	});
+}
+
+void HeroInfoLayer::setAttribute(const HeroCardType * hero)
+{
+	//设置显示的属性
+	string name = StringUtils::format("%s|%s", hero->exName.c_str(), hero->name.c_str());
+	_heroImg->loadTexture(hero->textureName);
+	setString(TT_NAME, name);
+	setString(TT_STARNAME, hero->starName);
+	setString(TT_HP, hero->hp);
+	setString(TT_AP, hero->ap);
+	setString(TT_MP, hero->mp);
+	setString(TT_CRIT, StringUtils::format("%d%%", hero->critRate));
+	setString(TT_BLOCK, StringUtils::format("%d%%", hero->blockRate));
+	setString(TT_SPEED, hero->speed);
+	setString(TT_DEFIME, hero->defend);
+	setString(TT_MDEFIME, hero->magicDefend);
+	setString(TT_CRITDMG, StringUtils::format("%d%%", hero->critDamage));
+	setString(TT_SKILL, hero->skillName);
+	setString(TT_CONTENT, hero->des);
+}
+
+void HeroInfoLayer::setAttribute(const HeroCardProperty * hero)
+{
+	//设置显示的属性
+	string name = StringUtils::format("Lv%d %s+%d", hero->level, hero->name->c_str(), hero->exLevel);
+	_heroImg->loadTexture(*(hero->textureName));
+	setString(TT_NAME, name);
+	setString(TT_STARNAME, *(hero->starName));
+	setString(TT_HP, hero->hp);
+	setString(TT_AP, hero->ap);
+	setString(TT_MP, hero->mp);
+	setString(TT_CRIT, StringUtils::format("%d%%", hero->critRate));
+	setString(TT_BLOCK, StringUtils::format("%d%%", hero->blockRate));
+	setString(TT_SPEED, hero->speed);
+	setString(TT_DEFIME, hero->defend);
+	setString(TT_MDEFIME, hero->magicDefend);
+	setString(TT_CRITDMG, StringUtils::format("%d%%", hero->critDamage));
+	setString(TT_SKILL, *(hero->skillName));
+	setString(TT_CONTENT, *(hero->des));
 }
 
 void HeroInfoLayer::setString(TextType type, const string & str)

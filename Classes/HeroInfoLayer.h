@@ -16,6 +16,11 @@
 
 #define ARRAY_SIZE 14
 
+
+//前置声明
+struct HeroCardProperty;
+struct HeroCardType;
+
 enum TextType{
 	TT_NAME,
 	TT_STAR,
@@ -33,6 +38,11 @@ enum TextType{
 	TT_STARNAME
 };
 
+enum HeroType{
+	HT_GAMEDATA,
+	HT_CONFIG
+};
+
 class HeroInfoLayer : public cocos2d::Layer
 {
 public:
@@ -41,10 +51,14 @@ public:
 	virtual bool init() override;
 	CREATE_FUNC(HeroInfoLayer);
 
-	void initWithHerotype(const int type);
+	//type 是英雄的type或者id HeroType是要显示的英雄类型，是GameData还是Config里面的英雄
+	void initWithHerotype(const int type, HeroType heroType);
 
 private:
 	void loadUI();
+
+	void setAttribute(const HeroCardType* hero);
+	void setAttribute(const HeroCardProperty* hero);
 
 	void setString(TextType type,  const std::string& str);
 	void setString(TextType type, int  num);
