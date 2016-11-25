@@ -191,14 +191,14 @@ int DetailsLayer::calculateDiamond()
 	{
 		//计算强化所需要的钻石
 		auto property = _data->getEquipmentById(_objectId)->getProperty();
-		cost = property->exLevel * intensify_base_diamond * (1 + property->star *0.1f);
+		cost = (property->exLevel + 1) * intensify_base_diamond * (1 + property->star *0.1f);
 		break;
 	}
 	case DT_HERO:
 	{
 		//计算强化所需要的钻石
 		auto property = _data->getHeroCardById(_objectId)->getProperty();
-		cost = property->exLevel * intensify_base_diamond * (1 + property->star *0.1f);
+		cost = (property->exLevel + 1) * intensify_base_diamond * (1 + property->star *0.1f);
 		break;
 	}
 	default:
