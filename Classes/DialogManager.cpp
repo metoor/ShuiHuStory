@@ -92,6 +92,16 @@ void DialogManager::showDialog(const std::string& title, const std::string& cont
 	
 }
 
+void DialogManager::showIllegalDialog(const std::string &title, const std::string & content)
+{
+	showDialog(title, content, [](Ref* pSender) {
+		McLog mc;
+		mc.addWaring("user unauthorized modification data", 0, 0);
+
+		cocos2d::Director::getInstance()->end();
+	});
+}
+
 void DialogManager::destoryInstance()
 {
 	if (_instance)
