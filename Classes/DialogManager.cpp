@@ -96,10 +96,18 @@ void DialogManager::showIllegalDialog(const std::string &title, const std::strin
 {
 	showDialog(title, content, [](Ref* pSender) {
 		McLog mc;
-		mc.addWaring("user unauthorized modification data", 0, 0);
+		mc.addWaring("user unauthorized modification data", __FILE__, __LINE__);
 
-		cocos2d::Director::getInstance()->end();
-	});
+		//清除玩家数据
+		auto file = FileUtils::getInstance();
+		auto path = file->getWritablePath();
+		
+		//file->removeFile(path + save_hero_file_name);
+		//file->removeFile(path + save_equipment_file_name);
+		//file->removeFile(path + "UserDefault.xml");
+
+		//Director::getInstance()->end();
+	}, false);
 }
 
 void DialogManager::destoryInstance()

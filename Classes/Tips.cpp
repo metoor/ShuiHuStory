@@ -66,7 +66,7 @@ void Tips::loadUI()
 	
 	//设置提示框的位置在屏幕中心上一点
 	node->setAnchorPoint(Point::ANCHOR_MIDDLE);
-	node->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 1.2f));
+	node->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 1.04f));
 	addChild(node);
 
 	//获取显示文本内容的Text控件

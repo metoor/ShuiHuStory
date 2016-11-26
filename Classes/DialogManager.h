@@ -28,6 +28,7 @@ public:
 	//显示模态对话框
 	void showDialog(const std::string& title, const std::string& content, std::function<void(cocos2d::Ref * pSender)> func, bool isDisplayCancelBtn = true, cocos2d::Color4B color = cocos2d::Color4B::RED, int contentSize = 35);
 
+	//显示玩家非法游戏对话框，需要玩家清理游戏数据才能正常游戏
 	void showIllegalDialog(const std::string &title, const std::string & content);
 
 	//销毁实例
