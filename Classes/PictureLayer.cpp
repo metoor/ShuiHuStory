@@ -111,7 +111,7 @@ void PictureLayer::addTouchLayer()
 
 				//´´½¨Ó¢ÐÛ½éÉÜÒ³Ãæ
 				auto infoLayer = HeroInfoLayer::create();
-				infoLayer->initWithHerotype(type);
+				infoLayer->initWithHerotype(type, HT_CONFIG);
 				addChild(infoLayer);
 			}
 			

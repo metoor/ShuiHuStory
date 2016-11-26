@@ -101,6 +101,8 @@
           <Image Name="zhaomu2.png" />
           <Image Name="zhuangbei1.png" />
           <Image Name="zhuangbei2.png" />
+          <Image Name="buy1.png" />
+          <Image Name="buy2.png" />
         </Folder>
         <Folder Name="fonts">
           <TTF Name="MiniKaiTi.ttf" />
@@ -161,6 +163,9 @@
             <Project Name="heroInfoLayer.csd" Type="Layer" />
             <Project Name="pictureItemLayer.csd" Type="Layer" />
             <Project Name="pictureLayer.csd" Type="Layer" />
+          </Folder>
+          <Folder Name="storeLayer">
+            <Project Name="storeLayer.csd" Type="Layer" />
           </Folder>
           <Folder Name="teamLayer">
             <Project Name="teamLayer.csd" Type="Layer" />

@@ -37,7 +37,7 @@ const std::string hero_file_name = "datas/hero.data";				//ÓÃÀ´Éú³ÉÓ¢ĞÛ¿¨ÅÆ»ù´¡Ê
 const int equipment_map_max_size = 50;		//Íæ¼ÒÓµÓĞµÄ×î´ó×°±¸Êı
 const int hero_card_map_max_size = 50;		//Íæ¼ÒÓµÓĞÓ¢ĞÛ¿¨ÅÆ×î´óÕÅÊı
 
-const int max_gold = 100000;				//Íæ¼ÒÄÜÍ¬Ê±ÓµÓĞµÄ×î´ó½ğ±ÒÊı
+const int max_gold = 200000;				//Íæ¼ÒÄÜÍ¬Ê±ÓµÓĞµÄ×î´ó½ğ±ÒÊı
 const int max_diamond = 10000;				//Íæ¼ÒÄÜÍ¬Ê±ÓµÓĞµÄ×î´ó×¨ÊÂÊı
 
 const int max_level = 100;					//Íæ¼Ò×î´óµÈ¼¶
@@ -109,6 +109,13 @@ const std::string btnEquipment2 = "btns/equipmented2.png";
 //×°±¸Ğ¶ÏÂ×ÊÔ´Ãû³Æ
 const std::string btnUnEquipment1 = "btns/unEquipmented1.png";
 const std::string btnUnEquipment2 = "btns/unEquipmented2.png";
+
+//ÉÌµê¹ºÂò°´Å¥Í¼Æ¬Ãû³Æ
+const std::string btnBuy1 = "btns/buy1.png";
+const std::string btnBuy2 = "btns/buy2.png";
+//ÉÌµêÒÑ¾­¹ºÂò°´Å¥Í¼Æ¬Ãû³Æ
+const std::string btnBuyed1 = "btns/buyed1.png";
+const std::string btnBuyed2 = "btns/buyed2.png";
 
 //Ìí¼ÓÍ¼Æ¬
 const std::string addIco = "icos/add.png";
@@ -190,6 +197,20 @@ const std::string atleastOneHero = "atleastOneHero"; //ÏÂÕóÊ§°Ü£¬ÖÁÉÙÒªÓĞÒ»¸öÉÏÕ
 //¸ü»»×°±¸ÌáÊ¾
 const std::string unEquipmentSuc = "unEquipmentSuc"; //Ğ¶ÏÂ×°±¸³É¹¦ÌáÊ¾
 const std::string equipmentSuc = "equipmentSuc"; //×°±¸³É¹¦ÌáÊ¾
+
+
+//ÉÌµê½çÃæÌáÊ¾Óï
+const std::string buyHero = "buyHero";	//¹ºÂòËæ»úÓ¢ĞÛÌáÊ¾
+const std::string buyDiamond = "buyDiamond"; //¹ºÂò×êÊ¯ÌáÊ¾
+const std::string buyGold = "buyGold";	//¹ºÂò½ğ±ÒÌáÊ¾
+const std::string buySuc = "buySuc";	//¹ºÂò³É¹¦ÌáÊ¾
+const std::string buyError = "buyError"; //¹ºÂòÊ§°ÜÌáÊ¾
+const std::string buyTitle = "buyTitle";	//¹ºÂò¶Ô»°¿ò±êÌâ
+const std::string buy = "buy";	//¹ºÂò¶¯Ì¬²úÉúµÄÎïÆ·
+const std::string illegal = "illegal";	//Íæ¼Ò·Ç·¨ÓÎÏ·ÌáÊ¾
+const std::string storeUpdate = "storeUpdate"; //ÉÌµê¸üĞÂÁË
+const std::string storeTips = "storeTips"; //ÌáÊ¾ÎïÆ·Ã¿6Ğ¡Ê±Ë¢ĞÂÒ»´Î
+
 
 //---------------¸ø¿Ø¼şÉèÖÃµÄ±êÇ©Ãû×Ö£¨node->setName()£©-----------------------------------
 const std::string blockTagName = "blockName";		//BlockLayerµÄ±êÇ©Ãû×Ö£¬ÓÃÀ´Í¨¹ı±êÇ©Ãû×Ö»ñÈ¡ÊµÀı¶ÔÏó

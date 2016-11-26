@@ -240,7 +240,7 @@ void DisplayLayer::setItemAttribute(const EquipmentProperty * property, DisplayL
 		item->setLabelText(ILT_ATTRIBUTE1, StringUtils::format("%d", property->speed));
 		item->setLabelText(ILT_ATTRIBUTE2, StringUtils::format("%d%%", property->blockRate));
 	}
-	else if (Tools::betweenAnd(type, 600, 604))
+	else if (Tools::betweenAnd(type, 600, 607))
 	{
 		//×øÆï
 		item->setIco(*(property->textureName), hpIco, speedIco);

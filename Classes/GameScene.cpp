@@ -20,6 +20,7 @@
 #include "TeamLayer.h"
 #include "HeroLayer.h"
 #include "PictureLayer.h"
+#include "StoreLayer.h"
 
 USING_NS_CC;
 using namespace ui;
@@ -111,6 +112,7 @@ cocos2d::Layer * GameScene::createLayer(GameMenuType type)
 		layer = PictureLayer::create();
 		break;
 	case GMT_STORE:
+		layer = StoreLayer::create();
 		break;
 	default:
 		break;

@@ -100,6 +100,7 @@ void HeroInfoLayer::setAttribute(const HeroCardType * hero)
 	_heroImg->loadTexture(hero->textureName);
 	setString(TT_NAME, name);
 	setString(TT_STARNAME, hero->starName);
+	setString(TT_STAR, hero->star);
 	setString(TT_HP, hero->hp);
 	setString(TT_AP, hero->ap);
 	setString(TT_MP, hero->mp);
@@ -120,6 +121,7 @@ void HeroInfoLayer::setAttribute(const HeroCardProperty * hero)
 	_heroImg->loadTexture(*(hero->textureName));
 	setString(TT_NAME, name);
 	setString(TT_STARNAME, *(hero->starName));
+	setString(TT_STAR, hero->star);
 	setString(TT_HP, hero->hp);
 	setString(TT_AP, hero->ap);
 	setString(TT_MP, hero->mp);
@@ -128,7 +130,7 @@ void HeroInfoLayer::setAttribute(const HeroCardProperty * hero)
 	setString(TT_SPEED, hero->speed);
 	setString(TT_DEFIME, hero->defend);
 	setString(TT_MDEFIME, hero->magicDefend);
-	setString(TT_CRITDMG, StringUtils::format("%d%%", hero->critDamage));
+	setString(TT_CRITDMG, StringUtils::format("%d%%", Tools::percentToInt(hero->critDamage)));
 	setString(TT_SKILL, *(hero->skillName));
 	setString(TT_CONTENT, *(hero->des));
 }

@@ -121,7 +121,7 @@ bool GameData::setDiamond(const int diamond)
 {
 	bool result = true;
 
-	if ((diamond + diamond) < 0)
+	if ((_diamond + diamond) < 0)
 	{
 		result = false;
 	}
