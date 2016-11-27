@@ -178,19 +178,14 @@ struct EnemyType {
 
 struct MapData
 {
-	int startData[6];
+	int startData[max_battle_hero_num];
 	string name;
-	int coin;
+	int gold;
 	int exp;
 	int type;
 	int chalevel;
 	int card;
 	int sword;
-
-	string cardName;
-	string cardTexture;
-	string equipmentName;
-	string equipmentTexture;
 };
 
 #endif // TYPESTRUCT_H_

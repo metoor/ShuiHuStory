@@ -25,5 +25,14 @@
         <EnableHTML5Advanced Value="False" />
       </Value>
     </Item>
+    <Item Key="TabsParamsKey">
+      <Value ctype="TabsInfo">
+        <OpenedDocuments>
+          <FilePathData Path="layers/warLayer/mapListLayer.csd" />
+          <FilePathData Path="layers/warLayer/mapListItemLayer.csd" />
+        </OpenedDocuments>
+        <ActiveDocument Path="layers/warLayer/mapListItemLayer.csd" />
+      </Value>
+    </Item>
   </Properties>
 </UserData>

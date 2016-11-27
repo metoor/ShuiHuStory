@@ -170,6 +170,7 @@ xcopy /Y /Q "$(COCOS_X_ROOT)\cocos2d-x-3.10\prebuilt\win32\*.*" "$(OutDir)"
     <ClCompile Include="..\Classes\LevelupRewardItem.cpp" />
     <ClCompile Include="..\Classes\LevelupRewardLayer.cpp" />
     <ClCompile Include="..\Classes\LoginRewardLayer.cpp" />
+    <ClCompile Include="..\Classes\MapListLayer.cpp" />
     <ClCompile Include="..\Classes\McLog.cpp" />
     <ClCompile Include="..\Classes\PageViewItem.cpp" />
     <ClCompile Include="..\Classes\ParticleLayer.cpp" />
@@ -178,6 +179,8 @@ xcopy /Y /Q "$(COCOS_X_ROOT)\cocos2d-x-3.10\prebuilt\win32\*.*" "$(OutDir)"
     <ClCompile Include="..\Classes\TeamLayer.cpp" />
     <ClCompile Include="..\Classes\Tips.cpp" />
     <ClCompile Include="..\Classes\Tools.cpp" />
+    <ClCompile Include="..\Classes\WarMenuLayer.cpp" />
+    <ClCompile Include="..\Classes\WorldMapLayer.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -206,6 +209,7 @@ xcopy /Y /Q "$(COCOS_X_ROOT)\cocos2d-x-3.10\prebuilt\win32\*.*" "$(OutDir)"
     <ClInclude Include="..\Classes\LevelupRewardLayer.h" />
     <ClInclude Include="..\Classes\LevelupRewardItem.h" />
     <ClInclude Include="..\Classes\LoginRewardLayer.h" />
+    <ClInclude Include="..\Classes\MapListLayer.h" />
     <ClInclude Include="..\Classes\McLog.h" />
     <ClInclude Include="..\Classes\PageViewItem.h" />
     <ClInclude Include="..\Classes\ParticleLayer.h" />
@@ -216,6 +220,8 @@ xcopy /Y /Q "$(COCOS_X_ROOT)\cocos2d-x-3.10\prebuilt\win32\*.*" "$(OutDir)"
     <ClInclude Include="..\Classes\Tips.h" />
     <ClInclude Include="..\Classes\Tools.h" />
     <ClInclude Include="..\Classes\TypeStruct.h" />
+    <ClInclude Include="..\Classes\WarMenuLayer.h" />
+    <ClInclude Include="..\Classes\WorldMapLayer.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>

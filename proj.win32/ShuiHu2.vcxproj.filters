@@ -49,6 +49,9 @@
     <Filter Include="src\Layers\Store">
       <UniqueIdentifier>{c7441280-961f-461a-888c-663321906994}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Layers\War">
+      <UniqueIdentifier>{57879f40-dd79-4954-b54f-db2baf09008f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -149,6 +152,15 @@
     </ClCompile>
     <ClCompile Include="..\Classes\StoreLayer.cpp">
       <Filter>src\Layers\Store</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\WarMenuLayer.cpp">
+      <Filter>src\Layers\War</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\WorldMapLayer.cpp">
+      <Filter>src\Layers\War</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\MapListLayer.cpp">
+      <Filter>src\Layers\War</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -259,6 +271,15 @@
     </ClInclude>
     <ClInclude Include="..\Classes\StoreLayer.h">
       <Filter>src\Layers\Store</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\WarMenuLayer.h">
+      <Filter>src\Layers\War</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\WorldMapLayer.h">
+      <Filter>src\Layers\War</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\MapListLayer.h">
+      <Filter>src\Layers\War</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

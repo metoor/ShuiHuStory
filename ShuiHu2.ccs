@@ -49,6 +49,10 @@
           <Image Name="btn_save_1.png" />
           <Image Name="btn_save_2.png" />
           <Image Name="btnInfo.png" />
+          <Image Name="buy1.png" />
+          <Image Name="buy2.png" />
+          <Image Name="buyed1.png" />
+          <Image Name="buyed2.png" />
           <Image Name="changhero1.png" />
           <Image Name="changhero2.png" />
           <Image Name="close1.png" />
@@ -101,8 +105,6 @@
           <Image Name="zhaomu2.png" />
           <Image Name="zhuangbei1.png" />
           <Image Name="zhuangbei2.png" />
-          <Image Name="buy1.png" />
-          <Image Name="buy2.png" />
         </Folder>
         <Folder Name="fonts">
           <TTF Name="MiniKaiTi.ttf" />
@@ -173,6 +175,12 @@
           <Folder Name="Tools">
             <Project Name="dialogLayer.csd" Type="Layer" />
             <Project Name="tipLayer.csd" Type="Layer" />
+          </Folder>
+          <Folder Name="warLayer">
+            <Project Name="mapListItemLayer.csd" Type="Layer" />
+            <Project Name="mapListLayer.csd" Type="Layer" />
+            <Project Name="warMenuLayer.csd" Type="Layer" />
+            <Project Name="worldMapLayer.csd" Type="Layer" />
           </Folder>
         </Folder>
         <Folder Name="test">

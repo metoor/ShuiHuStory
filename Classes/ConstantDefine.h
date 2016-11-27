@@ -212,6 +212,12 @@ const std::string storeUpdate = "storeUpdate"; //商店更新了
 const std::string storeTips = "storeTips"; //提示物品每6小时刷新一次
 
 
+//战役模式item显示的中文数据
+const std::string  rgold = "rgold"; //战役模式item显示获得的金币数
+const std::string  rexp = "rexp"; //战役模式item显示获得的经验数
+const std::string  rreward = "rreward"; //战役模式item显示获得的装备或者英雄
+
+
 //---------------给控件设置的标签名字（node->setName()）-----------------------------------
 const std::string blockTagName = "blockName";		//BlockLayer的标签名字，用来通过标签名字获取实例对象
 const std::string tipsTagName = "tips";				//提示框的标签名字
