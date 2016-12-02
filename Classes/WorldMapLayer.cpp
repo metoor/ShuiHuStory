@@ -48,7 +48,7 @@ void WorldMapLayer::loadUI()
 			AudioManager::getInstance()->playClickEffect();
 		}
 
-		if (type == Widget::TouchEventType::BEGAN)
+		if (type == Widget::TouchEventType::ENDED)
 		{
 			endAnimation();
 		}
