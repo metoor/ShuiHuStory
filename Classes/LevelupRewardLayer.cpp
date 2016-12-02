@@ -97,6 +97,7 @@ void LevelupRewardLayer::loadItem()
 
 		//设置item显示属性
 		item->setRewardString(level, diamond, gold);
+		item->setBtnTag(pos);
 		item->setBtnCallback([&, pos, level, gold, diamond](Ref* pSender) {
 			int tag = dynamic_cast<Button*>(pSender)->getTag();
 
@@ -107,7 +108,9 @@ void LevelupRewardLayer::loadItem()
 			auto data = GameData::getInstance();
 			data->setGold(gold);
 			data->setDiamond(diamond);
-			dynamic_cast<LevelupRewardItem*>(_listView->getItem(pos))->setBtnEnable(false);
+
+			//禁用按钮
+			dynamic_cast<Button*>(pSender)->setEnabled(false);
 			
 			//通知更新用户数据
 			_eventDispatcher->dispatchCustomEvent(msg_update_user_data);
