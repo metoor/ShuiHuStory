@@ -506,7 +506,7 @@ void StoreLayer::btnOkCallBack(Ref * pSender, Widget::TouchEventType type)
 			break;
 		case 1:
 			dialog->showDialog(i18n->getStringByKey(buyTitle), StringUtils::format(i18n->getStringByKey(buyHero).c_str(), di_d), [&, dialog, i18n, data](Ref* pSender) {
-				if (data->setDiamond(-tian_d))
+				if (data->setDiamond(-di_d))
 				{
 					//创建一个新的天罡英雄
 					auto hero = new (std::nothrow)HeroCard();
