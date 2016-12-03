@@ -162,6 +162,15 @@
     <ClCompile Include="..\Classes\MapListLayer.cpp">
       <Filter>src\Layers\War</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Role.cpp">
+      <Filter>src\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\BattleScene.cpp">
+      <Filter>src\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameOverLayer.cpp">
+      <Filter>src\Layers\War</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -279,6 +288,15 @@
       <Filter>src\Layers\War</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\MapListLayer.h">
+      <Filter>src\Layers\War</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Role.h">
+      <Filter>src\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\BattleScene.h">
+      <Filter>src\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameOverLayer.h">
       <Filter>src\Layers\War</Filter>
     </ClInclude>
   </ItemGroup>

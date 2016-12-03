@@ -36,7 +36,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	auto director = Director::getInstance();
 	auto glview = director->getOpenGLView();
 	if (!glview) {
-		glview = GLViewImpl::createWithRect("ShuiHu2 by Metoor", Rect(0, 0, 320, 480));
+		glview = GLViewImpl::createWithRect("ShuiHuStory by Metoor", Rect(0, 0, 320, 480));
 		director->setOpenGLView(glview);
 	}
 
@@ -51,6 +51,9 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	FileUtils::getInstance()->addSearchPath("res");
 	FileUtils::getInstance()->addSearchPath("res/imgs");
 	FileUtils::getInstance()->addSearchPath("res/maps");
+	FileUtils::getInstance()->addSearchPath("res/audios");
+	FileUtils::getInstance()->addSearchPath("res/backgrounds");
+	FileUtils::getInstance()->addSearchPath("res/effects");
 
 	// create a scene. it's an autorelease object
 	Scene* scene;

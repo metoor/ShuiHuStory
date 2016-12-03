@@ -138,17 +138,19 @@ bool GameData::setExp(const int exp)
 	bool result = true;
 	int totalxp = getExpLimit(start_exp_rate, _level);
 
-	while (_exp >= totalxp && _level < max_level)
-	{
-		_exp -= totalxp;
-		++_level;
-	}
+	_exp += exp;
 
 	if (_level >= 100)
 	{
 		_exp = totalxp;
 
 		result = false;
+	}
+
+	while (_exp >= totalxp && _level < max_level)
+	{
+		_exp -= totalxp;
+		++_level;
 	}
 
 	return result;

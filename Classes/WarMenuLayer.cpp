@@ -24,6 +24,12 @@ WarMenuLayer::WarMenuLayer()
 		log("worldbg.png load finsh..");
 		_texture = texture;
 	});
+
+	//Òì²½¼ÓÔØÓÎÏ·ui
+	Director::getInstance()->getTextureCache()->addImageAsync("ui/ui_2", [&](Texture2D* texture) {
+		log("ui_2.png load finsh..");
+		_texture = texture;
+	});
 }
 
 WarMenuLayer::~WarMenuLayer()

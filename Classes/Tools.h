@@ -53,6 +53,8 @@ public:
 	//比较大小
 	static int maxInt(int a, int b);
 	static int minInt(int a, int b);
+	static float maxFloat(float a, float b);
+	static float minFloat(float a, float b);
 
 private:
 	Tools();

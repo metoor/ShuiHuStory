@@ -19,6 +19,8 @@
 #include "Config.h"
 #include "TypeStruct.h"
 #include "I18N.h"
+#include "DialogManager.h"
+#include "BattleScene.h"
 
 USING_NS_CC;
 using namespace ui;
@@ -52,6 +54,7 @@ bool MapListLayer::init()
 void MapListLayer::initWithMapIndex(int index)
 {
 	loadMap(index);
+	loadItem();
 }
 
 void MapListLayer::loadUI()
@@ -202,7 +205,23 @@ void MapListLayer::onItemSelected(cocos2d::Ref * pSender, cocos2d::ui::ListView:
 		int index = _listView->getCurSelectedIndex();
 
 		//检查是否满足挑战的等级
-		log("-----%d", index);
+		auto mapData = _mapDataVector.at(index);
+		
+		int level = GameData::getInstance()->getLevel();
+		
+		if (level < mapData->chalevel)
+		{
+			//玩家等级小于挑战等级，弹出提示框等级不足
+			auto i18n = I18N::getInstance();
+
+			DialogManager::getInstance()->showTips(StringUtils::format(i18n->getStringByKey(lvNoEnough).c_str(), mapData->chalevel));
+		}
+		else
+		{
+			//启动战斗场景
+			auto scene = BattleScene::createScene(mapData);
+			Director::getInstance()->pushScene(scene);
+		}
 	}
 }
 
@@ -211,8 +230,6 @@ void MapListLayer::onEnter()
 	Layer::onEnter();
 
 	startAnimation();
-
-	loadItem();
 }
 
 

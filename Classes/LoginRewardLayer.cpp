@@ -74,8 +74,7 @@ void LoginRewardLayer::loadUI()
 	_btnOk->addTouchEventListener([&](Ref* pSender, Widget::TouchEventType type) {
 		if (type == Widget::TouchEventType::BEGAN)
 		{
-			//播放获得金币音效
-			AudioManager::getInstance()->playEffect(rewardGoldEffectName);
+			AudioManager::getInstance()->playGetGoldEffect();
 		}
 
 		if (type == Widget::TouchEventType::ENDED)

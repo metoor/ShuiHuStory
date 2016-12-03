@@ -152,27 +152,24 @@ struct HeroCardProperty
 	int sellMoney;		//卖出的金币
 	bool isMagic;			//是否魔法攻击
 	
-
 	int equipmentId[max_equipment_num];	//-1表示没有佩戴该类型的装备，大于1000表示装备Id
 
 };
 
-struct EnemyType {
+struct EnemyProperty {
 	int type;
-	string textureName;
-	string name;
-	string exname;
-	string starname;
-	string skillsname;
 	int hp;
 	int ap;
+	int mp;
+	bool isMagic;
 	int attackId;
 	int skillId;
-	int level;
-	int magic;
-	string des;
 	int defend;
-	int magicDefend;
+	int mDefend;
+	int block;
+	int speed;
+	int crit;
+	int critDmg;
 };
 
 

@@ -131,6 +131,10 @@ const std::string critIco = "icos/crit.png";
 const std::string critDmg = "icos/critDmg.png";
 const std::string blockIco = "icos/block.png";
 
+//Õ½¶·½áÊø³¡¾°
+const std::string fail_tt = "icos/fail.png";	//Ê§°Ü±êÌâ
+const std::string win_tt = "icos/win.png";	//Ê¤Àû±êÌâ
+
 //Éı¼¶½±Àø
 const int itemCount = 18;	//×Ü¹²ÓĞ¶àÉÙ¸öitem
 const int item_level_base = 5;	//µÈ¼¶µİÔöµÄÊıÁ¿
@@ -188,6 +192,7 @@ const std::string loginRewardTimeTips2 = "loginRewardTimeTips2"; //µ½´ïÁìÈ¡Ê±¼äÌ
 const std::string rewardGold = "rewardGold"; //½±ÀøµÄ½ğ±Ò×Ö·û´®
 const std::string rewardDiamond = "rewardDiamond"; //½±ÀøµÄ×êÊ¯Êı×Ö·û´®
 
+const std::string rewardExp = "rewardExp";  //¾­Àú¾­Ñé×Ö·û´®Ãû×Ö
 
 //»»½«ÌáÊ¾
 const std::string battleSuc = "battleSuc"; //ÉÏÕó³É¹¦ÌáÊ¾
@@ -217,6 +222,8 @@ const std::string  rgold = "rgold"; //Õ½ÒÛÄ£Ê½itemÏÔÊ¾»ñµÃµÄ½ğ±ÒÊı
 const std::string  rexp = "rexp"; //Õ½ÒÛÄ£Ê½itemÏÔÊ¾»ñµÃµÄ¾­ÑéÊı
 const std::string  rreward = "rreward"; //Õ½ÒÛÄ£Ê½itemÏÔÊ¾»ñµÃµÄ×°±¸»òÕßÓ¢ĞÛ
 
+const std::string  lvNoEnough = "lvNoEnough"; //Íæ¼ÒµÈ¼¶Ğ¡ÓÚÌôÕ½µÈ¼¶Ê±µÄÌáÊ¾
+
 
 //---------------¸ø¿Ø¼şÉèÖÃµÄ±êÇ©Ãû×Ö£¨node->setName()£©-----------------------------------
 const std::string blockTagName = "blockName";		//BlockLayerµÄ±êÇ©Ãû×Ö£¬ÓÃÀ´Í¨¹ı±êÇ©Ãû×Ö»ñÈ¡ÊµÀı¶ÔÏó
@@ -225,10 +232,19 @@ const std::string dialogTagName = "dialog";			//Ä£Ì¬¶Ô»°¿òµÄ±êÇ©Ãû×Ö
 
 
 //ÒôÀÖÓëÒôĞ§µÄÃû×Ö
-const std::string firstSceneMusicName = "audios/wellcomeBg.mp3";
-const std::string clickEffectName = "audios/click.mp3";
+//±³¾°ÒôÀÖ
+const std::string firstSceneMusicName = "wellcome.mp3";
+const std::string menuMusicName = "menu_%d.mp3";
+const std::string warBgMusicName = "warbg_%d.mp3";
+
+//ÆäËûÒôĞ§
+const std::string clickEffectName = "click.mp3";
 const std::string rewardGoldEffectName = "audios/reward.mp3";
-const std::string dropEffectName = "audios/drop.mp3";
+const std::string gameFaileffectName = "faileffect.mp3";
+const std::string gameWineffectName = "wineffect.mp3";
+
+//¹¥»÷ÒôĞ§
+const std::string attackEffectName = "attack_%d.mp3";
 
 
 #endif // __CONSTANTDEFINE_H_

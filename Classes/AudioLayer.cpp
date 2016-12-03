@@ -143,7 +143,7 @@ void AudioLayer::music()
 	{
 		if (!audio->_simpleAudioEngine->isBackgroundMusicPlaying())
 		{
-			audio->playBackgroundMusic(firstSceneMusicName);
+			audio->playGamingSceneBgMusic();
 		}
 
 		//设置背景音乐打开状态图标

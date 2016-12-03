@@ -141,3 +141,13 @@ int Tools::minInt(int a, int b)
 {
 	return (a > b ? b : a);
 }
+
+float Tools::maxFloat(float a, float b)
+{
+	return (a > b ? a : b);
+}
+
+float Tools::minFloat(float a, float b)
+{
+	return (a > b ? b : a);
+}

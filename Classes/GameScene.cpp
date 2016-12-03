@@ -34,7 +34,6 @@ GameScene::GameScene()
 	_currentLayer(nullptr)
 {
 	//初始化游戏数据管理类
-
 	if (GameData::isNullptr())
 	{
 		Config::getInstance();
@@ -43,8 +42,10 @@ GameScene::GameScene()
 		AudioManager::getInstance()->preLoadGlobalAudio();
 	}
 
-	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("head.plist", "head.pvr.ccz");
-	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("equipment.plist", "equipment.pvr.ccz");
+	//异步加载游戏ui
+	Director::getInstance()->getTextureCache()->addImageAsync("ui/ui_1", [&](Texture2D* texture) {
+		log("ui_1.png load finsh..");
+	});
 }
 
 GameScene::~GameScene()
@@ -73,6 +74,9 @@ bool GameScene::init()
 		return false;
 	}
 
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("head.plist", "head.pvr.ccz");
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("equipment.plist", "equipment.pvr.ccz");
+
 	loadUI();
 
 	//处理手机返回键的点击事件
@@ -88,6 +92,9 @@ bool GameScene::init()
 	_preLayer = HomeLayer::create();
 	addChild(_preLayer);
 	_preMenu->setEnabled(false);
+
+	//游戏背景音乐
+	AudioManager::getInstance()->playGamingSceneBgMusic();
 
 	return true;
 }

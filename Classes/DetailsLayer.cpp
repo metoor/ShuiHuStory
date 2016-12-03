@@ -652,7 +652,7 @@ void DetailsLayer::sellOEquipment()
 		_data->setGold(property->sellMoney);
 		
 		//播放获得金币音效
-		AudioManager::getInstance()->playEffect(rewardGoldEffectName);
+		AudioManager::getInstance()->playGetGoldEffect();
 
 		DialogManager::getInstance()->showTips(StringUtils::format(_i18n->getStringByKey(sellSucced).c_str(), property->sellMoney), Color4B::GREEN);
 		Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(msg_update_display_item, (void*)msg_update_display_item_parameter_sell);

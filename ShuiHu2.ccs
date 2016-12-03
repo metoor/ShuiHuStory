@@ -8,7 +8,6 @@
           <Image Name="cellbg.png" />
           <Image Name="chatbg.png" />
           <Image Name="dialogBg.png" />
-          <Image Name="fail.png" />
           <Image Name="gameover.png" />
           <Image Name="groupbg.png" />
           <Image Name="herobg.png" />
@@ -48,15 +47,21 @@
           <Image Name="battleed2.png" />
           <Image Name="btn_save_1.png" />
           <Image Name="btn_save_2.png" />
+          <Image Name="btnBattle1.png" />
+          <Image Name="btnBattle2.png" />
+          <Image Name="btnCancel1.png" />
+          <Image Name="btnCancel2.png" />
           <Image Name="btnInfo.png" />
+          <Image Name="btnPvp1.png" />
+          <Image Name="btnPvp2.png" />
+          <Image Name="btnStartPvp1.png" />
+          <Image Name="btnStartPvp2.png" />
           <Image Name="buy1.png" />
           <Image Name="buy2.png" />
           <Image Name="buyed1.png" />
           <Image Name="buyed2.png" />
           <Image Name="changhero1.png" />
           <Image Name="changhero2.png" />
-          <Image Name="close1.png" />
-          <Image Name="close2.png" />
           <Image Name="details1.png" />
           <Image Name="details2.png" />
           <Image Name="dibutton1.png" />
@@ -81,6 +86,8 @@
           <Image Name="menu_sound_on_2.png" />
           <Image Name="ok1.png" />
           <Image Name="ok2.png" />
+          <Image Name="btnClose1.png" />
+          <Image Name="btnClose2.png" />
           <Image Name="qianghua1.png" />
           <Image Name="qianghua2.png" />
           <Image Name="sell1.png" />
@@ -113,6 +120,7 @@
           <Image Name="add.png" />
           <Image Name="addbutton.png" />
           <Image Name="ap.png" />
+          <Image Name="ball.png" />
           <Image Name="block.png" />
           <Image Name="coinsbg.png" />
           <Image Name="crit.png" />
@@ -129,16 +137,21 @@
           <Image Name="hourse6.png" />
           <Image Name="hourse7.png" />
           <Image Name="hp.png" />
+          <Image Name="hpBar.png" />
+          <Image Name="hpBarBg.png" />
           <Image Name="IF.png" />
           <Image Name="level.png" />
           <Image Name="mdefine.png" />
           <Image Name="mp.png" />
+          <Image Name="pvp_title.png" />
           <Image Name="speed.png" />
           <Image Name="star.png" />
           <Image Name="swordicon1.png" />
           <Image Name="ui_coin.png" />
           <Image Name="xp1.png" />
           <Image Name="xp2.png" />
+          <Image Name="fail.png" />
+          <Image Name="win.png" />
         </Folder>
         <Folder Name="layers">
           <Folder Name="firstLogin">
@@ -177,10 +190,12 @@
             <Project Name="tipLayer.csd" Type="Layer" />
           </Folder>
           <Folder Name="warLayer">
+            <Project Name="gameOverLayer.csd" Type="Layer" />
             <Project Name="mapListItemLayer.csd" Type="Layer" />
             <Project Name="mapListLayer.csd" Type="Layer" />
             <Project Name="warMenuLayer.csd" Type="Layer" />
             <Project Name="worldMapLayer.csd" Type="Layer" />
+            <Project Name="pvpLayer.csd" Type="Layer" />
           </Folder>
         </Folder>
         <Folder Name="test">

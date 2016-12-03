@@ -150,6 +150,7 @@ xcopy /Y /Q "$(COCOS_X_ROOT)\cocos2d-x-3.10\prebuilt\win32\*.*" "$(OutDir)"
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\AudioLayer.cpp" />
     <ClCompile Include="..\Classes\AudioManager.cpp" />
+    <ClCompile Include="..\Classes\BattleScene.cpp" />
     <ClCompile Include="..\Classes\Config.cpp" />
     <ClCompile Include="..\Classes\DetailsLayer.cpp" />
     <ClCompile Include="..\Classes\Dialog.cpp" />
@@ -159,6 +160,7 @@ xcopy /Y /Q "$(COCOS_X_ROOT)\cocos2d-x-3.10\prebuilt\win32\*.*" "$(OutDir)"
     <ClCompile Include="..\Classes\DisplayLayer.cpp" />
     <ClCompile Include="..\Classes\FirstScene.cpp" />
     <ClCompile Include="..\Classes\GameData.cpp" />
+    <ClCompile Include="..\Classes\GameOverLayer.cpp" />
     <ClCompile Include="..\Classes\GameScene.cpp" />
     <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
     <ClCompile Include="..\Classes\HeroCard.cpp" />
@@ -175,6 +177,7 @@ xcopy /Y /Q "$(COCOS_X_ROOT)\cocos2d-x-3.10\prebuilt\win32\*.*" "$(OutDir)"
     <ClCompile Include="..\Classes\PageViewItem.cpp" />
     <ClCompile Include="..\Classes\ParticleLayer.cpp" />
     <ClCompile Include="..\Classes\PictureLayer.cpp" />
+    <ClCompile Include="..\Classes\Role.cpp" />
     <ClCompile Include="..\Classes\StoreLayer.cpp" />
     <ClCompile Include="..\Classes\TeamLayer.cpp" />
     <ClCompile Include="..\Classes\Tips.cpp" />
@@ -188,6 +191,7 @@ xcopy /Y /Q "$(COCOS_X_ROOT)\cocos2d-x-3.10\prebuilt\win32\*.*" "$(OutDir)"
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\AudioLayer.h" />
     <ClInclude Include="..\Classes\AudioManager.h" />
+    <ClInclude Include="..\Classes\BattleScene.h" />
     <ClInclude Include="..\Classes\BlockLayer.h" />
     <ClInclude Include="..\Classes\Config.h" />
     <ClInclude Include="..\Classes\DetailsLayer.h" />
@@ -198,6 +202,7 @@ xcopy /Y /Q "$(COCOS_X_ROOT)\cocos2d-x-3.10\prebuilt\win32\*.*" "$(OutDir)"
     <ClInclude Include="..\Classes\DisplayLayer.h" />
     <ClInclude Include="..\Classes\FirstScene.h" />
     <ClInclude Include="..\Classes\GameData.h" />
+    <ClInclude Include="..\Classes\GameOverLayer.h" />
     <ClInclude Include="..\Classes\GameScene.h" />
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
     <ClInclude Include="..\Classes\HeroCard.h" />
@@ -215,6 +220,7 @@ xcopy /Y /Q "$(COCOS_X_ROOT)\cocos2d-x-3.10\prebuilt\win32\*.*" "$(OutDir)"
     <ClInclude Include="..\Classes\ParticleLayer.h" />
     <ClInclude Include="..\Classes\ConstantDefine.h" />
     <ClInclude Include="..\Classes\PictureLayer.h" />
+    <ClInclude Include="..\Classes\Role.h" />
     <ClInclude Include="..\Classes\StoreLayer.h" />
     <ClInclude Include="..\Classes\TeamLayer.h" />
     <ClInclude Include="..\Classes\Tips.h" />
