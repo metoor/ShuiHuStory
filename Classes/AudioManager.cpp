@@ -12,6 +12,7 @@
 #include "cocos2d.h"
 #include "McLog.h"
 #include "ConstantDefine.h"
+#include "Tools.h"
 
 AudioManager* AudioManager::_instance = nullptr;
 
@@ -19,6 +20,7 @@ USING_NS_CC;
 using namespace std;
 
 AudioManager::AudioManager()
+	:_randomIndex(0)
 {
 }
 
@@ -82,9 +84,84 @@ unsigned int AudioManager::playFirstSceneBgMusic()
 	return playBackgroundMusic(firstSceneMusicName);
 }
 
+unsigned int AudioManager::playGamingSceneBgMusic()
+{
+	int randomIndex = Tools::getRandomInt(0, 1);
+	return playBackgroundMusic(StringUtils::format(menuMusicName.c_str(), randomIndex));
+}
+
+unsigned int AudioManager::playBattleSceneBgMusic()
+{
+	return playBackgroundMusic(StringUtils::format(warBgMusicName.c_str(), _randomIndex));;
+}
+
+void AudioManager::stopBackgroundMusic()
+{
+	if (_simpleAudioEngine->isBackgroundMusicPlaying())
+	{
+		_simpleAudioEngine->stopBackgroundMusic(true);
+	}
+}
+
 unsigned int AudioManager::playClickEffect()
 {
 	return playEffect(clickEffectName);
+}
+
+unsigned int AudioManager::playAttackEffect(int index)
+{
+	if (!Tools::betweenAnd(index, 0, 8))
+	{
+		CCAssert(false, "'index' out of rang...");
+		McLog mc;
+		mc.addError("'index' out of rang...", __FILE__, __LINE__);
+	}
+	
+	return playEffect(StringUtils::format(attackEffectName.c_str(), index));
+}
+
+unsigned int AudioManager::playGetGoldEffect()
+{
+	return playEffect(rewardGoldEffectName);
+}
+
+unsigned int AudioManager::playGameOverEffect(bool isWin)
+{
+	if (isWin)
+	{
+		return playEffect(gameWineffectName);
+	}
+	else
+	{
+		return playEffect(gameFaileffectName);
+	}
+}
+
+void AudioManager::preLoadBattleSceneAudio()
+{
+	for (int index= 0; index < 9; ++index)
+	{
+		//Ô¤¼Ó¼ÓÔØ¹¥»÷ÒôÐ§
+		_simpleAudioEngine->preloadEffect(StringUtils::format(attackEffectName.c_str(), index).c_str());
+	}
+
+	_simpleAudioEngine->preloadEffect(gameFaileffectName.c_str());
+	_simpleAudioEngine->preloadEffect(gameWineffectName.c_str());
+
+	_randomIndex = Tools::getRandomInt(0, 3);
+	_simpleAudioEngine->preloadBackgroundMusic(StringUtils::format(warBgMusicName.c_str(), _randomIndex).c_str());
+}
+
+void AudioManager::unLoadBattleSceneAudio()
+{
+	for (int index = 0; index < 9; ++index)
+	{
+		//Ô¤¼Ó¼ÓÔØ¹¥»÷ÒôÐ§
+		_simpleAudioEngine->unloadEffect(StringUtils::format(attackEffectName.c_str(), index).c_str());
+	}
+
+	_simpleAudioEngine->unloadEffect(gameFaileffectName.c_str());
+	_simpleAudioEngine->unloadEffect(gameWineffectName.c_str());
 }
 
 unsigned int AudioManager::playEffect(std::string name)
