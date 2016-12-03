@@ -25,6 +25,8 @@ public:
 private:
 	void loadUI();
 
+	void loadTexture(cocos2d::Texture2D* texture);
+
 private:
 	const std::string csbName = "layers/warLayer/warMenuLayer.csb";
 	const std::string btnLocalName = "btnLocal";
@@ -34,7 +36,7 @@ private:
 	cocos2d::ui::Button *_btnLocal, *_btnPvp;
 
 	//保存战役模式的背景图片,用来在退出本场景的时候移除纹理，释放空间
-	cocos2d::Texture2D* _texture;
+	cocos2d::Vector <cocos2d::Texture2D*>  _textureList;
 };
   
 #endif // WARMENULAYER_H_ 

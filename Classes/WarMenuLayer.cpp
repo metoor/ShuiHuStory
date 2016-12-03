@@ -20,22 +20,22 @@ using namespace std;
 WarMenuLayer::WarMenuLayer()
 {
 	//异步加载世界地图背景图片
-	Director::getInstance()->getTextureCache()->addImageAsync("backgrounds/worldbg.png", [&](Texture2D* texture) {
-		log("worldbg.png load finsh..");
-		_texture = texture;
-	});
+	Director::getInstance()->getTextureCache()->addImageAsync("backgrounds/worldbg.png", CC_CALLBACK_1(WarMenuLayer::loadTexture, this));
 
 	//异步加载游戏ui
-	Director::getInstance()->getTextureCache()->addImageAsync("ui/ui_2", [&](Texture2D* texture) {
-		log("ui_2.png load finsh..");
-		_texture = texture;
-	});
+	Director::getInstance()->getTextureCache()->addImageAsync("ui/ui_2.png", CC_CALLBACK_1(WarMenuLayer::loadTexture, this));
 }
 
 WarMenuLayer::~WarMenuLayer()
 {
-	Director::getInstance()->getTextureCache()->removeTexture(_texture);
-	log("worldbg.png removed...");
+	auto textureCache = Director::getInstance()->getTextureCache();
+	
+	//移除本场景加载的Texture
+	for (int index= 0; index < _textureList.size(); ++index)
+	{
+		textureCache->removeTexture(_textureList.at(index));
+		_textureList.popBack();
+	}
 }
 
 bool WarMenuLayer::init()
@@ -84,4 +84,10 @@ void WarMenuLayer::loadUI()
 			log("btn pvp...");
 		}
 	});
+}
+
+void WarMenuLayer::loadTexture(cocos2d::Texture2D * texture)
+{
+	//保存加载后的texture
+	_textureList.pushBack(texture);
 }
