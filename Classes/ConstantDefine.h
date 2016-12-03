@@ -70,6 +70,7 @@ const std::string is_bg_mute_name = "bg"; //±£´æÊÇ·ñÆôÓÃ±³¾°ÒôÀÖµÄkey
 
 const int percent_full = 100;  //°Ù·Ö±ÈµÄ×î´óÖµ£¬Èç±©»÷ÂÊ£¬¸ñµ²ÂÊµÈµÈ
 
+
 //×Ô¶¨ÒåÏûÏ¢
 const string msg_update_user_data = "MSG_UPDATE_USER_DATA";	//¸üĞÂÓÃ»§Êı¾İµÄÏûÏ¢Ãû
 const string msg_update_display_item = "MSG_UPDATE_DISPLAY_ITEM";	//ÓÃÓÚÇ¿»¯»òÉı¼¶ºó¸üĞÂDisplayLayerÁĞ±íµÄitemÊôĞÔÏÔÊ¾
@@ -130,6 +131,13 @@ const std::string speedIco = "icos/speed.png";
 const std::string critIco = "icos/crit.png";
 const std::string critDmg = "icos/critDmg.png";
 const std::string blockIco = "icos/block.png";
+
+//Æ¥Åä³¡¾°
+const std::string btnStart1 = "icos/btnStartPvp1.png";
+const std::string btnStart2 = "icos/btnStartPvp2.png";
+
+const std::string btnCancel1 = "icos/btnCancel1.png";
+const std::string btnCancel2 = "icos/btnCancel2.png";
 
 //Õ½¶·½áÊø³¡¾°
 const std::string fail_tt = "icos/fail.png";	//Ê§°Ü±êÌâ
@@ -230,6 +238,8 @@ const std::string blockTagName = "blockName";		//BlockLayerµÄ±êÇ©Ãû×Ö£¬ÓÃÀ´Í¨¹ı±
 const std::string tipsTagName = "tips";				//ÌáÊ¾¿òµÄ±êÇ©Ãû×Ö
 const std::string dialogTagName = "dialog";			//Ä£Ì¬¶Ô»°¿òµÄ±êÇ©Ãû×Ö
 
+const float bl_opacity_on = 205.0f;				//´¥ÃşËø¶¨²ãÕı³£ÏÔÊ¾Ê±µÄÍ¸Ã÷¶È
+const float bl_opacity_off = 0.0f;				//´¥ÃşËø¶¨²ãÒş²ØÊ±µÄÍ¸Ã÷¶È
 
 //ÒôÀÖÓëÒôĞ§µÄÃû×Ö
 //±³¾°ÒôÀÖ

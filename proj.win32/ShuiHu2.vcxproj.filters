@@ -52,6 +52,9 @@
     <Filter Include="src\Layers\War">
       <UniqueIdentifier>{57879f40-dd79-4954-b54f-db2baf09008f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Layers\War\pvp">
+      <UniqueIdentifier>{311e06e8-17aa-4b30-9d0f-c255d67c027a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -170,6 +173,9 @@
     </ClCompile>
     <ClCompile Include="..\Classes\GameOverLayer.cpp">
       <Filter>src\Layers\War</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\pvp\PVPStartLayer.cpp">
+      <Filter>src\Layers\War\pvp</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -298,6 +304,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\GameOverLayer.h">
       <Filter>src\Layers\War</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\pvp\PVPStartLayer.h">
+      <Filter>src\Layers\War\pvp</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

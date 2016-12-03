@@ -172,7 +172,7 @@ void MapListLayer::startAnimation()
 	//在移动完成后，显示触摸锁定层
 	auto ani = Sequence::createWithTwoActions(move, CallFunc::create([&]() {
 		//显示触摸锁定层
-		dynamic_cast<BlockLayer*>(this->getChildByName(blockTagName))->setOpacity(160.0f);
+		dynamic_cast<BlockLayer*>(this->getChildByName(blockTagName))->setOpacity(bl_opacity_on);
 	}));
 
 	this->runAction(ani);
@@ -183,7 +183,7 @@ void MapListLayer::endAnimation()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	//先隐藏触摸锁层
-	dynamic_cast<BlockLayer*>(this->getChildByName(blockTagName))->setOpacity(0.0f);
+	dynamic_cast<BlockLayer*>(this->getChildByName(blockTagName))->setOpacity(bl_opacity_off);
 
 	//移动到屏幕外面
 	auto move = EaseIn::create(MoveTo::create(0.5f, Point(visibleSize.width, 0)), 0.2f);

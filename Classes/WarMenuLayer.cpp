@@ -12,6 +12,7 @@
 #include "cocostudio/CocoStudio.h"
 #include "AudioManager.h"
 #include "WorldMapLayer.h"
+#include "pvp/PVPStartLayer.h"
 
 USING_NS_CC;
 using namespace ui;
@@ -21,7 +22,7 @@ WarMenuLayer::WarMenuLayer()
 {
 	//Òì²½¼ÓÔØÍ¼Æ¬
 	Director::getInstance()->getTextureCache()->addImageAsync("backgrounds/worldbg.png", CC_CALLBACK_1(WarMenuLayer::loadTexture, this));
-	Director::getInstance()->getTextureCache()->addImageAsync("ui/ui_2.png", CC_CALLBACK_1(WarMenuLayer::loadTexture, this));
+	//Director::getInstance()->getTextureCache()->addImageAsync("ui/ui_2.png", CC_CALLBACK_1(WarMenuLayer::loadTexture, this));
 }
 
 WarMenuLayer::~WarMenuLayer()
@@ -63,7 +64,7 @@ void WarMenuLayer::loadUI()
 		}
 	});
 
-	_btnPvp->addTouchEventListener([](Ref* pSender, Widget::TouchEventType type) {
+	_btnPvp->addTouchEventListener([&](Ref* pSender, Widget::TouchEventType type) {
 		if (Widget::TouchEventType::BEGAN == type)
 		{
 			AudioManager::getInstance()->playClickEffect();
@@ -71,7 +72,8 @@ void WarMenuLayer::loadUI()
 
 		if (Widget::TouchEventType::ENDED == type)
 		{
-			log("btn pvp...");
+			auto layer = PVPStartLayer::create();
+			addChild(layer);
 		}
 	});
 }

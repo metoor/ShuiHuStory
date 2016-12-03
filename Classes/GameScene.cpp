@@ -46,6 +46,9 @@ GameScene::GameScene()
 	Director::getInstance()->getTextureCache()->addImageAsync("ui/ui_1", [&](Texture2D* texture) {
 		log("ui_1.png load finsh..");
 	});
+	
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("head.plist", "head.pvr.ccz");
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("equipment.plist", "equipment.pvr.ccz");
 }
 
 GameScene::~GameScene()
@@ -73,9 +76,6 @@ bool GameScene::init()
 	{
 		return false;
 	}
-
-	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("head.plist", "head.pvr.ccz");
-	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("equipment.plist", "equipment.pvr.ccz");
 
 	loadUI();
 
@@ -187,7 +187,6 @@ void GameScene::menuCallBack(Ref * pSender, Widget::TouchEventType type)
 			//创建当前点击菜单对应的场景
 			_currentLayer = createLayer(static_cast<GameMenuType>(currentTag));
 			addChild(_currentLayer);
-
 		}
 
 		//不能连续点击相同的菜单，禁用当前的菜单，解禁上一次的菜单

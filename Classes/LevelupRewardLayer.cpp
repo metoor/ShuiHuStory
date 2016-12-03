@@ -147,7 +147,7 @@ void LevelupRewardLayer::startAnimation()
 
 	auto ani = Sequence::createWithTwoActions(ScaleTo::create(0.4f, 1.0f), CallFunc::create([&]() {
 		//显示触摸锁定层
-		dynamic_cast<BlockLayer*>(this->getChildByName(blockTagName))->setOpacity(160.0f);
+		dynamic_cast<BlockLayer*>(this->getChildByName(blockTagName))->setOpacity(bl_opacity_on);
 	}));
 
 	this->runAction(ani);
@@ -156,7 +156,7 @@ void LevelupRewardLayer::startAnimation()
 void LevelupRewardLayer::endAnimation()
 {
 	//先隐藏触摸锁层
-	dynamic_cast<BlockLayer*>(this->getChildByName(blockTagName))->setOpacity(0.0f);
+	dynamic_cast<BlockLayer*>(this->getChildByName(blockTagName))->setOpacity(bl_opacity_off);
 
 	//y轴从1缩小到0
 	auto ani = Sequence::createWithTwoActions(ScaleTo::create(0.4f, 1.0f, 0.0f), CallFunc::create([&]() {

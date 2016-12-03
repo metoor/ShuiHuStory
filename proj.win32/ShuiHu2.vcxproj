@@ -177,6 +177,7 @@ xcopy /Y /Q "$(COCOS_X_ROOT)\cocos2d-x-3.10\prebuilt\win32\*.*" "$(OutDir)"
     <ClCompile Include="..\Classes\PageViewItem.cpp" />
     <ClCompile Include="..\Classes\ParticleLayer.cpp" />
     <ClCompile Include="..\Classes\PictureLayer.cpp" />
+    <ClCompile Include="..\Classes\pvp\PVPStartLayer.cpp" />
     <ClCompile Include="..\Classes\Role.cpp" />
     <ClCompile Include="..\Classes\StoreLayer.cpp" />
     <ClCompile Include="..\Classes\TeamLayer.cpp" />
@@ -220,6 +221,7 @@ xcopy /Y /Q "$(COCOS_X_ROOT)\cocos2d-x-3.10\prebuilt\win32\*.*" "$(OutDir)"
     <ClInclude Include="..\Classes\ParticleLayer.h" />
     <ClInclude Include="..\Classes\ConstantDefine.h" />
     <ClInclude Include="..\Classes\PictureLayer.h" />
+    <ClInclude Include="..\Classes\pvp\PVPStartLayer.h" />
     <ClInclude Include="..\Classes\Role.h" />
     <ClInclude Include="..\Classes\StoreLayer.h" />
     <ClInclude Include="..\Classes\TeamLayer.h" />

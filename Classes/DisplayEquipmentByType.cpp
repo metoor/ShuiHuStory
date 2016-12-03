@@ -275,7 +275,7 @@ void DisplayEquipmentByType::startAnimation()
 
 	auto ani = Sequence::createWithTwoActions(Spawn::createWithTwoActions(ScaleTo::create(0.5f, 1.0f), RotateTo::create(0.5f, 720)), CallFunc::create([&]() {
 		//ÏÔÊ¾´¥ÃþËø¶¨²ã
-		this->getChildByName(blockTagName)->setOpacity(150);
+		this->getChildByName(blockTagName)->setOpacity(bl_opacity_on);
 	}));
 
 	this->runAction(ani);
@@ -284,7 +284,7 @@ void DisplayEquipmentByType::startAnimation()
 void DisplayEquipmentByType::endAnimation()
 {
 	//Òþ²Ø´¥ÃþÆÁ±Î²ã
-	this->getChildByName(blockTagName)->setOpacity(0.0f);
+	this->getChildByName(blockTagName)->setOpacity(bl_opacity_off);
 
 	auto ani = Sequence::createWithTwoActions(Spawn::createWithTwoActions(ScaleTo::create(0.5f, 0.0f), RotateTo::create(0.5f, 720)), CallFunc::create([&]() {
 		this->removeFromParentAndCleanup(true);
