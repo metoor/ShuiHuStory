@@ -19,23 +19,13 @@ using namespace std;
 
 WarMenuLayer::WarMenuLayer()
 {
-	//异步加载世界地图背景图片
+	//异步加载图片
 	Director::getInstance()->getTextureCache()->addImageAsync("backgrounds/worldbg.png", CC_CALLBACK_1(WarMenuLayer::loadTexture, this));
-
-	//异步加载游戏ui
 	Director::getInstance()->getTextureCache()->addImageAsync("ui/ui_2.png", CC_CALLBACK_1(WarMenuLayer::loadTexture, this));
 }
 
 WarMenuLayer::~WarMenuLayer()
 {
-	auto textureCache = Director::getInstance()->getTextureCache();
-	
-	//移除本场景加载的Texture
-	for (int index= 0; index < _textureList.size(); ++index)
-	{
-		textureCache->removeTexture(_textureList.at(index));
-		_textureList.popBack();
-	}
 }
 
 bool WarMenuLayer::init()
