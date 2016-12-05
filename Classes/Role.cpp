@@ -324,13 +324,18 @@ int Role::getRealDmg(int dmg, bool isMagic)
 			//物理伤害
 			realDmg = dmg - _define;
 		}
-
-		if (realDmg < 0)
-		{
-			//无法破防，强制扣血随机【1~20】
-			realDmg = Tools::getRandomInt(1, 20);
-		}
 	}
+
+	//格挡效果
+	int randomBlock = Tools::getRandomInt(1, 100);
+	if (randomBlock < _block)
+	{
+		//成功触发格挡，只能造成原始伤害的10%
+		dmg *= 0.1f;
+	}
+
+	//没有破防的情况下强制扣2滴血，防止出现受到的伤害小于零，
+	realDmg = Tools::maxInt(2, dmg);
 
 	return realDmg;
 }
@@ -447,18 +452,17 @@ void Role::attack(cocos2d::Vector<Role*>* attackList)
 		this->attack(enemy);
 	}
 
-	//播放攻击音效
-	//AudioManager::getInstance()->playAttackEffect(_audioIndex);
-
 	//本回合攻击完毕,攻击回合数加一
 	++_attickNum;
 }
 
 void Role::hurt(int dmg)
 {
+	CCASSERT(dmg > 0, "damage can not less than 0...");
+
 	if (_isAlive)
 	{
-		_currentHp -= Tools::maxInt(0, dmg);
+		_currentHp -= dmg;
 		
 		//更新血条
 		updateHpBar();

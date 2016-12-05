@@ -44,7 +44,7 @@ private:
 	//获得角色实际的攻击力
 	int getDamage();
 
-	//扣血
+	//扣血,返回值为受到的真实伤害
 	void hurt(int dmg);
 
 	//攻击单个敌人
@@ -69,7 +69,7 @@ private:
 
 	void updateHpBar();
 
-	//获得真实的伤害 敌方攻击 - 我方防御
+	//获得受到的真实伤害 敌方攻击 - 我方防御(包括触发格挡效果)
 	int getRealDmg(int dmg, bool isMagic);
 
 private:
