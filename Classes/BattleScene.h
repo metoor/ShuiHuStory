@@ -95,7 +95,7 @@ private:
 	const cocos2d::Point EnemyPosition[max_battle_hero_num] = { cocos2d::Point(120, 610), cocos2d::Point(320, 610), cocos2d::Point(520, 610),
 		cocos2d::Point(120, 840), cocos2d::Point(320, 840), cocos2d::Point(520, 840) };
 
-	//当前正在进行攻击行为的角色索引
+	//每次英雄攻击战斗的时间
 	const float frequent = 1.5f;
 
 private:

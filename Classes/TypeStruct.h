@@ -172,7 +172,6 @@ struct EnemyProperty {
 	int critDmg;
 };
 
-
 struct MapData
 {
 	int startData[max_battle_hero_num];
@@ -183,6 +182,15 @@ struct MapData
 	int chalevel;
 	int card;
 	int sword;
+};
+
+//传递给匹配的场景，初始化战斗
+struct PVPData
+{
+	int playerId;
+	int gold;
+	string enemyData;
+	string battleData;
 };
 
 #endif // TYPESTRUCT_H_

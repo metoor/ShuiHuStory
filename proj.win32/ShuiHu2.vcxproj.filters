@@ -177,6 +177,21 @@
     <ClCompile Include="..\Classes\pvp\PVPStartLayer.cpp">
       <Filter>src\Layers\War\pvp</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\pvp\ClientLayer.cpp">
+      <Filter>src\Layers\War\pvp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\pvp\SocketBase.cpp">
+      <Filter>src\Layers\War\pvp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\pvp\SocketClient.cpp">
+      <Filter>src\Layers\War\pvp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\pvp\PVPBattleScene.cpp">
+      <Filter>src\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\pvp\PVPRole.cpp">
+      <Filter>src\Layers\War\pvp</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -306,6 +321,21 @@
       <Filter>src\Layers\War</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\pvp\PVPStartLayer.h">
+      <Filter>src\Layers\War\pvp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\pvp\ClientLayer.h">
+      <Filter>src\Layers\War\pvp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\pvp\SocketBase.h">
+      <Filter>src\Layers\War\pvp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\pvp\SocketClient.h">
+      <Filter>src\Layers\War\pvp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\pvp\PVPBattleScene.h">
+      <Filter>src\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\pvp\PVPRole.h">
       <Filter>src\Layers\War\pvp</Filter>
     </ClInclude>
   </ItemGroup>

@@ -10,6 +10,7 @@ cocosstudio/
 proj.android
 proj.ios_mac
 proj.win32/Debug.win32
+proj.win32/Release.win32
 
 Resources/res
 !Resources/res/datas/

@@ -164,7 +164,8 @@ void BattleScene::createBgAndMusic()
 	bg->setPosition(Point::ZERO);
 	addChild(bg);
 
-	//±³¾°ÒôÀÖ
+	//²¥·Å±³¾°ÒôÀÖ
+	AudioManager::getInstance()->playBattleSceneBgMusic();
 }
 
 void BattleScene::initRoleIndex()
@@ -405,9 +406,6 @@ void BattleScene::onEnter()
 {
 	Layer::onEnter();
 
-	//²¥·Å±³¾°ÒôÀÖ
-	AudioManager::getInstance()->playBattleSceneBgMusic();
-
 	//´´½¨½ÇÉ«
 	createRole();
 
@@ -419,15 +417,17 @@ void BattleScene::onExit()
 {
 	Layer::onExit();
 
-	//¹Ø±Õ±³¾°ÒôÀÖ
-	AudioManager::getInstance()->playGamingSceneBgMusic();
-
+	//È¡Ïû¶¨Ê±Æ÷
 	unschedule(schedule_selector(BattleScene::battle));
 	this->unscheduleUpdate();
+
+	//¹Ø±Õ±³¾°ÒôÀÖ
+	AudioManager::getInstance()->playGamingSceneBgMusic();
 }
 
 void BattleScene::onEnterTransitionDidFinish()
 {
+	//Æô¶¯¶¨Ê±Æ÷
 	schedule(schedule_selector(BattleScene::battle), frequent);
 	this->scheduleUpdate();
 }
@@ -470,7 +470,7 @@ void BattleScene::update(float dt)
 			addChild(overLayer);
 		});
 
-		this->runAction(Sequence::createWithTwoActions(delay, gameOverCallback));
+		runAction(Sequence::createWithTwoActions(delay, gameOverCallback));
 
 		break;
 	}

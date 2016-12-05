@@ -51,6 +51,8 @@
           <Image Name="btnBattle2.png" />
           <Image Name="btnCancel1.png" />
           <Image Name="btnCancel2.png" />
+          <Image Name="btnClose1.png" />
+          <Image Name="btnClose2.png" />
           <Image Name="btnInfo.png" />
           <Image Name="btnPvp1.png" />
           <Image Name="btnPvp2.png" />
@@ -86,8 +88,6 @@
           <Image Name="menu_sound_on_2.png" />
           <Image Name="ok1.png" />
           <Image Name="ok2.png" />
-          <Image Name="btnClose1.png" />
-          <Image Name="btnClose2.png" />
           <Image Name="qianghua1.png" />
           <Image Name="qianghua2.png" />
           <Image Name="sell1.png" />
@@ -127,6 +127,7 @@
           <Image Name="critDmg.png" />
           <Image Name="define.png" />
           <Image Name="diamond.png" />
+          <Image Name="fail.png" />
           <Image Name="headbk4.png" />
           <Image Name="heroap.png" />
           <Image Name="hourse1.png" />
@@ -148,10 +149,9 @@
           <Image Name="star.png" />
           <Image Name="swordicon1.png" />
           <Image Name="ui_coin.png" />
+          <Image Name="win.png" />
           <Image Name="xp1.png" />
           <Image Name="xp2.png" />
-          <Image Name="fail.png" />
-          <Image Name="win.png" />
         </Folder>
         <Folder Name="layers">
           <Folder Name="firstLogin">
@@ -193,9 +193,9 @@
             <Project Name="gameOverLayer.csd" Type="Layer" />
             <Project Name="mapListItemLayer.csd" Type="Layer" />
             <Project Name="mapListLayer.csd" Type="Layer" />
+            <Project Name="pvpLayer.csd" Type="Layer" />
             <Project Name="warMenuLayer.csd" Type="Layer" />
             <Project Name="worldMapLayer.csd" Type="Layer" />
-            <Project Name="pvpLayer.csd" Type="Layer" />
           </Folder>
         </Folder>
         <Folder Name="test">

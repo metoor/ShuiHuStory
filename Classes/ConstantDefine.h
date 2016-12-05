@@ -76,6 +76,10 @@ const string msg_update_user_data = "MSG_UPDATE_USER_DATA";	//更新用户数据的消息
 const string msg_update_display_item = "MSG_UPDATE_DISPLAY_ITEM";	//用于强化或升级后更新DisplayLayer列表的item属性显示
 const string msg_update_hero_pageview_item = "MSG_UPDATE_HERO_PAGEVIEW_ITEM";	//用于强化或升级后更新DisplayLayer列表的item属性显示
 
+const string msg_create_pvp_scene = "MSG_CREATE_PVP_SCENE";	//创建匹配战斗场景
+const string msg_socket_disconnect = "MSG_SOCKET_DISCONNECT";	//连接断开
+const string msg_socket_connect = "MSG_SOCKET_CONNECT";	//连接成功消息参数【0：表示连接成功，-1：表示失败】
+
 //发送自定义消息时的参数
 const int msg_update_display_item_parameter_update = 0; //升级或强化
 const int msg_update_display_item_parameter_abandon = 1; //丢弃
@@ -133,11 +137,11 @@ const std::string critDmg = "icos/critDmg.png";
 const std::string blockIco = "icos/block.png";
 
 //匹配场景
-const std::string btnStart1 = "icos/btnStartPvp1.png";
-const std::string btnStart2 = "icos/btnStartPvp2.png";
+const std::string btnStart1 = "btns/btnStartPvp1.png";
+const std::string btnStart2 = "btns/btnStartPvp2.png";
 
-const std::string btnCancel1 = "icos/btnCancel1.png";
-const std::string btnCancel2 = "icos/btnCancel2.png";
+const std::string btnCancel1 = "btns/btnCancel1.png";
+const std::string btnCancel2 = "btns/btnCancel2.png";
 
 //战斗结束场景
 const std::string fail_tt = "icos/fail.png";	//失败标题
@@ -232,6 +236,13 @@ const std::string  rreward = "rreward"; //战役模式item显示获得的装备或者英雄
 
 const std::string  lvNoEnough = "lvNoEnough"; //玩家等级小于挑战等级时的提示
 
+
+//排位开始界面，提示语
+const std::string  pvpNoMoney = "pvpnomoney"; //金币不够开启依据匹配
+const std::string  netError = "neterror"; //网络错误
+const std::string  userCancel = "usercancel"; //用户取消
+const std::string  pvpTips = "pvptips"; //提示
+const std::string  connecting = "connecting";	//正在匹配对手中
 
 //---------------给控件设置的标签名字（node->setName()）-----------------------------------
 const std::string blockTagName = "blockName";		//BlockLayer的标签名字，用来通过标签名字获取实例对象
