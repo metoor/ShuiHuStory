@@ -7,8 +7,6 @@
 #include "AudioManager.h"
 #include "Config.h"
 
-#include "HelloWorldScene.h"
-
 
 USING_NS_CC;
 

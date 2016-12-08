@@ -19,6 +19,7 @@
 #include "HeroCard.h"
 #include "McLog.h"
 #include "PVPBattleScene.h"
+#include "Tools.h"
 
 USING_NS_CC;
 using namespace ui;
@@ -174,10 +175,10 @@ void PVPStartLayer::stopBallAction()
 
 string PVPStartLayer::getBattleHeroData()
 {
-	std::string json = "{\"head\":[";
-	char b2[150];
+	std::string json = "{\"role\":[";
+	char buffer[255];
 
-	memset(b2, 0, sizeof(b2));
+	memset(buffer, 0, sizeof(buffer));
 
 	//英雄出战列表
 	auto data = GameData::getInstance();
@@ -190,19 +191,28 @@ string PVPStartLayer::getBattleHeroData()
 		{
 			auto property = data->getHeroCardById(heroId)->getProperty();
 
-			sprintf(b2, "{\"isExist\":%d,\"totalhp\":%d,\"attackid\":%d,\"skillsid\":%d,\"totaldefend\":%d,\"totalap\":%d,\"textureName\":\"%s\"},", \
-				(int)true, property->hp, property->attackId, property->skillId, property->defend, property->ap, property->textureName->c_str());
+			//将布尔类型的值转换成字符串
+			string isMagic = "false";
+			if (property->isMagic)
+			{
+				isMagic = "true";
+			}
+
+			sprintf_s(buffer, sizeof(buffer) - 1, "{\"t\":%d,\"p\":%d,\"hp\":%d,\"ap\":%d,\"mp\":%d,\"df\":%d,\"mdf\":%d,\"ai\":%d,\"si\":%d,\"sp\":%d,\"cr\":%d,\"br\":%d,\"cd\":%d,\"im\":%s},",
+				property->type, pos, property->hp, property->ap, property->mp,
+				property->defend, property->magicDefend, property->attackId, property->skillId, property->speed, 
+				property->critRate, property->blockRate, Tools::percentToInt(property->critDamage), isMagic.c_str());
 		}
 		else
 		{
-			sprintf(b2, "{\"isExist\":%d,\"totalhp\":%d,\"attackid\":%d,\"skillsid\":%d,\"totaldefend\":%d,\"totalap\":%d,\"textureName\":\"%s\"},", \
-				(int)false, 0, 0, 0, 0, 0, "no");
+			sprintf_s(buffer, sizeof(buffer) - 1, "{\"t\":%d,\"p\":%d,\"hp\":%d,\"ap\":%d,\"mp\":%d,\"df\":%d,\"mdf\":%d,\"ai\":%d,\"si\":%d,\"sp\":%d,\"cr\":%d,\"br\":%d,\"cd\":%d,\"im\":%s},",
+				none, pos, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "false");
 		}
 
-		json += b2;
+		json += buffer;
 	}
 
-	json.erase(json.length() - 1);
+	json.pop_back();
 
 	json += "]}";
 

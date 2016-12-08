@@ -27,13 +27,20 @@ enum RoleType{
 
 struct PVPEnemy
 {
-	bool isExist;
-	int totalhp;
-	int attackid;
-	int skillsid;
-	int totaldefend;
-	int totalap;
-	std::string textureName;
+	int type;				//类型, type == none 表示该位置没有英雄
+	int pos;				//英雄出战的位置
+	int hp;					//卡牌的血
+	int ap;					//卡牌物理攻击
+	int mp;					//卡牌魔法攻击
+	int defend;				//卡牌的物理防御
+	int magicDefend;		//卡牌的魔法防御
+	int attackId;			//普通攻击方式
+	int skillId;			//技能攻击方式
+	int speed;				//速度
+	int critRate;			//暴击
+	int blockRate;			//格挡
+	int critDamage;			//暴击伤害加成
+	bool isMagic;			//是否魔法攻击
 };
 
 class PVPRole : public cocos2d::Sprite
@@ -46,7 +53,7 @@ public:
 
 	void initRole(const HeroCardProperty* hero, int pos);
 
-	void initRole(const PVPEnemy * enemy, int pos);
+	void initRole(const PVPEnemy * enemy);
 
 	void attack(PVPRole attackList[], int attackId, int dmgList[]);
 
@@ -76,9 +83,6 @@ private:
 
 	void updateHpBar();
 
-	//获得真实的伤害 敌方攻击 - 我方防御
-	int getRealDmg(int dmg);
-
 private:
 	const float PI = 3.1415926f;
 	const int sprite_height = 150;
@@ -105,7 +109,6 @@ private:
 	CC_SYNTHESIZE(RoleType, _roleType, RoleType);
 	CC_SYNTHESIZE(int, _pos, Pos)
 
-	CC_SYNTHESIZE(int, _define, Define);
 	CC_SYNTHESIZE(int, _hp, Hp);
 
 	//是否需要播放攻击音效，避免在攻击多个目标是音效被重复播放

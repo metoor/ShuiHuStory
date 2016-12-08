@@ -11,7 +11,7 @@
 #ifndef __TOOLS_H__
 #define __TOOLS_H__
 
-#include <random>
+#include <string>
 #include <ctime>
 
 class Tools
@@ -49,6 +49,15 @@ public:
 
 	//数组赋值（length数组长度,将src里面【0-length）的值赋值到des里面)--注意越界问题
 	static void arrayAssignment(int length, int des[], int src[]);
+
+	//获取文件的内容
+	static std::string getStringFromFile(const std::string& fileName);
+
+	//将字符串写入到文件
+	static bool writeStringToFile(const std::string& fileName, const std::string& content, std::ios_base::openmode mode = std::ios_base::binary | std::ios_base::out);
+
+	//获取当前系统时间字符串-如：2016y_12m_7h_20m_50s
+	static std::string getCurrentTimeString();
 
 	//比较大小
 	static int maxInt(int a, int b);

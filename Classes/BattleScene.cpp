@@ -120,8 +120,11 @@ void BattleScene::battle(float dt)
 
 int BattleScene::getRowRole(int * list, int row)
 {
+	CCAssert(row < 2, "col must be less than 2");
+
 	int result = none;
 
+	//从左至右，返回第一个活着的角色的索引，如果都已经死亡，则返回none
 	for (int pos = 0 + row * 3; pos < 3 + 3 * row; ++pos)
 	{
 		int index = list[pos];
@@ -137,11 +140,14 @@ int BattleScene::getRowRole(int * list, int row)
 
 int BattleScene::getColRole(int * list, int col)
 {
+	CCAssert(col < 3, "col must be less than 3");
+
 	int result = none;
 
 	int row1 = list[col];
 	int row2 = list[col + 3];
 
+	//从col的第一排到第二排，返回第一个活着的角色的索引，如果都已经死亡则返回none
 	if (row1 != none)
 	{
 		result = row1;
@@ -512,20 +518,20 @@ cocos2d::Vector<Role*>* BattleScene::getEnemyList(Role * role)
 			currentPos -= 3;
 		}
 
-		int attackIndex = none;
-		if ((attackIndex = getRowRole(indexList, 0)) != none)
+		int attackIndex = getColRole(indexList, currentPos);
+		if (attackIndex != none)
 		{
-			if (indexList[currentPos] != none)
-			{
-				attackIndex = indexList[currentPos];
-			}
-
-			//和攻击英雄相同的一列前排为空，但是第一排其他位置有英雄
+			//和自己同一列有角色，优先攻击第一排，如果第一排没角色，则攻击第二排
+			_attackList.pushBack(_roleList.at(attackIndex));
+		}
+		else if ((attackIndex = getRowRole(indexList, 0)) != none)
+		{
+			//和攻击英雄相同的一列没有角色，第一排其他位置有角色，优先攻击第一排，
 			_attackList.pushBack(_roleList.at(attackIndex));
 		}
 		else if ((attackIndex = getRowRole(indexList, 1)) != none)
 		{
-			//和攻击英雄相同的一列前排全部为空，但是第二排有英雄
+			//和攻击英雄相同的一列没有角色，第一排也没有角色，攻击第二排角色，
 			_attackList.pushBack(_roleList.at(attackIndex));
 		}
 	}
@@ -621,12 +627,12 @@ cocos2d::Vector<Role*>* BattleScene::getEnemyList(Role * role)
 		else
 		{
 			//和自己同一列的敌方没有英雄，则优先攻击下一列
-			int nextCol = col + 1;
+			int nextCol = (col + 1) % 3;
 			while (nextCol != col)
 			{
-				if (getColRole(indexList, col) != none)
+				if (getColRole(indexList, nextCol) != none)
 				{
-					for (int pos = col; pos < max_battle_hero_num; pos += 3)
+					for (int pos = nextCol; pos < max_battle_hero_num; pos += 3)
 					{
 						int attackIndex = indexList[pos];
 						if (attackIndex != none)
@@ -634,6 +640,9 @@ cocos2d::Vector<Role*>* BattleScene::getEnemyList(Role * role)
 							_attackList.pushBack(_roleList.at(attackIndex));
 						}
 					}
+					
+					//已经获取到攻击对象，跳出循环
+					break;
 				}
 				nextCol = (++nextCol) % 3;
 			}
@@ -676,6 +685,7 @@ bool BattleScene::isAlive(int * list)
 		if (index != none)
 		{
 			isAlive = true;
+			break;
 		}
 	}
 

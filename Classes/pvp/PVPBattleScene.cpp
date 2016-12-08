@@ -108,10 +108,10 @@ void PVPBattleScene::getBattleProgressFromeString(const std::string & battle)
 
 		auto bp = new BattleProgress();
 
-		bp->skillId = json["s"].GetInt();
-		bp->attackHeroPos = json["h"].GetInt();
-		bp->player = json["p"].GetInt();
-
+		bp->player = json["ap"].GetInt();
+		bp->attackHeroPos = json["rp"].GetInt();
+		bp->skillId = json["ai"].GetInt();
+		
 		for (int pos = 0; pos < max_battle_hero_num; ++pos)
 		{
 			string key = StringUtils::format("d%d", pos);
@@ -136,22 +136,33 @@ void PVPBattleScene::getEnemyData(const std::string & data)
 		return;
 	}
 
-	for (unsigned int index = 0; index < doc["head"].Size(); ++index)
+	for (unsigned int index = 0; index < doc["role"].Size(); ++index)
 	{
-		rapidjson::Value & json = doc["head"][index];
+		rapidjson::Value & json = doc["role"][index];
 
 		auto enemy = new PVPEnemy();
 
-		enemy->isExist = (json["isExist"].GetInt()) != 0;
+		enemy->type = json["t"].GetInt();
 
-		enemy->totalhp = json["totalhp"].GetInt();
-		enemy->attackid = json["attackid"].GetInt();
-		enemy->skillsid = json["skillsid"].GetInt();
-		enemy->totaldefend = json["totaldefend"].GetInt();
-		enemy->totalap = json["totalap"].GetInt();
-		enemy->textureName = json["textureName"].GetString();
+		//type != none才说明有角色存在
+		if (enemy->type != none)
+		{
+			enemy->pos = json["p"].GetInt();
+			enemy->ap = json["ap"].GetInt();
+			enemy->mp = json["mp"].GetInt();
+			enemy->hp = json["hp"].GetInt();
+			enemy->attackId = json["ai"].GetInt();
+			enemy->skillId = json["si"].GetInt();
+			enemy->defend = json["df"].GetInt();
+			enemy->magicDefend = json["mdf"].GetInt();
+			enemy->blockRate = json["br"].GetInt();
+			enemy->critRate = json["cr"].GetInt();
+			enemy->critDamage = json["cd"].GetInt();
+			enemy->speed = json["sp"].GetInt();
+			enemy->isMagic = json["im"].GetBool();
 
-		_enemyData.push_back(enemy);
+			_enemyData.push_back(enemy);
+		}
 	}
 }
 
@@ -173,15 +184,12 @@ void PVPBattleScene::createRole()
 	}
 
 	//创建敌方角色
-	for (int pos = 0; pos < max_battle_hero_num; ++pos)
+	for (unsigned int pos = 0; pos < _enemyData.size(); ++pos)
 	{
 		auto enemy = _enemyData.at(pos);
 
-		if (enemy->isExist)
-		{
-			//该位置有英雄，创建英雄
-			_enemyArray[pos].initRole(enemy, pos);
-		}
+		//创建敌方角色,并将角色放到正确的位置上
+		_enemyArray[enemy->pos].initRole(enemy);
 	}
 }
 
@@ -220,7 +228,7 @@ void PVPBattleScene::battle(float dt)
 		unschedule(schedule_selector(PVPBattleScene::battle));
 
 		//延时启动游戏结算场景
-		auto delay = DelayTime::create(1.2f);
+		auto delay = DelayTime::create(_delay);
 		auto gameOverCallback = CallFunc::create([&]() {
 			auto data = GameData::getInstance();
 
@@ -256,6 +264,9 @@ void PVPBattleScene::battle(float dt)
 		{
 			//已经达到数据最后，结束游戏
 			_isGameOver = true;
+
+			//设置延时启动的时间
+			_delay = 1.2f;
 
 			auto last = _battleVector.at(_battleVector.size() - 1);
 

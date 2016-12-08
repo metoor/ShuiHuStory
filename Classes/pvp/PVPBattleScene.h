@@ -74,6 +74,9 @@ private:
 private:
 	int _playerId;
 	
+	//游戏结束后延时切换结算场景
+	float _delay = 0.2f;
+
 	//游戏是否结束
 	bool _isGameOver;
 	

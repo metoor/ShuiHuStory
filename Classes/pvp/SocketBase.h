@@ -36,20 +36,6 @@ USING_NS_CC;
 #define HSocket int
 #endif 
 
-
-#define MAX_BUFFER 4 * 1024 //一次发送的最大缓存
-
-//协议
-typedef struct
-{
-	char head[15];
-	int checknum;
-	int cmd;			//-0 接收地方英雄数据  -1 / -2 玩家Id  -3 有一方逃跑，一方直接获胜
-	unsigned length;
-	char content[MAX_BUFFER];
-
-}MyMSG;
-
 enum MessageType
 {
 	DISCONNECT,

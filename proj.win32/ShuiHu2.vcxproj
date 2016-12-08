@@ -162,7 +162,6 @@ xcopy /Y /Q "$(COCOS_X_ROOT)\cocos2d-x-3.10\prebuilt\win32\*.*" "$(OutDir)"
     <ClCompile Include="..\Classes\GameData.cpp" />
     <ClCompile Include="..\Classes\GameOverLayer.cpp" />
     <ClCompile Include="..\Classes\GameScene.cpp" />
-    <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
     <ClCompile Include="..\Classes\HeroCard.cpp" />
     <ClCompile Include="..\Classes\HeroInfoLayer.cpp" />
     <ClCompile Include="..\Classes\HeroLayer.cpp" />
@@ -210,7 +209,6 @@ xcopy /Y /Q "$(COCOS_X_ROOT)\cocos2d-x-3.10\prebuilt\win32\*.*" "$(OutDir)"
     <ClInclude Include="..\Classes\GameData.h" />
     <ClInclude Include="..\Classes\GameOverLayer.h" />
     <ClInclude Include="..\Classes\GameScene.h" />
-    <ClInclude Include="..\Classes\HelloWorldScene.h" />
     <ClInclude Include="..\Classes\HeroCard.h" />
     <ClInclude Include="..\Classes\HeroInfoLayer.h" />
     <ClInclude Include="..\Classes\HeroLayer.h" />

@@ -56,7 +56,7 @@ void PVPRole::initRole(const HeroCardProperty * hero, int pos)
 
 	_hp = hero->hp;
 	_currentHp = _hp;
-	_define = hero->defend;
+
 	_isAlive = true;
 
 	//创建角色纹理和血条
@@ -65,25 +65,18 @@ void PVPRole::initRole(const HeroCardProperty * hero, int pos)
 	createHpBar();
 }
 
-void PVPRole::initRole(const PVPEnemy * enemy, int pos)
+void PVPRole::initRole(const PVPEnemy * enemy)
 {
-	if (!Tools::betweenAnd(pos, 0, 5))
-	{
-		McLog mc;
-		mc.addError("'pos' out of range...", __FILE__, __LINE__);
-		return;
-	}
-
 	_roleType = RT_ENEMY;
-	_pos = pos;
+	_pos = enemy->pos;
 
-	_hp = enemy->totalhp;
+	_hp = enemy->hp;
 	_currentHp = _hp;
-	_define = enemy->totaldefend;
-	_isAlive = true;
 
+	_isAlive = true;
+	
 	//创建角色纹理和血条
-	initWithFile(enemy->textureName);
+	initWithFile(StringUtils::format("car%d.png", enemy->type));
 	this->setScale(sprite_scale);
 	createHpBar();
 }
@@ -224,11 +217,9 @@ void PVPRole::attack(int attackId, int dmg, PVPRole * enemy)
 			//播放攻击音效
 			AudioManager::getInstance()->playAttackEffect(_audioIndex);
 		}
-		
-		int realDmg = getRealDmg(dmg);
 
-		enemy->flyWords(realDmg);
-		enemy->hurt(realDmg);
+		enemy->flyWords(dmg);
+		enemy->hurt(dmg);
 	});
 
 	//移除子弹动画
@@ -271,19 +262,6 @@ void PVPRole::createHpBar()
 	m_hpBar->setPosition(Point(this->getContentSize().width / 2, hp_bar_height_pos));
 	m_hpBar->setScaleX(hp_bar_scale);
 	addChild(m_hpBar, 10);
-}
-
-int PVPRole::getRealDmg(int dmg)
-{
-	int realDmg = 0;
-
-	//物理伤害
-	realDmg = Tools::maxInt(10, dmg - _define);
-
-	/*McLog mc;
-	mc.addWaring(StringUtils::format("dmg:%d---realdmg:%d", dmg, realDmg), __FILE__, __LINE__);*/
-
-	return realDmg;
 }
 
 void PVPRole::flyWords(int damg, float scale)
@@ -344,7 +322,7 @@ void PVPRole::attack(PVPRole attackList[], int attackId, int dmgList[])
 
 		if (dmg != 0)
 		{
-			attack(attackId, dmg, &attackList[pos]);
+			attack(attackId, dmg, &(attackList[pos]));
 		}
 	}
 }

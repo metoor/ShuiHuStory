@@ -9,7 +9,9 @@
 *************************************************/
 
 #include "Tools.h"
-
+#include <random>
+#include <fstream>
+#include <assert.h>
 
 int Tools::getRandomInt(int min, int max)
 {
@@ -26,7 +28,7 @@ int Tools::getRandomInt(int min, int max)
 	currentTimer += randomCount;
 	++randomCount;
 
-	std::default_random_engine e(currentTimer);
+	std::default_random_engine e((unsigned int)currentTimer);
 
 	std::uniform_int_distribution<unsigned> u(min, max);
 
@@ -90,6 +92,67 @@ void Tools::arrayAssignment(int length, int des[], int src[])
 	{
 		des[index] = src[index];
 	}
+}
+
+std::string Tools::getStringFromFile(const std::string & fileName)
+{
+	std::ifstream in;
+	in.open(fileName, std::ios::binary | std::ios::in | std::ios::ate);
+
+	if (in.is_open())
+	{
+		auto size = in.tellg();
+		std::string str((unsigned int)size, '\0'); // construct string to stream size
+		in.seekg(0);
+		in.read(&str[0], size);
+
+		in.close();
+
+		return str;
+	}
+	else
+	{
+		assert(false);
+		in.close();
+		return "";
+	}
+}
+
+bool Tools::writeStringToFile(const std::string & fileName, const std::string & content, std::ios_base::openmode mode)
+{
+	bool result = true;
+
+	std::ofstream out;
+	out.open(fileName, mode);
+
+	if (out.is_open())
+	{
+		out << content;
+	}
+	else
+	{
+		result = false;
+		assert(false);
+	}
+
+	out.close();
+
+	return result;
+}
+
+std::string Tools::getCurrentTimeString()
+{
+	char buffer[25];
+	memset(buffer, 0, sizeof(buffer));
+
+	tm currentTime = getCurrentTimeTm();
+
+	int year = currentTime.tm_year + 1900;
+	int month = currentTime.tm_mon + 1;
+
+	sprintf_s(buffer, sizeof(buffer) - 1, "%dy_%dm_%dh_%dm_%ds", year, month, currentTime.tm_hour, currentTime.tm_min, currentTime.tm_sec);
+
+	return std::string(buffer);
 }
 
 int Tools::randomBetweenOneAndFive(int starNum, int onePercent, int twoPercent, int threePercent, int fourPercent, int fivePercent)
