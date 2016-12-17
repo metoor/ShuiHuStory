@@ -3,7 +3,7 @@
     <Item Key="CocosRecentOperation">
       <Value ctype="CocosRecentOperation">
         <LastPublishType Value="Resource" />
-        <IsLastPublish Value="True" />
+        <IsLastPublish Value="False" />
         <LastRunType Value="Windows" />
       </Value>
     </Item>
@@ -12,25 +12,25 @@
         <LuaIsEncrypt Value="False" />
         <LuaEncryptKey Value="" />
         <LuaEncryptSign Value="" />
-        <Android_PackageName Value="org.cocos.ShuiHu2" />
-        <AndroidkeyStore Value="" />
+        <Android_PackageName Value="com.metoor.shuihustory" />
+        <AndroidkeyStore Value="F:\SourceCode\Cocos\src\ShuiHu2\publish\ShuiHu2.keystore" />
         <AndroidVersion Value="android-20" />
         <iOS_Target Value="ShuiHu2-mobile" />
         <iOS_BundleID Value="" />
-        <Platform Value="None" />
+        <Platform Value="Android" />
         <RunPlatform Value="None" />
         <FrameworkVersion Value="cocos2d-x-3.10" />
-        <IsDebugKeystore Value="True" />
+        <IsDebugKeystore Value="False" />
+        <KeystorePassword Value="cyf943180" />
+        <KeystoreAliasName Value="ShuiHuStroy" />
+        <KeystoreAliasPassword Value="shuihustory" />
         <EnableSourceMap Value="False" />
         <EnableHTML5Advanced Value="False" />
       </Value>
     </Item>
     <Item Key="TabsParamsKey">
       <Value ctype="TabsInfo">
-        <OpenedDocuments>
-          <FilePathData Path="layers/warLayer/pvpLayer.csd" />
-        </OpenedDocuments>
-        <ActiveDocument Path="layers/warLayer/pvpLayer.csd" />
+        <ActiveDocument />
       </Value>
     </Item>
   </Properties>

@@ -13,6 +13,7 @@
 
 #include <string>
 #include <ctime>
+#include <fstream>
 
 class Tools
 {

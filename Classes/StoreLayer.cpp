@@ -257,8 +257,8 @@ void StoreLayer::createRandomItem(int heroType, int equipmentType)
 		auto property = _hero->getProperty();
 		auto btn = dynamic_cast<Button*>(pSender);
 
-		dialog->showDialog(i18n->getStringByKey(buyTitle), StringUtils::format(i18n->getStringByKey(buy).c_str(), property->sellMoney, property->name), [&, data, dialog, i18n, property, btn](Ref* pSender) {
-			if (data->setDiamond(-property->sellMoney))
+		dialog->showDialog(i18n->getStringByKey(buyTitle), StringUtils::format(i18n->getStringByKey(buy).c_str(), property->buyMoney, property->name), [&, data, dialog, i18n, property, btn](Ref* pSender) {
+			if (data->setDiamond(-property->buyMoney))
 			{
 				//购买成功
 				//禁用按钮，并将纹理换成已购买
@@ -306,8 +306,8 @@ void StoreLayer::createRandomItem(int heroType, int equipmentType)
 		auto property = _equipment->getProperty();
 		auto btn = dynamic_cast<Button*>(pSender);
 
-		dialog->showDialog(i18n->getStringByKey(buyTitle), StringUtils::format(i18n->getStringByKey(buy).c_str(), property->sellMoney, property->name), [&, data, dialog, i18n, property, btn](Ref* pSender) {
-			if (data->setDiamond(-property->sellMoney))
+		dialog->showDialog(i18n->getStringByKey(buyTitle), StringUtils::format(i18n->getStringByKey(buy).c_str(), property->buyMoney, property->name), [&, data, dialog, i18n, property, btn](Ref* pSender) {
+			if (data->setDiamond(-property->buyMoney))
 			{
 				//购买成功
 				//禁用按钮，并将纹理换成已购买

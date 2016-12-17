@@ -14,6 +14,7 @@
 #include "cocos2d.h"
 #include "SocketClient.h"
 #include "TypeStruct.h"
+#include <string>
 
 class ClientLayer : public cocos2d::Layer
 {

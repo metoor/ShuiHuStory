@@ -38,6 +38,12 @@ private:
 	//读取下一条对白
 	void nextMsg();
 
+	//注册手机按键事件
+	void addPhoneEventListener();
+
+	//手机返回事件监听回调
+	void onKeyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event * pEvent);
+
 private:
 	//ui文件的常量名
 	const std::string csbName = "layers/firstLogin/firstScene.csb";

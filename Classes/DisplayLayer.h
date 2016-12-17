@@ -26,10 +26,10 @@ enum ObjectType
 
 //Ç°ÖÃÉùÃ÷
 class DisplayListItem;
-class Equipment;
-class HeroCard;
 struct EquipmentProperty;
 struct HeroCardProperty;
+class Equipment;
+class HeroCard;
 
 
 class DisplayLayer : public cocos2d::Layer {

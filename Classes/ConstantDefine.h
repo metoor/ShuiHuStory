@@ -70,6 +70,9 @@ const std::string is_bg_mute_name = "bg"; //保存是否启用背景音乐的key
 
 const int percent_full = 100;  //百分比的最大值，如暴击率，格挡率等等
 
+const float PI = 3.14159265f;	//常数π
+
+const float rad = PI / 180;		//弧度
 
 //自定义消息
 const string msg_update_user_data = "MSG_UPDATE_USER_DATA";	//更新用户数据的消息名
@@ -243,6 +246,11 @@ const std::string  netError = "neterror"; //网络错误
 const std::string  userCancel = "usercancel"; //用户取消
 const std::string  pvpTips = "pvptips"; //提示
 const std::string  connecting = "connecting";	//正在匹配对手中
+
+//离开游戏对话框
+const std::string  qtitle = "quittitle";
+const std::string  quit = "quit";
+const std::string  back = "back";
 
 //---------------给控件设置的标签名字（node->setName()）-----------------------------------
 const std::string blockTagName = "blockName";		//BlockLayer的标签名字，用来通过标签名字获取实例对象

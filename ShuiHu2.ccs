@@ -4,7 +4,6 @@
     <Group ctype="ResourceGroup">
       <RootFolder Name=".">
         <Folder Name="backgrounds">
-          <Image Name="bg_pvpStart.png" />
           <Image Name="cellbg.png" />
           <Image Name="chatbg.png" />
           <Image Name="dialogBg.png" />

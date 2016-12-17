@@ -13,6 +13,10 @@
 #include "AudioManager.h"
 #include "ParticleLayer.h"
 #include "GameScene.h"
+#include "DialogManager.h"
+#include "I18N.h"
+#include "AboutLayer.h"
+#include "ConstantDefine.h"
 
 USING_NS_CC;
 using namespace ui;
@@ -36,6 +40,10 @@ bool FirstScene::init()
 	{
 		return false;
 	}
+
+	//添加手机按键事件
+	addPhoneEventListener();
+
 
 	//背景音乐
 	AudioManager::getInstance()->playFirstSceneBgMusic();
@@ -124,5 +132,41 @@ void FirstScene::nextMsg()
 	{
 		//对白完成跳转到游戏主页
 		Director::getInstance()->replaceScene(TransitionShrinkGrow::create(1.0f, GameScene::createScene()));
+	}
+}
+
+void FirstScene::addPhoneEventListener()
+{
+	//对手机返回键的监听
+	auto listener = EventListenerKeyboard::create();
+
+	//和回调函数绑定
+	listener->onKeyReleased = CC_CALLBACK_2(FirstScene::onKeyReleased, this);
+
+	//添加到事件分发器中
+	_eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
+}
+
+void FirstScene::onKeyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event * pEvent)
+{
+	switch (keyCode)
+	{
+	case cocos2d::EventKeyboard::KeyCode::KEY_ESCAPE:
+	{
+		//弹出退出游戏提醒
+		auto i18n = I18N::getInstance();
+		DialogManager::getInstance()->showDialog(i18n->getStringByKey(qtitle), i18n->getStringByKey(quit), [](Ref* psender) {
+			Director::getInstance()->end();
+		});
+		break;
+	}
+	case cocos2d::EventKeyboard::KeyCode::KEY_MENU:
+	{
+		auto aboutLayer = AboutLayer::create();
+		addChild(aboutLayer);
+		break;
+	}
+	default:
+		break;
 	}
 }

@@ -10,7 +10,6 @@
 
 #include "Tools.h"
 #include <random>
-#include <fstream>
 #include <assert.h>
 
 int Tools::getRandomInt(int min, int max)
@@ -150,7 +149,7 @@ std::string Tools::getCurrentTimeString()
 	int year = currentTime.tm_year + 1900;
 	int month = currentTime.tm_mon + 1;
 
-	sprintf_s(buffer, sizeof(buffer) - 1, "%dy_%dm_%dh_%dm_%ds", year, month, currentTime.tm_hour, currentTime.tm_min, currentTime.tm_sec);
+	std::sprintf(buffer, "%dy_%dm_%dh_%dm_%ds", year, month, currentTime.tm_hour, currentTime.tm_min, currentTime.tm_sec);
 
 	return std::string(buffer);
 }

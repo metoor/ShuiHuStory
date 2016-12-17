@@ -64,7 +64,7 @@ void HeroCard::init(const HeroCardType * heroCardType)
 	}
 
 	//根据等级产生模板比率。公式为：根据等级产生模板比率。公式为：星级*0.1f + sin(90, 360) * 0.2f;
-	_property->rate = Tools::keepTwoEffectNum(1 + _property->star * 0.1f+ sin(Tools::getRandomInt(90, 360)) * 0.1f);
+	_property->rate = Tools::keepTwoEffectNum(1 + _property->star * 0.1f+ sin(Tools::getRandomInt(90, 360) * rad) * 0.1f);
 
 	_property->id = GameData::getInstance()->getUniqueIdentifierNum();
 	_property->type = heroCardType->type;

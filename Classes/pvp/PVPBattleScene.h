@@ -61,6 +61,13 @@ private:
 	void onExit() override;
 	void onEnterTransitionDidFinish() override;
 
+	//注册手机按键事件
+	void addPhoneEventListener();
+
+	//手机返回事件监听回调
+	void onKeyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event * pEvent);
+
+
 private:
 	const cocos2d::Point HeroPosition[max_battle_hero_num] = { cocos2d::Point(120, 350), cocos2d::Point(320, 350), cocos2d::Point(520, 350),
 		cocos2d::Point(120, 120), cocos2d::Point(320, 120), cocos2d::Point(520, 120) };

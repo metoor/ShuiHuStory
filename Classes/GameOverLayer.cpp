@@ -88,7 +88,7 @@ void GameOverLayer::win()
 	_goldLabel->setString(StringUtils::format(i18n->getStringByKey(rewardGold).c_str(), _gold));
 	_expLabel->setString(StringUtils::format(i18n->getStringByKey(rewardExp).c_str(), _exp));
 
-	string& texture = createExtraReward();
+	string texture = createExtraReward();
 
 	if (!texture.empty())
 	{

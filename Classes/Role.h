@@ -73,7 +73,6 @@ private:
 	int getRealDmg(int dmg, bool isMagic);
 
 private:
-	const float PI = 3.1415926f;
 	const int sprite_height = 150;
 	const int sprite_width = 200;
 	const int hp_bar_height_pos = 30;

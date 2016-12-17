@@ -198,14 +198,14 @@ string PVPStartLayer::getBattleHeroData()
 				isMagic = "true";
 			}
 
-			sprintf_s(buffer, sizeof(buffer) - 1, "{\"t\":%d,\"p\":%d,\"hp\":%d,\"ap\":%d,\"mp\":%d,\"df\":%d,\"mdf\":%d,\"ai\":%d,\"si\":%d,\"sp\":%d,\"cr\":%d,\"br\":%d,\"cd\":%d,\"im\":%s},",
+			std::sprintf(buffer, "{\"t\":%d,\"p\":%d,\"hp\":%d,\"ap\":%d,\"mp\":%d,\"df\":%d,\"mdf\":%d,\"ai\":%d,\"si\":%d,\"sp\":%d,\"cr\":%d,\"br\":%d,\"cd\":%d,\"im\":%s},",
 				property->type, pos, property->hp, property->ap, property->mp,
 				property->defend, property->magicDefend, property->attackId, property->skillId, property->speed, 
 				property->critRate, property->blockRate, Tools::percentToInt(property->critDamage), isMagic.c_str());
 		}
 		else
 		{
-			sprintf_s(buffer, sizeof(buffer) - 1, "{\"t\":%d,\"p\":%d,\"hp\":%d,\"ap\":%d,\"mp\":%d,\"df\":%d,\"mdf\":%d,\"ai\":%d,\"si\":%d,\"sp\":%d,\"cr\":%d,\"br\":%d,\"cd\":%d,\"im\":%s},",
+			std::sprintf(buffer, "{\"t\":%d,\"p\":%d,\"hp\":%d,\"ap\":%d,\"mp\":%d,\"df\":%d,\"mdf\":%d,\"ai\":%d,\"si\":%d,\"sp\":%d,\"cr\":%d,\"br\":%d,\"cd\":%d,\"im\":%s},",
 				none, pos, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "false");
 		}
 
@@ -282,7 +282,8 @@ void PVPStartLayer::addConnectMessageListener()
 			auto layer = dynamic_cast<ClientLayer*>(getChildByTag(socketLayerTag));
 			if (layer != nullptr)
 			{
-				layer->sendMessage(getBattleHeroData(), 0);
+				auto data = getBattleHeroData();
+				layer->sendMessage(data, 0);
 			}
 			else
 			{

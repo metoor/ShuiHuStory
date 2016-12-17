@@ -19,6 +19,9 @@
 #include "Tools.h"
 #include "AudioManager.h"
 #include "GameOverLayer.h"
+#include "DialogManager.h"
+#include "AboutLayer.h"
+#include "I18N.h"
 
 USING_NS_CC;
 using namespace std;
@@ -54,6 +57,9 @@ bool BattleScene::init()
 	{
 		return false;;
 	}
+
+	//添加手机按键事件监听
+	addPhoneEventListener();
 
 	createBgAndMusic();
 
@@ -710,4 +716,34 @@ void BattleScene::unLoadAnimation()
 	SpriteFrameCache::getInstance()->removeSpriteFramesFromFile("effect15.plist");
 	SpriteFrameCache::getInstance()->removeSpriteFramesFromFile("effect16.plist");
 	SpriteFrameCache::getInstance()->removeSpriteFramesFromFile("effect17.plist");
+}
+
+void BattleScene::addPhoneEventListener()
+{
+	//对手机返回键的监听
+	auto listener = EventListenerKeyboard::create();
+
+	//和回调函数绑定
+	listener->onKeyReleased = CC_CALLBACK_2(BattleScene::onKeyReleased, this);
+
+	//添加到事件分发器中
+	_eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
+}
+
+void BattleScene::onKeyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event * pEvent)
+{
+	switch (keyCode)
+	{
+	case cocos2d::EventKeyboard::KeyCode::KEY_ESCAPE:
+	{
+		//弹出退出游戏提醒
+		auto i18n = I18N::getInstance();
+		DialogManager::getInstance()->showDialog(i18n->getStringByKey(qtitle), i18n->getStringByKey(back), [](Ref* psender) {
+			Director::getInstance()->end();
+		});
+		break;
+	}
+	default:
+		break;
+	}
 }

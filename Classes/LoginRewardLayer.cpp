@@ -122,7 +122,7 @@ void LoginRewardLayer::initData()
 	{
 		//满足领取时间，距离上次12小时以上
 		_btnOk->setEnabled(true);
-		_timeTips->setString(StringUtils::format(i18n->getStringByKey(loginRewardTimeTips2).c_str()));
+		_timeTips->setString(i18n->getStringByKey(loginRewardTimeTips2).c_str());
 	}
 	else
 	{
@@ -177,7 +177,7 @@ void LoginRewardLayer::updateTime(float dt)
 
 		//满足领取时间，距离上次12小时以上
 		_btnOk->setEnabled(true);
-		_timeTips->setString(StringUtils::format(i18n->getStringByKey(loginRewardTimeTips2).c_str()));
+		_timeTips->setString(i18n->getStringByKey(loginRewardTimeTips2));
 	}
 	else
 	{
