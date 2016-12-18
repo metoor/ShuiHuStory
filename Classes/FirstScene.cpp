@@ -149,24 +149,12 @@ void FirstScene::addPhoneEventListener()
 
 void FirstScene::onKeyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event * pEvent)
 {
-	switch (keyCode)
-	{
-	case cocos2d::EventKeyboard::KeyCode::KEY_ESCAPE:
+	if (keyCode == EventKeyboard::KeyCode::KEY_ESCAPE)
 	{
 		//弹出退出游戏提醒
 		auto i18n = I18N::getInstance();
 		DialogManager::getInstance()->showDialog(i18n->getStringByKey(qtitle), i18n->getStringByKey(quit), [](Ref* psender) {
 			Director::getInstance()->end();
 		});
-		break;
-	}
-	case cocos2d::EventKeyboard::KeyCode::KEY_MENU:
-	{
-		auto aboutLayer = AboutLayer::create();
-		addChild(aboutLayer);
-		break;
-	}
-	default:
-		break;
 	}
 }

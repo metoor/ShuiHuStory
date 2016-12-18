@@ -22,6 +22,7 @@
 #include "PictureLayer.h"
 #include "StoreLayer.h"
 #include "WarMenuLayer.h"
+#include "DialogManager.h"
 
 USING_NS_CC;
 using namespace ui;
@@ -135,7 +136,11 @@ void GameScene::onKeyReleased(EventKeyboard::KeyCode keyCode, Event * pEvent)
 {
 	if (keyCode == EventKeyboard::KeyCode::KEY_ESCAPE)
 	{
-		Director::getInstance()->end();
+		//弹出退出游戏提醒
+		auto i18n = I18N::getInstance();
+		DialogManager::getInstance()->showDialog(i18n->getStringByKey(qtitle), i18n->getStringByKey(quit), [](Ref* psender) {
+			Director::getInstance()->end();
+		});
 	}
 }
 
