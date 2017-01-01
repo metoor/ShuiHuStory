@@ -95,9 +95,10 @@ void HomeLayer::updateUserData()
 	//设置经验条的当前经验和总得经验
 	int maxExp = data->getExpLimit(start_exp_rate, data->getLevel());
 	int currentExp = data->getExp();
+	float percent = currentExp / (maxExp * 1.0f);
 
 	_expLabel->setString(StringUtils::format("%d/%d", currentExp, maxExp));
-	_expBar->setPercent(currentExp * 1.0f / maxExp);
+	_expBar->setPercent(percent * 100);
 }
 
 Layer* HomeLayer::createMenuLayer(HomeMenuType type)
