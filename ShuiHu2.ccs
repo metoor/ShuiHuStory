@@ -25,19 +25,6 @@
           <Image Name="zhanyi.png" />
         </Folder>
         <Folder Name="btns">
-          <Folder Name="pvpbtn">
-            <Image Name="btn_battle_1.png" />
-            <Image Name="btn_battle_2.png" />
-            <Image Name="btn_pvp_1.png" />
-            <Image Name="btn_pvp_2.png" />
-            <Image Name="btn_pvpCancel_1.png" />
-            <Image Name="btn_pvpCancel_2.png" />
-            <Image Name="btn_pvpStart_1.png" />
-            <Image Name="btn_pvpStart_2.png" />
-            <Image Name="img_find.png" />
-            <Image Name="img_netError.png" />
-            <Image Name="img_tips.png" />
-          </Folder>
           <Image Name="abandon1.png" />
           <Image Name="abandon2.png" />
           <Image Name="about_1.png" />

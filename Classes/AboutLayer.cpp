@@ -13,11 +13,14 @@
 #include "AudioManager.h"
 #include "BlockLayer.h"
 #include "ConstantDefine.h"
+#include "Tools.h"
 
 USING_NS_CC;
 using namespace ui;
 
 AboutLayer::AboutLayer()
+	:_isSelect(false),
+	_currentPos(0.0f)
 {
 }
 
@@ -48,6 +51,7 @@ void AboutLayer::loadUI()
 	addChild(node);
 
 	_btnClose = node->getChildByName<Button*>(btnCloseName);
+	_scrollView = node->getChildByName<ScrollView*>(scrollViewName);
 
 	_btnClose->addTouchEventListener([&](Ref* pSender, Widget::TouchEventType type) {
 		if (Widget::TouchEventType::BEGAN == type)
@@ -60,6 +64,9 @@ void AboutLayer::loadUI()
 			endAnimation();
 		}
 	});
+
+	//添加ScrollView的事件监听
+	_scrollView->addEventListener((ui::ListView::ccScrollViewCallback)CC_CALLBACK_2(AboutLayer::selectedItemEventScrollView, this));
 }
 
 void AboutLayer::startAnimation()
@@ -102,4 +109,57 @@ void AboutLayer::endAnimation()
 void AboutLayer::onEnterTransitionDidFinish()
 {
 	startAnimation();
+
+	//开启自动滚动
+	scheduleUpdate();
+}
+
+void AboutLayer::onExitTransitionDidStart()
+{
+	unscheduleUpdate();
+}
+
+void AboutLayer::update(float dt)
+{
+	//log("isSelect:%d, curPos:%f", _isSelect, _currentPos);
+	if (!_isSelect && _currentPos < 100)
+	{
+		//如果没有滑动到最底部，则自动向下滑动
+		_scrollView->jumpToPercentVertical(_currentPos);
+		_currentPos += dt * 1.5f;
+	}
+}
+
+void AboutLayer::selectedItemEventScrollView(Ref* pSender, ui::ScrollView::EventType type)
+{
+	switch (type)
+	{
+	case cocos2d::ui::ScrollView::EventType::CONTAINER_MOVED:
+	{
+		if (_isSelect)
+		{
+			auto startpos = _scrollView->getTouchBeganPosition();
+			auto endPos = _scrollView->getTouchEndPosition();
+			
+			float height = _scrollView->getInnerContainer()->getContentSize().height;
+
+			//转换成Y轴距离的百分比
+			float disY = (endPos.y - startpos.y) * 10 / height;
+
+			//log("dis:%f,--star:(%f, %f), end:(%f, %f)", disY, startpos.x, startpos.y, endPos.x, endPos.y);
+
+
+			_currentPos = Tools::maxFloat(0, Tools::minFloat(99, _currentPos + disY));
+			_isSelect = false;
+		}
+
+		
+	}
+		break;
+	case ScrollView::EventType::SCROLLING:
+		_isSelect = true;
+		break;
+	default:
+		break;
+	}
 }
