@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+	<dict>
+		<key>frames</key>
+		<dict>
+			<key>icos/hourse1.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{401,0},{156,101}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{156,101}</string>
+			</dict>
+			<key>icos/hourse2.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{705,85},{104,89}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{104,89}</string>
+			</dict>
+			<key>icos/hourse3.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{401,194},{98,86}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{98,86}</string>
+			</dict>
+			<key>icos/hourse4.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{401,101},{133,93}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{133,93}</string>
+			</dict>
+			<key>icos/hourse5.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{597,85},{108,88}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{108,88}</string>
+			</dict>
+			<key>icos/hourse6.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{608,173},{103,86}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{103,86}</string>
+			</dict>
+			<key>icos/hourse7.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{933,0},{115,86}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{115,86}</string>
+			</dict>
+			<key>icos/hpBarBg.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{557,0},{158,22}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{158,22}</string>
+			</dict>
+			<key>icos/hpBar.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{579,0},{154,18}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{158,22}</string>
+			</dict>
+			<key>btns/btnCancel1.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,0},{432,100}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{432,100}</string>
+			</dict>
+			<key>btns/btnCancel2.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{301,0},{432,100}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{432,100}</string>
+			</dict>
+			<key>btns/btnStartPvp1.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{100,0},{432,100}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{432,100}</string>
+			</dict>
+			<key>btns/btnStartPvp2.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{200,0},{432,100}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{432,100}</string>
+			</dict>
+			<key>icos/fail.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{301,432},{307,74}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{307,74}</string>
+			</dict>
+			<key>icos/win.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{0,432},{301,79}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{301,79}</string>
+			</dict>
+			<key>icos/pvp_title.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{608,0},{325,85}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{325,85}</string>
+			</dict>
+			<key>icos/ball.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{534,158},{31,31}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{31,31}</string>
+			</dict>
+		</dict>
+		<key>metadata</key>
+		<dict>
+			<key>format</key>
+			<integer>2</integer>
+			<key>textureFileName</key>
+			<string>ui_2.png</string>
+			<key>realTextureFileName</key>
+			<string>ui_2.png</string>
+			<key>size</key>
+			<string>{1019,511}</string>
+		</dict>
+		<key>texture</key>
+		<dict>
+			<key>width</key>
+			<integer>1019</integer>
+			<key>height</key>
+			<integer>511</integer>
+		</dict>
+	</dict>
+</plist>

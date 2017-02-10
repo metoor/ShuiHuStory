@@ -1,0 +1,25 @@
+<PlistInfoProjectFile>
+  <PropertyGroup Name="ui_2" Type="Plist" ID="e15bfeea-8faf-48d5-95a6-20f5fd808887" Version="3.10.0.0" />
+  <Content ExportType="Png" SortAlgorithm="MaxRects" PicturePadding="0" AllowRotation="True" AllowAnySize="True" AllowTrim="True" ctype="PlistInfoData">
+    <ImageFiles>
+      <FilePathData Path="icos/hourse1.png" />
+      <FilePathData Path="icos/hourse2.png" />
+      <FilePathData Path="icos/hourse3.png" />
+      <FilePathData Path="icos/hourse4.png" />
+      <FilePathData Path="icos/hourse5.png" />
+      <FilePathData Path="icos/hourse6.png" />
+      <FilePathData Path="icos/hourse7.png" />
+      <FilePathData Path="icos/hpBarBg.png" />
+      <FilePathData Path="icos/hpBar.png" />
+      <FilePathData Path="btns/btnCancel1.png" />
+      <FilePathData Path="btns/btnCancel2.png" />
+      <FilePathData Path="btns/btnStartPvp1.png" />
+      <FilePathData Path="btns/btnStartPvp2.png" />
+      <FilePathData Path="icos/fail.png" />
+      <FilePathData Path="icos/win.png" />
+      <FilePathData Path="icos/pvp_title.png" />
+      <FilePathData Path="icos/ball.png" />
+    </ImageFiles>
+    <MaxSize Width="1024" Height="512" />
+  </Content>
+</PlistInfoProjectFile>

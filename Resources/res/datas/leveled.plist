@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<plist version="1.0">  
+<dict>  
+   <key>1</key>
+   <string>10级礼包</string>
+   <key>1_num</key>
+   <string>10</string>
+   <key>1_isGet</key>
+   <string>0</string>
+   
+   <key>2</key>
+   <string>20级礼包</string>
+   <key>2_num</key>
+   <string>20</string>
+   <key>2_isGet</key>
+   <string>0</string>
+   
+   <key>3</key>
+   <string>30级礼包</string>
+   <key>3_num</key>
+   <string>30</string>
+   <key>3_isGet</key>
+   <string>0</string>
+   
+   <key>4</key>
+   <string>40级礼包</string>
+   <key>4_num</key>
+   <string>40</string>
+   <key>4_isGet</key>
+   <string>0</string>
+   
+   <key>5</key>
+   <string>50级礼包</string>
+   <key>5_num</key>
+   <string>50</string>
+   <key>5_isGet</key>
+   <string>0</string>
+   
+   <key>6</key>
+   <string>60级礼包</string>
+   <key>6_num</key>
+   <string>60</string>
+   <key>6_isGet</key>
+   <string>0</string>
+   
+   <key>7</key>
+   <string>70级礼包</string>
+   <key>7_num</key>
+   <string>70</string>
+   <key>7_isGet</key>
+   <string>0</string>
+   
+   <key>8</key>
+   <string>80级礼包</string>
+   <key>8_num</key>
+   <string>80</string>
+   <key>8_isGet</key>
+   <string>0</string>
+   
+   <key>9</key>
+   <string>90级礼包</string>
+   <key>9_num</key>
+   <string>90</string>
+   <key>9_isGet</key>
+   <string>0</string>
+   
+</dict>  
+</plist> 
