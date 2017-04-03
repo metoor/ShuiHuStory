@@ -50,7 +50,7 @@ const int max_equipment_num = 6;			//角色可以佩戴的装备数量（6种类型）
 const int max_battle_hero_num = 6;			//最多能有6个英雄上阵
 
 const int init_glod = 5000;					//玩家初始获得的金币
-const int init_level = 1;					//玩家初始的等级
+const int init_level = 30;					//玩家初始的等级
 const int init_diamond = 1200;				//玩家初始获得的钻石
 
 const int intensify_base_diamond = 25;		//强化装备和卡牌的时候需要的基础钻石

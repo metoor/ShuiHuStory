@@ -2,7 +2,7 @@
 // Copyright (C), 2016-2020, CS&S. Co., Ltd.
 // File name: 	Tools.cpp
 // Author:		 Metoor
-// Version: 	1.0 
+// Version: 	1.0
 // Date: 		2016/11/07
 // Contact: 	caiufen@qq.com
 // Description: 	create by vs2015pro
@@ -11,9 +11,25 @@
 #include "Tools.h"
 #include <random>
 #include <assert.h>
+#include "cocos2d.h"
+
+#if(CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+#include "platform/android/jni/JniHelper.h"
+#endif
+
+USING_NS_CC;
 
 int Tools::getRandomInt(int min, int max)
 {
+	int result = 0;
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+	JniMethodInfo info;
+	bool ret = JniHelper::getStaticMethodInfo(info, "org/cocos2dx/cpp/AppActivity", "randomInt", "(II)I");
+	if (ret)
+	{
+		result = info.env->CallStaticIntMethod(info.classID, info.methodID,min,max);
+	}
+#elif(CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
 	/************************************************************************/
 	/*  因为现在电脑的运算能力很强，在循环里面连续获取时间时，会获取到相同的时间。因为随  */
 	/*	机数种子（时间）相同，那么产生的随机数也会相同。为了避免在循环里获取时间后人为加	*/
@@ -30,8 +46,10 @@ int Tools::getRandomInt(int min, int max)
 	std::default_random_engine e((unsigned int)currentTimer);
 
 	std::uniform_int_distribution<unsigned> u(min, max);
+	result = u(e);
+#endif
 
-	return u(e);
+	return result;
 }
 
 tm Tools::getCurrentTimeTm()
@@ -61,8 +79,8 @@ float Tools::keepTwoEffectNum(float f)
 {
 	int temp = static_cast<int>(f * 1000);
 	int last = temp % 10;
-	
-	if(last >4)
+
+	if (last > 4)
 	{
 		f = (temp + 10 - last) / 1000.0f;
 	}
