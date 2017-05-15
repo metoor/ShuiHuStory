@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Tools">
+    <Position X="0.5" Y="0.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>CABBgAAgAAAAAAwACAAQCAAAAAgAAAAAQBAABABoAQA=</HashCode>
+      <FileName>F:\SourceCode\Cocos\src\ShuiHu2\Classes\Tools.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="McLog">
+    <Position X="9" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAEQQAAAAAAAAEAAAABAEACAAAAAABAA=</HashCode>
+      <FileName>F:\SourceCode\Cocos\src\ShuiHu2\Classes\McLog.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DialogManager">
+    <Position X="6.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEBAAAAAAAACAAAQAAAAAAEAAAAAQAAgAAAAAAACA=</HashCode>
+      <FileName>F:\SourceCode\Cocos\src\ShuiHu2\Classes\DialogManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Config">
+    <Position X="3.5" Y="0.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIBAAAAgAAAAAEAAAAAAAAAwAAQIwCAAAAAACAAAA=</HashCode>
+      <FileName>F:\SourceCode\Cocos\src\ShuiHu2\Classes\Config.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameData">
+    <Position X="7" Y="3.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>hIggBCkAwgCZAAgRABmAAQAY0AMJABUIBAQoiCCAQAA=</HashCode>
+      <FileName>F:\SourceCode\Cocos\src\ShuiHu2\Classes\GameData.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>

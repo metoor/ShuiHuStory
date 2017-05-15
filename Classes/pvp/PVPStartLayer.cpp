@@ -103,7 +103,7 @@ void PVPStartLayer::loadUI()
 		{
 			AudioManager::getInstance()->playClickEffect();
 		}
-		
+
 		if (Widget::TouchEventType::ENDED == type)
 		{
 			auto i18n = I18N::getInstance();

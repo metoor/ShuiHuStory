@@ -84,9 +84,11 @@ void ClientLayer::onExit()
 {
 	Layer::onExit();
 
-	_client->destroy();
-	_client = nullptr;
-
+	if (_client)
+	{
+		_client->destroy();
+		_client = nullptr;
+	}
 }
 
 void ClientLayer::addConnectMessageListener()
@@ -156,8 +158,9 @@ void ClientLayer::onRecv(const char* data, int count)
 				//在cocos主线程中启动PVP场景
 				Director::getInstance()->getScheduler()->performFunctionInCocosThread([&]() {
 					cocos2d::Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(msg_create_pvp_scene, (void*)&_data);
+					_client->destroy();
+					_client = nullptr;
 					this->removeFromParentAndCleanup(true);
-					
 					//McLog mc;
 					//mc.addWaring("get data success, rung pvp scene...", __FILE__, __LINE__);
 				});

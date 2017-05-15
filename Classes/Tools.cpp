@@ -24,10 +24,12 @@ int Tools::getRandomInt(int min, int max)
 	int result = 0;
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
 	JniMethodInfo info;
-	bool ret = JniHelper::getStaticMethodInfo(info, "org/cocos2dx/cpp/AppActivity", "randomInt", "(II)I");
+	bool ret = JniHelper::getStaticMethodInfo(info, 
+		"org/cocos2dx/cpp/AppActivity", "randomInt", "(II)I");
 	if (ret)
 	{
-		result = info.env->CallStaticIntMethod(info.classID, info.methodID,min,max);
+		result = info.env->CallStaticIntMethod(info.classID, 
+			info.methodID,min,max);
 	}
 #elif(CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
 	/************************************************************************/
@@ -167,7 +169,7 @@ std::string Tools::getCurrentTimeString()
 	int year = currentTime.tm_year + 1900;
 	int month = currentTime.tm_mon + 1;
 
-	std::sprintf(buffer, "%dy_%dm_%dh_%dm_%ds", year, month, currentTime.tm_hour, currentTime.tm_min, currentTime.tm_sec);
+	std::sprintf(buffer, "%dy_%dm_%dt_%dh_%dm_%ds", year, month, currentTime.tm_mday,currentTime.tm_hour, currentTime.tm_min, currentTime.tm_sec);
 
 	return std::string(buffer);
 }

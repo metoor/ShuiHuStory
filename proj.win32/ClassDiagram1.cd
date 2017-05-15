@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="SocketClient">
+    <Position X="3" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AEAUAAAAABAAAAQACIAAAEAgAACgAAAAAAGABAAEAAA=</HashCode>
+      <FileName>F:\SourceCode\Cocos\src\ShuiHu2\Classes\pvp\SocketClient.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SocketMessage">
+    <Position X="8.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAAAAAAAAAAAAQAQAAAAEAAAAAEAQAA=</HashCode>
+      <FileName>F:\SourceCode\Cocos\src\ShuiHu2\Classes\pvp\SocketBase.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SocketBase">
+    <Position X="6.25" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAAECEAAACAABACAAAAAAAAAAAAA=</HashCode>
+      <FileName>F:\SourceCode\Cocos\src\ShuiHu2\Classes\pvp\SocketBase.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="__unnamed_struct_0389_1">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAgAAAAAQAAEAAAAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>F:\SourceCode\Cocos\src\ShuiHu2\Classes\pvp\SocketClient.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Typedef Name="MyMSG" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>F:\SourceCode\Cocos\src\ShuiHu2\Classes\pvp\SocketClient.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Enum Name="MessageType">
+    <Position X="8.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAQAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>F:\SourceCode\Cocos\src\ShuiHu2\Classes\pvp\SocketBase.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>

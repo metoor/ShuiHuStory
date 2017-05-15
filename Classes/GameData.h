@@ -105,7 +105,7 @@ public:
 	//通过id删除玩家已有列表中英雄卡牌
 	void deleteHeroCardById(int id);
 
-	//通过id玩家已有列表中的删除装备
+	//通过id删除玩家已有列表中的装备
 	void deleteEquipmentById(int id);
 
 	//通过Id获取已经获得的装备

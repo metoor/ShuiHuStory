@@ -57,7 +57,7 @@ public:
 	//将字符串写入到文件
 	static bool writeStringToFile(const std::string& fileName, const std::string& content, std::ios_base::openmode mode = std::ios_base::binary | std::ios_base::out);
 
-	//获取当前系统时间字符串-如：2016y_12m_7h_20m_50s
+	//获取当前系统时间字符串-如：2016y_12m_1t_7h_20m_50s
 	static std::string getCurrentTimeString();
 
 	//比较大小
